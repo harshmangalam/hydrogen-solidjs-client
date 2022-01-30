@@ -14,9 +14,11 @@ export default function Friends() {
   return (
     <MainLayout>
       <div
-        className={`h-screen fixed top-14 w-1/4 hidden py-4 lg:block left-0 bg-white shadow border-r px-2`}
+        className={`h-screen fixed top-14 w-1/4 xl:w-1/5 hidden py-4 lg:block left-0 bg-white shadow border-r px-2`}
       >
-        <ul>
+        <h2 class="font-semibold text-2xl">Friends</h2>
+
+        <ul className="mt-4">
           <For each={tabs}>
             {(tab) => (
               <li>
@@ -39,7 +41,7 @@ export default function Friends() {
         </ul>
       </div>
 
-      <div className="w-full lg:w-3/4 ml-auto">
+      <div className="w-full lg:w-3/4 xl:w-4/5 ml-auto">
         <Outlet />
       </div>
     </MainLayout>
@@ -48,7 +50,7 @@ export default function Friends() {
 
 const tabs = [
   {
-    name: "Home",
+    name: "All Friends",
     href: "/friends",
     icon: <FaSolidUserFriends />,
   },
@@ -64,11 +66,6 @@ const tabs = [
     icon: <RiUserUserShared2Fill />,
   },
 
-  {
-    name: "All Friends",
-    href: "/friends/list",
-    icon: <TiUserAdd />,
-  },
   {
     name: "Suggestions",
     href: "/friends/suggestions",

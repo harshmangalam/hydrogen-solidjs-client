@@ -4,7 +4,7 @@ export default function MainLayout(props) {
   return (
     <div>
       <Navbar />
-      <main>{props.children}</main>
+      <main className="py-14 px-2 md:px-0">{props.children}</main>
     </div>
   );
 }

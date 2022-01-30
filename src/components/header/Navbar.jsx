@@ -15,12 +15,11 @@ import DarkLightMode from "./DarkLightMode";
 export default function Navbar() {
   function isActive(href) {
     const match = useMatch(() => href);
-
     return Boolean(match());
   }
 
   return (
-    <header className="bg-white shadow border-b sticky top-0 z-50">
+    <header className="bg-white shadow border-b fixed w-full top-0 z-50">
       <nav className="px-2 md:px-4 h-14 flex items-center justify-between">
         {/* left section  */}
         <div className="flex items-center space-x-1 md:space-x-2">
