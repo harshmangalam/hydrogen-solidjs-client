@@ -1,6 +1,6 @@
 import MainLayout from "../components/layouts/MainLayout"
 
-export default function Home() {
+export default function HomeFeeds() {
   return (
     <MainLayout>
       <div>Home</div>
