@@ -1,8 +1,12 @@
+import { lazy } from "solid-js";
+import { Routes, Route } from "solid-app-router";
+const Home = lazy(() => import("./screens/Home"));
+
 function App() {
   return (
-    <div>
-      <h1 className="text-blue-500">SolidHack</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
   );
 }
 
