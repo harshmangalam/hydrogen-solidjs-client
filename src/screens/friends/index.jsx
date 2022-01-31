@@ -1,7 +1,6 @@
 import MainLayout from "../../components/layouts/MainLayout";
 import { FaSolidUserFriends } from "solid-icons/fa";
 import { RiUserUserReceived2Fill, RiUserUserShared2Fill } from "solid-icons/ri";
-import { TiUserAdd } from "solid-icons/ti";
 
 import { Link, Outlet, useMatch } from "solid-app-router";
 import { For } from "solid-js";
@@ -13,6 +12,23 @@ export default function Friends() {
   }
   return (
     <MainLayout>
+      <ul className="px-2 sm:px-4 mt-4 grid grid-cols-2 sm:grid-cols-3 gap-2 md:grid-cols-4 lg:hidden">
+        <For each={tabs}>
+          {(tab) => (
+            <li>
+              <Link
+                href={tab.href}
+                className={`flex items-center justify-center  py-2 px-2 rounded-full  ${
+                  isActive(tab.href) ? "bg-blue-100 text-blue-500 font-semibold" : ""
+                }`}
+              >
+                <span>{tab.name}</span>
+              </Link>
+            </li>
+          )}
+        </For>
+      </ul>
+
       <div
         className={`h-screen fixed top-14 w-1/4 xl:w-1/5 hidden py-4 lg:block left-0 bg-white shadow border-r px-2`}
       >
