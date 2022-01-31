@@ -7,7 +7,6 @@ import { For } from "solid-js";
 export default function Friends() {
   function isActive(href) {
     const match = useMatch(() => href);
-
     return Boolean(match());
   }
   return (
