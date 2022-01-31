@@ -12,17 +12,22 @@ export default function Friends() {
   }
   return (
     <MainLayout>
-      <ul className="px-2 sm:px-4 mt-4 grid grid-cols-2 sm:grid-cols-3 gap-2 md:grid-cols-4 lg:hidden">
+      <ul className="px-2 sm:px-4 mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 md:hidden">
         <For each={tabs}>
           {(tab) => (
             <li>
               <Link
                 href={tab.href}
-                className={`flex items-center justify-center  py-2 px-2 rounded-full  ${
-                  isActive(tab.href) ? "bg-blue-100 text-blue-500 font-semibold" : ""
+                className={`flex items-center justify-between  py-2 px-2 rounded-lg ${
+                  isActive(tab.href) ? "bg-gray-200" : ""
                 }`}
               >
-                <span>{tab.name}</span>
+                <div className="flex items-center space-x-3">
+                  <div className="flex place-items-center p-2 bg-blue-500 rounded-full text-white text-xl">
+                    {tab.icon()}
+                  </div>
+                  <p>{tab.name}</p>
+                </div>
               </Link>
             </li>
           )}
@@ -30,7 +35,7 @@ export default function Friends() {
       </ul>
 
       <div
-        className={`h-screen fixed top-14 w-1/4 xl:w-1/5 hidden py-4 lg:block left-0 bg-white shadow border-r px-2`}
+        className={`h-screen fixed top-14 md:w-1/4 xl:w-1/5 hidden py-4 md:block left-0 bg-white shadow border-r px-2`}
       >
         <h2 class="font-semibold text-2xl">Friends</h2>
 
@@ -46,7 +51,7 @@ export default function Friends() {
                 >
                   <div className="flex items-center space-x-3">
                     <div className="flex place-items-center p-2 bg-blue-500 rounded-full text-white text-xl">
-                      {tab.icon}
+                      {tab.icon()}
                     </div>
                     <p>{tab.name}</p>
                   </div>
@@ -57,7 +62,7 @@ export default function Friends() {
         </ul>
       </div>
 
-      <div className="w-full lg:w-3/4 xl:w-4/5 ml-auto">
+      <div className="w-full md:w-3/4 xl:w-4/5 ml-auto">
         <Outlet />
       </div>
     </MainLayout>
@@ -68,23 +73,23 @@ const tabs = [
   {
     name: "All Friends",
     href: "/friends",
-    icon: <FaSolidUserFriends />,
+    icon: () => <FaSolidUserFriends />,
   },
 
   {
     name: "Requests Received",
     href: "/friends/requests-received",
-    icon: <RiUserUserReceived2Fill />,
+    icon: () => <RiUserUserReceived2Fill />,
   },
   {
     name: "Requests Sent",
     href: "/friends/requests-sent",
-    icon: <RiUserUserShared2Fill />,
+    icon: () => <RiUserUserShared2Fill />,
   },
 
   {
     name: "Suggestions",
     href: "/friends/suggestions",
-    icon: <FaSolidUserFriends />,
+    icon: () => <FaSolidUserFriends />,
   },
 ];
