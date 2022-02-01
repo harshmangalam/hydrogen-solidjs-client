@@ -13,9 +13,9 @@ export default function Friends() {
             <li>
               <NavLink
                 href={tab.href}
-                className="flex items-center justify-between  py-2 px-2 rounded-lg"
+                className="flex items-center justify-between  py-2 px-2 rounded-lg dark:text-white"
                 end={tab.end}
-                activeClass="bg-blue-200"
+                activeClass="bg-blue-200 dark:bg-gray-700"
               >
                 <div className="flex items-center space-x-3">
                   <div className="flex place-items-center p-2 bg-blue-500 rounded-full text-white text-xl">
@@ -30,7 +30,7 @@ export default function Friends() {
       </ul>
 
       <div
-        className={`h-screen fixed top-14 md:w-1/4 xl:w-1/5 hidden py-4 md:block left-0 bg-white shadow border-r px-2`}
+        className={`h-screen fixed top-14 md:w-1/4 xl:w-1/5 hidden py-4 md:block left-0 bg-white dark:bg-gray-800 shadow border-r dark:border-gray-700 dark:text-white px-2`}
       >
         <h2 class="font-semibold text-2xl">Friends</h2>
 
@@ -42,7 +42,7 @@ export default function Friends() {
                   href={tab.href}
                   className="flex items-center justify-between  py-2 px-2 rounded-lg"
                   end={tab.end}
-                  activeClass="bg-blue-100"
+                  activeClass="bg-blue-100 dark:bg-gray-700"
                 >
                   <div className="flex items-center space-x-3">
                     <div className="flex place-items-center p-2 bg-blue-500 rounded-full text-white text-xl">
@@ -57,7 +57,7 @@ export default function Friends() {
         </ul>
       </div>
 
-      <div className="w-full md:w-3/4 xl:w-4/5 ml-auto">
+      <div className="w-full md:w-3/4 xl:w-4/5 ml-auto dark:text-white">
         <Outlet />
       </div>
     </MainLayout>
