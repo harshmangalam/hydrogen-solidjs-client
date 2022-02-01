@@ -30,8 +30,9 @@ export default function Navbar() {
               <li>
                 <NavLink
                   href={tab.href}
-                  className="text-3xl md:px-4 lg:px-10 xl:px-12 h-14 grid place-items-center"
+                  className="text-3xl md:px-4 lg:px-10 xl:px-12 h-14 grid place-items-center hover:bg-gray-100"
                   end={tab.end}
+                  activeClass="border-b-4 border-blue-500 bg-blue-100 hover:bg-blue-100"
                 >
                   {tab.icon()}
                 </NavLink>

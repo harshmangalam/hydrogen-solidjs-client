@@ -15,6 +15,7 @@ export default function Friends() {
                 href={tab.href}
                 className="flex items-center justify-between  py-2 px-2 rounded-lg"
                 end={tab.end}
+                activeClass="bg-blue-200"
               >
                 <div className="flex items-center space-x-3">
                   <div className="flex place-items-center p-2 bg-blue-500 rounded-full text-white text-xl">
@@ -41,6 +42,7 @@ export default function Friends() {
                   href={tab.href}
                   className="flex items-center justify-between  py-2 px-2 rounded-lg"
                   end={tab.end}
+                  activeClass="bg-blue-100"
                 >
                   <div className="flex items-center space-x-3">
                     <div className="flex place-items-center p-2 bg-blue-500 rounded-full text-white text-xl">
