@@ -2,7 +2,7 @@ import { createSignal, For, Show } from "solid-js";
 import MainLayout from "../components/layouts/MainLayout";
 import PostCard from "../components/posts/PostCard";
 
-export default function HomeFeeds() {
+export default function Home() {
   const [showLikeDialog, setShowLikeDialog] = createSignal(false);
   return (
     <MainLayout>
@@ -12,9 +12,10 @@ export default function HomeFeeds() {
       ></div>
 
       {/* middle section */}
-      <div className="w-full md:w-2/4 xl:w-3/5 mx-auto">
+      <div className="w-full md:w-2/4 xl:w-3/5 mx-auto py-6">
         {/* posts */}
-        <ul className="grid grid-cols-1 gap-4">
+       <div className="max-w-xl mx-auto">
+       <ul className="grid grid-cols-1 gap-4">
           <For each={[...Array(10).keys()]}>
             {(post) => (
               <li>
@@ -23,6 +24,7 @@ export default function HomeFeeds() {
             )}
           </For>
         </ul>
+       </div>
       </div>
 
       {/* right section  */}

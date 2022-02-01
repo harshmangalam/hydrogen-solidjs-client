@@ -17,6 +17,7 @@
     "vite-plugin-solid": "^2.2.5"
   },
   "dependencies": {
+    "js-cookie": "^3.0.1",
     "solid-app-router": "^0.2.1",
     "solid-icons": "^0.3.3",
     "solid-js": "^1.3.3"

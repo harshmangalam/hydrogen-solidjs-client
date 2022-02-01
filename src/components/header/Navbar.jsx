@@ -1,11 +1,11 @@
 import Logo from "../shared/Logo";
 import Search from "./Search";
-import Feature from "./Feature";
+import Create from "./Create";
 import Notification from "./Notification";
 import Messenger from "./Messenger";
 import Profile from "./Profile";
 
-import { NavLink, useMatch } from "solid-app-router";
+import { NavLink } from "solid-app-router";
 
 import { TiHome, TiGroup } from "solid-icons/ti";
 import { FaSolidUserFriends } from "solid-icons/fa";
@@ -14,7 +14,7 @@ import { For } from "solid-js";
 import DarkLightMode from "./DarkLightMode";
 export default function Navbar() {
   return (
-    <header className="bg-white shadow border-b fixed w-full top-0 z-50">
+    <header className="bg-white shadow border-b fixed w-full top-0 z-50 dark:bg-gray-800 dark:border-gray-700 text-white">
       <nav className="px-2 md:px-4 h-14 flex items-center justify-between">
         {/* left section  */}
         <div className="flex items-center space-x-1 md:space-x-2">
@@ -30,9 +30,9 @@ export default function Navbar() {
               <li>
                 <NavLink
                   href={tab.href}
-                  className="text-3xl md:px-4 lg:px-10 xl:px-12 h-14 grid place-items-center hover:bg-gray-100"
+                  className="text-3xl md:px-4 lg:px-10 xl:px-12 h-14 grid place-items-center hover:bg-gray-100 dark:hover:bg-gray-700  text-gray-600 dark:text-white"
+                  activeClass="border-b-4 border-blue-500 bg-gray-100 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-700"
                   end={tab.end}
-                  activeClass="border-b-4 border-blue-500 bg-blue-100 hover:bg-blue-100"
                 >
                   {tab.icon()}
                 </NavLink>
@@ -43,10 +43,10 @@ export default function Navbar() {
 
         {/* right section  */}
         <div className="flex items-center space-x-2">
-          <Profile />
-          <Feature />
+        <Create />
+        <Notification />
           <Messenger />
-          <Notification />
+          <Profile />
           <DarkLightMode />
         </div>
       </nav>

@@ -1,6 +1,6 @@
 import { lazy } from "solid-js";
 import { Routes, Route } from "solid-app-router";
-const HomeFeeds = lazy(() => import("./screens/HomeFeeds"));
+const Home = lazy(() => import("./screens/Home"));
 
 const FriendsLayout = lazy(() => import("./screens/friends"));
 const AllFriends = lazy(() => import("./screens/friends/AllFriends"));
@@ -12,12 +12,10 @@ const FriendsRequestsSent = lazy(() =>
 );
 const FriendsSuggestions = lazy(() => import("./screens/friends/Suggestions"));
 
-
-
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<HomeFeeds />} />
+      <Route path="/" element={<Home />} />
       <Route path="/friends" element={<FriendsLayout />}>
         <Route path="/" element={<AllFriends />} />
         <Route path="/suggestions" element={<FriendsSuggestions />} />
