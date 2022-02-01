@@ -2,24 +2,19 @@ import MainLayout from "../../components/layouts/MainLayout";
 import { FaSolidUserFriends } from "solid-icons/fa";
 import { RiUserUserReceived2Fill, RiUserUserShared2Fill } from "solid-icons/ri";
 
-import { Link, Outlet, useMatch } from "solid-app-router";
+import { NavLink, Outlet } from "solid-app-router";
 import { For } from "solid-js";
 export default function Friends() {
-  function isActive(href) {
-    const match = useMatch(() => href);
-    return Boolean(match());
-  }
   return (
     <MainLayout>
       <ul className="px-2 sm:px-4 mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 md:hidden">
         <For each={tabs}>
           {(tab) => (
             <li>
-              <Link
+              <NavLink
                 href={tab.href}
-                className={`flex items-center justify-between  py-2 px-2 rounded-lg ${
-                  isActive(tab.href) ? "bg-gray-200" : ""
-                }`}
+                className="flex items-center justify-between  py-2 px-2 rounded-lg"
+                end={tab.end}
               >
                 <div className="flex items-center space-x-3">
                   <div className="flex place-items-center p-2 bg-blue-500 rounded-full text-white text-xl">
@@ -27,7 +22,7 @@ export default function Friends() {
                   </div>
                   <p>{tab.name}</p>
                 </div>
-              </Link>
+              </NavLink>
             </li>
           )}
         </For>
@@ -42,11 +37,10 @@ export default function Friends() {
           <For each={tabs}>
             {(tab) => (
               <li>
-                <Link
+                <NavLink
                   href={tab.href}
-                  className={`flex items-center justify-between  py-2 px-2 rounded-lg ${
-                    isActive(tab.href) ? "bg-gray-200" : ""
-                  }`}
+                  className="flex items-center justify-between  py-2 px-2 rounded-lg"
+                  end={tab.end}
                 >
                   <div className="flex items-center space-x-3">
                     <div className="flex place-items-center p-2 bg-blue-500 rounded-full text-white text-xl">
@@ -54,7 +48,7 @@ export default function Friends() {
                     </div>
                     <p>{tab.name}</p>
                   </div>
-                </Link>
+                </NavLink>
               </li>
             )}
           </For>
@@ -71,24 +65,28 @@ export default function Friends() {
 const tabs = [
   {
     name: "All Friends",
-    href: "/friends",
+    href: "",
     icon: () => <FaSolidUserFriends />,
+    end: true,
   },
 
   {
     name: "Requests Received",
-    href: "/friends/requests-received",
+    href: "requests-received",
     icon: () => <RiUserUserReceived2Fill />,
+    end: false,
   },
   {
     name: "Requests Sent",
-    href: "/friends/requests-sent",
+    href: "requests-sent",
     icon: () => <RiUserUserShared2Fill />,
+    end: false,
   },
 
   {
     name: "Suggestions",
-    href: "/friends/suggestions",
+    href: "suggestions",
     icon: () => <FaSolidUserFriends />,
+    end: false,
   },
 ];
