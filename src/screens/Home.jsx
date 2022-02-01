@@ -8,7 +8,7 @@ export default function Home() {
     <MainLayout>
       {/* left section */}
       <div
-        className={`h-screen fixed top-14 md:w-1/4 xl:w-1/5 hidden py-4 md:block left-0 bg-gray-100  px-2`}
+        className={`h-screen fixed top-14 md:w-1/4 xl:w-1/5 hidden py-4 md:block left-0 bg-gray-100 dark:bg-gray-900  px-2`}
       ></div>
 
       {/* middle section */}
@@ -29,7 +29,7 @@ export default function Home() {
 
       {/* right section  */}
       <div
-        className={`h-screen fixed top-14 md:w-1/4 xl:w-1/5 hidden py-4 md:block right-0 bg-gray-100 px-2`}
+        className={`h-screen fixed top-14 md:w-1/4 xl:w-1/5 hidden py-4 md:block right-0 bg-gray-100 dark:bg-gray-900 px-2`}
       ></div>
     </MainLayout>
   );

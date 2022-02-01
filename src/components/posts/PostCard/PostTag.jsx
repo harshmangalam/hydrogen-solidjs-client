@@ -8,7 +8,7 @@ export default function PostTag() {
             <li>
               <a
                 href="#"
-                className="px-3 py-1 bg-blue-100 hover:bg-blue-200 text-blue-500 hover:text-blue-600 rounded-full text-xs"
+                className="px-3 py-1 bg-blue-100 dark:bg-gray-700 dark:hover:bg-gray-600 hover:bg-blue-200 text-blue-500 dark:text-white rounded-full text-xs "
               >
                 {tag.name}
               </a>

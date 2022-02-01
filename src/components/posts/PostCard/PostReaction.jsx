@@ -2,21 +2,21 @@ import { FaSolidHeart, FaSolidCommentAlt } from "solid-icons/fa";
 import { HiSolidShare } from "solid-icons/hi";
 export default function PostReaction() {
   return (
-    <section className="pt-2 px-4 flex space-x-4 items-center">
-      <button className="flex items-center space-x-1 hover:bg-red-100 rounded-full px-3 py-1">
-        <span className="text-red-400">
+    <section className="pt-2 px-4 flex space-x-4 items-center dark:text-white">
+      <button className="flex items-center space-x-1 hover:bg-red-100 dark:hover:bg-gray-600 rounded-full px-3 py-1">
+        <span className="text-red-400 dark:text-red-200">
           <FaSolidHeart />
         </span>
         <span className="text-sm">{12}</span>
       </button>
-      <button className="flex items-center space-x-1 hover:bg-green-100 rounded-full px-3 py-1">
-        <span className="text-green-400">
+      <button className="flex items-center space-x-1 hover:bg-green-100 dark:hover:bg-gray-600  rounded-full px-3 py-1">
+        <span className="text-green-400 dark:text-green-200">
           <FaSolidCommentAlt />
         </span>
         <span className="text-sm">{12}</span>
       </button>
-      <button className="flex items-center space-x-1 hover:bg-green-100 rounded-full px-3 py-1">
-        <span className="text-blue-400">
+      <button className="flex items-center space-x-1 hover:bg-green-100 dark:hover:bg-gray-600  rounded-full px-3 py-1">
+        <span className="text-blue-400 dark:text-blue-200">
           <HiSolidShare />
         </span>
         <span className="text-sm">{12}</span>

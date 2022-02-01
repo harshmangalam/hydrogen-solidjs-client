@@ -7,13 +7,15 @@ import PostTag from "./PostTag";
 
 export default function PostCard() {
   return (
-    <article class="rounded-lg shadow bg-white border-2">
+    <article class="rounded-lg shadow bg-white dark:bg-gray-800 border-2 dark:border-gray-700">
       <PostHeader />
       <PostMedia />
       <PostReaction />
       <PostContent />
-      <PostTag />
-      <PostFooter />
+      <div className="divide-y dark:divide-gray-700 space-y-4">
+        <PostTag />
+        <PostFooter />
+      </div>
     </article>
   );
 }
