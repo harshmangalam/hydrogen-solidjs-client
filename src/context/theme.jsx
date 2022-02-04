@@ -2,7 +2,8 @@ import { createContext, onMount, useContext } from "solid-js";
 import { createStore } from "solid-js/store";
 import Cookies from "js-cookie";
 
-const ThemeContext = createContext();
+const ThemeStateContext = createContext();
+const ThemeDispatchContext = createContext();
 
 const initialState = {
   darkMode: true,
@@ -34,10 +35,13 @@ export default function ThemeProvider(props) {
   }
 
   return (
-    <ThemeContext.Provider value={{ store, toggleDarkMode }}>
-      {props.children}
-    </ThemeContext.Provider>
+    <ThemeStateContext.Provider value={store}>
+      <ThemeDispatchContext.Provider value={{ toggleDarkMode }}>
+        {props.children}
+      </ThemeDispatchContext.Provider>
+    </ThemeStateContext.Provider>
   );
 }
 
-export const useTheme = () => useContext(ThemeContext);
+export const useThemeState = () => useContext(ThemeStateContext);
+export const useThemeDispatch = () => useContext(ThemeDispatchContext);
