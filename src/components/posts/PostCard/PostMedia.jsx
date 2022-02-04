@@ -2,9 +2,9 @@ export default function PostMedia() {
   return (
     <section>
       <img
-        src="https://scontent.fpat2-2.fna.fbcdn.net/v/t39.30808-6/s640x640/273033776_3110201852555547_7552460249623660817_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=73oKk5nWcVEAX8XOAu5&_nc_ht=scontent.fpat2-2.fna&oh=00_AT9UO6WS6byjEM1X9HHtTD3OBxtQnyMb-OdN4_1xZTzoVw&oe=61FBF3A1"
+        src="https://scontent-ccu1-1.xx.fbcdn.net/v/t45.1600-4/cp0/q90/spS444/p526x296/259544654_23849824974790537_4351522880093149531_n.png.jpg?_nc_cat=108&ccb=1-5&_nc_sid=68ce8d&_nc_ohc=CzLmzAba4Z8AX95R_HZ&_nc_ht=scontent-ccu1-1.xx&oh=00_AT_BraPnFM1zzH0zq9BcuMDBrcmYp0yURdwcs9-98vhung&oe=6202A3DA"
         alt=""
-        class="w-full h-80"
+        class="aspect-auto"
       />
     </section>
   );

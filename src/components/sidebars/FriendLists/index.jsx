@@ -19,11 +19,11 @@ export default function FriendLists() {
                 <div className="absolute bottom-0 -right-1">
                   <Switch>
                     <Match when={friend.active}>
-                        <div className="h-3 w-3 bg-green-500 rounded-full border-2 border-white dark:border-black"></div>
+                      <div className="h-3 w-3 bg-green-500 rounded-full border-2 border-white dark:border-black"></div>
                     </Match>
                     <Match when={friend.lastSeen}>
                       <div className="border-2 bg-green-200 dark:border-black text-green-600 font-semibold rounded-xl dark:bg-gray-800 w-6 grid place-items-center">
-                          <p className="text-[10px]">{friend.lastSeen}</p>
+                        <p className="text-[10px]">{friend.lastSeen}</p>
                       </div>
                     </Match>
                   </Switch>
@@ -138,5 +138,4 @@ const friends = [
     lastSeen: "2 h",
     active: false,
   },
-
 ];

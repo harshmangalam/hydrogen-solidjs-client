@@ -1,9 +1,10 @@
-import { FaSolidUserFriends } from "solid-icons/fa";
-import { RiUserUserReceived2Fill, RiUserUserShared2Fill } from "solid-icons/ri";
-
+import { FaSolidPlus } from "solid-icons/fa";
+import { BsPlusSquareDotted } from 'solid-icons/bs'
+import { BiSolidGroup } from 'solid-icons/bi'
+import { HiSolidUserGroup } from 'solid-icons/hi'
 import { NavLink, Outlet } from "solid-app-router";
 import { For } from "solid-js";
-export default function FriendsLayout() {
+export default function GroupsLayout() {
   return (
     <div>
       <ul className="px-2 sm:px-4 mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 md:hidden">
@@ -31,7 +32,7 @@ export default function FriendsLayout() {
       <div
         className={`h-screen fixed top-14 md:w-1/4 xl:w-1/5 hidden py-4 md:block left-0 bg-white dark:bg-gray-800 shadow border-r dark:border-gray-700 dark:text-white px-2`}
       >
-        <h2 class="font-semibold text-2xl">Friends</h2>
+        <h2 class="font-semibold text-2xl">Groups</h2>
 
         <ul className="mt-4">
           <For each={tabs}>
@@ -65,29 +66,22 @@ export default function FriendsLayout() {
 
 const tabs = [
   {
-    name: "All Friends",
+    name: "All Groups",
     href: "",
-    icon: () => <FaSolidUserFriends />,
+    icon: () => <BiSolidGroup />,
     end: true,
   },
 
   {
-    name: "Requests Received",
-    href: "requests-received",
-    icon: () => <RiUserUserReceived2Fill />,
+    name: "Discover",
+    href: "discover",
+    icon: () => <HiSolidUserGroup />,
     end: false,
   },
   {
-    name: "Requests Sent",
-    href: "requests-sent",
-    icon: () => <RiUserUserShared2Fill />,
-    end: false,
-  },
-
-  {
-    name: "Suggestions",
-    href: "suggestions",
-    icon: () => <FaSolidUserFriends />,
+    name: "Create New Group",
+    href: "create",
+    icon: () => <BsPlusSquareDotted />,
     end: false,
   },
 ];

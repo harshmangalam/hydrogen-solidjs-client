@@ -1,12 +1,11 @@
 import { createSignal, For, Show } from "solid-js";
-import MainLayout from "../components/layouts/MainLayout";
-import PostCard from "../components/posts/PostCard";
-import FriendLists from "../components/sidebars/FriendLists";
-import MenuSidebar from "../components/sidebars/MenuSidebars";
+import PostCard from "../../components/posts/PostCard";
+import FriendLists from "../../components/sidebars/FriendLists";
+import MenuSidebar from "../../components/sidebars/MenuSidebars";
 
 export default function Home() {
   return (
-    <MainLayout>
+    <div>
       {/* left section */}
       <MenuSidebar />
 
@@ -15,7 +14,7 @@ export default function Home() {
         {/* posts */}
         <div className="max-w-lg mx-auto">
           <ul className="grid grid-cols-1 gap-4">
-            <For each={[...Array(10).keys()]}>
+            <For each={[...Array(3).keys()]}>
               {(post) => (
                 <li>
                   <PostCard />
@@ -37,6 +36,6 @@ export default function Home() {
           <FriendLists />
         </div>
       </div>
-    </MainLayout>
+    </div>
   );
 }

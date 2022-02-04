@@ -8,7 +8,7 @@ import Profile from "./Profile";
 import { NavLink } from "solid-app-router";
 
 import { TiHome, TiGroup } from "solid-icons/ti";
-import { FaSolidUserFriends } from "solid-icons/fa";
+import { FaSolidUserFriends,FaSolidUsers } from "solid-icons/fa";
 
 import { For } from "solid-js";
 import DarkLightMode from "./DarkLightMode";
@@ -70,7 +70,7 @@ const mainTabs = [
   {
     name: "Groups",
     href: "/groups",
-    icon: () => <TiGroup />,
+    icon: () => <FaSolidUsers />,
     end: false,
   },
 ];
