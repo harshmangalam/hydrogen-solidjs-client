@@ -7,8 +7,8 @@ import Profile from "./Profile";
 
 import { NavLink } from "solid-app-router";
 
-import { TiHome, TiGroup } from "solid-icons/ti";
-import { FaSolidUserFriends,FaSolidUsers } from "solid-icons/fa";
+import { TiHome } from "solid-icons/ti";
+import { FaSolidUserFriends, FaSolidUsers } from "solid-icons/fa";
 
 import { For } from "solid-js";
 import DarkLightMode from "./DarkLightMode";
@@ -31,7 +31,7 @@ export default function Navbar() {
                 <NavLink
                   href={tab.href}
                   className="text-3xl md:px-8 lg:px-10 xl:px-12 h-14 grid place-items-center hover:bg-gray-100 dark:hover:bg-gray-700  text-gray-600 dark:text-white"
-                  activeClass="border-b-4 border-blue-500 bg-gray-100 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-700"
+                  activeClass="border-b-4 border-blue-500 bg-gray-100 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-700 text-blue-500 dark:text-blue-500"
                   end={tab.end}
                 >
                   {tab.icon()}
@@ -43,8 +43,8 @@ export default function Navbar() {
 
         {/* right section  */}
         <div className="flex items-center space-x-2">
-        <Create />
-        <Notification />
+          <Create />
+          <Notification />
           <Messenger />
           <Profile />
           <DarkLightMode />
@@ -57,22 +57,21 @@ export default function Navbar() {
 const mainTabs = [
   {
     name: "Home",
-    href: "/",
+    href: "",
     icon: () => <TiHome />,
     end: true,
   },
   {
     name: "Friends",
-    href: "/friends",
+    href: "friends",
     icon: () => <FaSolidUserFriends />,
     end: false,
   },
-  
+
   {
     name: "Groups",
-    href: "/groups",
+    href: "groups",
     icon: () => <FaSolidUsers />,
     end: false,
   },
- 
 ];
