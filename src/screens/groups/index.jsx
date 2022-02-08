@@ -57,7 +57,7 @@ export default function GroupsLayout() {
         </ul>
       </div>
 
-      <div className="w-full md:w-3/4 xl:w-4/5 ml-auto dark:text-white">
+      <div className="w-full md:w-3/4 xl:w-4/5 ml-auto dark:text-white pt-4 md:px-8">
         <Outlet />
       </div>
     </div>
