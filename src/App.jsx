@@ -1,8 +1,8 @@
 import { lazy } from "solid-js";
 import { Routes, Route } from "solid-app-router";
 
-const MainLayout = lazy(() => import("./screens/main"));
-const Home = lazy(() => import("./screens/main/Home"));
+const MainLayout = lazy(() => import("./screens/MainLayout"));
+const Home = lazy(() => import("./screens/Home"));
 
 const FriendsLayout = lazy(() => import("./screens/friends"));
 const AllFriends = lazy(() => import("./screens/friends/AllFriends"));
@@ -17,6 +17,8 @@ const GroupsLayout = lazy(() => import("./screens/groups"));
 const AllGroups = lazy(() => import("./screens/groups/AllGroups"));
 const GroupsDiscover = lazy(() => import("./screens/groups/Discover"));
 const CreateGroup = lazy(() => import("./screens/groups/Create"));
+
+const Profile = lazy(() => import("./screens/Profile"));
 
 function App() {
   return (
@@ -33,11 +35,11 @@ function App() {
           <Route path="/requests-sent" element={<FriendsRequestsSent />} />
         </Route>
         <Route path="/groups" element={<GroupsLayout />}>
-        <Route path="/" element={<AllGroups />}/>
-        <Route path="/discover" element={<GroupsDiscover />}/>
-        <Route path="/create" element={<CreateGroup />}/>
-
+          <Route path="/" element={<AllGroups />} />
+          <Route path="/discover" element={<GroupsDiscover />} />
+          <Route path="/create" element={<CreateGroup />} />
         </Route>
+        <Route path="/:userId" element={<Profile />} />
       </Route>
     </Routes>
   );

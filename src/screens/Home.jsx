@@ -1,14 +1,10 @@
-import { createSignal, For, Show } from "solid-js";
-import PostCard from "../../components/posts/PostCard";
-import FriendLists from "../../components/sidebars/FriendLists";
-import MenuSidebar from "../../components/sidebars/MenuSidebars";
+import { For } from "solid-js";
+import PostCard from "../components/posts/PostCard";
+import FriendLists from "../components/sidebars/FriendLists";
 
 export default function Home() {
   return (
     <div>
-      {/* left section */}
-      <MenuSidebar />
-
       {/* middle section */}
       <div className="w-full xl:w-3/5 py-6 mx-auto">
         {/* posts */}

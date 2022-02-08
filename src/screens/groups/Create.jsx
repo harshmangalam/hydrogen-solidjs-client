@@ -4,9 +4,9 @@ export default function Create() {
   return (
     <div className="py-10">
       <div className="my-4 flex flex-col items-center space-y-2 max-w-md mx-auto">
-       <div className="w-16 h-16 bg-blue-500 rounded-full grid place-items-center">
-       <FaSolidUsers className="text-4xl text-white" />
-       </div>
+        <div className="w-16 h-16 bg-blue-500 rounded-full grid place-items-center">
+          <FaSolidUsers className="text-4xl text-white" />
+        </div>
         <h5 className="text-2xl font-medium ">Create Group</h5>
       </div>
       <section className="max-w-md mx-auto bg-white dark:bg-gray-800  px-4 py-8  rounded-lg shadow">

@@ -67,10 +67,12 @@ const mainTabs = [
     icon: () => <FaSolidUserFriends />,
     end: false,
   },
+  
   {
     name: "Groups",
     href: "/groups",
     icon: () => <FaSolidUsers />,
     end: false,
   },
+ 
 ];
