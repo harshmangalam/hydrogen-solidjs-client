@@ -4,7 +4,7 @@ export default function MainLayout() {
   return (
     <div>
       <Navbar />
-      <main className="py-14 px-2 md:px-0">
+      <main className="py-14">
         <Outlet />
       </main>
     </div>

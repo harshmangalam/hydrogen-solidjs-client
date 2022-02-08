@@ -18,7 +18,10 @@ const AllGroups = lazy(() => import("./screens/groups/AllGroups"));
 const GroupsDiscover = lazy(() => import("./screens/groups/Discover"));
 const CreateGroup = lazy(() => import("./screens/groups/Create"));
 
-const Profile = lazy(() => import("./screens/Profile"));
+const ProfileLayout = lazy(() => import("./screens/profile"));
+const ProfilePosts = lazy(() => import("./screens/profile/Posts"));
+const ProfileAbout = lazy(() => import("./screens/profile/About"));
+const ProfileFriends = lazy(() => import("./screens/profile/Friends"));
 
 function App() {
   return (
@@ -39,7 +42,11 @@ function App() {
           <Route path="/discover" element={<GroupsDiscover />} />
           <Route path="/create" element={<CreateGroup />} />
         </Route>
-        <Route path="/:userId" element={<Profile />} />
+        <Route path="/:userId" element={<ProfileLayout />}>
+          <Route path="/" element={<ProfilePosts />} />
+          <Route path="/about" element={<ProfileAbout />} />
+          <Route path="/friends" element={<ProfileFriends />} />
+        </Route>
       </Route>
     </Routes>
   );
