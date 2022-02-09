@@ -10,6 +10,7 @@ export default function Profile() {
     <div>
       <div className="h-[80vh] bg-white shadow dark:bg-gray-800 flex flex-col justify-between">
         <div className="bg-gray-100 dark:bg-gray-900 h-3/6 md:h-4/6 rounded-b-lg w-full max-w-4xl mx-auto relative">
+          <img src="https://scontent.fpat3-2.fna.fbcdn.net/v/t39.30808-6/p180x540/269889628_1645601845807047_6820765661481909406_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=wE1B8NptjAsAX9AiN08&_nc_ht=scontent.fpat3-2.fna&oh=00_AT8scaplgT6wIXeJnE8OPUFedYrJY7qFprnNcBBBRTEzNw&oe=62077CD7" className="absolute inset-0 w-full h-full aspect-video object-cover" />
           <AddProfilePhoto />
           <ProfileInfo />
           <AddCoverPhoto />
