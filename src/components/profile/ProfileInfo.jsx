@@ -1,12 +1,14 @@
 export default function ProfileInfo() {
   return (
-    <div className="absolute -bottom-52 md:-bottom-32 flex flex-col space-y-1 items-center md:items-start w-full md:left-52">
-      <h3 className="text-3xl dark:text-white font-medium text-center">
+    <div className="absolute w-full flex flex-col items-center md:w-auto md:left-1/4 -bottom-56 text-center md:-bottom-28 md:text-left md:items-start">
+      <h3 className="text-3xl dark:text-white font-medium text-center w-full">
         Harsh Mangalam
       </h3>
 
       <div>
-        <p className="text-lg font-medium text-gray-600 dark:text-gray-400">32 Friends</p>
+        <p className="text-lg font-medium text-gray-600 dark:text-gray-400">
+          32 Friends
+        </p>
       </div>
 
       <div class="-space-x-3">
