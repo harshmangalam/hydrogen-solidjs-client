@@ -3,15 +3,12 @@ import { Router } from "solid-app-router";
 import "./index.css";
 import "./styles/global.css";
 import App from "./App";
-import ThemeProvider from "./context/theme";
 
 render(
   () => (
-    <ThemeProvider>
-      <Router>
-        <App />
-      </Router>
-    </ThemeProvider>
+    <Router>
+      <App />
+    </Router>
   ),
   document.getElementById("root")
 );

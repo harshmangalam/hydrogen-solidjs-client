@@ -25,11 +25,12 @@ export default function ThemeProvider(props) {
   });
 
   function toggleDarkMode() {
-    setStore("darkMode", (darkMode) => !darkMode);
     if (store.darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
       document.documentElement.classList.remove("dark");
+      setStore("darkMode", false);
+    } else {
+      document.documentElement.classList.add("dark");
+      setStore("darkMode", true);
     }
     Cookies.set("darkMode", JSON.stringify(store.darkMode));
   }
