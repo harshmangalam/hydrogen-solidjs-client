@@ -20,7 +20,20 @@ const CreateGroup = lazy(() => import("./screens/groups/Create"));
 
 const ProfileLayout = lazy(() => import("./screens/profile"));
 const ProfilePosts = lazy(() => import("./screens/profile/Posts"));
-const ProfileAbout = lazy(() => import("./screens/profile/About"));
+const ProfileAboutLayout = lazy(() => import("./screens/profile/about"));
+const ProfileAboutOverview = lazy(() =>
+  import("./screens/profile/about/Overview")
+);
+const ProfileAboutEducation = lazy(() =>
+  import("./screens/profile/about/Education")
+);
+const ProfileAboutContact = lazy(() =>
+  import("./screens/profile/about/Contact")
+);
+const ProfileAboutLifeEvent = lazy(() =>
+  import("./screens/profile/about/LifeEvent")
+);
+const ProfileAboutPlace = lazy(() => import("./screens/profile/about/Place"));
 const ProfileFriends = lazy(() => import("./screens/profile/Friends"));
 
 function App() {
@@ -44,7 +57,13 @@ function App() {
         </Route>
         <Route path="/:userId" element={<ProfileLayout />}>
           <Route path="/" element={<ProfilePosts />} />
-          <Route path="/about" element={<ProfileAbout />} />
+          <Route path="/about" element={<ProfileAboutLayout />}>
+            <Route path="/" element={<ProfileAboutOverview />} />
+            <Route path="/education" element={<ProfileAboutEducation />} />
+            <Route path="/place" element={<ProfileAboutPlace />} />
+            <Route path="/contact" element={<ProfileAboutContact />} />
+            <Route path="/life_events" element={<ProfileAboutLifeEvent />} />
+          </Route>
           <Route path="/friends" element={<ProfileFriends />} />
         </Route>
       </Route>
