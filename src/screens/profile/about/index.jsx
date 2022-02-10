@@ -3,8 +3,8 @@ import { For } from "solid-js";
 
 export default function About() {
   return (
-    <div className="bg-white shadow rounded-lg">
-      <div className="divide-y-2 flex flex-col md:flex-row md:divide-x-2 md:divide-y-0">
+    <div className="bg-white dark:bg-gray-800 shadow rounded-lg">
+      <div className="divide-y-2 dark:divide-gray-700 flex flex-col md:flex-row md:divide-x-2 md:divide-y-0">
         <div className="px-2 py-4 w-full md:w-1/3">
           <ul className="flex flex-col space-y-2">
             <For each={tabs}>
@@ -13,8 +13,8 @@ export default function About() {
                   <NavLink
                     href={tab.href}
                     end={tab.end}
-                    className="font-medium  text-gray-600 py-2 px-2 hover:bg-gray-100 block w-full rounded-lg"
-                    activeClass="bg-blue-100 text-blue-500 hover:bg-blue-100"
+                    className="font-medium  text-gray-600 py-2 px-2 hover:bg-gray-100 block w-full rounded-lg dark:text-gray-200 dark:hover:bg-gray-700"
+                    activeClass="text-blue-500 dark:text-blue-500 bg-gray-100 dark:bg-gray-700"
                   >
                     {tab.name}
                   </NavLink>
