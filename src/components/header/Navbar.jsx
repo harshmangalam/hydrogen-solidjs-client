@@ -30,8 +30,8 @@ export default function Navbar() {
               <li>
                 <NavLink
                   href={tab.href}
-                  className="text-3xl md:px-8 lg:px-10 xl:px-12 h-14 grid place-items-center hover:bg-gray-100 dark:hover:bg-gray-700  text-gray-600 dark:text-white"
-                  activeClass="border-b-4 border-blue-500 bg-gray-100 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-700 text-blue-500 dark:text-blue-500"
+                  className="rounded-lg text-3xl md:px-8 lg:px-10 xl:px-12 h-14 grid place-items-center hover:bg-gray-100 dark:hover:bg-gray-700  text-gray-600 dark:text-white"
+                  activeClass="border-b-4 border-blue-500 hover:bg-transparent text-blue-500 dark:text-blue-500 rounded-none dark:hover:bg-transparent"
                   end={tab.end}
                 >
                   {tab.icon()}
