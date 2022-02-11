@@ -10,7 +10,7 @@ export default function Profile() {
     <div>
       <div className="h-[80vh] bg-white shadow dark:bg-gray-800 flex flex-col justify-between">
         <div className="bg-gray-100 dark:bg-gray-900 h-3/6 md:h-4/6 rounded-b-lg w-full max-w-4xl mx-auto relative">
-          <img src="https://scontent.fpat3-2.fna.fbcdn.net/v/t39.30808-6/p180x540/269889628_1645601845807047_6820765661481909406_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=wE1B8NptjAsAX9AiN08&_nc_ht=scontent.fpat3-2.fna&oh=00_AT8scaplgT6wIXeJnE8OPUFedYrJY7qFprnNcBBBRTEzNw&oe=62077CD7" className="absolute inset-0 w-full h-full aspect-video object-cover" />
+          <img src="https://scontent-ccu1-1.xx.fbcdn.net/v/t39.30808-6/p640x640/273486721_138322552001823_3316399084013311694_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=e3f864&_nc_ohc=ZgMbwJx8DNsAX91hLKK&_nc_ht=scontent-ccu1-1.xx&oh=00_AT-YU-ufOLek9ZakPEuYdnt6Kk5SgbHFkTBNwJAIDk8xQQ&oe=620B0256" className="absolute inset-0 w-full h-full aspect-video object-cover" />
           <AddProfilePhoto />
           <ProfileInfo />
           <AddCoverPhoto />
@@ -24,8 +24,8 @@ export default function Profile() {
                 <li>
                   <NavLink
                     href={`/${userId}/${tab.href}`}
-                    className="font-medium  hover:bg-gray-100 py-3 px-4 text-gray-600 rounded dark:text-gray-300 dark:hover:bg-gray-700"
-                    activeClass="border-b-4 border-blue-500 text-blue-500 hover:bg-transparent rounded-none dark:hover:bg-transparent"
+                    className="font-medium  hover:bg-gray-100 py-3 px-4 text-gray-600 rounded-lg dark:text-gray-300 dark:hover:bg-gray-700"
+                    activeClass="border-b-4 border-blue-500 text-blue-500 hover:bg-transparent dark:hover:bg-transparent rounded-none"
                     end={tab.end}
                   >
                     {tab.name}

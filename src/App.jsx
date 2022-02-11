@@ -34,7 +34,20 @@ const ProfileAboutLifeEvent = lazy(() =>
   import("./screens/profile/about/LifeEvent")
 );
 const ProfileAboutPlace = lazy(() => import("./screens/profile/about/Place"));
-const ProfileFriends = lazy(() => import("./screens/profile/Friends"));
+
+const ProfileFriendsLayout = lazy(() => import("./screens/profile/friends"));
+const ProfileFriendsAll = lazy(() =>
+  import("./screens/profile/friends/AllFriends")
+);
+const ProfileFriendsBirthdays = lazy(() =>
+  import("./screens/profile/friends/Birthdays")
+);
+const ProfileFriendsCurrentCity = lazy(() =>
+  import("./screens/profile/friends/CurrentCity")
+);
+const ProfileFriendsRecentlyAdded = lazy(() =>
+  import("./screens/profile/friends/RecentlyAdded")
+);
 
 function App() {
   return (
@@ -64,7 +77,18 @@ function App() {
             <Route path="/contact" element={<ProfileAboutContact />} />
             <Route path="/life_events" element={<ProfileAboutLifeEvent />} />
           </Route>
-          <Route path="/friends" element={<ProfileFriends />} />
+          <Route path="/friends" element={<ProfileFriendsLayout />}>
+            <Route path="" element={<ProfileFriendsAll />} />
+            <Route
+              path="recently_added"
+              element={<ProfileFriendsRecentlyAdded />}
+            />
+            <Route path="birthdays" element={<ProfileFriendsBirthdays />} />
+            <Route
+              path="current_city"
+              element={<ProfileFriendsCurrentCity />}
+            />
+          </Route>
         </Route>
       </Route>
     </Routes>
