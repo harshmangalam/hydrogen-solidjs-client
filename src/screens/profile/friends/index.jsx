@@ -3,9 +3,9 @@ import { For } from "solid-js";
 export default function Friends() {
   return (
     <div className="bg-white dark:bg-gray-800 shadow rounded-lg">
-      <div className="divide-y-2 dark:divide-gray-700 flex flex-col md:flex-row md:divide-x-2 md:divide-y-0">
-        <div className="px-2 py-4 w-full md:w-1/3">
-          <ul className="flex flex-col space-y-2">
+      <div className="divide-y-2 dark:divide-gray-700 flex flex-col">
+        <div className="px-2 py-4 w-full">
+          <ul className="flex flex-col space-y-2 md:flex-row md:space-x-4 md:space-y-0">
             <For each={tabs}>
               {(tab) => (
                 <li>
@@ -23,7 +23,7 @@ export default function Friends() {
           </ul>
         </div>
 
-        <div className="p-4 w-full md:w-2/3">
+        <div className="p-4">
           <Outlet />
         </div>
       </div>
