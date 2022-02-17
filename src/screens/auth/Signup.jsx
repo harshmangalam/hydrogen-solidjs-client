@@ -81,7 +81,7 @@ export default function Login() {
             <p>Gender</p>
             <div className="grid grid-cols-3 gap-2">
               <Radio
-                onChange={(e)=>handleRadioChange(e)}
+                onChange={(e) => handleRadioChange(e)}
                 value="MALE"
                 type="radio"
                 isChecked={form.fields.gender === "MALE"}
@@ -89,7 +89,7 @@ export default function Login() {
                 label={"Male"}
               />
               <Radio
-                onChange={(e)=>handleRadioChange(e)}
+                onChange={(e) => handleRadioChange(e)}
                 value="FEMALE"
                 type="radio"
                 isChecked={form.fields.gender === "FEMALE"}
@@ -97,7 +97,7 @@ export default function Login() {
                 label={"Female"}
               />
               <Radio
-                onChange={(e)=>handleRadioChange(e)}
+                onChange={(e) => handleRadioChange(e)}
                 value="OTHER"
                 type="radio"
                 isChecked={form.fields.gender === "OTHER"}

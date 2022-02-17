@@ -1,15 +1,15 @@
-export default function Radio({ name, label, value, onChange, isChecked }) {
+export default function Radio(props) {
   return (
     <div className="flex items-center space-x-2">
       <input
-        id={value}
-        onChange={onChange}
-        value={value}
+        id={props.value}
+        onChange={props.onChange}
+        value={props.value}
         type="radio"
-        checked={isChecked}
-        name={name}
+        checked={props.isChecked}
+        name={props.name}
       />
-      <label htmlFor={value}>{label}</label>
+      <label htmlFor={props.value}>{props.label}</label>
     </div>
   );
 }

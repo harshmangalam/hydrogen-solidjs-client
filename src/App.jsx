@@ -1,6 +1,7 @@
 import { lazy } from "solid-js";
 import { Routes, Route } from "solid-app-router";
 import axios from "axios";
+import Snackbars from "./components/shared/Snackbars"
 const AuthLayout = lazy(() => import("./screens/auth"));
 const Login = lazy(() => import("./screens/auth/Login"));
 const Signup = lazy(() => import("./screens/auth/Signup"));
@@ -58,51 +59,54 @@ axios.defaults.withCredentials = true;
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/friends" element={<FriendsLayout />}>
-          <Route path="/" element={<AllFriends />} />
-          <Route path="/suggestions" element={<FriendsSuggestions />} />
-          <Route
-            path="/requests-received"
-            element={<FriendsRequestsReceived />}
-          />
-          <Route path="/requests-sent" element={<FriendsRequestsSent />} />
-        </Route>
-        <Route path="/groups" element={<GroupsLayout />}>
-          <Route path="/" element={<AllGroups />} />
-          <Route path="/discover" element={<GroupsDiscover />} />
-          <Route path="/create" element={<CreateGroup />} />
-        </Route>
-        <Route path="/:userId" element={<ProfileLayout />}>
-          <Route path="/" element={<ProfilePosts />} />
-          <Route path="/about" element={<ProfileAboutLayout />}>
-            <Route path="/" element={<ProfileAboutOverview />} />
-            <Route path="/education" element={<ProfileAboutEducation />} />
-            <Route path="/place" element={<ProfileAboutPlace />} />
-            <Route path="/contact" element={<ProfileAboutContact />} />
-            <Route path="/life_events" element={<ProfileAboutLifeEvent />} />
-          </Route>
-          <Route path="/friends" element={<ProfileFriendsLayout />}>
-            <Route path="" element={<ProfileFriendsAll />} />
+    <div>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/friends" element={<FriendsLayout />}>
+            <Route path="/" element={<AllFriends />} />
+            <Route path="/suggestions" element={<FriendsSuggestions />} />
             <Route
-              path="recently_added"
-              element={<ProfileFriendsRecentlyAdded />}
+              path="/requests-received"
+              element={<FriendsRequestsReceived />}
             />
-            <Route path="birthdays" element={<ProfileFriendsBirthdays />} />
-            <Route
-              path="current_city"
-              element={<ProfileFriendsCurrentCity />}
-            />
+            <Route path="/requests-sent" element={<FriendsRequestsSent />} />
+          </Route>
+          <Route path="/groups" element={<GroupsLayout />}>
+            <Route path="/" element={<AllGroups />} />
+            <Route path="/discover" element={<GroupsDiscover />} />
+            <Route path="/create" element={<CreateGroup />} />
+          </Route>
+          <Route path="/:userId" element={<ProfileLayout />}>
+            <Route path="/" element={<ProfilePosts />} />
+            <Route path="/about" element={<ProfileAboutLayout />}>
+              <Route path="/" element={<ProfileAboutOverview />} />
+              <Route path="/education" element={<ProfileAboutEducation />} />
+              <Route path="/place" element={<ProfileAboutPlace />} />
+              <Route path="/contact" element={<ProfileAboutContact />} />
+              <Route path="/life_events" element={<ProfileAboutLifeEvent />} />
+            </Route>
+            <Route path="/friends" element={<ProfileFriendsLayout />}>
+              <Route path="" element={<ProfileFriendsAll />} />
+              <Route
+                path="recently_added"
+                element={<ProfileFriendsRecentlyAdded />}
+              />
+              <Route path="birthdays" element={<ProfileFriendsBirthdays />} />
+              <Route
+                path="current_city"
+                element={<ProfileFriendsCurrentCity />}
+              />
+            </Route>
           </Route>
         </Route>
-      </Route>
-      <Route path="/auth" element={<AuthLayout />}>
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
-      </Route>
-    </Routes>
+        <Route path="/auth" element={<AuthLayout />}>
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+        </Route>
+      </Routes>
+      <Snackbars />
+    </div>
   );
 }
 

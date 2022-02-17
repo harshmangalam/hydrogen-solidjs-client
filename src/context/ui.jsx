@@ -1,10 +1,9 @@
-import { createContext, onMount, useContext } from "solid-js";
+import { createContext, useContext } from "solid-js";
 import { createStore, produce } from "solid-js/store";
 import shortId from "shortid";
-import Cookies from "js-cookie";
 
-const ThemeStateContext = createContext();
-const ThemeDispatchContext = createContext();
+const UIStateContext = createContext();
+const UIDispatchContext = createContext();
 
 const initialState = {
   snackbars: [],
@@ -12,36 +11,37 @@ const initialState = {
 export default function UIProvider(props) {
   const [store, setStore] = createStore(initialState);
 
-  function addSnackbar(msg) {
+  function addSnackbar(snackbar) {
     setStore(
       "snackbars",
       produce((snackbars) => {
-        const snackbar = {
+        snackbars.push({
           id: shortId(),
-          msg,
-        };
-        snackbars.push(snackbar);
+          ...snackbar,
+        });
       })
     );
   }
 
-  function removeSnackbar(id) {
+  const removeSnackbar = (id) => () => {
     setStore(
       "snackbars",
       produce((snackbars) => {
         const index = snackbars.findIndex((s) => s.id === id);
-        snackbars.splice(index, 1);
+        if (index > -1) {
+          snackbars.splice(index, 1);
+        }
       })
     );
-  }
+  };
 
   function emptySnackbar() {
     setStore("snackbars", []);
   }
 
   return (
-    <ThemeStateContext.Provider value={store}>
-      <ThemeDispatchContext.Provider
+    <UIStateContext.Provider value={store}>
+      <UIDispatchContext.Provider
         value={{
           addSnackbar,
           removeSnackbar,
@@ -49,10 +49,10 @@ export default function UIProvider(props) {
         }}
       >
         {props.children}
-      </ThemeDispatchContext.Provider>
-    </ThemeStateContext.Provider>
+      </UIDispatchContext.Provider>
+    </UIStateContext.Provider>
   );
 }
 
-export const useThemeState = () => useContext(ThemeStateContext);
-export const useThemeDispatch = () => useContext(ThemeDispatchContext);
+export const useUIState = () => useContext(UIStateContext);
+export const useUIDispatch = () => useContext(UIDispatchContext);
