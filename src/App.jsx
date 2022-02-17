@@ -1,6 +1,6 @@
 import { lazy } from "solid-js";
 import { Routes, Route } from "solid-app-router";
-
+import axios from "axios";
 const AuthLayout = lazy(() => import("./screens/auth"));
 const Login = lazy(() => import("./screens/auth/Login"));
 
@@ -51,6 +51,9 @@ const ProfileFriendsCurrentCity = lazy(() =>
 const ProfileFriendsRecentlyAdded = lazy(() =>
   import("./screens/profile/friends/RecentlyAdded")
 );
+
+axios.defaults.baseURL = import.meta.env.VITE_ENDPOINT;
+axios.defaults.withCredentials = true;
 
 function App() {
   return (
