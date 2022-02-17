@@ -1,6 +1,9 @@
 import { lazy } from "solid-js";
 import { Routes, Route } from "solid-app-router";
 
+const AuthLayout = lazy(() => import("./screens/auth"));
+const Login = lazy(() => import("./screens/auth/Login"));
+
 const MainLayout = lazy(() => import("./screens/MainLayout"));
 const Home = lazy(() => import("./screens/Home"));
 
@@ -90,6 +93,9 @@ function App() {
             />
           </Route>
         </Route>
+      </Route>
+      <Route path="/auth" element={<AuthLayout />}>
+        <Route path="login" element={<Login />} />
       </Route>
     </Routes>
   );

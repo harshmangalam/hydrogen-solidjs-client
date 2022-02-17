@@ -11,7 +11,7 @@ import { TiHome } from "solid-icons/ti";
 import { FaSolidUserFriends, FaSolidUsers } from "solid-icons/fa";
 
 import { For } from "solid-js";
-import DarkLightMode from "./DarkLightMode";
+import DarkLightMode from "../shared/DarkLightMode";
 export default function Navbar() {
   return (
     <header className="bg-white shadow border-b fixed w-full top-0 z-50 dark:bg-gray-800 dark:border-gray-700 text-white">
