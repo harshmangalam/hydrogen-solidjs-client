@@ -28,6 +28,13 @@ export default function useSignup() {
     setForm("fields", [ev.currentTarget.name], ev.currentTarget.value);
   };
 
+  const handleRadioChange = (ev) => {
+    setForm("hasError", false);
+    setForm("serverError", "");
+    setForm("errors", "gender", "");
+    setForm("fields", "gender", ev.target.value);
+  };
+
   const handleSignup = async (ev) => {
     ev.preventDefault();
     if (form.fields.firstName.trim().length === 0) {
@@ -55,14 +62,14 @@ export default function useSignup() {
       const { data } = await axios.post("/auth/signup", form.fields);
       console.log(data);
     } catch (error) {
-      if (error.response.status === 422) {
-        console.log(error.response.data);
-      }
+      console.log(error);
+      setForm("serverError", error.response.data.message);
     }
   };
   return {
     form,
     handleSignup,
     handleInput,
+    handleRadioChange,
   };
 }

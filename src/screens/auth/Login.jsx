@@ -9,7 +9,7 @@ export default function Login() {
         <div className="w-16 h-16 bg-blue-500 rounded-full grid place-items-center">
           <FaSolidUser className="text-4xl text-white" />
         </div>
-        <h5 className="text-2xl font-medium ">Login</h5>
+        <h5 className="text-2xl font-medium ">Log In</h5>
       </div>
       <section className="max-w-md mx-auto bg-white dark:bg-gray-800  px-4 py-8  rounded-lg shadow">
         {form.serverError && (
@@ -48,7 +48,7 @@ export default function Login() {
               type="submit"
               className="w-full py-2 px-3 bg-blue-500 text-white rounded-lg text-lg"
             >
-              Login
+              Log In
             </button>
           </div>
         </form>
