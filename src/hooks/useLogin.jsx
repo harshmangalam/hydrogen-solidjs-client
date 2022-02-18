@@ -1,5 +1,8 @@
 import { createStore } from "solid-js/store";
+import { useNavigate } from "solid-app-router";
 import axios from "axios";
+import { useAuthDispatch } from "../context/auth";
+import { useUIDispatch } from "../context/ui";
 export default function useLogin() {
   const [form, setForm] = createStore({
     fields: {
@@ -14,6 +17,10 @@ export default function useLogin() {
 
     serverError: "",
   });
+
+  const { setCurrentUser } = useAuthDispatch();
+  const { addSnackbar } = useUIDispatch();
+  const navigate = useNavigate();
 
   const handleInput = (ev) => {
     setForm("hasError", false);
@@ -38,7 +45,9 @@ export default function useLogin() {
     }
     try {
       const { data } = await axios.post("/auth/login", form.fields);
-      console.log(data);
+      setCurrentUser(data.data.user);
+      addSnackbar({ type: "success", message: data.message });
+      navigate("/", { replace: true });
     } catch (error) {
       console.log(error);
       setForm("serverError", error.response.data.message);
