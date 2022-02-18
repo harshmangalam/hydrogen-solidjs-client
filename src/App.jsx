@@ -1,7 +1,8 @@
 import { lazy } from "solid-js";
 import { Routes, Route } from "solid-app-router";
 import axios from "axios";
-import Snackbars from "./components/shared/Snackbars"
+import Snackbars from "./components/root/Snackbars";
+import useNetworkStatus from "./hooks/useNetworkStatus";
 const AuthLayout = lazy(() => import("./screens/auth"));
 const Login = lazy(() => import("./screens/auth/Login"));
 const Signup = lazy(() => import("./screens/auth/Signup"));
@@ -58,6 +59,7 @@ axios.defaults.baseURL = import.meta.env.VITE_ENDPOINT;
 axios.defaults.withCredentials = true;
 
 function App() {
+  useNetworkStatus();
   return (
     <div>
       <Routes>
