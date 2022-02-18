@@ -4,6 +4,7 @@ import useSignup from "../../hooks/useSignup";
 
 export default function Login() {
   const { form, handleInput, handleSignup, handleRadioChange } = useSignup();
+
   return (
     <div className="">
       <div className="my-4 flex flex-col items-center space-y-2 max-w-md mx-auto">

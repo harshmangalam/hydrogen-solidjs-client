@@ -1,5 +1,7 @@
 import { createStore } from "solid-js/store";
 import axios from "axios";
+import { useUIDispatch } from "../context/ui";
+import { useNavigate } from "solid-app-router";
 export default function useSignup() {
   const [form, setForm] = createStore({
     fields: {
@@ -20,6 +22,9 @@ export default function useSignup() {
 
     serverError: "",
   });
+
+  const { addSnackbar } = useUIDispatch();
+  const navigate = useNavigate();
 
   const handleInput = (ev) => {
     setForm("hasError", false);
@@ -60,7 +65,8 @@ export default function useSignup() {
     }
     try {
       const { data } = await axios.post("/auth/signup", form.fields);
-      console.log(data);
+      addSnackbar({ type: "success", message: data.message });
+      navigate("/auth/login");
     } catch (error) {
       console.log(error);
       setForm("serverError", error.response.data.message);
