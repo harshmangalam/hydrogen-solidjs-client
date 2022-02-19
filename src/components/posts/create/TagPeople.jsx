@@ -2,9 +2,11 @@ import { FaSolidUserTag } from "solid-icons/fa";
 import { IoClose } from "solid-icons/io";
 import { BiSearch } from "solid-icons/bi";
 import { createSignal, Show } from "solid-js";
-export default function TagPeople() {
+import useSearchFriends from "../../../hooks/useSearchFriends";
+export default function TagPeople(props) {
   const [open, setOpen] = createSignal(false);
 
+  const { friendsStore, handleInput, searchFriends } = useSearchFriends();
   let cardRef;
 
   function handleClickOutside(event) {
@@ -42,7 +44,7 @@ export default function TagPeople() {
 
                 <button
                   type="button"
-                  className="rounded-full bg-gray-100  hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 w-5 h-5 text-xl text-black dark:text-white grid place-items-center"
+                  className="rounded-full bg-gray-100  hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 w-6 h-6 text-xl text-black dark:text-white grid place-items-center"
                   onClick={() => setOpen(false)}
                 >
                   <IoClose />
@@ -62,6 +64,9 @@ export default function TagPeople() {
                       type="text"
                       aria-label="Search for friends"
                       placeholder="Search for friends"
+                      value={friendsStore.search}
+                      onInput={[handleInput]}
+                      onBlur={[searchFriends]}
                     />
                   </div>
                   <button className="text-blue-500 font-bold text-sm flex-none">
@@ -71,17 +76,18 @@ export default function TagPeople() {
 
                 <div className="mt-4 px-4 flex flex-col space-y-2">
                   <h6 className="text-gray-500 dark:text-gray-200 font-medium text-sm">
-                    TAGGED
+                    Tagged
                   </h6>
                   <div className="border w-full rounded-md p-4 dark:border-gray-600">
                     <ul className="flex items-center flex-wrap justify-center gap-2">
-                      <For each={[...Array(4).keys()]}>
+                      <For each={props.friends}>
                         {(user) => (
                           <li className="flex items-center space-x-2 bg-blue-100 rounded-md px-2 py-1 text-blue-500 font-medium dark:bg-gray-700">
-                            <p>Harsh mangalam</p>
+                            <p>{user.name}</p>
                             <button
                               type="button"
                               className="rounded-full hover:bg-blue-200 dark:hover:bg-gray-600 w-5 h-5 grid place-items-center"
+                              onClick={[props.removeTaggedFriend, user.id]}
                             >
                               <IoClose />
                             </button>
@@ -94,14 +100,22 @@ export default function TagPeople() {
 
                 <div className="mt-4 flex flex-col space-y-2">
                   <h6 className="text-gray-500 dark:text-gray-200 text-sm font-medium px-4">
-                    SUGGESTIONS
+                    <Show
+                      when={friendsStore.search.trim().length > 0}
+                      fallback="Suggestions"
+                    >
+                      Search
+                    </Show>
                   </h6>
 
                   <ul className="flex flex-col px-2">
-                    <For each={[...Array(4).keys()]}>
+                    <For each={friendsStore.friends}>
                       {(user) => (
                         <li>
-                          <button className="flex items-center space-x-2 rounded-md  py-2 px-2  font-medium hover:bg-gray-200 dark:hover:bg-gray-700 w-full">
+                          <button
+                            onClick={[props.addTaggedFriend, user]}
+                            className="flex items-center space-x-2 rounded-md  py-2 px-2  font-medium hover:bg-gray-200 dark:hover:bg-gray-700 w-full"
+                          >
                             <img
                               src="https://avatars.githubusercontent.com/u/57381638?v=4"
                               className="w-8 h-8 rounded-full flex-none"
