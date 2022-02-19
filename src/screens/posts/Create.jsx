@@ -1,4 +1,5 @@
 import { BsFilePost } from "solid-icons/bs";
+import SpecificFriends from "../../components/posts/create/SpecificFriends";
 import TagPeople from "../../components/posts/create/TagPeople";
 
 export default function Create() {
@@ -17,36 +18,31 @@ export default function Create() {
             <label htmlFor="name">Post content</label>
             <textarea name="content" className="rounded-lg dark:bg-gray-700" />
           </div>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-1  gap-2">
             <div className="flex flex-col space-y-2">
-              <label htmlFor="privacy">Group privacy</label>
+              <label htmlFor="privacy">Post privacy</label>
               <select
                 name="privacy"
                 id="privacy"
                 className="rounded-lg dark:bg-gray-700"
               >
-                <option value="public" selected>
+                <option value="PUBLIC" selected>
                   Public
                 </option>
-                <option value="private">Private</option>
+                <option value="FRIENDS">Friends</option>
+                <option value="ONLY_ME">Only me</option>
+                <option value="SPECIFIC">Specific friends</option>
               </select>
             </div>
-            <div className="flex flex-col space-y-2">
-              <label htmlFor="privacy">Group privacy</label>
-              <select
-                name="privacy"
-                id="privacy"
-                className="rounded-lg dark:bg-gray-700"
-              >
-                <option value="public" selected>
-                  Public
-                </option>
-                <option value="private">Private</option>
-              </select>
-            </div>
+
+            <Show when={true}>
+              <div className="self-end">
+              <SpecificFriends />
+              </div>
+            </Show>
           </div>
 
-          <div className="flex space-x-4 rounded-md border px-2 py-4">
+          <div className="flex space-x-4 rounded-md border border-gray-400 dark:border-gray-600 px-2 py-2">
             <TagPeople />
           </div>
 
