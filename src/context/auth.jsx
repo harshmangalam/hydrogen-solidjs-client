@@ -20,7 +20,6 @@ export default function AuthProvider(props) {
       const { data } = await fetchCurrentUser();
       setStore("isAuthenticated", true);
       setStore("currentUser", data.data.user);
-      navigate("/", { replace: true });
     } catch (error) {
       Cookies.remove("token");
       navigate("/auth/login", { replace: true });

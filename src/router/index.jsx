@@ -8,6 +8,7 @@ const Signup = lazy(() => import("../screens/auth/Signup"));
 const MainLayout = lazy(() => import("../screens/MainLayout"));
 const Home = lazy(() => import("../screens/Home"));
 
+// friends
 const FriendsLayout = lazy(() => import("../screens/friends"));
 const AllFriends = lazy(() => import("../screens/friends/AllFriends"));
 const FriendsRequestsReceived = lazy(() =>
@@ -17,11 +18,21 @@ const FriendsRequestsSent = lazy(() =>
   import("../screens/friends/RequestsSent")
 );
 const FriendsSuggestions = lazy(() => import("../screens/friends/Suggestions"));
+
+// posts
+const PostsLayout = lazy(() => import("../screens/posts"));
+const PostsHome = lazy(() => import("../screens/posts/Home"));
+const TrendingPosts = lazy(() => import("../screens/posts/Trending"));
+const FriendsPosts = lazy(() => import("../screens/posts/FriendsPosts"));
+const CreatePost = lazy(() => import("../screens/posts/Create"));
+
+// groups
 const GroupsLayout = lazy(() => import("../screens/groups"));
 const AllGroups = lazy(() => import("../screens/groups/AllGroups"));
 const GroupsDiscover = lazy(() => import("../screens/groups/Discover"));
 const CreateGroup = lazy(() => import("../screens/groups/Create"));
 
+// profile
 const ProfileLayout = lazy(() => import("../screens/profile"));
 const ProfilePosts = lazy(() => import("../screens/profile/Posts"));
 const ProfileAboutLayout = lazy(() => import("../screens/profile/about"));
@@ -58,20 +69,35 @@ export default function AppRouter() {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route path="" element={<Home />} />
+
+        {/* friends  */}
         <Route path="friends" element={<FriendsLayout />}>
           <Route path="" element={<AllFriends />} />
           <Route path="suggestions" element={<FriendsSuggestions />} />
           <Route
-            path="/requests-received"
+            path="requests-received"
             element={<FriendsRequestsReceived />}
           />
-          <Route path="/requests-sent" element={<FriendsRequestsSent />} />
+          <Route path="requests-sent" element={<FriendsRequestsSent />} />
         </Route>
+
+        {/* posts  */}
+
+        <Route path="posts" element={<PostsLayout />}>
+          <Route path="" element={<PostsHome />} />
+          <Route path="trending" element={<TrendingPosts />} />
+          <Route path="friends_posts" element={<FriendsPosts />} />
+          <Route path="create" element={<CreatePost />} />
+        </Route>
+
+        {/* group  */}
         <Route path="groups" element={<GroupsLayout />}>
           <Route path="" element={<AllGroups />} />
           <Route path="discover" element={<GroupsDiscover />} />
           <Route path="create" element={<CreateGroup />} />
         </Route>
+
+        {/* profile  */}
         <Route path="/:userId" element={<ProfileLayout />}>
           <Route path="" element={<ProfilePosts />} />
           <Route path="about" element={<ProfileAboutLayout />}>
