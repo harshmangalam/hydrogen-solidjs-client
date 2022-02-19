@@ -30,7 +30,7 @@ export default function TagPeople() {
             onClick={[handleClickOutside]}
           >
             <div
-              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-md w-full bg-white shadow-md rounded-md"
+              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-md w-full bg-white shadow-md rounded-md dark:bg-gray-800 dark:text-white"
               ref={cardRef}
             >
               {/* modal header  */}
@@ -49,7 +49,7 @@ export default function TagPeople() {
                 </button>
               </div>
 
-              <hr />
+              <hr className="dark:border-gray-600" />
 
               {/* modal body  */}
 
@@ -70,16 +70,18 @@ export default function TagPeople() {
                 </div>
 
                 <div className="mt-4 px-4 flex flex-col space-y-2">
-                  <h6 className="text-gray-500 font-medium text-sm">TAGGED</h6>
-                  <div className="border w-full rounded-md p-4 ">
+                  <h6 className="text-gray-500 dark:text-gray-200 font-medium text-sm">
+                    TAGGED
+                  </h6>
+                  <div className="border w-full rounded-md p-4 dark:border-gray-600">
                     <ul className="flex items-center flex-wrap justify-center gap-2">
                       <For each={[...Array(4).keys()]}>
                         {(user) => (
-                          <li className="flex items-center space-x-2 bg-blue-100 rounded-md px-2 py-1 text-blue-500 font-medium">
+                          <li className="flex items-center space-x-2 bg-blue-100 rounded-md px-2 py-1 text-blue-500 font-medium dark:bg-gray-700">
                             <p>Harsh mangalam</p>
                             <button
                               type="button"
-                              className="rounded-full hover:bg-blue-200 w-5 h-5 grid place-items-center"
+                              className="rounded-full hover:bg-blue-200 dark:hover:bg-gray-600 w-5 h-5 grid place-items-center"
                             >
                               <IoClose />
                             </button>
@@ -91,7 +93,7 @@ export default function TagPeople() {
                 </div>
 
                 <div className="mt-4 flex flex-col space-y-2">
-                  <h6 className="text-gray-500 text-sm font-medium px-4">
+                  <h6 className="text-gray-500 dark:text-gray-200 text-sm font-medium px-4">
                     SUGGESTIONS
                   </h6>
 
@@ -99,7 +101,7 @@ export default function TagPeople() {
                     <For each={[...Array(4).keys()]}>
                       {(user) => (
                         <li>
-                          <button className="flex items-center space-x-2 rounded-md  py-2 px-2  font-medium hover:bg-gray-200 w-full">
+                          <button className="flex items-center space-x-2 rounded-md  py-2 px-2  font-medium hover:bg-gray-200 dark:hover:bg-gray-700 w-full">
                             <img
                               src="https://avatars.githubusercontent.com/u/57381638?v=4"
                               className="w-8 h-8 rounded-full flex-none"
