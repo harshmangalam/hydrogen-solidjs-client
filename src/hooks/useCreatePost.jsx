@@ -56,8 +56,30 @@ export default function useCreatePost() {
     });
   };
 
+  const addImages = (images) => {
+    setForm(
+      "fields",
+      "images",
+      produce((i) => {
+        i.push(...images);
+      })
+    );
+  };
+  const removeImage = (image) => {
+    setForm(
+      "fields",
+      "images",
+      produce((images) => {
+        const index = images.indexOf(image);
+        if (index > -1) {
+          images.splice(index, 1);
+        }
+      })
+    );
+  };
+
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     try {
       console.log(form.fields);
     } catch (error) {
@@ -74,5 +96,7 @@ export default function useCreatePost() {
     removeSpecificFriend,
     removeTaggedFriend,
     addTaggedFriend,
+    addImages,
+    removeImage,
   };
 }

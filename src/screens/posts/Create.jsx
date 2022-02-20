@@ -14,6 +14,8 @@ export default function Create() {
     removeSpecificFriend,
     addTaggedFriend,
     removeTaggedFriend,
+    addImages,
+    removeImage,
   } = useCreatePost();
   return (
     <div className="">
@@ -75,9 +77,11 @@ export default function Create() {
               addTaggedFriend={addTaggedFriend}
               removeTaggedFriend={removeTaggedFriend}
             />
-            <ImageUpload>
-              Upload
-            </ImageUpload>
+            <ImageUpload
+              images={form.fields.images}
+              addImage={addImages}
+              removeImage={removeImage}
+            />
           </div>
 
           <div>
