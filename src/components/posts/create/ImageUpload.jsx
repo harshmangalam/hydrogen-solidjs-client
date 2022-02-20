@@ -1,17 +1,25 @@
 import { createSignal, For } from "solid-js";
 import Modal from "../../ui/feedback/Modal";
 import { BsImages } from "solid-icons/bs";
+import { IoClose } from "solid-icons/io";
 
 export default function ImageUpload(props) {
   const [openModal, setOpenModal] = createSignal(false);
   let imageRef;
 
-  const handleUpload = (event) => {
-    imageRef.click();
+  const handleImageChange = (event) => {
+    const images = [];
+    for (let file of event.target.files) {
+      const image = URL.createObjectURL(file);
+      images.push(image);
+    }
+
+    props.addImages(images);
   };
 
-  const handleImageChange = (event) => {
-    console.log(event.target.files);
+  const removeImage = (url) => {
+    URL.revokeObjectURL(url);
+    props.removeImage(url);
   };
   return (
     <>
@@ -25,6 +33,7 @@ export default function ImageUpload(props) {
       </button>
       <input
         type="file"
+        multiple
         ref={imageRef}
         accept="images/*"
         className="hidden"
@@ -45,22 +54,24 @@ export default function ImageUpload(props) {
               <div className="flex flex-col space-y-2 items-center">
                 <BsImages className="text-3xl" />
                 <div>
-                  <p className="text-xl">
-                    Add Images
-                  </p>
-                  <p className="text-xs">
-                    or drag and drop
-                  </p>
+                  <p className="text-xl">Add Images</p>
+                  <p className="text-xs">or drag and drop</p>
                 </div>
               </div>
             </button>
           </div>
 
-          <ul className="grid grid-cols-3 gap-2">
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
             <For each={props.images}>
               {(image) => (
-                <li>
+                <li className="relative">
                   <img src={image} className="w-full h-full" />
+                  <button
+                    className="absolute top-2 right-2 rounded-full bg-gray-100  hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 w-8 h-8 text-xl text-black dark:text-white grid place-items-center"
+                    onClick={[removeImage, image]}
+                  >
+                    <IoClose />
+                  </button>
                 </li>
               )}
             </For>

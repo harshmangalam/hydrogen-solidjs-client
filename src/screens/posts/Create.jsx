@@ -79,7 +79,7 @@ export default function Create() {
             />
             <ImageUpload
               images={form.fields.images}
-              addImage={addImages}
+              addImages={addImages}
               removeImage={removeImage}
             />
           </div>

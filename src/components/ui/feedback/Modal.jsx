@@ -1,5 +1,5 @@
 import { Portal } from "solid-js/web";
-import {Show} from "solid-js"
+import { Show } from "solid-js";
 import { IoClose } from "solid-icons/io";
 export default function Modal(props) {
   let cardRef;
@@ -18,7 +18,7 @@ export default function Modal(props) {
           onClick={[handleClickOutside]}
         >
           <div
-            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-md w-full bg-white shadow-md rounded-md dark:bg-gray-800 dark:text-white"
+            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-md w-full bg-white shadow-xl rounded-md dark:bg-gray-800 dark:text-white"
             ref={cardRef}
           >
             {/* modal header  */}
