@@ -78,6 +78,16 @@ export default function useCreatePost() {
     );
   };
 
+  const addFeeling = (feeling) => {
+    setForm("fields", "feeling", feeling);
+    console.log(feeling)
+  };
+
+  const removeFeeling = () => {
+    setForm("fields", "feeling", "");
+    console.log(form.fields.feeling)
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -87,6 +97,7 @@ export default function useCreatePost() {
       setForm("serverError", error.response.data.message);
     }
   };
+
   return {
     form,
     handleChange,
@@ -98,5 +109,7 @@ export default function useCreatePost() {
     addTaggedFriend,
     addImages,
     removeImage,
+    addFeeling,
+    removeFeeling,
   };
 }

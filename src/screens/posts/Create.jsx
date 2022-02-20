@@ -1,4 +1,5 @@
 import { BsFilePost } from "solid-icons/bs";
+import Feelings from "../../components/posts/create/Feelings";
 import ImageUpload from "../../components/posts/create/ImageUpload";
 import SpecificFriends from "../../components/posts/create/SpecificFriends";
 import TagPeople from "../../components/posts/create/TagPeople";
@@ -16,6 +17,8 @@ export default function Create() {
     removeTaggedFriend,
     addImages,
     removeImage,
+    addFeeling,
+    removeFeeling,
   } = useCreatePost();
   return (
     <div className="">
@@ -40,6 +43,7 @@ export default function Create() {
               name="content"
               className="rounded-md dark:bg-gray-700"
               rows={5}
+              placeholder="What`s on your mind Harsh ?"
             />
           </div>
           <div className="grid grid-cols-1  gap-2">
@@ -81,6 +85,11 @@ export default function Create() {
               images={form.fields.images}
               addImages={addImages}
               removeImage={removeImage}
+            />
+            <Feelings
+              feeling={form.fields.feeling}
+              addFeeling={addFeeling}
+              removeFeeling={removeFeeling}
             />
           </div>
 
