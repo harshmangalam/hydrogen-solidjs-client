@@ -1,4 +1,5 @@
 import { BsFilePost } from "solid-icons/bs";
+import ImageUpload from "../../components/posts/create/ImageUpload";
 import SpecificFriends from "../../components/posts/create/SpecificFriends";
 import TagPeople from "../../components/posts/create/TagPeople";
 import useCreatePost from "../../hooks/useCreatePost";
@@ -22,7 +23,7 @@ export default function Create() {
         </div>
         <h5 className="text-2xl font-medium ">Create Post</h5>
       </div>
-      <section className="max-w-md mx-auto bg-white dark:bg-gray-800  px-4 py-8  rounded-md shadow">
+      <section className="max-w-md mx-auto bg-white dark:bg-gray-800  px-4 py-4  rounded-md shadow">
         {form.serverError && (
           <p className="py-2 bg-red-100 dark:text-red-300 dark:bg-gray-700 text-red-500 rounded-md px-4">
             {form.serverError}
@@ -74,6 +75,9 @@ export default function Create() {
               addTaggedFriend={addTaggedFriend}
               removeTaggedFriend={removeTaggedFriend}
             />
+            <ImageUpload>
+              Upload
+            </ImageUpload>
           </div>
 
           <div>
