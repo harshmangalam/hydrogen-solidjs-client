@@ -5,7 +5,7 @@ export default function FriendsList(props) {
         {(user) => (
           <li>
             <button
-              onClick={[props.addTaggedFriend, user]}
+              onClick={[props.addFriend, user]}
               className="flex items-center space-x-2 rounded-md  py-2 px-2  font-medium hover:bg-gray-200 dark:hover:bg-gray-700 w-full"
             >
               <img

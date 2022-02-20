@@ -36,7 +36,7 @@ export default function TagPeople(props) {
             </h6>
             <SelectedFriends
               friends={props.friends}
-              removeTaggedFriend={props.removeTaggedFriend}
+              removeFriend={props.removeTaggedFriend}
             />
           </div>
 
@@ -52,7 +52,7 @@ export default function TagPeople(props) {
 
             <FriendsList
               friendsStore={friendsStore}
-              addTaggedFriend={props.addTaggedFriend}
+              addFriend={props.addTaggedFriend}
             />
           </div>
         </div>
