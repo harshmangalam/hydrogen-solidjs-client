@@ -1,4 +1,5 @@
 import { BsFilePost } from "solid-icons/bs";
+import CheckIn from "../../components/posts/create/CheckIn";
 import Feelings from "../../components/posts/create/Feelings";
 import ImageUpload from "../../components/posts/create/ImageUpload";
 import SpecificFriends from "../../components/posts/create/SpecificFriends";
@@ -91,6 +92,7 @@ export default function Create() {
               addFeeling={addFeeling}
               removeFeeling={removeFeeling}
             />
+            <CheckIn checkIn={form.fields.checkIn} handleInput={handleInput} />
           </div>
 
           <div>

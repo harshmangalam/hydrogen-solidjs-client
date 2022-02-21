@@ -29,13 +29,13 @@ export default function ImageUpload(props) {
         className="rounded-full bg-gray-100  hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 w-12 h-12 text-3xl text-black dark:text-white grid place-items-center"
         onClick={() => setOpenModal(true)}
       >
-        <BsImages className="text-blue-500" />
+        <BsImages className="text-green-500" />
       </button>
       <input
         type="file"
         multiple
         ref={imageRef}
-        accept="images/*"
+        accept="image/*"
         className="hidden"
         onChange={handleImageChange}
       />
