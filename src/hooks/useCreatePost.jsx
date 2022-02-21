@@ -1,5 +1,7 @@
 import { createStore, produce } from "solid-js/store";
 import { useUIDispatch } from "../context/ui";
+
+import { createPost } from "../services/post.service";
 export default function useCreatePost() {
   const { addSnackbar } = useUIDispatch();
   const [form, setForm] = createStore({
@@ -80,18 +82,20 @@ export default function useCreatePost() {
 
   const addFeeling = (feeling) => {
     setForm("fields", "feeling", feeling);
-    console.log(feeling)
+    console.log(feeling);
   };
 
   const removeFeeling = () => {
     setForm("fields", "feeling", "");
-    console.log(form.fields.feeling)
+    console.log(form.fields.feeling);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log(form.fields);
+      const { data } = await createPost(form.fields);
+      console.log(data);
+      addSnackbar({ type: "success", message: data.message });
     } catch (error) {
       console.log(error);
       setForm("serverError", error.response.data.message);

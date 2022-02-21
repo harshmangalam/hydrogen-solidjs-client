@@ -42,6 +42,16 @@ export default function Modal(props) {
             {/* modal body  */}
 
             <div className="py-2">{props.children}</div>
+            <hr className="dark:border-gray-600" />
+
+            <div className="py-2 flex items-center justify-end px-4">
+              <button
+                className="py-2 px-4 bg-blue-500 dark:bg-blue-700 text-white rounded-md"
+                onClick={[props.onClose]}
+              >
+                Done
+              </button>
+            </div>
           </div>
         </div>
       </Portal>
