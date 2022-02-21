@@ -1,9 +1,11 @@
 import { createStore, produce } from "solid-js/store";
 import { useUIDispatch } from "../context/ui";
+import { useNavigate } from "solid-app-router";
 
 import { createPost } from "../services/post.service";
 export default function useCreatePost() {
   const { addSnackbar } = useUIDispatch();
+  const navigate = useNavigate();
   const [form, setForm] = createStore({
     fields: {
       content: "",
@@ -94,8 +96,18 @@ export default function useCreatePost() {
     event.preventDefault();
     try {
       const { data } = await createPost(form.fields);
-      console.log(data);
+      setForm("fields", {
+        content: "",
+        audience: "",
+        specificAudienceFriends: [],
+        images: [],
+        feeling: "",
+        gif: "",
+        checkIn: "",
+        taggedFriends: [],
+      });
       addSnackbar({ type: "success", message: data.message });
+      navigate("/");
     } catch (error) {
       console.log(error);
       setForm("serverError", error.response.data.message);
