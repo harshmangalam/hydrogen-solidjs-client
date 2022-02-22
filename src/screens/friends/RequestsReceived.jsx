@@ -4,9 +4,12 @@ import { FaSolidUserPlus } from "solid-icons/fa";
 import FriendCard from "../../components/friends/FriendCard";
 import FriendBtn from "../../components/friends/FriendBtn";
 import Error from "../../components/shared/Error";
-import { fetchFriendsRequestsSent } from "../../services/friends.service";
+import { fetchFriendsRequestsReceived } from "../../services/friends.service";
+import useFriendRequest from "../../hooks/useFriendRequest";
 export default function RequestsReceived() {
-  const [response] = createResource(fetchFriendsRequestsSent);
+  const [response, { refetch }] = createResource(fetchFriendsRequestsReceived);
+  const { handleAcceptFriendRequest, handleIgnoreReceivedRequest, loading } =
+    useFriendRequest(refetch);
   return (
     <div className="pt-4 md:px-8">
       <Switch>
@@ -23,7 +26,7 @@ export default function RequestsReceived() {
         </Match>
 
         <Match
-          when={response().data.data.users.friendsRequestsSent.length === 0}
+          when={response().data.data.users.friendsRequestsReceived.length === 0}
         >
           <Error
             error="empty"
@@ -32,18 +35,28 @@ export default function RequestsReceived() {
           />
         </Match>
         <Match
-          when={response().data.data.users.friendsRequestsSent.length !== 0}
+          when={response().data.data.users.friendsRequestsReceived.length !== 0}
         >
           <h4 className="text-xl font-medium">Requests received</h4>
           <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 mt-4">
-            <For each={response().data.data.users.friendsRequestsSent}>
+            <For each={response().data.data.users.friendsRequestsReceived}>
               {(user) => (
                 <FriendCard {...user}>
                   <div className="flex flex-col space-y-2">
-                    <FriendBtn color="success" text="Accept">
+                    <FriendBtn
+                      color="success"
+                      text="Accept"
+                      onClick={() => handleAcceptFriendRequest(user.id)}
+                      isLoading={loading()}
+                    >
                       <FaSolidUserPlus size={18} />
                     </FriendBtn>
-                    <FriendBtn color="danger" text="Ignore">
+                    <FriendBtn
+                      color="danger"
+                      text="Ignore"
+                      isLoading={loading()}
+                      onClick={() => handleIgnoreReceivedRequest(user.id)}
+                    >
                       <FaSolidUserTimes size={18} />
                     </FriendBtn>
                   </div>

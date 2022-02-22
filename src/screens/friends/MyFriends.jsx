@@ -4,8 +4,10 @@ import FriendCard from "../../components/friends/FriendCard";
 import FriendBtn from "../../components/friends/FriendBtn";
 import { fetchFriends } from "../../services/friends.service";
 import Error from "../../components/shared/Error";
+import useFriendRequest from "../../hooks/useFriendRequest";
 export default function MyFriends() {
-  const [response] = createResource(fetchFriends);
+  const [response, { refetch }] = createResource(fetchFriends);
+  const { handleRemoveFromFriendsList, loading } = useFriendRequest(refetch);
   return (
     <div className="pt-4 md:px-8">
       <Switch>
@@ -37,7 +39,8 @@ export default function MyFriends() {
                   <FriendBtn
                     text="Unfriend"
                     color="danger"
-                    onClick={() => {}}
+                    onClick={() => handleRemoveFromFriendsList(user.id)}
+                    isLoading={loading()}
                   >
                     <FaSolidUserMinus size={18} />
                   </FriendBtn>
