@@ -10,7 +10,7 @@ const Home = lazy(() => import("../screens/Home"));
 
 // friends
 const FriendsLayout = lazy(() => import("../screens/friends"));
-const AllFriends = lazy(() => import("../screens/friends/AllFriends"));
+const FriendsMyFriends = lazy(() => import("../screens/friends/MyFriends"));
 const FriendsRequestsReceived = lazy(() =>
   import("../screens/friends/RequestsReceived")
 );
@@ -72,7 +72,7 @@ export default function AppRouter() {
 
         {/* friends  */}
         <Route path="friends" element={<FriendsLayout />}>
-          <Route path="" element={<AllFriends />} />
+          <Route path="" element={<FriendsMyFriends />} />
           <Route path="suggestions" element={<FriendsSuggestions />} />
           <Route
             path="requests-received"

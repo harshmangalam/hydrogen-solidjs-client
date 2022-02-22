@@ -2,6 +2,7 @@ import { For } from "solid-js";
 import { FaSolidUserTimes } from "solid-icons/fa";
 import { FaSolidUserPlus } from "solid-icons/fa";
 import FriendCard from "../../components/friends/FriendCard";
+import FriendBtn from "../../components/friends/FriendBtn";
 
 export default function RequestsReceived() {
   return (
@@ -13,14 +14,12 @@ export default function RequestsReceived() {
           {(friend) => (
             <FriendCard title="" image="">
               <div className="flex flex-col space-y-2">
-              <button className="text-blue-500 dark:text-white font-semibold py-2 w-full flex items-center  bg-blue-100 dark:bg-gray-700 justify-center space-x-2 hover:bg-blue-200 dark:hover:bg-gray-600 rounded-lg text-sm">
+                <FriendBtn color="success" text="Accept">
                   <FaSolidUserPlus size={18} />
-                  <span>Accept</span>
-                </button>
-                <button className="text-red-500 dark:text-white font-semibold py-2 w-full flex items-center  bg-red-100 dark:bg-gray-700 justify-center space-x-2 hover:bg-red-200 dark:hover:bg-gray-600 rounded-lg text-sm">
+                </FriendBtn>
+                <FriendBtn color="danger" text="Ignore">
                   <FaSolidUserTimes size={18} />
-                  <span>Ignore</span>
-                </button>
+                </FriendBtn>
               </div>
             </FriendCard>
           )}

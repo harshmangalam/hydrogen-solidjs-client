@@ -1,5 +1,6 @@
 import { FaSolidUserPlus } from "solid-icons/fa";
 import { For } from "solid-js";
+import FriendBtn from "../../components/friends/FriendBtn";
 import FriendCard from "../../components/friends/FriendCard";
 
 export default function Suggestions() {
@@ -11,10 +12,9 @@ export default function Suggestions() {
         <For each={[...Array(10).keys()]}>
           {(friend) => (
             <FriendCard title="" image="">
-              <button className="text-blue-500 dark:text-white font-semibold py-2 w-full flex items-center  bg-blue-100 dark:bg-gray-700 justify-center space-x-2 hover:bg-blue-200 dark:hover:bg-gray-600 rounded-lg text-sm">
+              <FriendBtn text="Add friend" color="primary">
                 <FaSolidUserPlus size={18} />
-                <span>Add Friend</span>
-              </button>
+              </FriendBtn>
             </FriendCard>
           )}
         </For>

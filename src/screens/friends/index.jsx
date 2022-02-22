@@ -65,7 +65,7 @@ export default function FriendsLayout() {
 
 const tabs = [
   {
-    name: "All Friends",
+    name: "My Friends",
     href: "",
     icon: () => <FaSolidUserFriends />,
     end: true,
