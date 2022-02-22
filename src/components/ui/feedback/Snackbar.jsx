@@ -1,7 +1,7 @@
 import { IoCloseCircle } from "solid-icons/io";
 import { mergeProps, onCleanup, onMount } from "solid-js";
 export default function Snackbar(props) {
-  let merged = mergeProps({ type: "success",autoHideDuration:3000  }, props);
+  let merged = mergeProps({ type: "success",autoHideDuration:5000  }, props);
   let timerRef 
 
   onMount(()=>{

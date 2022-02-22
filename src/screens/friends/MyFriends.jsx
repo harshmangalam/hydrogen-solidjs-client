@@ -23,17 +23,17 @@ export default function MyFriends() {
           />
         </Match>
 
-        <Match when={response().data.data.users.myFriends.length === 0}>
+        <Match when={response().data.data.users.length === 0}>
           <Error
             error="empty"
             name="No Friends"
             message="No any one are your friends"
           />
         </Match>
-        <Match when={response().data.data.users.myFriends.length !== 0}>
+        <Match when={response().data.data.users.length !== 0}>
           <h4 className="text-xl font-medium">My Friends</h4>
           <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 mt-4">
-            <For each={response().data.data.users.myFriends}>
+            <For each={response().data.data.users}>
               {(user) => (
                 <FriendCard {...user}>
                   <FriendBtn

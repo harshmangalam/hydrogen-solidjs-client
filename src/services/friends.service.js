@@ -16,21 +16,21 @@ async function fetchFriendsRequestsSent() {
 }
 
 async function sendFriendRequest(userId) {
-  return await axios.post(`/friends/send_request/${userId}`);
+  return await axios.patch(`/friends/send_request/${userId}`);
 }
 async function acceptFriendRequest(userId) {
-  return await axios.post(`/friends/accept_request/${userId}`);
+  return await axios.patch(`/friends/accept_request/${userId}`);
 }
 async function removeFromFriendsList(userId) {
-  return await axios.post(`/friends/remove/${userId}`);
+  return await axios.delete(`/friends/remove/${userId}`);
 }
 
 async function cancelSentRequest(userId) {
-  return await axios.post(`/friends/cancel_sent_request/${userId}`);
+  return await axios.delete(`/friends/cancel_sent_request/${userId}`);
 }
 
 async function ignoreReceivedRequest(userId) {
-  return await axios.post(`/friends/ignore_received_request/${userId}`);
+  return await axios.delete(`/friends/ignore_received_request/${userId}`);
 }
 
 export {

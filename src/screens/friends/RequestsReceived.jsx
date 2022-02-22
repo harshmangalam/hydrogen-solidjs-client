@@ -26,7 +26,7 @@ export default function RequestsReceived() {
         </Match>
 
         <Match
-          when={response().data.data.users.friendsRequestsReceived.length === 0}
+          when={response().data.data.users.length === 0}
         >
           <Error
             error="empty"
@@ -35,11 +35,11 @@ export default function RequestsReceived() {
           />
         </Match>
         <Match
-          when={response().data.data.users.friendsRequestsReceived.length !== 0}
+          when={response().data.data.users.length !== 0}
         >
           <h4 className="text-xl font-medium">Requests received</h4>
           <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 mt-4">
-            <For each={response().data.data.users.friendsRequestsReceived}>
+            <For each={response().data.data.users}>
               {(user) => (
                 <FriendCard {...user}>
                   <div className="flex flex-col space-y-2">
