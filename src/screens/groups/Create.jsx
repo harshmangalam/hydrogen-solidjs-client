@@ -2,7 +2,7 @@ import { BiImage } from "solid-icons/bi";
 import { FaSolidUsers } from "solid-icons/fa";
 import ImageUpload from "../../components/shared/ImageUpload";
 import useCreateGroup from "../../hooks/useCreateGroup";
-export default function Create() {
+export default function CreateGroup() {
   const {
     addFriend,
     addImages,

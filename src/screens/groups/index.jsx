@@ -1,9 +1,8 @@
-import { FaSolidPlus } from "solid-icons/fa";
-import { BsPlusSquareDotted } from 'solid-icons/bs'
-import { BiSolidGroup } from 'solid-icons/bi'
-import { HiSolidUserGroup } from 'solid-icons/hi'
+import { FaSolidPlus, FaSolidUsers } from "solid-icons/fa";
+import { BsFilePost } from "solid-icons/bs";
 import { NavLink, Outlet } from "solid-app-router";
 import { For } from "solid-js";
+import { RiMapCompass3Fill } from "solid-icons/ri";
 export default function GroupsLayout() {
   return (
     <div>
@@ -66,22 +65,42 @@ export default function GroupsLayout() {
 
 const tabs = [
   {
-    name: "All Groups",
+    name: "Groups Feed",
     href: "",
-    icon: () => <BiSolidGroup />,
+    icon: () => <BsFilePost />,
     end: true,
+  },
+  {
+    name: "My Groups",
+    href: "my",
+    icon: () => <FaSolidUsers />,
+    end: false,
   },
 
   {
-    name: "Discover",
-    href: "discover",
-    icon: () => <HiSolidUserGroup />,
+    name: "Groups Invited",
+    href: "invites",
+    icon: () => <FaSolidUsers />,
+    end: false,
+  },
+
+  {
+    name: "Groups Joined",
+    href: "joined",
+    icon: () => <FaSolidUsers />,
+    end: false,
+  },
+
+  {
+    name: "Suggestions",
+    href: "suggestions",
+    icon: () => <RiMapCompass3Fill />,
     end: false,
   },
   {
-    name: "Create New Group",
+    name: "Create Group",
     href: "create",
-    icon: () => <BsPlusSquareDotted />,
+    icon: () => <FaSolidPlus />,
     end: false,
   },
 ];
