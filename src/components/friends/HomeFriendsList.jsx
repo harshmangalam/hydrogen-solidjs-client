@@ -1,6 +1,6 @@
 import { Link } from "solid-app-router";
 import { For, Match, Switch } from "solid-js";
-import Avatar from "../../ui/dataDisplay/Avatar";
+import Avatar from "../ui/dataDisplay/Avatar";
 export default function FriendLists(props) {
   return (
     <ul className="flex flex-col space-y-2">
@@ -9,7 +9,7 @@ export default function FriendLists(props) {
           <li>
             <Link
               href={`/messenger/${user.id}`}
-              className="flex items-center space-x-2 hover:bg-gray-200 dark:hover:bg-gray-700 py-2 px-4 rounded-lg dark:text-gray-200"
+              className="flex items-center space-x-2 hover:bg-gray-300 dark:hover:bg-gray-800 py-2 px-4 rounded-lg dark:text-gray-200"
             >
               <Avatar src={user.profileImage} alt={user.firstName} />
               <div className="absolute bottom-0 -right-1">

@@ -1,22 +1,23 @@
 import { createResource, For, Match, Switch } from "solid-js";
 import PostCard from "../components/posts/PostCard";
-import FriendLists from "../components/sidebars/FriendLists";
 import PostCardSkeleton from "../components/posts/PostCardSkeleton";
 import Error from "../components/shared/Error";
-
+import MenuSidebar from "../components/sidebars/MenuSidebars";
 import { fetchPosts } from "../services/post.service";
 import { fetchFriends } from "../services/friends.service";
 import HomeFriendsSkeleton from "../components/friends/HomeFriendsSkeleton";
+import HomeFriendsList from "../components/friends/HomeFriendsList";
 export default function Home() {
   const [response] = createResource(fetchPosts);
   const [friendsResponse] = createResource(fetchFriends);
   return (
     <div>
+      <MenuSidebar />
       {/* middle section */}
-      <div className="w-full xl:w-3/5 py-6 mx-auto">
+      <div className="w-full  md:w-8/12 lg:w-6/12 py-6 lg:mx-auto md:px-8 xl:w-6/12">
         {/* posts */}
         <Switch>
-          <Match when={response.loading }>
+          <Match when={response.loading}>
             <PostCardSkeleton />
           </Match>
           <Match when={response.error}>
@@ -52,10 +53,10 @@ export default function Home() {
 
       {/* right section  */}
       <div
-        className={`h-screen fixed top-14 pt-4  hidden xl:block xl:w-1/5 right-0 bg-gray-100 dark:bg-gray-900 px-2  overflow-y-scroll no-scrollbar py-14 `}
+        className={`h-screen fixed top-14 pt-4  hidden md:block md:w-4/12 lg:w-3/12 xl:w-3/12 right-0 bg-gray-100 dark:bg-gray-900 px-2 py-14  hover:overflow-y-scroll custom-scrollbar`}
       >
         <Switch>
-          <Match when={friendsResponse.loading }>
+          <Match when={friendsResponse.loading}>
             <HomeFriendsSkeleton />
           </Match>
           <Match when={friendsResponse.error}>
@@ -71,7 +72,7 @@ export default function Home() {
               Friends
             </h5>
             <div className="my-4">
-              <FriendLists friends={friendsResponse().data.data.users} />
+              <HomeFriendsList friends={friendsResponse().data.data.users} />
             </div>
           </Match>
         </Switch>
