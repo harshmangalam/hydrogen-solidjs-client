@@ -1,6 +1,18 @@
+import { BiImage } from "solid-icons/bi";
 import { FaSolidUsers } from "solid-icons/fa";
+import ImageUpload from "../../components/shared/ImageUpload";
+import useCreateGroup from "../../hooks/useCreateGroup";
 export default function Create() {
-  function handleCreateGroup() {}
+  const {
+    addFriend,
+    addImages,
+    form,
+    handleChange,
+    handleInput,
+    handleSubmit,
+    removeFriend,
+    removeImage,
+  } = useCreateGroup();
   return (
     <div className="py-10">
       <div className="my-4 flex flex-col items-center space-y-2 max-w-md mx-auto">
@@ -10,16 +22,15 @@ export default function Create() {
         <h5 className="text-2xl font-medium ">Create Group</h5>
       </div>
       <section className="max-w-md mx-auto bg-white dark:bg-gray-800  px-4 py-8  rounded-lg shadow">
-        <form
-          onSubmit={[handleCreateGroup]}
-          className="flex flex-col space-y-4"
-        >
+        <form onSubmit={[handleSubmit]} className="flex flex-col space-y-4">
           <div className="flex flex-col space-y-2">
             <label htmlFor="name">Group name</label>
             <input
               type="text"
               name="name"
               className="rounded-lg dark:bg-gray-700"
+              value={form.fields.name}
+              onInput={[handleInput]}
             />
           </div>
           <div className="flex flex-col space-y-2">
@@ -28,16 +39,33 @@ export default function Create() {
               name="privacy"
               id="privacy"
               className="rounded-lg dark:bg-gray-700"
+              value={form.fields.privacy}
+              onChange={[handleInput]}
             >
-              <option value="public" selected>
+              <option value="PUBLIC" selected>
                 Public
               </option>
-              <option value="private">Private</option>
+              <option value="PRIVATE">Private</option>
             </select>
           </div>
 
+          <div className="py-2 flex justify-center">
+            <ImageUpload
+              images={form.fields.images}
+              addImages={addImages}
+              removeImage={removeImage}
+              btnClass="bg-green-100 text-green-700 px-4 py-2 rounded-md flex items-center space-x-3 font-medium dark:bg-green-400 dark:text-green-900"
+            >
+              <BiImage size={28} />
+              <span>Add Group Image</span>
+            </ImageUpload>
+          </div>
+
           <div>
-            <button className="w-full py-2 px-3 bg-blue-500 text-white rounded-lg text-lg">
+            <button
+              type="submit"
+              className="w-full py-2 px-3 bg-blue-500 text-white rounded-lg text-lg"
+            >
               Create
             </button>
           </div>

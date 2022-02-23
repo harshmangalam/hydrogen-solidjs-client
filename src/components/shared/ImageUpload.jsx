@@ -1,9 +1,16 @@
-import { createSignal, For } from "solid-js";
-import Modal from "../../ui/feedback/Modal";
+import { createSignal, For, mergeProps } from "solid-js";
+import Modal from "../ui/feedback/Modal";
 import { BsImages } from "solid-icons/bs";
 import { IoClose } from "solid-icons/io";
 
 export default function ImageUpload(props) {
+  const merged = mergeProps(
+    {
+      btnClass:
+        "rounded-full bg-gray-100  hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 w-12 h-12 text-3xl text-black dark:text-white grid place-items-center",
+    },
+    props
+  );
   const [openModal, setOpenModal] = createSignal(false);
   const [urlField, setUrlField] = createSignal("");
   let imageRef;
@@ -15,16 +22,16 @@ export default function ImageUpload(props) {
       images.push(image);
     }
 
-    props.addImages(images);
+    merged.addImages(images);
   };
 
   const removeImage = (url) => {
     URL.revokeObjectURL(url);
-    props.removeImage(url);
+    merged.removeImage(url);
   };
 
   const handleAddImage = () => {
-    props.addImages([urlField()]);
+    merged.addImages([urlField()]);
     setUrlField("");
   };
   return (
@@ -32,10 +39,10 @@ export default function ImageUpload(props) {
       <button
         title="Add Images"
         type="button"
-        className="rounded-full bg-gray-100  hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 w-12 h-12 text-3xl text-black dark:text-white grid place-items-center"
+        className={merged.btnClass}
         onClick={() => setOpenModal(true)}
       >
-        <BsImages className="text-green-500" />
+        {merged.children}
       </button>
       <input
         type="file"
@@ -88,10 +95,13 @@ export default function ImageUpload(props) {
           </div>
 
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <For each={props.images}>
+            <For each={merged.images}>
               {(image) => (
                 <li className="relative">
-                  <img src={image} className="w-full h-full aspect-square object-cover" />
+                  <img
+                    src={image}
+                    className="w-full h-full aspect-square object-cover"
+                  />
                   <button
                     className="absolute top-2 right-2 rounded-full bg-gray-100  hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 w-8 h-8 text-xl text-black dark:text-white grid place-items-center"
                     onClick={[removeImage, image]}

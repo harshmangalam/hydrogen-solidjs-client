@@ -1,7 +1,7 @@
-import { BsFilePost } from "solid-icons/bs";
+import { BsFilePost, BsImages } from "solid-icons/bs";
 import CheckIn from "../../components/posts/create/CheckIn";
 import Feelings from "../../components/posts/create/Feelings";
-import ImageUpload from "../../components/posts/create/ImageUpload";
+import ImageUpload from "../../components/shared/ImageUpload";
 import SpecificFriends from "../../components/posts/create/SpecificFriends";
 import TagPeople from "../../components/posts/create/TagPeople";
 import useCreatePost from "../../hooks/useCreatePost";
@@ -66,7 +66,7 @@ export default function Create() {
             </div>
 
             <Show when={form.fields.audience === "SPECIFIC"}>
-              <div className="self-end">
+              <div>
                 <SpecificFriends
                   friends={form.fields.specificAudienceFriends}
                   addSpecificFriend={addSpecificFriend}
@@ -86,7 +86,9 @@ export default function Create() {
               images={form.fields.images}
               addImages={addImages}
               removeImage={removeImage}
-            />
+            >
+              <BsImages className="text-green-500" />
+            </ImageUpload>
             <Feelings
               feeling={form.fields.feeling}
               addFeeling={addFeeling}

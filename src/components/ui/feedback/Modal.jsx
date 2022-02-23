@@ -14,11 +14,11 @@ export default function Modal(props) {
     <Show when={props.open}>
       <Portal>
         <div
-          className="fixed inset-0 bg-gray-900/50 z-50"
+          className="fixed inset-0 bg-gray-900/70 z-50"
           onClick={[handleClickOutside]}
         >
           <div
-            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-md w-full bg-white shadow-xl rounded-md dark:bg-gray-800 dark:text-white"
+            className="fixed top-1/2 left-1/2 max-h-96 -translate-x-1/2 -translate-y-1/2 max-w-md w-full bg-white shadow-xl rounded-md dark:bg-gray-800 dark:text-white overflow-y-scroll custom-scrollbar my-10"
             ref={cardRef}
           >
             {/* modal header  */}
