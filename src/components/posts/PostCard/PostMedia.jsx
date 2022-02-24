@@ -2,9 +2,9 @@ export default function PostMedia(props) {
   return (
     <section>
       <img
-        src={props.images[0]}
+        src={props.image}
         alt={props.alt}
-        className="aspect-auto w-full"
+        className="aspect-square w-full"
       />
     </section>
   );

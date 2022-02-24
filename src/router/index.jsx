@@ -34,6 +34,18 @@ const GroupsSuggestions = lazy(() => import("../screens/groups/Suggestions"));
 const GroupsInvited = lazy(() => import("../screens/groups/Invited"));
 const GroupsJoined = lazy(() => import("../screens/groups/Joined"));
 const CreateGroup = lazy(() => import("../screens/groups/Create"));
+const GroupNotifications = lazy(() =>
+  import("../screens/groups/Notifications")
+);
+const CreateGroupPost = lazy(() => import("../screens/groups/CreatePost"));
+
+// group details
+const GroupDetailsLayout = lazy(() => import("../screens/groups/groupDetails"));
+const GroupAbout = lazy(() => import("../screens/groups/groupDetails/About"));
+const GroupMembers = lazy(() =>
+  import("../screens/groups/groupDetails/Members")
+);
+const GroupPosts = lazy(() => import("../screens/groups/groupDetails/Posts"));
 
 // profile
 const ProfileLayout = lazy(() => import("../screens/profile"));
@@ -100,9 +112,17 @@ export default function AppRouter() {
           <Route path="invites" element={<GroupsInvited />} />
           <Route path="joined" element={<GroupsJoined />} />
           <Route path="suggestions" element={<GroupsSuggestions />} />
+          <Route path="notifications" element={<GroupNotifications />} />
+          <Route path="post_create" element={<CreateGroupPost />} />
           <Route path="create" element={<CreateGroup />} />
         </Route>
 
+        {/* group details */}
+        <Route path="groups/:groupId" element={<GroupDetailsLayout />}>
+          <Route path="" element={<GroupAbout />} />
+          <Route path="posts" element={<GroupPosts />} />
+          <Route path="members" element={<GroupMembers />} />
+        </Route>
         {/* profile  */}
         <Route path="/:userId" element={<ProfileLayout />}>
           <Route path="" element={<ProfilePosts />} />

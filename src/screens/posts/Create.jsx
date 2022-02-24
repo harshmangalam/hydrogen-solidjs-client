@@ -16,7 +16,7 @@ export default function Create() {
     removeSpecificFriend,
     addTaggedFriend,
     removeTaggedFriend,
-    addImages,
+    addImage,
     removeImage,
     addFeeling,
     removeFeeling,
@@ -83,8 +83,8 @@ export default function Create() {
               removeTaggedFriend={removeTaggedFriend}
             />
             <ImageUpload
-              images={form.fields.images}
-              addImages={addImages}
+              image={form.fields.image}
+              addImage={addImage}
               removeImage={removeImage}
             >
               <BsImages className="text-green-500" />

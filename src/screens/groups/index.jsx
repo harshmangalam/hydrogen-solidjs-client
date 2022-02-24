@@ -3,6 +3,7 @@ import { BsFilePost } from "solid-icons/bs";
 import { NavLink, Outlet } from "solid-app-router";
 import { For } from "solid-js";
 import { RiMapCompass3Fill } from "solid-icons/ri";
+import { IoNotifications } from "solid-icons/io";
 export default function GroupsLayout() {
   return (
     <div>
@@ -95,6 +96,18 @@ const tabs = [
     name: "Suggestions",
     href: "suggestions",
     icon: () => <RiMapCompass3Fill />,
+    end: false,
+  },
+  {
+    name: "Notifications",
+    href: "notifications",
+    icon: () => <IoNotifications />,
+    end: false,
+  },
+  {
+    name: "Create Group Post",
+    href: "post_create",
+    icon: () => <FaSolidPlus />,
     end: false,
   },
   {

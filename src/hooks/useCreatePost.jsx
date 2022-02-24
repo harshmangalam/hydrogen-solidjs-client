@@ -11,9 +11,8 @@ export default function useCreatePost() {
       content: "",
       audience: "",
       specificAudienceFriends: [],
-      images: [],
+      image: "",
       feeling: "",
-      gif: "",
       checkIn: "",
       taggedFriends: [],
     },
@@ -60,26 +59,11 @@ export default function useCreatePost() {
     });
   };
 
-  const addImages = (images) => {
-    setForm(
-      "fields",
-      "images",
-      produce((i) => {
-        i.push(...images);
-      })
-    );
+  const addImage = (image) => {
+    setForm("fields", "image", image);
   };
-  const removeImage = (image) => {
-    setForm(
-      "fields",
-      "images",
-      produce((images) => {
-        const index = images.indexOf(image);
-        if (index > -1) {
-          images.splice(index, 1);
-        }
-      })
-    );
+  const removeImage = () => {
+    setForm("fields", "image", "");
   };
 
   const addFeeling = (feeling) => {
@@ -123,7 +107,7 @@ export default function useCreatePost() {
     removeSpecificFriend,
     removeTaggedFriend,
     addTaggedFriend,
-    addImages,
+    addImage,
     removeImage,
     addFeeling,
     removeFeeling,

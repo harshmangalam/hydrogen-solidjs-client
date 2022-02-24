@@ -13,7 +13,7 @@ export default function PostCard(props) {
         createdAt={props.createdAt}
         audience={props.audience}
       />
-      <PostMedia images={props.images} alt={props.author.firstName} />
+      <PostMedia image={props.image} alt={props.author.firstName} />
       <PostReaction />
       <PostContent content={props.content} />
       <div className="divide-y dark:divide-gray-700 space-y-4">

@@ -1,4 +1,4 @@
-import { createSignal, For, mergeProps } from "solid-js";
+import { createSignal, For, mergeProps, Show } from "solid-js";
 import Modal from "../ui/feedback/Modal";
 import { BsImages } from "solid-icons/bs";
 import { IoClose } from "solid-icons/io";
@@ -16,13 +16,8 @@ export default function ImageUpload(props) {
   let imageRef;
 
   const handleImageChange = (event) => {
-    const images = [];
-    for (let file of event.target.files) {
-      const image = URL.createObjectURL(file);
-      images.push(image);
-    }
-
-    merged.addImages(images);
+    const image = URL.createObjectURL(event.target.files[0]);
+    merged.addImage(image);
   };
 
   const removeImage = (url) => {
@@ -31,13 +26,13 @@ export default function ImageUpload(props) {
   };
 
   const handleAddImage = () => {
-    merged.addImages([urlField()]);
+    merged.addImage(urlField());
     setUrlField("");
   };
   return (
     <>
       <button
-        title="Add Images"
+        title="Add Image"
         type="button"
         className={merged.btnClass}
         onClick={() => setOpenModal(true)}
@@ -46,7 +41,6 @@ export default function ImageUpload(props) {
       </button>
       <input
         type="file"
-        multiple
         ref={imageRef}
         accept="image/*"
         className="hidden"
@@ -56,7 +50,7 @@ export default function ImageUpload(props) {
       <Modal
         onClose={() => setOpenModal(false)}
         open={openModal()}
-        title="Upload Images"
+        title="Upload Image"
       >
         <div className="px-4">
           <div className="py-4 flex flex-col space-y-4">
@@ -67,7 +61,7 @@ export default function ImageUpload(props) {
               <div className="flex flex-col space-y-2 items-center">
                 <BsImages className="text-3xl" />
                 <div>
-                  <p className="text-xl">Add Images</p>
+                  <p className="text-xl">Add Image</p>
                   <p className="text-xs">or drag and drop</p>
                 </div>
               </div>
@@ -94,24 +88,20 @@ export default function ImageUpload(props) {
             </div>
           </div>
 
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <For each={merged.images}>
-              {(image) => (
-                <li className="relative">
-                  <img
-                    src={image}
-                    className="w-full h-full aspect-square object-cover"
-                  />
-                  <button
-                    className="absolute top-2 right-2 rounded-full bg-gray-100  hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 w-8 h-8 text-xl text-black dark:text-white grid place-items-center"
-                    onClick={[removeImage, image]}
-                  >
-                    <IoClose />
-                  </button>
-                </li>
-              )}
-            </For>
-          </ul>
+          <Show when={merged.image}>
+            <div className="relative">
+              <img
+                src={merged.image}
+                className="w-full h-full aspect-square object-cover"
+              />
+              <button
+                className="absolute top-2 right-2 rounded-full bg-gray-100  hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 w-8 h-8 text-xl text-black dark:text-white grid place-items-center"
+                onClick={[removeImage]}
+              >
+                <IoClose />
+              </button>
+            </div>
+          </Show>
         </div>
       </Modal>
     </>
