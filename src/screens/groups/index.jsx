@@ -72,8 +72,14 @@ const tabs = [
     end: true,
   },
   {
-    name: "My Groups",
-    href: "my",
+    name: "Created Groups",
+    href: "groups_created",
+    icon: () => <FaSolidUsers />,
+    end: false,
+  },
+  {
+    name: "Created Group Posts",
+    href: "created_group_posts",
     icon: () => <FaSolidUsers />,
     end: false,
   },
@@ -106,13 +112,13 @@ const tabs = [
   },
   {
     name: "Create Group Post",
-    href: "post_create",
+    href: "create_group_post",
     icon: () => <FaSolidPlus />,
     end: false,
   },
   {
     name: "Create Group",
-    href: "create",
+    href: "group_create",
     icon: () => <FaSolidPlus />,
     end: false,
   },

@@ -1,5 +1,5 @@
 import { FaSolidHeart, FaSolidCommentAlt } from "solid-icons/fa";
-import { HiSolidShare } from "solid-icons/hi";
+
 export default function PostReaction() {
   return (
     <section className="pt-2 px-4 flex space-x-4 items-center dark:text-white">
