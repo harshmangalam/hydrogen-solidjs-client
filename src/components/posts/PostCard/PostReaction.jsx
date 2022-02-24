@@ -15,12 +15,6 @@ export default function PostReaction() {
         </span>
         <span className="text-sm">{12}</span>
       </button>
-      <button className="flex items-center space-x-1 hover:bg-green-100 dark:hover:bg-gray-600  rounded-full px-3 py-1">
-        <span className="text-blue-400 dark:text-blue-200">
-          <HiSolidShare />
-        </span>
-        <span className="text-sm">{12}</span>
-      </button>
     </section>
   );
 }
