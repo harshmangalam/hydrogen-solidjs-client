@@ -1,4 +1,4 @@
-import { createSignal, For, mergeProps, Show } from "solid-js";
+import { createSignal, mergeProps, Show } from "solid-js";
 import Modal from "../ui/feedback/Modal";
 import { BsImages } from "solid-icons/bs";
 import { IoClose } from "solid-icons/io";

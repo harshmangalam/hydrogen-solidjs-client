@@ -8,7 +8,7 @@ export default function useCreateGroup() {
   const [form, setForm] = createStore({
     fields: {
       name: "",
-      images: [],
+      image: "",
       privacy: "",
       invites: [],
     },
@@ -24,26 +24,11 @@ export default function useCreateGroup() {
     setForm("fields", [currentTarget.name], currentTarget.value);
   };
 
-  const addImages = (images) => {
-    setForm(
-      "fields",
-      "images",
-      produce((i) => {
-        i.push(...images);
-      })
-    );
+  const addImage = (image) => {
+    setForm("fields", "image", image);
   };
-  const removeImage = (image) => {
-    setForm(
-      "fields",
-      "images",
-      produce((images) => {
-        const index = images.indexOf(image);
-        if (index > -1) {
-          images.splice(index, 1);
-        }
-      })
-    );
+  const removeImage = () => {
+    setForm("fields", "image", "");
   };
 
   const addFriend = (user) => {
@@ -65,15 +50,15 @@ export default function useCreateGroup() {
     event.preventDefault();
     try {
       //   const { data } = await createPost(form.fields);
-      console.log(form.fields)
-    //   setForm("fields", {
-    //     name: "",
-    //     images: [],
-    //     privacy: "",
-    //     invites: [],
-    //   });
+      console.log(form.fields);
+      //   setForm("fields", {
+      //     name: "",
+      //     images: [],
+      //     privacy: "",
+      //     invites: [],
+      //   });
       //   addSnackbar({ type: "success", message: data.message });
-    //   navigate("/");
+      //   navigate("/");
     } catch (error) {
       console.log(error);
       setForm("serverError", error.response.data.message);
@@ -81,7 +66,7 @@ export default function useCreateGroup() {
   };
   return {
     form,
-    addImages,
+    addImage,
     removeImage,
     addFriend,
     removeFriend,

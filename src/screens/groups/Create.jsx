@@ -5,7 +5,7 @@ import useCreateGroup from "../../hooks/useCreateGroup";
 export default function CreateGroup() {
   const {
     addFriend,
-    addImages,
+    addImage,
     form,
     handleChange,
     handleInput,
@@ -51,8 +51,8 @@ export default function CreateGroup() {
 
           <div className="py-2 flex justify-center">
             <ImageUpload
-              images={form.fields.images}
-              addImages={addImages}
+              image={form.fields.image}
+              addImage={addImage}
               removeImage={removeImage}
               btnClass="bg-green-100 text-green-700 px-4 py-2 rounded-md flex items-center space-x-3 font-medium dark:bg-green-400 dark:text-green-900"
             >
