@@ -1,19 +1,33 @@
 import { useNavigate } from "solid-app-router";
 import { createStore, produce } from "solid-js/store";
 import { useUIDispatch } from "../context/ui";
-
+import { createGroup } from "../services/group.service";
 export default function useCreateGroup() {
   const navigate = useNavigate();
   const { addSnackbar } = useUIDispatch();
   const [form, setForm] = createStore({
     fields: {
       name: "",
-      image: "",
+      coverImage: "",
+      profileImage: "",
       privacy: "",
-      invites: [],
+      invitedPeople: [],
     },
   });
 
+  const addProfileImage = (image) => {
+    setForm("fields", "profileImage", image);
+  };
+  const addCoverImage = (image) => {
+    setForm("fields", "coverImage", image);
+  };
+
+  const removeProfileImage = () => {
+    setForm("fields", "profileImage", "");
+  };
+  const removeCoverImage = () => {
+    setForm("fields", "coverImage", "");
+  };
   const handleInput = (event) => {
     const currentTarget = event.currentTarget;
     setForm("fields", [currentTarget.name], currentTarget.value);
@@ -24,20 +38,13 @@ export default function useCreateGroup() {
     setForm("fields", [currentTarget.name], currentTarget.value);
   };
 
-  const addImage = (image) => {
-    setForm("fields", "image", image);
-  };
-  const removeImage = () => {
-    setForm("fields", "image", "");
-  };
-
-  const addFriend = (user) => {
+  const addInvitedPeople = (user) => {
     setForm("fields", (produce) => {
       produce.invites.push(user);
     });
   };
 
-  const removeFriend = (userId) => {
+  const removeInvitedPeople = (userId) => {
     setForm("fields", (produce) => {
       const index = produce.invites.findIndex((u) => u.id === userId);
       if (index > -1) {
@@ -49,27 +56,30 @@ export default function useCreateGroup() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      //   const { data } = await createPost(form.fields);
-      console.log(form.fields);
-      //   setForm("fields", {
-      //     name: "",
-      //     images: [],
-      //     privacy: "",
-      //     invites: [],
-      //   });
-      //   addSnackbar({ type: "success", message: data.message });
-      //   navigate("/");
+      const { data } = await createGroup(form.fields);
+
+      setForm("fields", {
+        coverImage: "",
+        profileImage: "",
+        invitedPeople: [],
+        name: "",
+        privacy: "",
+      });
+      addSnackbar({ type: "success", message: data.message });
+      navigate(`/groups/${data.data.group.id}`);
     } catch (error) {
       console.log(error);
       setForm("serverError", error.response.data.message);
     }
   };
   return {
+    addCoverImage,
+    addProfileImage,
+    removeCoverImage,
+    removeProfileImage,
     form,
-    addImage,
-    removeImage,
-    addFriend,
-    removeFriend,
+    addInvitedPeople,
+    removeInvitedPeople,
     handleChange,
     handleInput,
     handleSubmit,

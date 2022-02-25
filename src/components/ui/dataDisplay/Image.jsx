@@ -11,7 +11,7 @@ export default function Image(props) {
     <img
       src={getSrc(props.src)}
       className={`w-full ${props.className}`}
-      alt={props.firstname}
+      alt={props.alt}
     />
   );
 }

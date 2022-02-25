@@ -1,17 +1,20 @@
 import { BiImage } from "solid-icons/bi";
 import { FaSolidUsers } from "solid-icons/fa";
+import InvitePeople from "../../components/groups/Create/InvitePeople";
 import ImageUpload from "../../components/shared/ImageUpload";
 import useCreateGroup from "../../hooks/useCreateGroup";
 export default function CreateGroup() {
   const {
-    addFriend,
-    addImage,
+    addInvitedPeople,
+    addCoverImage,
+    addProfileImage,
     form,
     handleChange,
     handleInput,
     handleSubmit,
-    removeFriend,
-    removeImage,
+    removeInvitedPeople,
+    removeCoverImage,
+    removeProfileImage,
   } = useCreateGroup();
   return (
     <div className="py-10">
@@ -40,7 +43,7 @@ export default function CreateGroup() {
               id="privacy"
               className="rounded-lg dark:bg-gray-700"
               value={form.fields.privacy}
-              onChange={[handleInput]}
+              onChange={[handleChange]}
             >
               <option value="PUBLIC" selected>
                 Public
@@ -49,17 +52,30 @@ export default function CreateGroup() {
             </select>
           </div>
 
-          <div className="py-2 flex justify-center">
-            <ImageUpload
-              image={form.fields.image}
-              addImage={addImage}
-              removeImage={removeImage}
-              btnClass="bg-green-100 text-green-700 px-4 py-2 rounded-md flex items-center space-x-3 font-medium dark:bg-green-400 dark:text-green-900"
-            >
-              <BiImage size={28} />
-              <span>Add Group Image</span>
-            </ImageUpload>
-          </div>
+          <ImageUpload
+            image={form.fields.profileImage}
+            addImage={addProfileImage}
+            removeImage={removeProfileImage}
+            btnClass="bg-green-100 text-green-700 px-4 py-2 rounded-md flex items-center space-x-3 font-medium dark:bg-green-400 dark:text-green-900"
+          >
+            <BiImage size={28} />
+            <span> Group Profile Image</span>
+          </ImageUpload>
+          <ImageUpload
+            image={form.fields.coverImage}
+            addImage={addCoverImage}
+            removeImage={removeCoverImage}
+            btnClass="bg-green-100 text-green-700 px-4 py-2 rounded-md flex items-center space-x-3 font-medium dark:bg-green-400 dark:text-green-900"
+          >
+            <BiImage size={28} />
+            <span>Group Cover Image</span>
+          </ImageUpload>
+
+          <InvitePeople
+            invitedPeople={form.fields.invitedPeople}
+            addInvitedPeople={addInvitedPeople}
+            removeInvitedPeople={removeInvitedPeople}
+          />
 
           <div>
             <button
