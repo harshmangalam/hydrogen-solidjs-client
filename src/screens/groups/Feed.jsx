@@ -25,9 +25,10 @@ export default function GroupsFeed() {
 
           <Match when={response()}>
             <Show
-              when={response().data.data.posts}
-              fallback={<Empty title="Empty" />}
-              subTitle="No group post available"
+              when={response().data.data.posts.length}
+              fallback={
+                <Empty title="No Feed" subTitle="Join groups to see groups feed" />
+              }
             >
               <div className="max-w-lg mx-auto">
                 <ul className="grid grid-cols-1 gap-4">

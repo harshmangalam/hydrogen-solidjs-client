@@ -17,7 +17,7 @@ export default function CreateGroup() {
     removeProfileImage,
   } = useCreateGroup();
   return (
-    <div className="py-10">
+    <div className="py-4">
       <div className="my-4 flex flex-col items-center space-y-2 max-w-md mx-auto">
         <div className="w-16 h-16 bg-blue-500 rounded-full grid place-items-center">
           <FaSolidUsers className="text-4xl text-white" />
@@ -52,24 +52,26 @@ export default function CreateGroup() {
             </select>
           </div>
 
-          <ImageUpload
-            image={form.fields.profileImage}
-            addImage={addProfileImage}
-            removeImage={removeProfileImage}
-            btnClass="bg-green-100 text-green-700 px-4 py-2 rounded-md flex items-center space-x-3 font-medium dark:bg-green-400 dark:text-green-900"
-          >
-            <BiImage size={28} />
-            <span> Group Profile Image</span>
-          </ImageUpload>
-          <ImageUpload
-            image={form.fields.coverImage}
-            addImage={addCoverImage}
-            removeImage={removeCoverImage}
-            btnClass="bg-green-100 text-green-700 px-4 py-2 rounded-md flex items-center space-x-3 font-medium dark:bg-green-400 dark:text-green-900"
-          >
-            <BiImage size={28} />
-            <span>Group Cover Image</span>
-          </ImageUpload>
+          <div className="grid grid-cols-2 gap-4">
+            <ImageUpload
+              image={form.fields.profileImage}
+              addImage={addProfileImage}
+              removeImage={removeProfileImage}
+              btnClass=" flex space-x-2 items-center bg-green-100 text-green-700 px-4 py-2 rounded-md font-medium dark:bg-green-400 dark:text-black"
+            >
+              <BiImage className="text-2xl" />
+              <span>Profile Image</span>
+            </ImageUpload>
+            <ImageUpload
+              image={form.fields.coverImage}
+              addImage={addCoverImage}
+              removeImage={removeCoverImage}
+              btnClass=" flex space-x-2 items-center bg-green-100 text-green-700 px-4 py-2 rounded-md font-medium dark:bg-green-400 dark:text-black"
+            >
+              <BiImage className="text-2xl" />
+              <span>Cover Image</span>
+            </ImageUpload>
+          </div>
 
           <InvitePeople
             invitedPeople={form.fields.invitedPeople}

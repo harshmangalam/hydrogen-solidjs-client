@@ -16,9 +16,14 @@ async function fetchGroupDetails(groupId) {
   return await axios.get(`/groups/${groupId}`);
 }
 
+async function fetchGroupsSuggestion() {
+  return await axios.get(`/groups/suggestions`);
+}
+
 export {
   fetchMyCreatedGroups,
   createGroup,
   fetchGroupsFeed,
   fetchGroupDetails,
+  fetchGroupsSuggestion,
 };

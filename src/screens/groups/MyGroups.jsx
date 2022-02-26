@@ -1,4 +1,4 @@
-import { FaSolidUserMinus } from "solid-icons/fa";
+import { AiFillDelete } from "solid-icons/ai";
 import { createResource, For, Match, Show, Switch } from "solid-js";
 import GroupCard from "../../components/groups/GroupCard";
 import GroupCardSkeleton from "../../components/groups/GroupCardSkeleton";
@@ -10,7 +10,7 @@ export default function MyGroups() {
   return (
     <div>
       <h4 className="text-2xl font-bold">Groups You`ve Created</h4>
-      <div className="mt-8">
+      <div className="my-8">
         <Switch>
           <Match when={resource.loading}>
             <GroupCardSkeleton />
@@ -36,9 +36,9 @@ export default function MyGroups() {
                 <For each={resource().data.data.groups}>
                   {(group) => (
                     <GroupCard {...group}>
-                      <button className="text-red-500 dark:text-white font-semibold py-2 w-full flex items-center  bg-red-100 dark:bg-gray-700 justify-center space-x-2 hover:bg-red-200 dark:hover:bg-gray-600 rounded-lg text-sm">
-                        <FaSolidUserMinus size={18} />
-                        <span>Leave Group</span>
+                      <button className="text-red-500 dark:text-white font-semibold py-2 w-full flex items-center  bg-red-100 dark:bg-red-400 justify-center space-x-2 hover:bg-red-200 dark:hover:bg-red-500 rounded text-sm">
+                        <AiFillDelete size={18} />
+                        <span>Delete group</span>
                       </button>
                     </GroupCard>
                   )}
