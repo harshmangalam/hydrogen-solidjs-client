@@ -1,4 +1,4 @@
-import { createResource, For, Match, Switch } from "solid-js";
+import { createResource, For, Match, Show, Switch } from "solid-js";
 import PostCard from "../components/posts/PostCard";
 import PostCardSkeleton from "../components/posts/PostCardSkeleton";
 import Error from "../components/shared/Error";
@@ -55,27 +55,29 @@ export default function Home() {
       <div
         className={`h-screen fixed top-14 pt-4  hidden md:block md:w-4/12 lg:w-3/12 xl:w-3/12 right-0 bg-gray-100 dark:bg-gray-900 px-2 py-14  hover:overflow-y-scroll custom-scrollbar`}
       >
-        <Switch>
-          <Match when={friendsResponse.loading}>
-            <HomeFriendsSkeleton />
-          </Match>
-          <Match when={friendsResponse.error}>
-            <Error
-              error="server"
-              name={friendsResponse.error.name}
-              message={friendsResponse.error.message}
-            />
-          </Match>
+        <h5 className="font-semibold text-xl text-gray-600 dark:text-gray-200">
+          Friends
+        </h5>
+        <div className="my-4">
+          <Switch>
+            <Match when={friendsResponse.loading}>
+              <HomeFriendsSkeleton />
+            </Match>
+            <Match when={friendsResponse.error}>
+              <p className="dark:text-white">{friendsResponse.error.name}</p>
+              <p className="dark:text-white">{friendsResponse.error.message}</p>
+            </Match>
 
-          <Match when={friendsResponse().data.data.users.length !== 0}>
-            <h5 className="font-semibold text-xl text-gray-600 dark:text-gray-200 px-4">
-              Friends
-            </h5>
-            <div className="my-4">
-              <HomeFriendsList friends={friendsResponse().data.data.users} />
-            </div>
-          </Match>
-        </Switch>
+            <Match when={friendsResponse()}>
+              <Show
+                when={friendsResponse().data.data.users}
+                fallback={<p>No Friends</p>}
+              >
+                <HomeFriendsList friends={friendsResponse().data.data.users} />
+              </Show>
+            </Match>
+          </Switch>
+        </div>
       </div>
     </div>
   );

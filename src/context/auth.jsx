@@ -1,7 +1,7 @@
 import { createContext, onMount, useContext } from "solid-js";
 import { createStore } from "solid-js/store";
 import Cookies from "js-cookie";
-import { useNavigate } from "solid-app-router";
+import { useLocation, useNavigate } from "solid-app-router";
 import { fetchCurrentUser } from "../services/auth.service";
 
 const AuthStateContext = createContext();
@@ -14,6 +14,7 @@ const initialState = {
 export default function AuthProvider(props) {
   const [store, setStore] = createStore(initialState);
   const navigate = useNavigate();
+  const location = useLocation();
 
   onMount(async () => {
     try {
@@ -22,7 +23,9 @@ export default function AuthProvider(props) {
       setStore("currentUser", data.data.user);
     } catch (error) {
       Cookies.remove("token");
-      navigate("/auth/login", { replace: true });
+      if (!location.pathname.includes("/auth")) {
+        navigate("/auth/login");
+      }
     }
   });
   const setCurrentUser = (user) => {

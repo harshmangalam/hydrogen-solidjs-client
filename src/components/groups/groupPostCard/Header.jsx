@@ -24,7 +24,7 @@ export default function PostHeader(props) {
           </h6>
           <div class="flex items-center space-x-2 ">
             <span class="text-sm text-gray-500 dark:text-gray-200 font-bold">
-              {props.author.name}
+              {props.author.firstName}
             </span>
             <span class="flex items-start dark:text-gray-200">&#8228;</span>
             <span class="text-sm text-gray-500 dark:text-gray-200">

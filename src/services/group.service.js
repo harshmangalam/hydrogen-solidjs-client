@@ -8,4 +8,8 @@ async function createGroup(data) {
   return await axios.post("/groups", data);
 }
 
-export { fetchMyCreatedGroups, createGroup };
+async function fetchGroupsFeed() {
+  return await axios.get("/groups/feed");
+}
+
+export { fetchMyCreatedGroups, createGroup, fetchGroupsFeed };
