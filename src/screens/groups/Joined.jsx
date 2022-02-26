@@ -9,7 +9,7 @@ import useGroups from "../../hooks/useGroups";
 
 export default function GroupsSuggestions() {
   const [resource, { refetch }] = createResource(fetchJoinedGroups);
-  const { handleJoinGroup, loading } = useGroups(refetch);
+  const { handleLeaveGroup, loading } = useGroups(refetch);
   return (
     <div>
       <h4 className="text-2xl font-bold">Groups You`ve Joined</h4>
@@ -44,7 +44,7 @@ export default function GroupsSuggestions() {
                         <button
                           className="text-red-500 dark:text-white font-semibold py-2 w-full flex items-center  bg-red-100 dark:bg-gray-700 justify-center space-x-2 hover:bg-red-200 dark:hover:bg-gray-600 rounded-lg text-sm"
                           disabled={loading()}
-                          onClick={[handleJoinGroup, group.id]}
+                          onClick={[handleLeaveGroup, group.id]}
                         >
                           <Show
                             when={loading()}
