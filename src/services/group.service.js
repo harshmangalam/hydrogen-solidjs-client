@@ -16,6 +16,10 @@ async function fetchGroupDetails(groupId) {
   return await axios.get(`/groups/${groupId}`);
 }
 
+async function fetchJoinedGroups() {
+  return await axios.get(`/groups/joined`);
+}
+
 async function fetchGroupsSuggestion() {
   return await axios.get(`/groups/suggestions`);
 }
@@ -39,4 +43,5 @@ export {
   joinGroup,
   leaveGroup,
   deleteGroup,
+  fetchJoinedGroups,
 };
