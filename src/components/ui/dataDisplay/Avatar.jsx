@@ -1,32 +1,28 @@
-import { FaSolidUserAlt } from 'solid-icons/fa'
-import { Match, mergeProps, Switch } from "solid-js";
+import { FaSolidUserAlt } from "solid-icons/fa";
+import { Match, Switch } from "solid-js";
 export default function Avatar(props) {
-  const merged = mergeProps(
-    { className: "w-12 h-12 bg-gray-200 dark:bg-gray-700" },
-    props
-  );
   return (
     <Switch>
-      <Match when={!merged.src && !merged.icon}>
+      <Match when={!props.src && !props.icon}>
         <div
-          className={`grid place-items-center rounded-full text-xl text-blue-500  ${merged.className}`}
+          className={`grid place-items-center rounded-full text-xl text-blue-500  ${props.className}`}
         >
           <FaSolidUserAlt />
         </div>
       </Match>
-      <Match when={!merged.src && merged.icon}>
+      <Match when={!props.src && props.icon}>
         <div
-          className={`grid place-items-center rounded-full${merged.className}`}
+          className={`grid place-items-center rounded-full${props.className}`}
         >
-          {merged.children}
+          {props.children}
         </div>
       </Match>
 
-      <Match when={merged.src}>
+      <Match when={props.src}>
         <img
-          src={merged.src}
-          alt={merged.alt}
-          className={`rounded-full w-12 h-12 ${merged.className}`}
+          src={props.src}
+          alt={props.alt}
+          className={` rounded-full ${props.className}`}
         />
       </Match>
     </Switch>

@@ -72,7 +72,7 @@ export default function CreateGroup() {
               <span>Cover Image</span>
             </ImageUpload>
           </div>
-
+ 
           <InvitePeople
             invitedPeople={form.fields.invitedPeople}
             addInvitedPeople={addInvitedPeople}

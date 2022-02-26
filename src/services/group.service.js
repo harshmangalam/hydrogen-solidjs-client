@@ -20,6 +20,10 @@ async function fetchJoinedGroups() {
   return await axios.get(`/groups/joined`);
 }
 
+async function fetchInvitedGroups() {
+  return await axios.get(`/groups/invited`);
+}
+
 async function fetchGroupsSuggestion() {
   return await axios.get(`/groups/suggestions`);
 }
@@ -44,4 +48,5 @@ export {
   leaveGroup,
   deleteGroup,
   fetchJoinedGroups,
+  fetchInvitedGroups,
 };

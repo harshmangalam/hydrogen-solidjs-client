@@ -39,24 +39,35 @@ export default function useCreateGroup() {
   };
 
   const addInvitedPeople = (user) => {
-    setForm("fields", (produce) => {
-      produce.invites.push(user);
-    });
+    setForm(
+      "fields",
+      "invitedPeople",
+      produce((users) => {
+        users.push(user);
+      })
+    );
   };
 
   const removeInvitedPeople = (userId) => {
-    setForm("fields", (produce) => {
-      const index = produce.invites.findIndex((u) => u.id === userId);
-      if (index > -1) {
-        produce.invites.splice(index, 1);
-      }
-    });
+    setForm(
+      "fields",
+      "invitedPeople",
+      produce((users) => {
+        const index = users.findIndex((u) => u.id === userId);
+        if (index > -1) {
+          users.splice(index, 1);
+        }
+      })
+    );
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await createGroup(form.fields);
+      const { data } = await createGroup({
+        ...form.fields,
+        invitedPeople: form.fields.invitedPeople.map((u) => u.id),
+      });
 
       setForm("fields", {
         coverImage: "",
@@ -69,7 +80,7 @@ export default function useCreateGroup() {
       navigate(`/groups/${data.data.group.id}`);
     } catch (error) {
       console.log(error);
-      setForm("serverError", error.response.data.message);
+      addSnackbar({ type: "error", message: error.response.data.message });
     }
   };
   return {

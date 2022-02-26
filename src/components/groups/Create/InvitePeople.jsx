@@ -34,7 +34,7 @@ export default function InvitePeople(props) {
               friends={props.invitedPeople}
               removeFriend={props.removeInvitedPeople}
             />
-          </div>
+          </div> 
 
           <div className="mt-4 flex flex-col space-y-2">
             <h6 className="text-gray-500 dark:text-gray-200 text-sm font-medium">
