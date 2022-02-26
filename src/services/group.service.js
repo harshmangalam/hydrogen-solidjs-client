@@ -12,4 +12,13 @@ async function fetchGroupsFeed() {
   return await axios.get("/groups/feed");
 }
 
-export { fetchMyCreatedGroups, createGroup, fetchGroupsFeed };
+async function fetchGroupDetails(groupId) {
+  return await axios.get(`/groups/${groupId}`);
+}
+
+export {
+  fetchMyCreatedGroups,
+  createGroup,
+  fetchGroupsFeed,
+  fetchGroupDetails,
+};

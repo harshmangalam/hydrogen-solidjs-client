@@ -67,11 +67,10 @@ export default function Home() {
               <p className="dark:text-white">{friendsResponse.error.name}</p>
               <p className="dark:text-white">{friendsResponse.error.message}</p>
             </Match>
-
             <Match when={friendsResponse()}>
               <Show
-                when={friendsResponse().data.data.users}
-                fallback={<p>No Friends</p>}
+                when={friendsResponse().data.data.users.length}
+                fallback={<p className="dark:text-white">No Friends</p>}
               >
                 <HomeFriendsList friends={friendsResponse().data.data.users} />
               </Show>
