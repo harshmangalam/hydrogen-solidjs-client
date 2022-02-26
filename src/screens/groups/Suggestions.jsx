@@ -5,9 +5,11 @@ import { fetchGroupsSuggestion } from "../../services/group.service";
 import Empty from "../../components/shared/Empty";
 import Error from "../../components/shared/Error";
 import GroupCardSkeleton from "../../components/groups/GroupCardSkeleton";
+import useGroups from "../../hooks/useGroups";
 
 export default function GroupsSuggestions() {
-  const [resource] = createResource(fetchGroupsSuggestion);
+  const [resource, { refetch }] = createResource(fetchGroupsSuggestion);
+  const { handleJoinGroup, loading } = useGroups(refetch);
   return (
     <div>
       <h4 className="text-2xl font-bold">Public Groups Suggestions</h4>
@@ -39,9 +41,22 @@ export default function GroupsSuggestions() {
                   <For each={resource().data.data.groups}>
                     {(group) => (
                       <GroupCard {...group}>
-                        <button className="text-red-500 dark:text-white font-semibold py-2 w-full flex items-center  bg-red-100 dark:bg-gray-700 justify-center space-x-2 hover:bg-red-200 dark:hover:bg-gray-600 rounded-lg text-sm">
-                          <FaSolidUserPlus size={18} />
-                          <span>Join Group</span>
+                        <button
+                          className="text-red-500 dark:text-white font-semibold py-2 w-full flex items-center  bg-red-100 dark:bg-gray-700 justify-center space-x-2 hover:bg-red-200 dark:hover:bg-gray-600 rounded-lg text-sm"
+                          disabled={loading()}
+                          onClick={[handleJoinGroup, group.id]}
+                        >
+                          <Show
+                            when={loading()}
+                            fallback={
+                              <>
+                                <FaSolidUserPlus size={18} />
+                                <span>Join Group</span>
+                              </>
+                            }
+                          >
+                            joining...
+                          </Show>
                         </button>
                       </GroupCard>
                     )}

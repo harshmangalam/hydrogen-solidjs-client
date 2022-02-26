@@ -20,10 +20,23 @@ async function fetchGroupsSuggestion() {
   return await axios.get(`/groups/suggestions`);
 }
 
+async function joinGroup(groupId) {
+  return await axios.patch(`/groups/${groupId}/join`);
+}
+async function leaveGroup(groupId) {
+  return await axios.delete(`/groups/${groupId}/leave`);
+}
+async function deleteGroup(groupId) {
+  return await axios.delete(`/groups/${groupId}/remove`);
+}
+
 export {
   fetchMyCreatedGroups,
   createGroup,
   fetchGroupsFeed,
   fetchGroupDetails,
   fetchGroupsSuggestion,
+  joinGroup,
+  leaveGroup,
+  deleteGroup,
 };
