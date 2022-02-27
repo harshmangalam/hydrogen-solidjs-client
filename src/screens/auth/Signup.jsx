@@ -14,11 +14,6 @@ export default function Login() {
         <h5 className="text-2xl font-medium ">Sign Up</h5>
       </div>
       <section className="max-w-md mx-auto bg-white dark:bg-gray-800  px-4 py-8  rounded-lg shadow">
-        {form.serverError && (
-          <p className="py-2 bg-red-100 dark:text-red-300 dark:bg-gray-700 text-red-500 rounded-md px-4">
-            {form.serverError}
-          </p>
-        )}
         <form
           onSubmit={[handleSignup]}
           className="flex flex-col space-y-4 mt-2"

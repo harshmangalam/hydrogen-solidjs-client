@@ -19,8 +19,6 @@ export default function useSignup() {
       gender: "",
     },
     hasError: false,
-
-    serverError: "",
   });
 
   const { addSnackbar } = useUIDispatch();
@@ -28,14 +26,12 @@ export default function useSignup() {
 
   const handleInput = (ev) => {
     setForm("hasError", false);
-    setForm("serverError", "");
     setForm("errors", [ev.currentTarget.name], "");
     setForm("fields", [ev.currentTarget.name], ev.currentTarget.value);
   };
 
   const handleRadioChange = (ev) => {
     setForm("hasError", false);
-    setForm("serverError", "");
     setForm("errors", "gender", "");
     setForm("fields", "gender", ev.target.value);
   };
@@ -68,8 +64,8 @@ export default function useSignup() {
       addSnackbar({ type: "success", message: data.message });
       navigate("/auth/login");
     } catch (error) {
-      console.log(error);
-      setForm("serverError", error.response.data.message);
+      addSnackbar({ type: "error", message: error.response.data.message });
+      
     }
   };
   return {
