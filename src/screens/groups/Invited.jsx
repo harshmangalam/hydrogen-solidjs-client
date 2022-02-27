@@ -1,4 +1,4 @@
-import { FaSolidUserMinus,FaSolidUserPlus } from "solid-icons/fa";
+import { AiOutlineUsergroupAdd,AiOutlineUsergroupDelete } from 'solid-icons/ai'
 import { createResource, For, Match, Show, Switch } from "solid-js";
 import GroupCard from "../../components/groups/GroupCard";
 import { fetchInvitedGroups } from "../../services/group.service";
@@ -9,7 +9,8 @@ import useGroups from "../../hooks/useGroups";
 
 export default function GroupsSuggestions() {
   const [resource, { refetch }] = createResource(fetchInvitedGroups);
-  const { handleLeaveGroup, loading } = useGroups(refetch);
+  const { loading, handleAcceptGroupInvitation, handleRejectGroupInvitation } =
+    useGroups(refetch);
   return (
     <div>
       <h4 className="text-2xl font-bold">Groups You`ve Invited</h4>
@@ -45,35 +46,35 @@ export default function GroupsSuggestions() {
                           <button
                             className="text-blue-500 dark:text-white font-semibold py-2 w-full flex items-center  bg-blue-100 dark:bg-blue-500 justify-center space-x-2 hover:bg-blue-200 dark:hover:bg-blue-600 rounded-lg text-sm"
                             disabled={loading()}
-                            onClick={[handleLeaveGroup, group.id]}
+                            onClick={[handleAcceptGroupInvitation, group.id]}
                           >
                             <Show
                               when={loading()}
                               fallback={
                                 <>
-                                  <FaSolidUserPlus size={18} />
+                                  <AiOutlineUsergroupAdd size={24} />
                                   <span>Accept</span>
                                 </>
                               }
                             >
-                              leaving...
+                              accepting...
                             </Show>
                           </button>
                           <button
                             className="text-red-500 dark:text-white font-semibold py-2 w-full flex items-center  bg-red-100 dark:bg-red-500 justify-center space-x-2 hover:bg-red-200 dark:hover:bg-red-600 rounded-lg text-sm"
                             disabled={loading()}
-                            onClick={[handleLeaveGroup, group.id]}
+                            onClick={[handleRejectGroupInvitation, group.id]}
                           >
                             <Show
                               when={loading()}
                               fallback={
                                 <>
-                                  <FaSolidUserMinus size={18} />
-                                  <span>Remove</span>
+                                  <AiOutlineUsergroupDelete size={24} />
+                                  <span>Reject</span>
                                 </>
                               }
                             >
-                              leaving...
+                              rejecting...
                             </Show>
                           </button>
                         </div>

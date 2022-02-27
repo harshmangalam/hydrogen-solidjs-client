@@ -1,5 +1,10 @@
 import { createSignal } from "solid-js";
-import { joinGroup, leaveGroup } from "../services/group.service";
+import {
+  acceptGroupInvitation,
+  joinGroup,
+  leaveGroup,
+  rejectGroupInvitation,
+} from "../services/group.service";
 
 import { useUIDispatch } from "../context/ui";
 export default function useGroups(refetch) {
@@ -33,9 +38,40 @@ export default function useGroups(refetch) {
       refetch();
     }
   }
+
+  async function handleAcceptGroupInvitation(groupId) {
+    try {
+      setLoading(true);
+      const { data } = await acceptGroupInvitation(groupId);
+      addSnackbar({ type: "success", message: data.message });
+    } catch (error) {
+      console.log(error.response.data);
+      addSnackbar({ type: "error", message: error.response.data.message });
+    } finally {
+      setLoading(false);
+      refetch();
+    }
+  }
+
+  async function handleRejectGroupInvitation(groupId) {
+    try {
+      setLoading(true);
+      const { data } = await rejectGroupInvitation(groupId);
+      addSnackbar({ type: "success", message: data.message });
+    } catch (error) {
+      console.log(error.response.data);
+      addSnackbar({ type: "error", message: error.response.data.message });
+    } finally {
+      setLoading(false);
+      refetch();
+    }
+  }
   return {
     loading,
     handleJoinGroup,
     handleLeaveGroup,
+
+    handleAcceptGroupInvitation,
+    handleRejectGroupInvitation,
   };
 }

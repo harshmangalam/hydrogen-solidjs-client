@@ -38,6 +38,13 @@ async function deleteGroup(groupId) {
   return await axios.delete(`/groups/${groupId}/remove`);
 }
 
+async function acceptGroupInvitation(groupId) {
+  return await axios.patch(`/groups/${groupId}/accept_invitation`);
+}
+async function rejectGroupInvitation(groupId) {
+  return await axios.delete(`/groups/${groupId}/reject_invitation`);
+}
+
 export {
   fetchMyCreatedGroups,
   createGroup,
@@ -49,4 +56,7 @@ export {
   deleteGroup,
   fetchJoinedGroups,
   fetchInvitedGroups,
+
+  acceptGroupInvitation,
+  rejectGroupInvitation
 };
