@@ -45,6 +45,7 @@ async function rejectGroupInvitation(groupId) {
   return await axios.delete(`/groups/${groupId}/reject_invitation`);
 }
 
+
 export {
   fetchMyCreatedGroups,
   createGroup,

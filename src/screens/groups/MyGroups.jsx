@@ -5,8 +5,10 @@ import GroupCardSkeleton from "../../components/groups/GroupCardSkeleton";
 import { fetchMyCreatedGroups } from "../../services/group.service";
 import Empty from "../../components/shared/Empty";
 import Error from "../../components/shared/Error";
+import useGroups from "../../hooks/useGroups";
 export default function MyGroups() {
-  const [resource] = createResource(fetchMyCreatedGroups);
+  const [resource, { refetch }] = createResource(fetchMyCreatedGroups);
+  const { loading, handleDeleteGroup } = useGroups(refetch);
   return (
     <div>
       <h4 className="text-2xl font-bold">Groups You`ve Created</h4>
@@ -36,9 +38,15 @@ export default function MyGroups() {
                 <For each={resource().data.data.groups}>
                   {(group) => (
                     <GroupCard {...group}>
-                      <button className="text-red-500 dark:text-white font-semibold py-2 w-full flex items-center  bg-red-100 dark:bg-red-400 justify-center space-x-2 hover:bg-red-200 dark:hover:bg-red-500 rounded text-sm">
-                        <AiFillDelete size={18} />
-                        <span>Delete group</span>
+                      <button
+                        className="text-red-500 dark:text-white font-semibold py-2 w-full flex items-center  bg-red-100 dark:bg-red-400 justify-center space-x-2 hover:bg-red-200 dark:hover:bg-red-500 rounded text-sm"
+                        disabled={loading()}
+                        onClick={[handleDeleteGroup, group.id]}
+                      >
+                        <Show when={!loading()} fallback={<p>deleting...</p>}>
+                          <AiFillDelete size={18} />
+                          <span>Delete group</span>
+                        </Show>
                       </button>
                     </GroupCard>
                   )}

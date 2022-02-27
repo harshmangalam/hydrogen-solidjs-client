@@ -1,6 +1,7 @@
 import { createSignal } from "solid-js";
 import {
   acceptGroupInvitation,
+  deleteGroup,
   joinGroup,
   leaveGroup,
   rejectGroupInvitation,
@@ -66,11 +67,25 @@ export default function useGroups(refetch) {
       refetch();
     }
   }
+
+  async function handleDeleteGroup(groupId) {
+    try {
+      setLoading(true);
+      const { data } = await deleteGroup(groupId);
+      addSnackbar({ type: "success", message: data.message });
+    } catch (error) {
+      console.log(error.response.data);
+      addSnackbar({ type: "error", message: error.response.data.message });
+    } finally {
+      setLoading(false);
+      refetch();
+    }
+  }
   return {
     loading,
     handleJoinGroup,
     handleLeaveGroup,
-
+    handleDeleteGroup,
     handleAcceptGroupInvitation,
     handleRejectGroupInvitation,
   };
