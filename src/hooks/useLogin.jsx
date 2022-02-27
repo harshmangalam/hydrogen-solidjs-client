@@ -14,8 +14,6 @@ export default function useLogin() {
       password: "",
     },
     hasError: false,
-
-    serverError: "",
   });
 
   const { setCurrentUser } = useAuthDispatch();
@@ -24,7 +22,6 @@ export default function useLogin() {
 
   const handleInput = (ev) => {
     setForm("hasError", false);
-    setForm("serverError", "");
     setForm("errors", [ev.currentTarget.name], "");
     setForm("fields", [ev.currentTarget.name], ev.currentTarget.value);
   };
@@ -49,8 +46,7 @@ export default function useLogin() {
       addSnackbar({ type: "success", message: data.message });
       navigate("/", { replace: true });
     } catch (error) {
-      console.log(error);
-      setForm("serverError", error.response.data.message);
+      addSnackbar({ type: "error", message: error.response.data.message });
     }
   };
   return {
