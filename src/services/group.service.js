@@ -1,7 +1,7 @@
 import axios from "axios";
 
 async function fetchMyCreatedGroups() {
-  return await axios.get("/groups");
+  return await axios.get("/groups/my_created_groups");
 }
 
 async function createGroup(data) {
@@ -45,6 +45,21 @@ async function rejectGroupInvitation(groupId) {
   return await axios.delete(`/groups/${groupId}/reject_invitation`);
 }
 
+async function createGroupPost(data) {
+  return await axios.post(`/groups/create_post`, data);
+}
+
+
+async function fetchGroups(){
+  return await axios.get("/groups")
+}
+
+async function fetchMyCreatedGroupPosts(){
+  return await axios.get("/groups/my_created_posts")
+
+}
+
+
 
 export {
   fetchMyCreatedGroups,
@@ -57,7 +72,9 @@ export {
   deleteGroup,
   fetchJoinedGroups,
   fetchInvitedGroups,
-
   acceptGroupInvitation,
-  rejectGroupInvitation
+  rejectGroupInvitation,
+  createGroupPost,
+  fetchGroups,
+  fetchMyCreatedGroupPosts,
 };

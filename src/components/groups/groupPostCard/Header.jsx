@@ -1,9 +1,10 @@
-import { FaSolidGlobeAsia } from "solid-icons/fa";
+import { FaSolidGlobeAsia, FaSolidUsers } from "solid-icons/fa";
 import { FaSolidLock } from "solid-icons/fa";
 import { BiDotsHorizontalRounded } from "solid-icons/bi";
-import Avatar from "../../ui/dataDisplay/Avatar";
+
+import { Show } from "solid-js";
 export default function PostHeader(props) {
-  const showPostAudience = (audience) => {
+  const groupPrivacy = (audience) => {
     switch (audience) {
       case "PUBLIC":
         return <FaSolidGlobeAsia />;
@@ -15,7 +16,16 @@ export default function PostHeader(props) {
     <section class="flex items-center justify-between px-4 py-2 border-b dark:border-gray-700">
       <div class="flex items-center space-x-2">
         <div class="flex-none">
-          <Avatar alt="Remy Sharp" src={props.group.profileImage} />
+          <Show
+            when={props.group.profileImage}
+            fallback={<FaSolidUsers className="text-2xl" />}
+          >
+            <img
+              className="w-10 h-10 rounded-full"
+              alt="Remy Sharp"
+              src={props.group.profileImage}
+            />
+          </Show>
         </div>
 
         <div>
@@ -32,7 +42,7 @@ export default function PostHeader(props) {
             </span>
             <span class="flex items-start dark:text-gray-200">&#8228;</span>
             <span className="dark:text-gray-200 text-lg">
-              {showPostAudience(props.group.privacy)}
+              {groupPrivacy(props.group.privacy)}
             </span>
           </div>
         </div>

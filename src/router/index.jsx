@@ -40,7 +40,7 @@ const CreateGroup = lazy(() => import("../screens/groups/Create"));
 const GroupNotifications = lazy(() =>
   import("../screens/groups/Notifications")
 );
-const CreateGroupPost = lazy(() => import("../screens/groups/CreatePost"));
+const CreateGroupPost = lazy(() => import("../screens/groups/CreateGroupPost"));
 
 // group details
 const GroupDetailsLayout = lazy(() => import("../screens/groups/groupDetails"));

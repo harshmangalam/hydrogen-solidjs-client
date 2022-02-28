@@ -84,7 +84,7 @@ export default function useCreatePost() {
         content: "",
         audience: "",
         specificAudienceFriends: [],
-        images: [],
+        image: "",
         feeling: "",
         gif: "",
         checkIn: "",

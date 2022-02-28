@@ -1,17 +1,19 @@
-import { createResource, Match, Switch } from "solid-js";
-import PostCard from "../../components/posts/PostCard";
-import PostCardSkeleton from "../../components/posts/PostCardSkeleton";
+import { createResource, Match, Show, Switch } from "solid-js";
+import GroupPostCardSkeleton from "../../components/groups/GroupPostCardSkeleton";
+import GroupPostCard from "../../components/groups/groupPostCard";
 import Error from "../../components/shared/Error";
-import { fetchPosts } from "../../services/post.service";
-export default function CreatedGroupPosts() {
-  const [response] = createResource(fetchPosts);
+import Empty from "../../components/shared/Empty";
+import { fetchMyCreatedGroupPosts } from "../../services/group.service";
+export default function GroupsFeed() {
+  const [response] = createResource(fetchMyCreatedGroupPosts);
+
   return (
     <div>
       <div className="w-full xl:w-3/5 py-6 mx-auto">
         {/* posts */}
         <Switch>
           <Match when={response.loading}>
-            <PostCardSkeleton />
+            <GroupPostCardSkeleton />
           </Match>
           <Match when={response.error}>
             <Error
@@ -21,25 +23,25 @@ export default function CreatedGroupPosts() {
             />
           </Match>
 
-          <Match when={response().data.data.posts.length === 0}>
-            <Error
-              error="empty"
-              name="No Posts"
-              message="No any posts available"
-            />
-          </Match>
-          <Match when={response().data.data.posts}>
-            <div className="max-w-lg mx-auto">
-              <ul className="grid grid-cols-1 gap-4">
-                <For each={response().data.data.posts}>
-                  {(post) => (
-                    <li>
-                      <PostCard {...post} />
-                    </li>
-                  )}
-                </For>
-              </ul>
-            </div>
+          <Match when={response()}>
+            <Show
+              when={response().data.data.posts.length}
+              fallback={
+                <Empty title="No Feed" subTitle="Join groups to see groups feed" />
+              }
+            >
+              <div className="max-w-lg mx-auto">
+                <ul className="grid grid-cols-1 gap-4">
+                  <For each={response().data.data.posts}>
+                    {(post) => (
+                      <li>
+                        <GroupPostCard {...post} />
+                      </li>
+                    )}
+                  </For>
+                </ul>
+              </div>
+            </Show>
           </Match>
         </Switch>
       </div>
