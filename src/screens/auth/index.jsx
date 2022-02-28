@@ -10,14 +10,14 @@ export default function AuthLayout() {
           <DarkLightMode />
         </nav>
       </header>
-      <div className="py-16 dark:text-white">
+      <div className="py-14 dark:text-white">
         <Outlet />
        
       </div>
 
-      <header className="bg-white fixed w-full bottom-0 z-50 dark:bg-gray-800 dark:border-gray-700 dark:text-white py-2">
+      <footer className="bg-white fixed w-full bottom-0 z-50 dark:bg-gray-800 dark:border-gray-700 dark:text-white py-2">
        <p className="text-center">Hydrogen &copy; {new Date().getFullYear()}</p>
-      </header>
+      </footer>
     </div>
   );
 }
