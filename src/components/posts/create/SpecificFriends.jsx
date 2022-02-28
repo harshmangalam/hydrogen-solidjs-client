@@ -1,8 +1,8 @@
 import { createSignal, Show } from "solid-js";
 import useSearchFriends from "../../../hooks/useSearchFriends";
-import SearchFriends from "./friends/SearchFriends";
-import SelectedFriends from "./friends/SelectedFriends";
-import FriendsList from "./friends/FriendsList";
+import SearchFriends from "../../shared/friend/SearchFriends";
+import SelectedFriends from "../../shared/friend/SelectedFriends";
+import FriendsList from "../../shared/friend/FriendsList";
 import Modal from "../../ui/feedback/Modal";
 export default function SpecificFriends(props) {
   const [open, setOpen] = createSignal(false);

@@ -1,4 +1,4 @@
-import { BsFilePost, BsImages } from "solid-icons/bs";
+import { BsImages } from "solid-icons/bs";
 import CheckIn from "../../components/posts/create/CheckIn";
 import Feelings from "../../components/posts/create/Feelings";
 import ImageUpload from "../../components/shared/ImageUpload";
@@ -23,18 +23,7 @@ export default function Create() {
   } = useCreatePost();
   return (
     <div className="">
-      <div className="my-4 flex flex-col items-center space-y-2 max-w-md mx-auto">
-        <div className="w-16 h-16 bg-blue-500 rounded-full grid place-items-center">
-          <BsFilePost className="text-4xl text-white" />
-        </div>
-        <h5 className="text-2xl font-medium ">Create Post</h5>
-      </div>
       <section className="max-w-md mx-auto bg-white dark:bg-gray-800  px-4 py-4  rounded-md shadow">
-        {form.serverError && (
-          <p className="py-2 bg-red-100 dark:text-red-300 dark:bg-gray-700 text-red-500 rounded-md px-4">
-            {form.serverError}
-          </p>
-        )}
         <form onSubmit={[handleSubmit]} className="flex flex-col space-y-4">
           <div className="flex flex-col space-y-2">
             <label htmlFor="name">Post content</label>

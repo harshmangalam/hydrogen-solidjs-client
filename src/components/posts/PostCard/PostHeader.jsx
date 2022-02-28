@@ -1,9 +1,9 @@
-import { FaSolidGlobeAsia } from "solid-icons/fa";
+import { FaSolidGlobeAsia, FaSolidUser } from "solid-icons/fa";
 import { FaSolidLock } from "solid-icons/fa";
 import { FaSolidUsers } from "solid-icons/fa";
 import { FaSolidPeopleArrows } from "solid-icons/fa";
 import { BiDotsHorizontalRounded } from "solid-icons/bi";
-import Avatar from "../../ui/dataDisplay/Avatar";
+import { Show } from "solid-js";
 export default function PostHeader(props) {
   const showPostAudience = (audience) => {
     switch (audience) {
@@ -23,7 +23,12 @@ export default function PostHeader(props) {
     <section class="flex items-center justify-between px-4 py-2 border-b dark:border-gray-700">
       <div class="flex items-center space-x-2">
         <div class="flex-none">
-          <Avatar alt="Remy Sharp" src={props.author.profileImage} />
+          <Show
+            when={props.author.profileImage}
+            fallback={<FaSolidUser className="text-2xl" />}
+          >
+            <img src={props.author.profileImage} alt={props.author.firstName} />
+          </Show>
         </div>
 
         <div>

@@ -16,8 +16,6 @@ export default function useCreatePost() {
       checkIn: "",
       taggedFriends: [],
     },
-
-    serverError: "",
   });
 
   const handleInput = (event) => {
@@ -31,32 +29,46 @@ export default function useCreatePost() {
   };
 
   const addSpecificFriend = (user) => {
-    setForm("fields", (produce) => {
-      produce.specificAudienceFriends.push(user);
-    });
+    setForm(
+      "fields",
+      "specificAudienceFriends",
+      produce((friends) => {
+        friends.push(user);
+      })
+    );
   };
 
   const removeSpecificFriend = (userId) => {
-    setForm("fields", (produce) => {
-      const index = produce.specificAudienceFriends.findIndex(
-        (u) => u.id === userId
-      );
-      if (index > -1) {
-        produce.specificAudienceFriends.splice(index, 1);
-      }
-    });
+    setForm(
+      "fields",
+      "specificAudienceFriends",
+      produce((friends) => {
+        const index = friends.findIndex((u) => u.id === userId);
+        if (index > -1) {
+          friends.splice(index, 1);
+        }
+      })
+    );
   };
 
   const addTaggedFriend = (user) => {
-    setForm("fields", (produce) => {
-      produce.taggedFriends.push(user);
-    });
+    setForm(
+      "fields",
+      "taggedFriends",
+      produce((friends) => {
+        friends.push(user);
+      })
+    );
   };
   const removeTaggedFriend = (userId) => {
-    setForm("fields", (produce) => {
-      const index = produce.taggedFriends.findIndex((u) => u.id === userId);
-      produce.taggedFriends.splice(index, 1);
-    });
+    setForm(
+      "fields",
+      "taggedFriends",
+      produce((friends) => {
+        const index = friends.findIndex((u) => u.id === userId);
+        friends.splice(index, 1);
+      })
+    );
   };
 
   const addImage = (image) => {
@@ -79,7 +91,15 @@ export default function useCreatePost() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await createPost(form.fields);
+      const specificAudienceFriends = form.fields.specificAudienceFriends.map(
+        (f) => f.id
+      );
+      const taggedFriends = form.fields.taggedFriends.map((f) => f.id);
+      const { data } = await createPost({
+        ...form.fields,
+        specificAudienceFriends,
+        taggedFriends,
+      });
       setForm("fields", {
         content: "",
         audience: "",
@@ -94,7 +114,7 @@ export default function useCreatePost() {
       navigate("/");
     } catch (error) {
       console.log(error);
-      setForm("serverError", error.response.data.message);
+      addSnackbar({ type: "error", message: error.response.data.message });
     }
   };
 

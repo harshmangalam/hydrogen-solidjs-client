@@ -3,9 +3,9 @@ import { FaSolidUserTag } from "solid-icons/fa";
 import { createSignal, Show } from "solid-js";
 import useSearchFriends from "../../../hooks/useSearchFriends";
 import Modal from "../../ui/feedback/Modal";
-import FriendsList from "./friends/FriendsList";
-import SearchFriends from "./friends/SearchFriends";
-import SelectedFriends from "./friends/SelectedFriends";
+import FriendsList from "../../shared/friend/FriendsList";
+import SearchFriends from "../../shared/friend/SearchFriends";
+import SelectedFriends from "../../shared/friend/SelectedFriends";
 export default function TagPeople(props) {
   const [open, setOpen] = createSignal(false);
 
