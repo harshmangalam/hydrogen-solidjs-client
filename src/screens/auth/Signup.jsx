@@ -1,3 +1,4 @@
+import { Link } from "solid-app-router";
 import Logo from "../../components/shared/Logo";
 import Radio from "../../components/ui/form/Radio";
 import useSignup from "../../hooks/useSignup";
@@ -112,6 +113,13 @@ export default function Login() {
             </button>
           </div>
         </form>
+        <div className="mt-4">
+          <Link href="/auth/login">
+            <button className="w-full rounded-md py-1 px-4 flex justify-center hover:bg-gray-200 dark:hover:bg-gray-700">
+              Not have an account? Login
+            </button>
+          </Link>
+        </div>
       </section>
     </div>
   );

@@ -1,3 +1,4 @@
+import { Link } from "solid-app-router";
 import { FaSolidUser } from "solid-icons/fa";
 import useLogin from "../../hooks/useLogin";
 
@@ -5,10 +6,7 @@ export default function Login() {
   const { form, handleInput, handleLogin } = useLogin();
   return (
     <div className="">
-      <div className="my-4 flex flex-col items-center space-y-2 max-w-md mx-auto">
-        <div className="w-16 h-16 bg-blue-500 rounded-full grid place-items-center">
-          <FaSolidUser className="text-4xl text-white" />
-        </div>
+      <div className="my-4 flex flex-col items-center  max-w-md mx-auto">
         <h5 className="text-2xl font-medium ">Log In</h5>
       </div>
       <section className="max-w-md mx-auto bg-white dark:bg-gray-800  px-4 py-8  rounded-lg shadow">
@@ -49,6 +47,14 @@ export default function Login() {
             </button>
           </div>
         </form>
+
+        <div className="mt-4">
+          <Link href="/auth/signup">
+            <button className="w-full rounded-md py-1 px-4 flex justify-center hover:bg-gray-200 dark:hover:bg-gray-700">
+              Already have an account? Signup
+            </button>
+          </Link>
+        </div>
       </section>
     </div>
   );
