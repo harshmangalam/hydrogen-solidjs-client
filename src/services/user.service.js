@@ -8,4 +8,12 @@ async function fetchUserDetails(userId) {
   return await axios.get(`/users/${userId}`);
 }
 
-export { uploadProfilePic, fetchUserDetails };
+async function fetchUserPosts(userId) {
+  return await axios.get(`/users/${userId}/posts`);
+}
+
+async function fetchUserFriends(userId) {
+  return await axios.get(`/users/${userId}/friends`);
+}
+
+export { uploadProfilePic, fetchUserDetails, fetchUserFriends, fetchUserPosts };
