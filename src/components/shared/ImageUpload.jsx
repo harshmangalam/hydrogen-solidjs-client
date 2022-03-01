@@ -51,6 +51,7 @@ export default function ImageUpload(props) {
         onClose={() => setOpenModal(false)}
         open={openModal()}
         title="Upload Image"
+        onDone={props.onDone}
       >
         <div className="px-4">
           <div className="py-4 flex flex-col space-y-4">

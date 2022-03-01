@@ -1,22 +1,26 @@
 import { createStore } from "solid-js/store";
+import axios from "axios";
+import { useUIDispatch } from "../../context/ui";
 import { useNavigate } from "solid-app-router";
-import { useAuthDispatch } from "../context/auth";
-import { useUIDispatch } from "../context/ui";
-import { login } from "../services/auth.service";
-export default function useLogin() {
+export default function useSignup() {
   const [form, setForm] = createStore({
     fields: {
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
+      gender: "",
     },
     errors: {
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
+      gender: "",
     },
     hasError: false,
   });
 
-  const { setCurrentUser } = useAuthDispatch();
   const { addSnackbar } = useUIDispatch();
   const navigate = useNavigate();
 
@@ -26,8 +30,18 @@ export default function useLogin() {
     setForm("fields", [ev.currentTarget.name], ev.currentTarget.value);
   };
 
-  const handleLogin = async (ev) => {
+  const handleRadioChange = (ev) => {
+    setForm("hasError", false);
+    setForm("errors", "gender", "");
+    setForm("fields", "gender", ev.target.value);
+  };
+
+  const handleSignup = async (ev) => {
     ev.preventDefault();
+    if (form.fields.firstName.trim().length === 0) {
+      setForm("errors", "firstName", "First name must not be empty");
+      setForm("hasError", true);
+    }
     if (form.fields.email.trim().length === 0) {
       setForm("errors", "email", "Email must not be empty");
       setForm("hasError", true);
@@ -37,21 +51,27 @@ export default function useLogin() {
       setForm("hasError", true);
     }
 
+    if (form.fields.gender.trim().length === 0) {
+      setForm("errors", "gender", "Gender must not be empty");
+      setForm("hasError", true);
+    }
+
     if (form.hasError) {
       return;
     }
     try {
-      const { data } = await login(form.fields);
-      setCurrentUser(data.data.user);
+      const { data } = await axios.post("/auth/signup", form.fields);
       addSnackbar({ type: "success", message: data.message });
-      navigate("/", { replace: true });
+      navigate("/auth/login");
     } catch (error) {
       addSnackbar({ type: "error", message: error.response.data.message });
+      
     }
   };
   return {
     form,
-    handleLogin,
+    handleSignup,
     handleInput,
+    handleRadioChange,
   };
 }

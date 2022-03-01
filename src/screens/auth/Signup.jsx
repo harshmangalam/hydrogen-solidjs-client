@@ -1,7 +1,6 @@
 import { Link } from "solid-app-router";
-import Logo from "../../components/shared/Logo";
 import Radio from "../../components/ui/form/Radio";
-import useSignup from "../../hooks/useSignup";
+import useSignup from "../../hooks/auth/useSignup";
 
 export default function Login() {
   const { form, handleInput, handleSignup, handleRadioChange } = useSignup();

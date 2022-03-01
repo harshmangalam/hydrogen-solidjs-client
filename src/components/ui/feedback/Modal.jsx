@@ -10,6 +10,13 @@ export default function Modal(props) {
     }
   }
 
+  function handleComplete() {
+    if (props.onDone) {
+      props.onDone();
+    }
+    props.onClose();
+  }
+
   return (
     <Show when={props.open}>
       <Portal>
@@ -47,7 +54,7 @@ export default function Modal(props) {
             <div className="py-2 flex items-center justify-end px-4">
               <button
                 className="py-2 px-4 bg-blue-500 dark:bg-blue-700 text-white rounded-md"
-                onClick={[props.onClose]}
+                onClick={[handleComplete]}
               >
                 Done
               </button>

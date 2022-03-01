@@ -5,7 +5,7 @@ import { Routes, Route } from "solid-app-router";
 const AuthLayout = lazy(() => import("../screens/auth"));
 const Login = lazy(() => import("../screens/auth/Login"));
 const Signup = lazy(() => import("../screens/auth/Signup"));
-const ProfilePic = lazy(() => import("../screens/auth/ProfilePic"));
+
 
 const MainLayout = lazy(() => import("../screens/MainLayout"));
 const Home = lazy(() => import("../screens/Home"));
@@ -156,7 +156,7 @@ export default function AppRouter() {
       <Route path="/auth" element={<AuthLayout />}>
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
-        <Route path="upload_profile_pic" element={<ProfilePic />} />
+       
       </Route>
     </Routes>
   );

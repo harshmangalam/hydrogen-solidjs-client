@@ -1,6 +1,5 @@
 import { Link } from "solid-app-router";
-import { FaSolidUser } from "solid-icons/fa";
-import useLogin from "../../hooks/useLogin";
+import useLogin from "../../hooks/auth/useLogin";
 
 export default function Login() {
   const { form, handleInput, handleLogin } = useLogin();

@@ -1,20 +1,81 @@
 import { NavLink, Outlet, useParams } from "solid-app-router";
-import { For } from "solid-js";
-import AddCoverPhoto from "../../components/profile/AddCoverPhoto";
-import AddProfilePhoto from "../../components/profile/AddProfilePhoto";
+import { createResource, For, Match, Show, Switch } from "solid-js";
+import useUploadProfilePic from "../../hooks/profile/useUploadProfilePic";
+import ImageUpload from "../../components/shared/ImageUpload";
+import { FaSolidCamera } from "solid-icons/fa";
 import ProfileInfo from "../../components/profile/ProfileInfo";
+import coverImage from "../../assets/cover.jpg";
+import profileImage from "../../assets/profile.svg";
+import { fetchUserDetails } from "../../services/user.service";
 
 export default function Profile() {
   const { userId } = useParams();
+  const [resource,{refetch}] = createResource(userId, fetchUserDetails);
+  const {
+    addCoverImage,
+    addProfileImage,
+    form,
+    handleUploadProfilePic,
+    removeCoverImage,
+    removeProfileImage,
+  } = useUploadProfilePic(refetch);
+
   return (
     <div>
       <div className="h-[80vh] bg-white shadow dark:bg-gray-800 flex flex-col justify-between">
-        <div className="bg-gray-100 dark:bg-gray-900 h-3/6 md:h-4/6 rounded-b-lg w-full max-w-4xl mx-auto relative">
-          <img src="https://scontent-ccu1-1.xx.fbcdn.net/v/t39.30808-6/p640x640/273486721_138322552001823_3316399084013311694_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=e3f864&_nc_ohc=ZgMbwJx8DNsAX91hLKK&_nc_ht=scontent-ccu1-1.xx&oh=00_AT-YU-ufOLek9ZakPEuYdnt6Kk5SgbHFkTBNwJAIDk8xQQ&oe=620B0256" className="absolute inset-0 w-full h-full aspect-video object-cover" />
-          <AddProfilePhoto />
-          <ProfileInfo />
-          <AddCoverPhoto />
-        </div>
+        <Switch>
+          <Match when={resource()}>
+            <div className="bg-gray-100 dark:bg-gray-900 h-3/6 md:h-4/6  rounded-b-lg w-full max-w-3xl mx-auto relative">
+              <img
+                src={resource().data.data.user.coverImage || coverImage}
+                className="w-full h-full aspect-auto object-cover rounded-b-md"
+              />
+
+              <div className="absolute -bottom-20 md:-bottom-28 left-1/2 md:left-4 -translate-x-1/2 md:-translate-x-0">
+                <div className="relative">
+                  <img
+                    src={resource().data.data.user.profileImage || profileImage}
+                    className="w-40 h-40 rounded-full aspect-auto object-cover"
+                  />
+
+                  <div className="absolute bottom-4 right-0">
+                    <ImageUpload
+                      btnClass="w-10 h-10 rounded-full grid place-items-center bg-blue-500 hover:bg-blue-600"
+                      image={form.profileImage}
+                      addImage={addProfileImage}
+                      removeImage={removeProfileImage}
+                      onDone={handleUploadProfilePic}
+                    >
+                      <FaSolidCamera className="text-xl text-white" />
+                    </ImageUpload>
+                  </div>
+                </div>
+              </div>
+              <div className="absolute right-0 bottom-0 p-3">
+                <ImageUpload
+                  btnClass="py-2 px-4 rounded-lg flex items-center space-x-2 bg-blue-500 text-white font-medium hover:bg-blue-600"
+                  image={form.coverImage}
+                  addImage={addCoverImage}
+                  removeImage={removeCoverImage}
+                  onDone={handleUploadProfilePic}
+                >
+                  <FaSolidCamera />
+                  <span className="hidden md:block">Add Cover Photo</span>
+                </ImageUpload>
+              </div>
+
+              <ProfileInfo
+                friendsCount={resource().data.data.user._count.myFriends}
+                friends={resource().data.data.user.myFriends}
+                name={
+                  resource().data.data.user.firstName +
+                  " " +
+                  resource().data.data.user.lastName
+                }
+              />
+            </div>
+          </Match>
+        </Switch>
 
         <div className="max-w-4xl w-full mx-auto py-3">
           <hr className="dark:border-gray-700 border-gray-300" />
