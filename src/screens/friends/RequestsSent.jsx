@@ -36,7 +36,7 @@ export default function RequestsReceived() {
           when={response().data.data.users.length !== 0}
         >
           <h4 className="text-xl font-medium">Requests received</h4>
-          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 mt-4">
+          <div className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-6 mt-4">
             <For each={response().data.data.users}>
               {(user) => (
                 <FriendCard {...user}>
