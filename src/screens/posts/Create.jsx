@@ -58,8 +58,8 @@ export default function Create() {
               <div>
                 <SpecificFriends
                   friends={form.fields.specificAudienceFriends}
-                  addSpecificFriend={addSpecificFriend}
-                  removeSpecificFriend={removeSpecificFriend}
+                  addFriend={addSpecificFriend}
+                  removeFriend={removeSpecificFriend}
                 />
               </div>
             </Show>
@@ -68,8 +68,8 @@ export default function Create() {
           <div className="flex space-x-4 rounded-md border border-gray-400 dark:border-gray-600 px-2 py-2">
             <TagPeople
               friends={form.fields.taggedFriends}
-              addTaggedFriend={addTaggedFriend}
-              removeTaggedFriend={removeTaggedFriend}
+              addFriend={addTaggedFriend}
+              removeFriend={removeTaggedFriend}
             />
             <ImageUpload
               image={form.fields.image}

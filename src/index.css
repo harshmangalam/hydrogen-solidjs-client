@@ -12,7 +12,7 @@
   }
 
   body::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 dark:bg-gray-700 rounded-xl;
+    @apply bg-blue-300 dark:bg-blue-700 rounded-xl;
   }
 
   .custom-scrollbar::-webkit-scrollbar {
@@ -25,5 +25,17 @@
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
       @apply bg-gray-200 dark:bg-gray-800 rounded-xl
+  }
+
+  .modal-scrollbar::-webkit-scrollbar {
+    @apply w-2
+}
+
+  .modal-scrollbar::-webkit-scrollbar-track {
+    @apply bg-white dark:bg-gray-800
+
+  }
+  .modal-scrollbar::-webkit-scrollbar-thumb {
+      @apply bg-gray-300 dark:bg-gray-700 rounded-xl
   }
 }

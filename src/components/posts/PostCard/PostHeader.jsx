@@ -3,7 +3,7 @@ import { FaSolidLock } from "solid-icons/fa";
 import { FaSolidUsers } from "solid-icons/fa";
 import { FaSolidPeopleArrows } from "solid-icons/fa";
 import { BiDotsHorizontalRounded } from "solid-icons/bi";
-import { Show } from "solid-js";
+import UserAvatar from "../../ui/dataDisplay/UserAvatar";
 export default function PostHeader(props) {
   const showPostAudience = (audience) => {
     switch (audience) {
@@ -23,12 +23,11 @@ export default function PostHeader(props) {
     <section class="flex items-center justify-between px-4 py-2 border-b dark:border-gray-700">
       <div class="flex items-center space-x-2">
         <div class="flex-none">
-          <Show
-            when={props.author.profileImage}
-            fallback={<FaSolidUser className="text-2xl" />}
-          >
-            <img src={props.author.profileImage} alt={props.author.firstName} />
-          </Show>
+          <UserAvatar
+            src={props.author.profileImage}
+            alt={props.author.firstName}
+            className="w-12 h-12 rounded-full"
+          />
         </div>
 
         <div>

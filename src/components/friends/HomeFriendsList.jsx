@@ -1,6 +1,6 @@
 import { Link } from "solid-app-router";
 import { For, Match, Switch } from "solid-js";
-import Avatar from "../ui/dataDisplay/Avatar";
+import UserAvatar from "../ui/dataDisplay/UserAvatar";
 export default function FriendLists(props) {
   return (
     <ul className="flex flex-col space-y-2">
@@ -11,7 +11,7 @@ export default function FriendLists(props) {
               href={`/messenger/${user.id}`}
               className="flex items-center space-x-2 hover:bg-gray-300 dark:hover:bg-gray-800 py-2 px-4 rounded-lg dark:text-gray-200"
             >
-              <Avatar src={user.profileImage} alt={user.firstName} />
+              <UserAvatar src={user.profileImage} alt={user.firstName} className="rounded-full w-10 h-10" />
               <div className="absolute bottom-0 -right-1">
                 <Switch>
                   <Match when={user.status === "ACTIVE"}>

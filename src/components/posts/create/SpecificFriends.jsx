@@ -1,13 +1,8 @@
 import { createSignal, Show } from "solid-js";
-import useSearchFriends from "../../../hooks/useSearchFriends";
-import SearchFriends from "../../shared/friend/SearchFriends";
-import SelectedFriends from "../../shared/friend/SelectedFriends";
-import FriendsList from "../../shared/friend/FriendsList";
 import Modal from "../../ui/feedback/Modal";
+import FriendsInterface from "../../shared/friend";
 export default function SpecificFriends(props) {
   const [open, setOpen] = createSignal(false);
-
-  const { friendsStore, searchFriends, handleInput } = useSearchFriends();
 
   return (
     <div>
@@ -19,39 +14,14 @@ export default function SpecificFriends(props) {
         Specific Friends
       </button>
 
-      <Modal onClose={() => setOpen(false)} open={open()} title="Tag Friends">
+      <Modal onClose={() => setOpen(false)} open={open()} title="Specific Friends">
         <div className="px-4">
-          <SearchFriends
-            handleInput={handleInput}
-            searchFriends={searchFriends}
-            friendsStore={friendsStore}
+          <FriendsInterface
+            startFetch={open()}
+            friends={props.friends}
+            removeFriend={props.removeFriend}
+            addFriend={props.addFriend}
           />
-
-          <div className="mt-4 flex flex-col space-y-2">
-            <h6 className="text-gray-500 dark:text-gray-200 font-medium text-sm">
-              Friends who will see the post
-            </h6>
-            <SelectedFriends
-              friends={props.friends}
-              removeFriend={props.removeSpecificFriend}
-            />
-          </div>
-
-          <div className="mt-4 flex flex-col space-y-2">
-            <h6 className="text-gray-500 dark:text-gray-200 text-sm font-medium">
-              <Show
-                when={friendsStore.search.trim().length > 0}
-                fallback="Friends"
-              >
-                Search
-              </Show>
-            </h6>
-
-            <FriendsList
-              friendsStore={friendsStore}
-              addFriend={props.addSpecificFriend}
-            />
-          </div>
         </div>
       </Modal>
     </div>

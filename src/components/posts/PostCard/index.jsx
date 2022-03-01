@@ -1,5 +1,4 @@
 import { Show } from "solid-js";
-import PostContent from "./PostContent";
 import PostFooter from "./PostFooter";
 import PostHeader from "./PostHeader";
 import PostReaction from "./PostReaction";
@@ -20,7 +19,13 @@ export default function PostCard(props) {
         />
       </Show>
       <PostReaction />
-      <PostContent content={props.content} />
+      <Show when={props.content}>
+        <section class="px-4 py-4 flex flex-col space-y-2">
+          <p class="text-[.9375rem] text-gray-700 dark:text-gray-200">
+            {props.content}
+          </p>
+        </section>
+      </Show>
       <div className="divide-y dark:divide-gray-700 space-y-4">
         <div></div>
         <PostFooter />

@@ -1,24 +1,29 @@
 import { IoClose } from "solid-icons/io";
+import UserAvatar from "../../ui/dataDisplay/UserAvatar";
+import IconButton from "../../ui/inputs/IconButton";
 
 export default function SelectedFriends(props) {
   return (
-    <div className="border w-full rounded-md p-4 dark:border-gray-600 dark:bg-gray-900 bg-gray-100">
-      <ul className="flex items-center flex-wrap justify-center gap-2">
-        <For each={props.friends}>
-          {(user) => (
-            <li className="flex items-center space-x-2 bg-blue-100 rounded-md px-2 py-1 text-blue-500 font-medium dark:bg-gray-700">
-              <p>{user.firstName}</p>
-              <button
-                type="button"
-                className="rounded-full hover:bg-blue-200 dark:hover:bg-gray-600 w-5 h-5 grid place-items-center"
-                onClick={[props.removeFriend, user.id]}
-              >
-                <IoClose />
-              </button>
-            </li>
-          )}
-        </For>
-      </ul>
-    </div>
+    <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+      <For each={props.friends}>
+        {(user) => (
+          <li className="flex items-center  justify-between  px-2 py-2 text-blue-500 font-medium border dark:border-gray-600 rounded-full">
+            <div className="flex items-center space-x-2">
+              <UserAvatar
+                src={user.profileImage}
+                className="w-6 h-6 rounded-full"
+              />
+              <p className="text-sm">{user.firstName}</p>
+            </div>
+            <IconButton
+              className="w-6 h-6 text-sm"
+              onClick={() => props.removeFriend(user.id)}
+            >
+              <IoClose />
+            </IconButton>
+          </li>
+        )}
+      </For>
+    </ul>
   );
 }

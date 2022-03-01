@@ -12,8 +12,13 @@ async function fetchUserPosts(userId) {
   return await axios.get(`/users/${userId}/posts`);
 }
 
-async function fetchUserFriends(userId) {
-  return await axios.get(`/users/${userId}/friends`);
+async function fetchUserAllFriends(userId) {
+  return await axios.get(`/users/${userId}/all_friends`);
 }
 
-export { uploadProfilePic, fetchUserDetails, fetchUserFriends, fetchUserPosts };
+export {
+  uploadProfilePic,
+  fetchUserDetails,
+  fetchUserAllFriends,
+  fetchUserPosts,
+};

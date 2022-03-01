@@ -1,6 +1,7 @@
 import { Portal } from "solid-js/web";
 import { Show } from "solid-js";
 import { IoClose } from "solid-icons/io";
+import IconButton from "../inputs/IconButton";
 export default function Modal(props) {
   let cardRef;
 
@@ -25,35 +26,33 @@ export default function Modal(props) {
           onClick={[handleClickOutside]}
         >
           <div
-            className="fixed top-1/2 left-1/2 max-h-96 -translate-x-1/2 -translate-y-1/2 max-w-md w-full bg-white shadow-xl rounded-md dark:bg-gray-800 dark:text-white overflow-y-scroll custom-scrollbar my-10"
+            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-xl w-full bg-white shadow-xl rounded dark:bg-gray-800 dark:text-white"
             ref={cardRef}
           >
             {/* modal header  */}
 
-            <div className="flex items-center justify-between py-2 px-4">
+            <div className="flex items-center justify-between py-4 px-4 ">
               <h6 className="font-bold text-xl flex-1 text-center">
                 {props.title}
               </h6>
 
-              <button
-                type="button"
-                className="rounded-full bg-gray-100  hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 w-6 h-6 text-xl text-black dark:text-white grid place-items-center"
-                onClick={[props.onClose]}
-              >
+              <IconButton onClick={props.onClose}>
                 <IoClose />
-              </button>
+              </IconButton>
             </div>
 
             <hr className="dark:border-gray-600" />
 
             {/* modal body  */}
 
-            <div className="py-2">{props.children}</div>
+            <div className="py-4 overflow-y-scroll max-h-96 modal-scrollbar">
+              {props.children}
+            </div>
             <hr className="dark:border-gray-600" />
 
-            <div className="py-2 flex items-center justify-end px-4">
+            <div className="py-4 flex items-center justify-end px-4">
               <button
-                className="py-2 px-4 bg-blue-500 dark:bg-blue-700 text-white rounded-md"
+                className="py-2 px-4 bg-blue-500 text-white rounded-full"
                 onClick={[handleComplete]}
               >
                 Done
