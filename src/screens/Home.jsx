@@ -3,12 +3,12 @@ import PostCard from "../components/posts/PostCard";
 import PostCardSkeleton from "../components/posts/PostCardSkeleton";
 import Error from "../components/shared/Error";
 import MenuSidebar from "../components/sidebars/MenuSidebars";
-import { fetchPosts } from "../services/post.service";
+import { fetchFeedPosts } from "../services/post.service";
 import { fetchFriends } from "../services/friends.service";
 import HomeFriendsSkeleton from "../components/friends/HomeFriendsSkeleton";
 import HomeFriendsList from "../components/friends/HomeFriendsList";
 export default function Home() {
-  const [response] = createResource(fetchPosts);
+  const [response] = createResource(fetchFeedPosts);
   const [friendsResponse] = createResource(fetchFriends);
   return (
     <div>
