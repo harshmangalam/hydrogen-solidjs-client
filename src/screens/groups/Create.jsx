@@ -74,9 +74,9 @@ export default function CreateGroup() {
           </div>
  
           <InvitePeople
-            invitedPeople={form.fields.invitedPeople}
-            addInvitedPeople={addInvitedPeople}
-            removeInvitedPeople={removeInvitedPeople}
+            friends={form.fields.invitedPeople}
+            addFriend={addInvitedPeople}
+            removeFriend={removeInvitedPeople}
           />
 
           <div>

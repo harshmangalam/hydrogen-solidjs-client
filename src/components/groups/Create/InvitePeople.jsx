@@ -1,7 +1,6 @@
-import { createSignal, Show } from "solid-js";
-import SelectedFriends from "../../shared/friend/SelectedFriends";
-import FriendsList from "../../shared/friend/FriendsList";
+import { createSignal } from "solid-js";
 import Modal from "../../ui/feedback/Modal";
+import FriendsInterface from "../../shared/friend";
 export default function InvitePeople(props) {
   const [open, setOpen] = createSignal(false);
 
@@ -17,23 +16,12 @@ export default function InvitePeople(props) {
 
       <Modal onClose={() => setOpen(false)} open={open()} title="Tag Friends">
         <div className="px-4">
-          <div className="mt-4 flex flex-col space-y-2">
-            <h6 className="text-gray-500 dark:text-gray-200 font-medium text-sm">
-              Invited people
-            </h6>
-            <SelectedFriends
-              friends={props.invitedPeople}
-              removeFriend={props.removeInvitedPeople}
-            />
-          </div>
-
-          <div className="mt-4 flex flex-col space-y-2">
-            <h6 className="text-gray-500 dark:text-gray-200 text-sm font-medium">
-              Friends
-            </h6>
-
-            <FriendsList friendsStore={[]} addFriend={props.addInvitedPeople} />
-          </div>
+          <FriendsInterface
+            startFetch={open()}
+            friends={props.friends}
+            removeFriend={props.removeFriend}
+            addFriend={props.addFriend}
+          />
         </div>
       </Modal>
     </div>
