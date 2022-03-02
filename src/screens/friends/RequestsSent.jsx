@@ -5,6 +5,7 @@ import FriendBtn from "../../components/friends/FriendBtn";
 import Error from "../../components/shared/Error";
 import { fetchFriendsRequestsSent } from "../../services/friends.service";
 import useFriendRequest from "../../hooks/useFriendRequest";
+import FriendInterface from "../../components/friends/FriendInterface";
 export default function RequestsReceived() {
   const [response, { refetch }] = createResource(fetchFriendsRequestsSent);
   const { handleCancelSentRequest, loading } = useFriendRequest(refetch);
@@ -36,7 +37,7 @@ export default function RequestsReceived() {
           when={response().data.data.users.length !== 0}
         >
           <h4 className="text-xl font-medium">Requests received</h4>
-          <div className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-6 mt-4">
+          <FriendInterface>
             <For each={response().data.data.users}>
               {(user) => (
                 <FriendCard {...user}>
@@ -51,7 +52,7 @@ export default function RequestsReceived() {
                 </FriendCard>
               )}
             </For>
-          </div>
+          </FriendInterface>
         </Match>
       </Switch>
     </div>

@@ -6,6 +6,7 @@ import FriendBtn from "../../components/friends/FriendBtn";
 import Error from "../../components/shared/Error";
 import { fetchFriendsRequestsReceived } from "../../services/friends.service";
 import useFriendRequest from "../../hooks/useFriendRequest";
+import FriendInterface from "../../components/friends/FriendInterface";
 export default function RequestsReceived() {
   const [response, { refetch }] = createResource(fetchFriendsRequestsReceived);
   const { handleAcceptFriendRequest, handleIgnoreReceivedRequest, loading } =
@@ -25,20 +26,16 @@ export default function RequestsReceived() {
           />
         </Match>
 
-        <Match
-          when={response().data.data.users.length === 0}
-        >
+        <Match when={response().data.data.users.length === 0}>
           <Error
             error="empty"
             name="No Requests Received"
             message="You have not received any friends requests"
           />
         </Match>
-        <Match
-          when={response().data.data.users.length !== 0}
-        >
+        <Match when={response().data.data.users.length !== 0}>
           <h4 className="text-xl font-medium">Requests received</h4>
-          <div className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-6 mt-4">
+          <FriendInterface>
             <For each={response().data.data.users}>
               {(user) => (
                 <FriendCard {...user}>
@@ -63,7 +60,7 @@ export default function RequestsReceived() {
                 </FriendCard>
               )}
             </For>
-          </div>
+          </FriendInterface>
         </Match>
       </Switch>
     </div>

@@ -5,6 +5,7 @@ import FriendBtn from "../../components/friends/FriendBtn";
 import { fetchFriends } from "../../services/friends.service";
 import Error from "../../components/shared/Error";
 import useFriendRequest from "../../hooks/useFriendRequest";
+import FriendInterface from "../../components/friends/FriendInterface";
 export default function MyFriends() {
   const [response, { refetch }] = createResource(fetchFriends);
   const { handleRemoveFromFriendsList, loading } = useFriendRequest(refetch);
@@ -32,7 +33,7 @@ export default function MyFriends() {
         </Match>
         <Match when={response().data.data.users.length !== 0}>
           <h4 className="text-xl font-medium">My Friends</h4>
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-4">
+          <FriendInterface>
             <For each={response().data.data.users}>
               {(user) => (
                 <FriendCard {...user}>
@@ -47,7 +48,7 @@ export default function MyFriends() {
                 </FriendCard>
               )}
             </For>
-          </div>
+          </FriendInterface>
         </Match>
       </Switch>
     </div>

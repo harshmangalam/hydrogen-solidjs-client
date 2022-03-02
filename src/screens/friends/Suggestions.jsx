@@ -2,6 +2,7 @@ import { FaSolidUserPlus } from "solid-icons/fa";
 import { createResource, For, Match, Switch } from "solid-js";
 import FriendBtn from "../../components/friends/FriendBtn";
 import FriendCard from "../../components/friends/FriendCard";
+import FriendInterface from "../../components/friends/FriendInterface";
 import useFriendRequest from "../../hooks/useFriendRequest";
 import { fetchFriendsSuggestions } from "../../services/friends.service";
 
@@ -15,7 +16,7 @@ export default function Suggestions() {
 
       <Switch>
         <Match when={response()}>
-          <div className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-6 mt-4">
+          <FriendInterface>
             <For each={response().data.data.users}>
               {(user) => (
                 <FriendCard {...user}>
@@ -30,7 +31,7 @@ export default function Suggestions() {
                 </FriendCard>
               )}
             </For>
-          </div>
+          </FriendInterface>
         </Match>
       </Switch>
     </div>
