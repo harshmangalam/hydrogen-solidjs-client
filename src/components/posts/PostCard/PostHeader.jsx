@@ -4,6 +4,11 @@ import { FaSolidUsers } from "solid-icons/fa";
 import { FaSolidPeopleArrows } from "solid-icons/fa";
 import { BiDotsHorizontalRounded } from "solid-icons/bi";
 import UserAvatar from "../../ui/dataDisplay/UserAvatar";
+import dayjs from "dayjs"
+import relativeTime from "dayjs/plugin/relativeTime"
+
+
+dayjs.extend(relativeTime)
 export default function PostHeader(props) {
   const showPostAudience = (audience) => {
     switch (audience) {
@@ -36,7 +41,7 @@ export default function PostHeader(props) {
           </h6>
           <div class="flex items-center space-x-2 ">
             <span class="text-sm text-gray-500 dark:text-gray-200">
-              {props.createdAt}
+              {dayjs(props.createdAt).fromNow()}
             </span>
             <span class="flex items-start dark:text-gray-200">&#8228;</span>
             <span className="dark:text-gray-200 text-lg">

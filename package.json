@@ -19,6 +19,7 @@
   "dependencies": {
     "@tailwindcss/forms": "^0.4.0",
     "axios": "^0.26.0",
+    "dayjs": "^1.10.8",
     "js-cookie": "^3.0.1",
     "shortid": "^2.2.16",
     "solid-app-router": "^0.2.1",

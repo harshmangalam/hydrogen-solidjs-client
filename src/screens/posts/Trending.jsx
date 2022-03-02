@@ -2,9 +2,9 @@ import { createResource, Match, Switch } from "solid-js";
 import PostCard from "../../components/posts/PostCard";
 import PostCardSkeleton from "../../components/posts/PostCardSkeleton";
 import Error from "../../components/shared/Error";
-import { fetchPosts } from "../../services/post.service";
+import { fetchTrendingPosts } from "../../services/post.service";
 export default function TrendingPosts() {
-  const [response] = createResource(fetchPosts);
+  const [response] = createResource(fetchTrendingPosts);
 
   return (
     <div>

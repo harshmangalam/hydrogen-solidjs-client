@@ -7,4 +7,22 @@ async function createPost(data) {
 async function fetchPosts() {
   return await axios.get("/posts");
 }
-export { createPost, fetchPosts };
+
+async function fetchFriendsPosts() {
+  return await axios.get("/posts/friends");
+}
+
+async function fetchTrendingPosts() {
+  return await axios.get("/posts/trending");
+}
+
+async function fetchFeedPosts() {
+  return await axios.get("/posts/feed");
+}
+export {
+  createPost,
+  fetchPosts,
+  fetchFriendsPosts,
+  fetchTrendingPosts,
+  fetchFeedPosts,
+};
