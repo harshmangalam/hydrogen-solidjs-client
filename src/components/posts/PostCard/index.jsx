@@ -4,6 +4,7 @@ import PostComment from "./PostComment";
 import PostHeader from "./PostHeader";
 import PostHeart from "./PostHeart";
 import PostReaction from "./PostReaction";
+import PostTitle from "./PostTitle";
 
 export default function PostCard(props) {
   const { handleAddRemoveLike } = usePost(props.refetch);
@@ -13,6 +14,13 @@ export default function PostCard(props) {
         author={props.author}
         createdAt={props.createdAt}
         audience={props.audience}
+      />
+      <PostTitle
+        feeling={props.feeling}
+        checkIn={props.checkIn}
+        author={props.author}
+        taggedFriends={props.taggedFriends}
+        countTaggedFriends={props._count.taggedFriends}
       />
       <Show when={props.image}>
         <img
@@ -35,6 +43,7 @@ export default function PostCard(props) {
           <div class="grid grid-cols-2 gap-0  relative">
             <PostHeart
               handleAddRemoveLike={() => handleAddRemoveLike(props.id)}
+              hasLike={props.hasLike}
             />
             <PostComment />
           </div>

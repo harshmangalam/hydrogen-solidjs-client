@@ -4,7 +4,7 @@ import PostCardSkeleton from "../../components/posts/PostCardSkeleton";
 import Error from "../../components/shared/Error";
 import { fetchFriendsPosts } from "../../services/post.service";
 export default function Friendsposts() {
-  const [response] = createResource(fetchFriendsPosts);
+  const [response, { refetch }] = createResource(fetchFriendsPosts);
 
   return (
     <div>
@@ -35,7 +35,7 @@ export default function Friendsposts() {
                 <For each={response().data.data.posts}>
                   {(post) => (
                     <li>
-                      <PostCard {...post} />
+                      <PostCard {...post} refetch={refetch} />
                     </li>
                   )}
                 </For>

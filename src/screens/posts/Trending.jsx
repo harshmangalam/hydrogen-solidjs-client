@@ -4,7 +4,7 @@ import PostCardSkeleton from "../../components/posts/PostCardSkeleton";
 import Error from "../../components/shared/Error";
 import { fetchTrendingPosts } from "../../services/post.service";
 export default function TrendingPosts() {
-  const [response] = createResource(fetchTrendingPosts);
+  const [response, { refetch }] = createResource(fetchTrendingPosts);
 
   return (
     <div>
@@ -35,7 +35,7 @@ export default function TrendingPosts() {
                 <For each={response().data.data.posts}>
                   {(post) => (
                     <li>
-                      <PostCard {...post} />
+                      <PostCard {...post} refetch={refetch} />
                     </li>
                   )}
                 </For>
