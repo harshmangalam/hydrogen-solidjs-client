@@ -19,10 +19,15 @@ async function fetchTrendingPosts() {
 async function fetchFeedPosts() {
   return await axios.get("/posts/feed");
 }
+
+async function addRemoveLike(postId) {
+  return await axios.patch(`/posts/${postId}/add_remove_like`);
+}
 export {
   createPost,
   fetchPosts,
   fetchFriendsPosts,
   fetchTrendingPosts,
   fetchFeedPosts,
+  addRemoveLike
 };

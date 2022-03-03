@@ -8,7 +8,8 @@ import { fetchFriends } from "../services/friends.service";
 import HomeFriendsSkeleton from "../components/friends/HomeFriendsSkeleton";
 import HomeFriendsList from "../components/friends/HomeFriendsList";
 export default function Home() {
-  const [response] = createResource(fetchFeedPosts);
+  const [response, { refetch: refetchFeedPosts }] =
+    createResource(fetchFeedPosts);
   const [friendsResponse] = createResource(fetchFriends);
   return (
     <div>
@@ -41,7 +42,7 @@ export default function Home() {
                 <For each={response().data.data.posts}>
                   {(post) => (
                     <li>
-                      <PostCard {...post} />
+                      <PostCard {...post} refetch={refetchFeedPosts} />
                     </li>
                   )}
                 </For>
