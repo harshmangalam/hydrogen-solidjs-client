@@ -51,12 +51,14 @@ export default function Modal(props) {
             <hr className="dark:border-gray-600" />
 
             <div className="py-4 flex items-center justify-end px-4">
-              <button
-                className="py-2 px-4 bg-blue-500 text-white rounded-full"
-                onClick={[handleComplete]}
-              >
-                Done
-              </button>
+              <Show when={typeof props.onDone !== "undefined"}>
+                <button
+                  className="py-2 px-4 bg-blue-500 text-white rounded-full"
+                  onClick={[handleComplete]}
+                >
+                  Done
+                </button>
+              </Show>
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ import { useParams } from "solid-app-router";
 
 export default function ProfilePosts() {
   const { userId } = useParams();
-  const [response] = createResource(userId, fetchUserPosts);
+  const [response,{refetch}] = createResource(userId, fetchUserPosts);
 
   return (
     <div>
@@ -39,7 +39,7 @@ export default function ProfilePosts() {
                 <For each={response().data.data.posts}>
                   {(post) => (
                     <li>
-                      <PostCard {...post} />
+                      <PostCard {...post} refetch={refetch} />
                     </li>
                   )}
                 </For>

@@ -37,19 +37,19 @@ const tabs = [
     href: "",
     end: true,
   },
-  {
-    name: "Recently Added",
-    href: "recently_added",
-    end: false,
-  },
-  {
-    name: "Birthdays",
-    href: "birthdays",
-    end: false,
-  },
-  {
-    name: "Current City",
-    href: "current_city",
-    end: false,
-  },
+  // {
+  //   name: "Recently Added",
+  //   href: "recently_added",
+  //   end: false,
+  // },
+  // {
+  //   name: "Birthdays",
+  //   href: "birthdays",
+  //   end: false,
+  // },
+  // {
+  //   name: "Current City",
+  //   href: "current_city",
+  //   end: false,
+  // },
 ];

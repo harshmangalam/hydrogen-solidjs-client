@@ -86,7 +86,9 @@ export default function Profile() {
                 friends={resource().data.data.user.myFriends}
                 firstName={resource().data.data.user.firstName}
                 lastName={resource().data.data.user.lastName}
+                userId={resource().data.data.user.id}
               />
+
               <div className="flex justify-end">
                 <button
                   className="bg-rose-500 rounded-full px-4 py-2 text-white m-2 hover:bg-rose-600 font-bold disabled:bg-rose-200 dark:disabled:bg-rose-400"
@@ -135,11 +137,7 @@ const tabs = [
     href: "",
     end: true,
   },
-  {
-    name: "About",
-    href: "about",
-    end: false,
-  },
+
   {
     name: "Friends",
     href: "friends",
