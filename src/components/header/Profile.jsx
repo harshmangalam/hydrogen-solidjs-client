@@ -1,9 +1,14 @@
-import { BiSolidUser } from "solid-icons/bi";
-
+import { useAuthState } from "../../context/auth";
+import UserAvatar from "../ui/dataDisplay/UserAvatar";
 export default function Profile() {
+  const { currentUser } = useAuthState();
   return (
-    <button className="p-3 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600  text-black dark:text-white ">
-      <BiSolidUser className="text-xl" />
+    <button>
+      <UserAvatar
+        src={currentUser.profileImage}
+        className="w-10 h-10 rounded-full"
+        alt={currentUser.firstName}
+      />
     </button>
   );
 }

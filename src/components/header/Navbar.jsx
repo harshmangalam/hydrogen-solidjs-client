@@ -47,8 +47,8 @@ export default function Navbar() {
           <Create />
           <Notification />
           <Messenger />
-          <Profile />
           <DarkLightMode />
+          <Profile />
         </div>
       </nav>
     </header>

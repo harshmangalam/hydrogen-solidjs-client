@@ -12,4 +12,8 @@ async function login(data) {
   return await axios.post("/auth/login", data);
 }
 
-export { fetchCurrentUser, signup, login };
+async function logout() {
+  return await axios.patch("/auth/logout");
+}
+
+export { fetchCurrentUser, signup, login,logout };
