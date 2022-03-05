@@ -19,10 +19,10 @@ export default function Notification() {
 
       <Show when={open()}>
         <DropdownMenu onClose={() => setOpen(false)} title="Notifications">
-          <ul className="flex flex-col space-y-4">
+          <ul className="flex flex-col space-y-2 my-4">
             <For each={[...Array(10).keys()]}>
               {(notif) => (
-                <li className="flex space-x-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer px-2 py-2">
+                <li className="flex space-x-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer px-2 py-2">
                   <UserAvatar
                     src="https://images.unsplash.com/photo-1642442929134-7acaa8796c2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
                     alt="Harsh mangalam"
