@@ -1,5 +1,3 @@
-import { Show } from "solid-js";
-import { RiSystemLoader4Fill } from 'solid-icons/ri'
 export default function FriendBtn(props) {
   return (
     <button
@@ -11,16 +9,9 @@ export default function FriendBtn(props) {
           props.color === "success",
         "text-red-500 bg-red-100 hover:bg-red-200": props.color === "danger",
       }}
-      disabled={props.isLoading}
       onClick={[props.onClick]}
     >
-      <Show
-        when={!props.isLoading}
-        fallback={<RiSystemLoader4Fill className="text-xl animate-spin" />}
-      >
-        {props.children}
-        <span>{props.text}</span>
-      </Show>
+      <span>{props.text}</span>
     </button>
   );
 }

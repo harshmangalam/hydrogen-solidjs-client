@@ -51,7 +51,7 @@ export default function RequestsReceived() {
                     <FriendBtn
                       color="danger"
                       text="Ignore"
-                      isLoading={loading()}
+                     
                       onClick={() => handleIgnoreReceivedRequest(user.id)}
                     >
                       <FaSolidUserTimes size={18} />

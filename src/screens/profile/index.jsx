@@ -13,11 +13,9 @@ export default function Profile() {
   const params = useParams();
   const { currentUser } = useAuthState();
   const [resource, { refetch }] = createResource(
-    params.userId,
+    () => params.userId,
     fetchUserDetails
   );
-
-  const { logoutUser, loading } = useLogout();
 
   const {
     addCoverImage,
@@ -88,16 +86,6 @@ export default function Profile() {
                 lastName={resource().data.data.user.lastName}
                 userId={resource().data.data.user.id}
               />
-
-              <div className="flex justify-end">
-                <button
-                  className="bg-rose-500 rounded-full px-4 py-2 text-white m-2 hover:bg-rose-600 font-bold disabled:bg-rose-200 dark:disabled:bg-rose-400"
-                  onClick={[logoutUser]}
-                  disabled={loading}
-                >
-                  Logout
-                </button>
-              </div>
             </div>
           </Match>
         </Switch>
