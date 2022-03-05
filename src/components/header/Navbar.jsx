@@ -15,8 +15,8 @@ import { For } from "solid-js";
 import DarkLightMode from "../shared/DarkLightMode";
 export default function Navbar() {
   return (
-    <header className="bg-white shadow border-b fixed w-full top-0 z-10 dark:bg-gray-800 dark:border-gray-700 text-white">
-      <nav className="px-2 md:px-4 h-14 flex items-center justify-between">
+    <header className="bg-white shadow fixed w-full top-0 z-10 dark:bg-gray-800  text-white">
+      <nav className="px-2 md:px-4 h-14 flex items-center justify-between relative">
         {/* left section  */}
         <div className="flex items-center space-x-1 md:space-x-2">
           <Logo />
