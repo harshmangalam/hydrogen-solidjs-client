@@ -4,23 +4,42 @@ import Cookies from "js-cookie";
 import { useLocation, useNavigate } from "solid-app-router";
 import { fetchCurrentUser } from "../services/auth.service";
 
+import { Manager } from "socket.io-client";
+
 const AuthStateContext = createContext();
 const AuthDispatchContext = createContext();
-
 const initialState = {
   isAuthenticated: false,
   currentUser: null,
+  defaultSocketNs: null,
+  socketManager: null,
 };
 export default function AuthProvider(props) {
   const [store, setStore] = createStore(initialState);
   const navigate = useNavigate();
   const location = useLocation();
 
+  const initSocketManager = () => {
+    const manager = new Manager(import.meta.env.VITE_ENDPOINT);
+    const socket = manager.socket("/", {
+      auth: {
+        userId: store.currentUser.id,
+      },
+    });
+
+    socket.on("connect_error", (err) => {
+      console.log(err.message);
+    });
+
+    setStore("defaultSocketNs", socket);
+    setStore("socketManager", manager);
+  };
   onMount(async () => {
     try {
       const { data } = await fetchCurrentUser();
       setStore("isAuthenticated", true);
       setStore("currentUser", data.data.user);
+      initSocketManager();
     } catch (error) {
       Cookies.remove("token");
       if (!location.pathname.includes("/auth")) {
@@ -43,6 +62,7 @@ export default function AuthProvider(props) {
         value={{
           setCurrentUser,
           removeCurrentUser,
+          initSocketManager,
         }}
       >
         {props.children}

@@ -16,7 +16,7 @@ export default function useLogin() {
     hasError: false,
   });
 
-  const { setCurrentUser } = useAuthDispatch();
+  const { setCurrentUser, initSocketManager } = useAuthDispatch();
   const { addSnackbar } = useUIDispatch();
   const navigate = useNavigate();
 
@@ -44,6 +44,7 @@ export default function useLogin() {
       const { data } = await login(form.fields);
       setCurrentUser(data.data.user);
       addSnackbar({ type: "success", message: data.message });
+      initSocketManager();
       navigate("/", { replace: true });
     } catch (error) {
       addSnackbar({ type: "error", message: error.response.data.message });

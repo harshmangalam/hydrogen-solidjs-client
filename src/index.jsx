@@ -2,15 +2,16 @@ import { render } from "solid-js/web";
 import { Router } from "solid-app-router";
 import "./index.css";
 import App from "./App";
-import UIProvider from "./context/ui";
-import AuthProvider from "./context/auth";
+import { AuthProvider, UIProvider, NotificationProvider } from "./context";
 
 render(
   () => (
     <Router>
       <UIProvider>
         <AuthProvider>
-          <App />
+          <NotificationProvider>
+            <App />
+          </NotificationProvider>
         </AuthProvider>
       </UIProvider>
     </Router>
