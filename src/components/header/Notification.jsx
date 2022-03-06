@@ -8,12 +8,16 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { Link } from "solid-app-router";
 import { FaSolidUserFriends, FaSolidUsers } from "solid-icons/fa";
 import { BsFilePost } from "solid-icons/bs";
-import { useNotificationState } from "../../context/notifications";
+import {
+  useNotificationDispatch,
+  useNotificationState,
+} from "../../context/notifications";
 
 dayjs.extend(relativeTime);
 export default function Notification() {
   const [open, setOpen] = createSignal(false);
   const notificationState = useNotificationState();
+  const { removeAllNotifications } = useNotificationDispatch();
 
   function toggle() {
     setOpen((o) => !o);
@@ -33,6 +37,21 @@ export default function Notification() {
 
       <Show when={open()}>
         <DropdownMenu onClose={() => setOpen(false)} title="Notifications">
+          <Show when={notificationState?.count}>
+            <div className="my-2 flex space-x-2">
+              <button
+                className="rounded-full bg-gray-200 dark:bg-gray-700 dark:text-white py-1 px-4 shadow hover:bg-gray-300 dark:hover:bg-gray-600"
+                onClick={[removeAllNotifications]}
+              >
+                Clear
+              </button>
+              <Link href="/notifications">
+                <button className="rounded-full bg-gray-200 dark:bg-gray-700 dark:text-white py-1 px-4 shadow hover:bg-blue-200 dark:hover:bg-blue-500">
+                  See all
+                </button>
+              </Link>
+            </div>
+          </Show>
           <ul className="flex flex-col space-y-2 my-4">
             <For each={notificationState?.notifications}>
               {(notif) => (

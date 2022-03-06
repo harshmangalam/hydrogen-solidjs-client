@@ -1,6 +1,9 @@
 import { createContext, createEffect, onMount, useContext } from "solid-js";
 import { createStore, produce } from "solid-js/store";
-import { fetchNotifications } from "../services/notifications.service";
+import {
+  clearNotifications,
+  fetchNotifications,
+} from "../services/notifications.service";
 import { useAuthState } from "./auth";
 
 const StateContext = createContext();
@@ -47,34 +50,20 @@ export default function NotificationProvider(props) {
     );
   }
 
-  const removeNotification = (id) => {
-    setStore(
-      "notifications",
-      produce((notifications) => {
-        const index = notifications.findIndex((s) => s.id === id);
-        if (index > -1) {
-          notifications.splice(index, 1);
-        }
-      })
-    );
-
-    setStore(
-      "count",
-      produce((count) => {
-        count--;
-      })
-    );
-  };
-
-  const removeAllNotifications = () => {
-    setStore("notifications", []);
+  const removeAllNotifications = async () => {
+    try {
+      const { data } = await clearNotifications();
+      setStore("notifications", []);
+      setStore("count", 0);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <StateContext.Provider value={store}>
       <DispatchContext.Provider
         value={{
-          removeNotification,
           removeAllNotifications,
         }}
       >
