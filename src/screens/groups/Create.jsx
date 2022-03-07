@@ -17,13 +17,7 @@ export default function CreateGroup() {
     removeProfileImage,
   } = useCreateGroup();
   return (
-    <div className="py-4">
-      <div className="my-4 flex flex-col items-center space-y-2 max-w-md mx-auto">
-        <div className="w-16 h-16 bg-blue-500 rounded-full grid place-items-center">
-          <FaSolidUsers className="text-4xl text-white" />
-        </div>
-        <h5 className="text-2xl font-medium ">Create Group</h5>
-      </div>
+    <div>
       <section className="max-w-md mx-auto bg-white dark:bg-gray-800  px-4 py-8  rounded-lg shadow">
         <form onSubmit={[handleSubmit]} className="flex flex-col space-y-4">
           <div className="flex flex-col space-y-2">
@@ -72,7 +66,7 @@ export default function CreateGroup() {
               <span>Cover Image</span>
             </ImageUpload>
           </div>
- 
+
           <InvitePeople
             friends={form.fields.invitedPeople}
             addFriend={addInvitedPeople}

@@ -32,8 +32,8 @@ export default function GroupsSuggestions() {
                 when={resource().data.data.groups.length}
                 fallback={
                   <Empty
-                    title="No Groups Suggestion"
-                    subTitle="When new group will create.You will get groups suggestion"
+                  title="No Groups Joined"
+                  subTitle="You have not joined any group"
                   />
                 }
               >

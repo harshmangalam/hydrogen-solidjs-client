@@ -27,7 +27,7 @@ export default function GroupsFeed() {
             <Show
               when={response().data.data.posts.length}
               fallback={
-                <Empty title="No Feed" subTitle="Join groups to see groups feed" />
+                <Empty title="No Group Post" subTitle="You`ve not created any group post." />
               }
             >
               <div className="max-w-lg mx-auto">
