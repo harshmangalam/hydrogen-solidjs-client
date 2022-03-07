@@ -1,11 +1,10 @@
 import { lazy } from "solid-js";
 import { Routes, Route } from "solid-app-router";
 
-// auth 
+// auth
 const AuthLayout = lazy(() => import("../screens/auth"));
 const Login = lazy(() => import("../screens/auth/Login"));
 const Signup = lazy(() => import("../screens/auth/Signup"));
-
 
 const MainLayout = lazy(() => import("../screens/MainLayout"));
 const Home = lazy(() => import("../screens/Home"));
@@ -84,6 +83,10 @@ const ProfileFriendsRecentlyAdded = lazy(() =>
   import("../screens/profile/friends/RecentlyAdded")
 );
 
+//messenger
+
+const MessengerLayout = lazy(() => import("../screens/messenger"));
+
 export default function AppRouter() {
   return (
     <Routes>
@@ -156,8 +159,9 @@ export default function AppRouter() {
       <Route path="/auth" element={<AuthLayout />}>
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
-       
       </Route>
+      {/* messenger */}
+      <Route path="/messenger" element={<MessengerLayout />}></Route>
     </Routes>
   );
 }
