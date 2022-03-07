@@ -85,7 +85,9 @@ const ProfileFriendsRecentlyAdded = lazy(() =>
 
 //messenger
 
-const MessengerLayout = lazy(() => import("../screens/messenger"));
+const MessengerLayout = lazy(() => import("../screens/messenger/MessengerLayout"));
+const MessengerHome = lazy(() => import("../screens/messenger"));
+const Chat = lazy(() => import("../screens/messenger/Chat"));
 
 export default function AppRouter() {
   return (
@@ -161,7 +163,10 @@ export default function AppRouter() {
         <Route path="signup" element={<Signup />} />
       </Route>
       {/* messenger */}
-      <Route path="/messenger" element={<MessengerLayout />}></Route>
+      <Route path="/messenger" element={<MessengerLayout />}>
+        <Route path="" element={<MessengerHome />} />
+        <Route path="/:userId" element={<Chat />} />
+      </Route>
     </Routes>
   );
 }
