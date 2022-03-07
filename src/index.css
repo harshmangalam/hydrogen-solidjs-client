@@ -28,7 +28,7 @@
   }
 
   .modal-scrollbar::-webkit-scrollbar {
-    @apply w-2
+    @apply w-1
 }
 
   .modal-scrollbar::-webkit-scrollbar-track {
