@@ -3,7 +3,7 @@ import {Link} from "solid-app-router"
 import { VscClose } from 'solid-icons/vsc'
 export default function Chat() {
   return (
-    <div className="divide-y-2 absolute w-full h-full dark:divide-stone-600">
+    <div className="divide-y-2 absolute w-full h-full dark:divide-gray-600">
       <header className="flex items-center justify-between h-[10%]  px-4">
         <div className="flex space-x-2 items-center">
           <UserAvatar

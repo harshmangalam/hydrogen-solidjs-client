@@ -8,7 +8,7 @@
   }
 
   body::-webkit-scrollbar-track {
-    @apply shadow-md;
+    @apply hidden
   }
 
   body::-webkit-scrollbar-thumb {
@@ -20,35 +20,35 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    @apply bg-gray-100 dark:bg-gray-900
+    @apply hidden
 
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
-      @apply bg-gray-200 dark:bg-gray-800 rounded-xl
+      @apply bg-gray-200 dark:bg-gray-800 rounded-full
   }
 
   .modal-scrollbar::-webkit-scrollbar {
-    @apply w-1
+    @apply w-2 
 }
 
   .modal-scrollbar::-webkit-scrollbar-track {
-    @apply bg-white dark:bg-gray-800
+    @apply hidden
 
   }
   .modal-scrollbar::-webkit-scrollbar-thumb {
-      @apply bg-gray-300 dark:bg-gray-700 rounded-xl
+      @apply bg-gray-300 dark:bg-gray-700 rounded-full
   }
 
 
   .chat-scrollbar::-webkit-scrollbar {
-    @apply w-2
+    @apply w-2 
 }
 
   .chat-scrollbar::-webkit-scrollbar-track {
-    @apply bg-white dark:bg-gray-900
+    @apply hidden
 
   }
   .chat-scrollbar::-webkit-scrollbar-thumb {
-      @apply bg-gray-300 dark:bg-gray-700 rounded-xl
+      @apply bg-gray-300 dark:bg-gray-700 rounded-full
   }
 }
