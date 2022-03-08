@@ -8,4 +8,8 @@ async function fetchMessages(friendId) {
   return await axios.get(`/messenger/${friendId}`);
 }
 
-export { fetchMessenger, fetchMessages };
+async function sendMessage(friendId, data) {
+  return await axios.post(`/messenger/${friendId}`, data);
+}
+
+export { fetchMessenger, fetchMessages, sendMessage };

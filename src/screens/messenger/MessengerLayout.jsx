@@ -2,6 +2,7 @@ import { Outlet } from "solid-app-router";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import FriendsInterface from "../../components/messenger/friends";
+
 dayjs.extend(relativeTime);
 
 export default function MessengerLayout() {
