@@ -1,9 +1,10 @@
 import ChatHeader from "../../components/messenger/chat/Header";
 import { BiSolidSend } from "solid-icons/bi";
 import { VscCheckAll } from "solid-icons/vsc";
-import { createSignal, For, onMount, Show } from "solid-js";
+import { createEffect, createSignal, For, onMount, Show } from "solid-js";
 import { useParams } from "solid-app-router";
 import Message from "../../components/messenger/chat/Message";
+import { BsChevronDoubleDown } from "solid-icons/bs";
 import {
   useMessengerDispatch,
   useMessengerState,
@@ -14,10 +15,9 @@ export default function Chat() {
   const messengerState = useMessengerState();
   const messengerDispatch = useMessengerDispatch();
   const [content, setContent] = createSignal("");
-
   let msgDivRef = null;
 
-  onMount(() => {
+  createEffect(() => {
     messengerDispatch.handleFetchMessages({
       getFriendId: () => params?.userId || null,
       msgDivRef,
@@ -31,14 +31,26 @@ export default function Chat() {
       <div className="h-[90%] relative divide-y-2 dark:divide-gray-600">
         {/* messages  */}
         <div
-          className="h-[90%] py-4 px-4 overflow-y-auto chat-scrollbar"
+          className="h-[90%] py-4 px-4 overflow-y-auto chat-scrollbar "
           ref={msgDivRef}
         >
-          <ul className="flex flex-col space-y-4">
-            <For each={messengerState.messages}>
+          <div className="flex flex-col space-y-4">
+            <For each={messengerState.activeChat.messages}>
               {(message) => <Message {...message} />}
             </For>
-          </ul>
+          </div>
+          <Show when={messengerState.activeChat.haveNewMsg}>
+            <div className="fixed bottom-20 right-6">
+              <button
+                onClick={() => {
+                  msgDivRef.scrollTop = msgDivRef.scrollHeight;
+                }}
+                className="grid place-items-center w-10 h-10 rounded-full bg-rose-500"
+              >
+                <BsChevronDoubleDown className="text-xl text-white" />
+              </button>
+            </div>
+          </Show>
         </div>
 
         {/* chat input box  */}

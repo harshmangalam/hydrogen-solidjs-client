@@ -1,6 +1,7 @@
 import { createContext, createEffect, onMount, useContext } from "solid-js";
 import { createStore, produce } from "solid-js/store";
 import {
+  clearAllMessages,
   fetchMessages,
   fetchMessenger,
   sendMessage,
@@ -12,9 +13,12 @@ const DispatchContext = createContext();
 
 export default function MessengerProvider(props) {
   const [store, setStore] = createStore({
-    messages: [],
     friends: [],
-    friend: null,
+    activeChat: {
+      friend: null,
+      messages: [],
+      haveNewMsg: false,
+    },
   });
   const authState = useAuthState();
 
@@ -29,9 +33,9 @@ export default function MessengerProvider(props) {
 
   const addMessage = (message) => {
     setStore(
-      "messages",
-      produce((messages) => {
-        messages.push(message);
+      "activeChat",
+      produce((activeChat) => {
+        activeChat.messages.push(message);
       })
     );
   };
@@ -43,8 +47,14 @@ export default function MessengerProvider(props) {
     }
     try {
       const { data } = await fetchMessages(friendId);
-      setStore("messages", data.data.messages);
-      setStore("friend", data.data.friend);
+      setStore(
+        "activeChat",
+        produce((activeChat) => {
+          activeChat.friend = data.data.friend;
+          activeChat.messages = data.data.messages;
+          activeChat.msgDivRef = msgDivRef;
+        })
+      );
       msgDivRef.scrollTop = msgDivRef.scrollHeight;
     } catch (error) {
       console.log(error);
@@ -61,17 +71,46 @@ export default function MessengerProvider(props) {
     }
   };
 
+  const handleClearAllMessages = async () => {
+    try {
+      const { data } = await clearAllMessages(store.activeChat.friend.id);
+      setStore(
+        "activeChat",
+        produce((activeChat) => {
+          activeChat.messages = [];
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   createEffect(() => {
-    const manager = authState?.socketManager;
-    if (manager) {
-      console.log(manager);
+    const socket = authState?.socket;
+    if (socket) {
+      socket.on("chat:message-received", (message) => {
+        if (message.receiverId === store.activeChat.friend?.id) {
+          console.log("yes..");
+        }
+        addMessage(message);
+        setStore(
+          "activeChat",
+          produce((activeChat) => {
+            activeChat.haveNewMsg = true;
+          })
+        );
+      });
     }
   });
 
   return (
     <StateContext.Provider value={store}>
       <DispatchContext.Provider
-        value={{ handleFetchMessages, handleSendMessage }}
+        value={{
+          handleFetchMessages,
+          handleSendMessage,
+          handleClearAllMessages,
+        }}
       >
         {props.children}
       </DispatchContext.Provider>

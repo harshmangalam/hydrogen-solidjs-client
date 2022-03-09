@@ -11,8 +11,8 @@ const AuthDispatchContext = createContext();
 const initialState = {
   isAuthenticated: false,
   currentUser: null,
-  defaultSocketNs: null,
-  socketManager: null,
+  socket: null,
+  manager: null,
 };
 export default function AuthProvider(props) {
   const [store, setStore] = createStore(initialState);
@@ -31,8 +31,8 @@ export default function AuthProvider(props) {
       console.log(err.message);
     });
 
-    setStore("defaultSocketNs", socket);
-    setStore("socketManager", manager);
+    setStore("socket", socket);
+    setStore("manager", manager);
   };
   onMount(async () => {
     try {

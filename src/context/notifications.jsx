@@ -27,12 +27,16 @@ export default function NotificationProvider(props) {
   });
 
   createEffect(() => {
-    const socket = authState?.defaultSocketNs;
+    const socket = authState?.socket;
     if (socket) {
       socket.on("notification", ({ notification, count }) => {
         addNotification(notification);
         setStore("count", count);
       });
+
+      socket.on("hi",data=>{
+        console.log(data)
+      })
     }
   });
 

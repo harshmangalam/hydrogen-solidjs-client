@@ -11,7 +11,7 @@ export default function FriendsInterface() {
     <div className="w-full md:w-2/5 xl:w-1/4 h-screen divide-y-2 dark:divide-gray-600">
       <MessengerHeader />
       <ul className="flex flex-col py-4 h-[90%] overflow-y-hidden hover:overflow-y-auto chat-scrollbar px-2">
-        <For each={messengerState.friends}>
+        <For each={messengerState?.friends}>
           {(friend) => (
             <li>
               <Link

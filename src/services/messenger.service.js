@@ -12,4 +12,8 @@ async function sendMessage(friendId, data) {
   return await axios.post(`/messenger/${friendId}`, data);
 }
 
-export { fetchMessenger, fetchMessages, sendMessage };
+async function clearAllMessages(friendId,) {
+  return await axios.delete(`/messenger/${friendId}`);
+}
+
+export { fetchMessenger, fetchMessages, sendMessage,clearAllMessages };
