@@ -1,6 +1,10 @@
 import { createContext, createEffect, onMount, useContext } from "solid-js";
 import { createStore, produce } from "solid-js/store";
-import { fetchMessages, fetchMessenger } from "../services/messenger.service";
+import {
+  fetchMessages,
+  fetchMessenger,
+  sendMessage,
+} from "../services/messenger.service";
 import { useAuthState } from "./auth";
 
 const StateContext = createContext();
@@ -10,7 +14,7 @@ export default function MessengerProvider(props) {
   const [store, setStore] = createStore({
     messages: [],
     friends: [],
-    currentFriend: null,
+    friend: null,
   });
   const authState = useAuthState();
 
@@ -23,11 +27,35 @@ export default function MessengerProvider(props) {
     }
   });
 
-  const handleFetchMessages = async (friendId) => {
+  const addMessage = (message) => {
+    setStore(
+      "messages",
+      produce((messages) => {
+        messages.push(message);
+      })
+    );
+  };
+
+  const handleFetchMessages = async ({ getFriendId, msgDivRef }) => {
+    const friendId = getFriendId();
+    if (!friendId) {
+      return;
+    }
     try {
       const { data } = await fetchMessages(friendId);
       setStore("messages", data.data.messages);
-      setStore("currentFriend", data.data.friend);
+      setStore("friend", data.data.friend);
+      msgDivRef.scrollTop = msgDivRef.scrollHeight;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSendMessage = async ({ friendId, payload, msgDivRef }) => {
+    try {
+      const { data } = await sendMessage(friendId, payload);
+      addMessage(data.data.message);
+      msgDivRef.scrollTop = msgDivRef.scrollHeight;
     } catch (error) {
       console.log(error);
     }
@@ -42,7 +70,9 @@ export default function MessengerProvider(props) {
 
   return (
     <StateContext.Provider value={store}>
-      <DispatchContext.Provider value={{ handleFetchMessages }}>
+      <DispatchContext.Provider
+        value={{ handleFetchMessages, handleSendMessage }}
+      >
         {props.children}
       </DispatchContext.Provider>
     </StateContext.Provider>

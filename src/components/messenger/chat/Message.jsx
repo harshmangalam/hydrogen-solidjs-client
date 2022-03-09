@@ -1,5 +1,8 @@
-import { Match, Switch } from "solid-js";
+import { Match, Show, Switch } from "solid-js";
 import { useAuthState } from "../../../context/auth";
+import { BsCheckLg, BsCheckAll } from "solid-icons/bs";
+
+import dayjs from "dayjs";
 
 export default function Message(props) {
   const { currentUser } = useAuthState();
@@ -12,17 +15,25 @@ export default function Message(props) {
       }}
     >
       <p>{props.content}</p>
-      <div className="flex items-center justify-end space-x-2">
-        <span className="text-sm">
-          {props.createdAt}
+      <div className="flex items-center justify-end space-x-1 mt-1">
+        <span className="text-xs">
+          {dayjs(props.createdAt).format("h:mm a")}
         </span>
-        <span className="text-md">
-          <Switch>
-            <Match when={props.status === "SENT"}>sent</Match>
-            <Match when={props.status === "RECEIVED"}>received</Match>
-            <Match when={props.status === "SEEN"}>seen</Match>
-          </Switch>
-        </span>
+        <Show when={currentUser?.id === props.senderId}>
+          <span className="text-md">
+            <Switch>
+              <Match when={props.status === "SENT"}>
+                <BsCheckLg />
+              </Match>
+              <Match when={props.status === "RECEIVED"}>
+                <BsCheckAll />
+              </Match>
+              <Match when={props.status === "SEEN"}>
+                <BsCheckAll className="text-blue-500" />
+              </Match>
+            </Switch>
+          </span>
+        </Show>
       </div>
     </li>
   );

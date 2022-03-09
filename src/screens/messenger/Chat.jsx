@@ -1,61 +1,44 @@
 import ChatHeader from "../../components/messenger/chat/Header";
 import { BiSolidSend } from "solid-icons/bi";
 import { VscCheckAll } from "solid-icons/vsc";
-import {
-  createResource,
-  createSignal,
-  For,
-  Match,
-  Show,
-  Switch,
-} from "solid-js";
+import { createSignal, For, onMount, Show } from "solid-js";
 import { useParams } from "solid-app-router";
-import { fetchMessages, sendMessage } from "../../services/messenger.service";
 import Message from "../../components/messenger/chat/Message";
+import {
+  useMessengerDispatch,
+  useMessengerState,
+} from "../../context/messenger";
 
 export default function Chat() {
   const params = useParams();
-  const [resource, { refetch }] = createResource(
-    () => params.userId,
-    fetchMessages
-  );
-
+  const messengerState = useMessengerState();
+  const messengerDispatch = useMessengerDispatch();
   const [content, setContent] = createSignal("");
 
-  const handleSendMessage = async () => {
-    try {
-      const { data } = await sendMessage(params.userId, {
-        content: content(),
-      });
+  let msgDivRef = null;
 
-      refetch();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  onMount(() => {
+    messengerDispatch.handleFetchMessages({
+      getFriendId: () => params?.userId || null,
+      msgDivRef,
+    });
+  });
+
   return (
     <div className="divide-y-2 absolute w-full h-full dark:divide-gray-600 bg-white dark:bg-gray-900">
-      <Show when={resource()}>
-        <ChatHeader {...resource().data.data.friend} />
-      </Show>
+      <ChatHeader />
+
       <div className="h-[90%] relative divide-y-2 dark:divide-gray-600">
         {/* messages  */}
-        <div className="h-[90%] py-4 px-4 overflow-y-auto chat-scrollbar">
-          <Switch>
-            <Match when={resource.loading}>
-              <p>Loading Messages...</p>
-            </Match>
-            <Match when={resource.error}>
-              <p>Error</p>
-            </Match>
-            <Match when={resource()}>
-              <ul className="flex flex-col space-y-4">
-                <For each={resource().data.data.messages}>
-                  {(message) => <Message {...message} />}
-                </For>
-              </ul>
-            </Match>
-          </Switch>
+        <div
+          className="h-[90%] py-4 px-4 overflow-y-auto chat-scrollbar"
+          ref={msgDivRef}
+        >
+          <ul className="flex flex-col space-y-4">
+            <For each={messengerState.messages}>
+              {(message) => <Message {...message} />}
+            </For>
+          </ul>
         </div>
 
         {/* chat input box  */}
@@ -72,7 +55,13 @@ export default function Chat() {
 
             <Show when={content().trim().length}>
               <button
-                onClick={handleSendMessage}
+                onClick={() =>
+                  messengerDispatch.handleSendMessage({
+                    friendId: params.userId,
+                    payload: { content: content() },
+                    msgDivRef,
+                  })
+                }
                 className="text-2xl text-gray-500 dark:text-gray-400"
               >
                 <BiSolidSend />
