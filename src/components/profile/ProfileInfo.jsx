@@ -1,5 +1,6 @@
 import { For, Show } from "solid-js";
 import { useAuthState } from "../../context/auth";
+import UserAvatar from "../ui/dataDisplay/UserAvatar";
 import EditProfile from "./EditProfileDialog";
 export default function ProfileInfo(props) {
   const { currentUser } = useAuthState();
@@ -24,12 +25,7 @@ export default function ProfileInfo(props) {
       <div class="-space-x-3 flex items-center">
         <For each={props.friends}>
           {(friend) => (
-            <img
-              class="relative  inline object-cover w-10 h-10 border-2 border-purple-500 rounded-full"
-              src={friend.profileImage}
-              alt={friend.firstName}
-              title={friend.firstName}
-            />
+            <UserAvatar src={friend.profileImage} alt={friend.firstName} className="w-10 h-10 rounded-full border-white border-2" />
           )}
         </For>
         <Show when={props.friendsCount - props.friends.length > 0}>

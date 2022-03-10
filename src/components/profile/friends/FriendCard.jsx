@@ -13,18 +13,12 @@ export default function FriendCard(props) {
         <div className="flex flex-col space-y-0">
           <Link
             href={`/${props.id}`}
-            className="text-gray-600 dark:text-gray-300 text-sm"
+            className="text-gray-600 dark:text-gray-300 text-sm hover:underline"
           >
             <h6 className="text-lg font-medium">{props.firstName}</h6>
           </Link>
-          {props._count.myFriends} friends
+          <span className="text-sm">{props._count.myFriends} friends</span>
         </div>
-      </section>
-
-      <section>
-        <button className="w-8 h-8 grid place-items-center text-xl hover:bg-gray-100 rounded-full">
-          <BsThreeDots />
-        </button>
       </section>
     </div>
   );

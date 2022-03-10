@@ -1,13 +1,15 @@
 import { Outlet } from "solid-app-router";
-import FriendsInterface from "../../components/messenger/friends";
-import MessengerProvider from "../../context/messenger";
-
-export default function MessengerLayout() {
+import SidebarMenus from "../../components/settings/SidebarMenus";
+import SidebarHeader from "../../components/settings/SidebarHeader";
+export default function SettingsLayout() {
   return (
-    <MessengerProvider>
+    <>
       {/* desktop  */}
       <div className="md:flex divide-x-2  bg-white dark:bg-gray-900 hidden dark:divide-gray-600">
-        <FriendsInterface />
+        <div className="w-full md:w-2/5 xl:w-1/4 h-screen divide-y-2 dark:divide-gray-600">
+          <SidebarHeader />
+          <SidebarMenus />
+        </div>
         <div className="md:w-3/5 xl:w-3/4 relative">
           <Outlet />
         </div>
@@ -17,6 +19,6 @@ export default function MessengerLayout() {
       <div className="block md:hidden bg-white dark:bg-gray-900">
         <Outlet />
       </div>
-    </MessengerProvider>
+    </>
   );
 }
