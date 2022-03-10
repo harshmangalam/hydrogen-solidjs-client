@@ -19,7 +19,7 @@ export default function MessengerLayout() {
 
       {/* mobile  */}
       <div className="block md:hidden bg-white dark:bg-gray-900">
-        <Outlet />
+        <Outlet /> 
       </div>
     </MessengerProvider>
   );

@@ -1,11 +1,12 @@
 import { Match, Show, Switch } from "solid-js";
 import { useAuthState } from "../../../context/auth";
 import { BsCheckLg, BsCheck2All } from "solid-icons/bs";
-import { VscEye } from 'solid-icons/vsc'
+import { VscEye } from "solid-icons/vsc";
 import dayjs from "dayjs";
 
 export default function Message(props) {
   const { currentUser } = useAuthState();
+
   return (
     <div
       className="bg-gray-100 dark:bg-gray-700 rounded-lg shadow   px-4 py-2 max-w-[80%] md:max-w-[40%] self-start"

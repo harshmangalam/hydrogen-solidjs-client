@@ -17,7 +17,7 @@ export default function MessengerProvider(props) {
     activeChat: {
       friend: null,
       messages: [],
-      haveNewMsg: false,
+      countNewMsg: 0,
     },
   });
   const authState = useAuthState();
@@ -38,6 +38,14 @@ export default function MessengerProvider(props) {
         activeChat.messages.push(message);
       })
     );
+  };
+
+  const handleMessageSeen = (message) => {
+    authState.socket.emit("chat:message-status", {
+      toSocketId: message.sender.socketId,
+      fromSocketId: message.receiver.socketId,
+      data: { messageId: message.id, status: "SEEN" },
+    });
   };
 
   const handleFetchMessages = async ({ getFriendId, msgDivRef }) => {
@@ -66,6 +74,11 @@ export default function MessengerProvider(props) {
       const { data } = await sendMessage(friendId, payload);
       addMessage(data.data.message);
       msgDivRef.scrollTop = msgDivRef.scrollHeight;
+      authState.socket.emit("chat:message-status", {
+        toSocketId: data.data.message.sender.socketId,
+        fromSocketId: data.data.message.receiver.socketId,
+        data: { messageId: data.data.message.id, status: "RECEIVED" },
+      });
     } catch (error) {
       console.log(error);
     }
@@ -89,19 +102,43 @@ export default function MessengerProvider(props) {
     const socket = authState?.socket;
     if (socket) {
       socket.on("chat:message-received", (message) => {
-        if (message.receiverId === store.activeChat.friend?.id) {
-          console.log("yes..");
+        if (
+          store.activeChat.friend &&
+          store.activeChat.friend.id === message.senderId
+        ) {
+          addMessage(message);
+          setStore(
+            "activeChat",
+            produce((activeChat) => {
+              activeChat.countNewMsg++;
+            })
+          );
         }
-        addMessage(message);
-        setStore(
-          "activeChat",
-          produce((activeChat) => {
-            activeChat.haveNewMsg = true;
-          })
-        );
+      });
+      socket.on("chat:message-status", (payload) => {
+        if (
+          store.activeChat.friend &&
+          store.activeChat.friend.socketId === payload.fromSocketId
+        ) {
+          setStore(
+            "activeChat",
+            produce((activeChat) => {
+              const msg = activeChat.messages.find(
+                (m) => m.id === payload.data.messageId
+              );
+
+              msg.status = payload.data.status;
+            })
+          );
+        }
       });
     }
   });
+
+  const removeScrollerBtn = (msgDivRef) => {
+    msgDivRef.scrollTop = msgDivRef.scrollHeight;
+    setStore("activeChat", "countNewMsg", 0);
+  };
 
   return (
     <StateContext.Provider value={store}>
@@ -110,6 +147,8 @@ export default function MessengerProvider(props) {
           handleFetchMessages,
           handleSendMessage,
           handleClearAllMessages,
+          handleMessageSeen,
+          removeScrollerBtn,
         }}
       >
         {props.children}

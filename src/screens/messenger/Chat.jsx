@@ -39,15 +39,13 @@ export default function Chat() {
               {(message) => <Message {...message} />}
             </For>
           </div>
-          <Show when={messengerState.activeChat.haveNewMsg}>
+          <Show when={messengerState.activeChat.countNewMsg}>
             <div className="fixed bottom-20 right-6">
               <button
-                onClick={() => {
-                  msgDivRef.scrollTop = msgDivRef.scrollHeight;
-                }}
-                className="grid place-items-center w-10 h-10 rounded-full bg-rose-500"
+                onClick={() => messengerDispatch.removeScrollerBtn(msgDivRef)}
+                className="grid place-items-center w-10 h-10 rounded-full bg-rose-500 text-white"
               >
-                <BsChevronDoubleDown className="text-xl text-white" />
+                {messengerState.activeChat.countNewMsg}
               </button>
             </div>
           </Show>
@@ -60,9 +58,10 @@ export default function Chat() {
               type="text"
               name="content"
               id="content"
-              className="dark:bg-gray-700 w-full flex-1"
+              className="dark:bg-gray-700 w-full flex-1 "
               value={content()}
               onInput={(e) => setContent(e.currentTarget.value)}
+              placeholder="Start typing..."
             />
 
             <Show when={content().trim().length}>
