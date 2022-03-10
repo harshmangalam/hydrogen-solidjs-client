@@ -4,7 +4,7 @@ import { RiWeatherMoonCloudyFill } from "solid-icons/ri";
 import { SiMessenger } from "solid-icons/si";
 
 import MenuLink from "./MenuLink";
-import UserAvatar from "../../ui/dataDisplay/UserAvatar";
+import UserStatusAvatar from "../../ui/dataDisplay/UserStatusAvatar";
 import { useAuthState } from "../../../context/auth";
 
 export default function MenuSidebar() {
@@ -17,9 +17,9 @@ export default function MenuSidebar() {
         <MenuLink
           name={currentUser.firstName + " " + currentUser.lastName}
           icon={() => (
-            <UserAvatar
-              src={currentUser.profileImage}
-              className="w-8 h-8 rounded-full"
+            <UserStatusAvatar
+              status={currentUser.status}
+              profileImage={currentUser.profileImage}
             />
           )}
           href={currentUser.id}
@@ -39,18 +39,18 @@ const links = [
   {
     name: "Posts",
     href: "/posts",
-    icon: () => <BsFilePost  className="text-purple-500" />,
+    icon: () => <BsFilePost className="text-purple-500" />,
   },
 
   {
     name: "Groups",
     href: "/groups",
-    icon: () => <FaSolidUsers  className="text-green-500" />,
+    icon: () => <FaSolidUsers className="text-green-500" />,
   },
 
   {
     name: "Weather",
     href: "/weather",
-    icon: () => <RiWeatherMoonCloudyFill  className="text-blue-500" />,
+    icon: () => <RiWeatherMoonCloudyFill className="text-blue-500" />,
   },
 ];
