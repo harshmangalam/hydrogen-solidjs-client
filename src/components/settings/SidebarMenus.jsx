@@ -9,7 +9,7 @@ import { BiCurrentLocation } from 'solid-icons/bi'
 import { For } from "solid-js";
 export default function SidebarMenus() {
   return (
-    <ul className="h-[90%] px-2 py-4">
+    <ul className="h-[90%] px-2 py-4 flex flex-col space-y-2">
       <For each={menus}>
         {(menu) => (
           <li>
@@ -37,7 +37,7 @@ const menus = [
   {
     name: "General",
     icon: () => <RiSystemSettings5Fill />,
-    href: "general",
+    href: "general_settings",
     end: true,
   },
   {
@@ -49,37 +49,37 @@ const menus = [
   {
     name: "Your Informations",
     icon: () => <RiSystemSettings5Fill />,
-    href: "information",
+    href: "informations",
     end: false,
   },
   {
-    name: "Posts Settings",
+    name: "Post Settings",
     icon: () => <BsFilePost />,
-    href: "post",
+    href: "post_settings",
     end: false,
   },
   {
-    name: "Groups Settings",
+    name: "Group Settings",
     icon: () => <FaSolidUsers />,
-    href: "group",
+    href: "group_settings",
     end: false,
   },
   {
-    name: "Friends Settings",
+    name: "Friend Settings",
     icon: () => <FaSolidUserFriends />,
-    href: "friend",
+    href: "friend_settings",
     end: false,
   },
   {
     name: "Messenger Settings",
     icon: () => <RiLogoMessengerFill />,
-    href: "messenger",
+    href: "messenger_settings",
     end: true,
   },
   {
     name: "Location",
     icon: () => <BiCurrentLocation />,
-    href: "location",
+    href: "location_settings",
     end: true,
   },
 ];
