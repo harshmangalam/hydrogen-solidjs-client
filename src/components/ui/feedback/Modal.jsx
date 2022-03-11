@@ -2,6 +2,7 @@ import { Portal } from "solid-js/web";
 import { Show } from "solid-js";
 import { IoClose } from "solid-icons/io";
 import IconButton from "../inputs/IconButton";
+
 export default function Modal(props) {
   let cardRef;
 
@@ -50,16 +51,16 @@ export default function Modal(props) {
             </div>
             <hr className="dark:border-gray-600" />
 
-            <div className="py-4 flex items-center justify-end px-4">
-              <Show when={typeof props.onDone !== "undefined"}>
+            <Show when={typeof props.onDone !== "undefined"}>
+              <div className="py-4 flex items-center justify-end px-4">
                 <button
                   className="py-2 px-4 bg-blue-500 text-white rounded-full"
                   onClick={[handleComplete]}
                 >
                   Done
                 </button>
-              </Show>
-            </div>
+              </div>
+            </Show>
           </div>
         </div>
       </Portal>

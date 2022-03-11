@@ -15,7 +15,7 @@ export default function MainHeader(props) {
           <p className="text-2xl font-semibold">{props.title}</p>
         </div>
       </div>
-      <div className="h-[90%] px-4 py-4">{props.children}</div>
+      <div className="h-[90%] px-4 py-4 overflow-y-auto custom-scrollbar">{props.children}</div>
     </div>
   );
 }
