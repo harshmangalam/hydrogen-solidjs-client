@@ -11,6 +11,7 @@ const AuthDispatchContext = createContext();
 const initialState = {
   isAuthenticated: false,
   currentUser: null,
+  currentAccount: null,
   socket: null,
   manager: null,
 };
@@ -39,6 +40,7 @@ export default function AuthProvider(props) {
       const { data } = await fetchCurrentUser();
       setStore("isAuthenticated", true);
       setStore("currentUser", data.data.user);
+      setStore("currentAccount", data.data.accountLoggedin);
       initSocketManager();
     } catch (error) {
       Cookies.remove("token");
@@ -56,6 +58,10 @@ export default function AuthProvider(props) {
     setStore("currentUser", null);
   };
 
+  const setCurrentAccount = (account) => {
+    setStore("currentAccount", account);
+  };
+
   return (
     <AuthStateContext.Provider value={store}>
       <AuthDispatchContext.Provider
@@ -63,6 +69,7 @@ export default function AuthProvider(props) {
           setCurrentUser,
           removeCurrentUser,
           initSocketManager,
+          setCurrentAccount,
         }}
       >
         {props.children}

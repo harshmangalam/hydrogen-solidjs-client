@@ -94,6 +94,9 @@ const Chat = lazy(() => import("../screens/messenger/Chat"));
 //settings
 
 const SettingsLayout = lazy(() => import("../screens/settings/SettingsLayout"));
+const AccountActivity = lazy(() =>
+  import("../screens/settings/AccountActivity")
+);
 const SettingsHome = lazy(() => import("../screens/settings/"));
 const ChangePasswordSettings = lazy(() =>
   import("../screens/settings/ChangePassword")
@@ -192,6 +195,7 @@ export default function AppRouter() {
       <Route path="/settings" element={<SettingsLayout />}>
         <Route path="" element={<SettingsHome />} />
         <Route path="general_settings" element={<GeneralSettings />} />
+        <Route path="account_activity" element={<AccountActivity />} />
         <Route path="change_password" element={<ChangePasswordSettings />} />
         <Route path="friend_settings" element={<FriendSettings />} />
         <Route path="group_settings" element={<GroupSettings />} />

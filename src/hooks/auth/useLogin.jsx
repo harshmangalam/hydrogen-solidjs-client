@@ -3,7 +3,10 @@ import { useNavigate } from "solid-app-router";
 import { useAuthDispatch } from "../../context/auth";
 import { useUIDispatch } from "../../context/ui";
 import { login } from "../../services/auth.service";
+import platform from "platform";
+import useGeolocations from "../useGeolocations";
 export default function useLogin() {
+  const geolocationStore = useGeolocations();
   const [form, setForm] = createStore({
     fields: {
       email: "",
@@ -16,7 +19,8 @@ export default function useLogin() {
     hasError: false,
   });
 
-  const { setCurrentUser, initSocketManager } = useAuthDispatch();
+  const { setCurrentUser, initSocketManager, setCurrentAccount } =
+    useAuthDispatch();
   const { addSnackbar } = useUIDispatch();
   const navigate = useNavigate();
 
@@ -41,8 +45,14 @@ export default function useLogin() {
       return;
     }
     try {
-      const { data } = await login(form.fields);
+      const fields = form.fields;
+      const { data } = await login({
+        ...fields,
+        platform,
+        coords: geolocationStore.store.coords,
+      });
       setCurrentUser(data.data.user);
+      setCurrentAccount(data.data.activeAccountLoggedin);
       addSnackbar({ type: "success", message: data.message });
       initSocketManager();
       navigate("/", { replace: true });

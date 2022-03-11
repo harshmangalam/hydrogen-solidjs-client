@@ -5,6 +5,7 @@ import { Si1password } from "solid-icons/si";
 import { FaSolidUsers } from "solid-icons/fa";
 import { BsFilePost } from "solid-icons/bs";
 import { BiCurrentLocation } from 'solid-icons/bi'
+import { BsActivity } from 'solid-icons/bs'
 
 import { For } from "solid-js";
 export default function SidebarMenus() {
@@ -44,6 +45,12 @@ const menus = [
     name: "Change Password",
     icon: () => <Si1password />,
     href: "change_password",
+    end: false,
+  },
+  {
+    name: "Account Activities",
+    icon: () => <BsActivity />,
+    href: "account_activity",
     end: false,
   },
   {
