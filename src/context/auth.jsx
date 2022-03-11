@@ -40,7 +40,7 @@ export default function AuthProvider(props) {
       const { data } = await fetchCurrentUser();
       setStore("isAuthenticated", true);
       setStore("currentUser", data.data.user);
-      setStore("currentAccount", data.data.accountLoggedin);
+      setStore("currentAccount", data.data.currentAccount);
       initSocketManager();
     } catch (error) {
       Cookies.remove("token");

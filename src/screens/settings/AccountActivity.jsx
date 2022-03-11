@@ -3,17 +3,22 @@ import { ImMobile } from "solid-icons/im";
 import { BiLaptop } from "solid-icons/bi";
 
 import { createResource, For, Match, Show, Switch } from "solid-js";
-import { fetchAccountsLoggedin } from "../../services";
+import { fetchLoginHistory } from "../../services";
 export default function AccountActivity() {
-  const [resource] = createResource(fetchAccountsLoggedin);
+  const [resource] = createResource(fetchLoginHistory);
   return (
     <MainBody title="Account Activity">
       <Switch>
         <Match when={resource()}>
           <ul className="flex flex-col gap-4 max-w-lg mx-auto">
-            <For each={resource().data.data.accountsLoggedin}>
+            <For each={resource().data.data.loginHistory}>
               {(account) => (
-                <li className="flex items-start space-x-4 px-4 py-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                <li
+                  className="flex items-start space-x-4 px-4 py-4 bg-gray-100 dark:bg-gray-800 rounded-lg"
+                  classList={{
+                    "bg-purple-200 dark:bg-purple-800": account.isCurrent,
+                  }}
+                >
                   <div className="flex-none h-16 w-16 bg-purple-500 text-white rounded-full grid place-items-center">
                     <Show
                       when={true}
@@ -32,7 +37,7 @@ export default function AccountActivity() {
                       <span>{account?.os?.version}</span>
                     </p>
 
-                    <div className="mt-1">
+                    <div className="mt-1 flex gap-2">
                       <Show
                         when={account.isActive}
                         fallback={
@@ -43,6 +48,12 @@ export default function AccountActivity() {
                       >
                         <span className="px-4 text-sm rounded-full py-1 bg-green-500 text-white">
                           Active
+                        </span>
+                      </Show>
+
+                      <Show when={account.isCurrent}>
+                        <span className="px-4 text-sm rounded-full py-1 bg-blue-500 text-white">
+                          Current
                         </span>
                       </Show>
                     </div>
