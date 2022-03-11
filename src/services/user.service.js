@@ -16,9 +16,15 @@ async function fetchUserAllFriends(userId) {
   return await axios.get(`/users/${userId}/all_friends`);
 }
 
+
+async function changePassword(data) {
+  return await axios.patch(`/users/change_password`,data);
+}
+
 export {
   uploadProfilePic,
   fetchUserDetails,
   fetchUserAllFriends,
   fetchUserPosts,
+  changePassword
 };
