@@ -25,14 +25,14 @@ export default function Navbar() {
 
         {/* middle section  */}
 
-        <ul className="hidden lg:flex items-center space-x-2">
+        <ul className="hidden md:flex items-center space-x-2">
           <For each={mainTabs}>
             {(tab) => (
               <li>
                 <NavLink
                   href={tab.href}
-                  activeClass="border-b-4 border-blue-500 hover:bg-transparent text-blue-500 dark:text-blue-500  dark:hover:bg-transparent"
-                  className="text-3xl  lg:px-8 xl:px-10 h-14 grid place-items-center hover:bg-gray-100 dark:hover:bg-gray-700  text-gray-600 dark:text-white"
+                  activeClass="border-b-4 bg-gray-100 dark:bg-gray-700 border-blue-500 text-blue-500 dark:text-blue-500"
+                  className="text-3xl px-4  lg:px-8 xl:px-10 h-14 grid place-items-center hover:bg-gray-100 dark:hover:bg-gray-700  text-gray-600 dark:text-white"
                   end={tab.end}
                 >
                   {tab.icon()}

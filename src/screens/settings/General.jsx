@@ -13,31 +13,27 @@ export default function General() {
             <h6 className="text-2xl font-medium">Edit Account</h6>
             <EditProfileDialog />
           </div>
-          <ul className="flex flex-col gap-4 max-w-xl mx-auto mt-4">
-            <li className="py-2 px-4 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-between">
-              <span>Your Id</span>
-              <span>{authState.currentUser.id}</span>
-            </li>
-            <li className="py-2 px-4 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-between">
-              <span>First Name</span>
+          <ul className="flex bg-gray-100 dark:bg-gray-800 gap-0 dark:divide-gray-600 flex-col divide-y-2 rounded-lg  max-w-xl mx-auto mt-4">
+            <li className="py-4 px-6 flex items-center justify-between">
+              <span className="font-semibold">First Name</span>
               <span>{authState.currentUser.firstName}</span>
             </li>
-            <li className="py-2 px-4 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-between">
-              <span>Last Name</span>
+            <li className="py-4 px-6 flex items-center justify-between">
+              <span className="font-semibold">Last Name</span>
               <span>{authState.currentUser.lastName}</span>
             </li>
-            <li className="py-2 px-4 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-between">
-              <span>Email</span>
+            <li className="py-4 px-6 flex items-center justify-between">
+              <span className="font-semibold">Email</span>
               <span>{authState.currentUser.email}</span>
             </li>
 
-            <li className="py-2 px-4 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-between">
-              <span>Gender</span>
+            <li className="py-4 px-6 flex items-center justify-between">
+              <span className="font-semibold">Gender</span>
               <span>{authState.currentUser.gender}</span>
             </li>
 
-            <li className="py-2 px-4 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-between">
-              <span>Created At</span>
+            <li className="py-4 px-6 flex items-center justify-between">
+              <span className="font-semibold">Created At</span>
               <span>
                 {dayjs(authState.currentUser.createdAt).format(
                   "D MMM YYYY  (HH:MM a)"
@@ -45,26 +41,9 @@ export default function General() {
               </span>
             </li>
 
-            <li className="py-2 px-4 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-between">
-              <span>Updated At</span>
-              <span>
-                {dayjs(authState.currentUser.updatedAt).format(
-                  "D MMM YYYY  (HH:MM a)"
-                )}
-              </span>
-            </li>
-            <li className="py-2 px-4 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-between">
-              <span>Status</span>
-              <span>{authState.currentUser.status}</span>
-            </li>
-
-            <li className="py-2 px-4 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-between">
-              <span>Email Verified</span>
-              <span>
-                <Show when={authState.isEmailVerified} fallback="Not Verified">
-                  Verified
-                </Show>
-              </span>
+            <li className="py-4 px-6 flex items-center justify-between">
+              <span className="font-semibold">Status</span>
+              <span className="lowercase">{authState.currentUser.status}</span>
             </li>
           </ul>
         </Match>

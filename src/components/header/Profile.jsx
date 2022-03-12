@@ -15,7 +15,7 @@ export default function Profile() {
       <button onClick={() => setOpen((o) => !o)}>
         <UserAvatar
           src={currentUser.profileImage}
-          className="w-10 h-10 rounded-full"
+          className="w-8 h-8 md:w-10 md:h-10 rounded-full"
           alt={currentUser.firstName}
         />
       </button>
