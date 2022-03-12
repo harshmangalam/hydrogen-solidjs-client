@@ -4,8 +4,8 @@ import { FaSolidUserFriends } from "solid-icons/fa";
 import { Si1password } from "solid-icons/si";
 import { FaSolidUsers } from "solid-icons/fa";
 import { BsFilePost } from "solid-icons/bs";
-import { BiCurrentLocation } from 'solid-icons/bi'
-import { BsActivity } from 'solid-icons/bs'
+import { BiCurrentLocation } from "solid-icons/bi";
+import { BsActivity } from "solid-icons/bs";
 
 import { For } from "solid-js";
 export default function SidebarMenus() {
@@ -52,41 +52,5 @@ const menus = [
     icon: () => <BsActivity />,
     href: "account_activity",
     end: false,
-  },
-  {
-    name: "Your Informations",
-    icon: () => <RiSystemSettings5Fill />,
-    href: "informations",
-    end: false,
-  },
-  {
-    name: "Post Settings",
-    icon: () => <BsFilePost />,
-    href: "post_settings",
-    end: false,
-  },
-  {
-    name: "Group Settings",
-    icon: () => <FaSolidUsers />,
-    href: "group_settings",
-    end: false,
-  },
-  {
-    name: "Friend Settings",
-    icon: () => <FaSolidUserFriends />,
-    href: "friend_settings",
-    end: false,
-  },
-  {
-    name: "Messenger Settings",
-    icon: () => <RiLogoMessengerFill />,
-    href: "messenger_settings",
-    end: true,
-  },
-  {
-    name: "Location",
-    icon: () => <BiCurrentLocation />,
-    href: "location_settings",
-    end: true,
   },
 ];

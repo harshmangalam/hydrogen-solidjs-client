@@ -101,17 +101,8 @@ const SettingsHome = lazy(() => import("../screens/settings/"));
 const ChangePasswordSettings = lazy(() =>
   import("../screens/settings/ChangePassword")
 );
-const FriendSettings = lazy(() => import("../screens/settings/FriendSettings"));
+
 const GeneralSettings = lazy(() => import("../screens/settings/General"));
-const GroupSettings = lazy(() => import("../screens/settings/GroupSettings"));
-const LocationSettings = lazy(() => import("../screens/settings/Location"));
-const MessengerSettings = lazy(() =>
-  import("../screens/settings/MessengerSettings")
-);
-const PostSettings = lazy(() => import("../screens/settings/PostSettings"));
-const YourInformations = lazy(() =>
-  import("../screens/settings/YourInformations")
-);
 
 export default function AppRouter() {
   return (
@@ -197,12 +188,6 @@ export default function AppRouter() {
         <Route path="general_settings" element={<GeneralSettings />} />
         <Route path="account_activity" element={<AccountActivity />} />
         <Route path="change_password" element={<ChangePasswordSettings />} />
-        <Route path="friend_settings" element={<FriendSettings />} />
-        <Route path="group_settings" element={<GroupSettings />} />
-        <Route path="location_settings" element={<LocationSettings />} />
-        <Route path="messenger_settings" element={<MessengerSettings />} />
-        <Route path="post_settings" element={<PostSettings />} />
-        <Route path="informations" element={<YourInformations />} />
       </Route>
     </Routes>
   );
