@@ -31,6 +31,14 @@ export default function MessengerProvider(props) {
     }
   });
 
+  const closeActiveChat = () => {
+    setStore("activeChat", {
+      friend: null,
+      messages: [],
+      countNewMsg: 0,
+    });
+  };
+
   const addMessage = (message) => {
     setStore(
       "activeChat",
@@ -149,6 +157,7 @@ export default function MessengerProvider(props) {
           handleClearAllMessages,
           handleMessageSeen,
           removeScrollerBtn,
+          closeActiveChat
         }}
       >
         {props.children}
