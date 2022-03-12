@@ -2,6 +2,7 @@ import { createSignal, mergeProps, Show } from "solid-js";
 import Modal from "../ui/feedback/Modal";
 import { BsImages } from "solid-icons/bs";
 import { IoClose } from "solid-icons/io";
+import TextDivider from "../ui/dataDisplay/TextDivider";
 
 export default function ImageUpload(props) {
   const merged = mergeProps(
@@ -68,9 +69,7 @@ export default function ImageUpload(props) {
               </div>
             </button>
 
-            <div>
-              <h6 className="text-center">Or</h6>
-            </div>
+           <TextDivider text="OR" />
 
             <div className="flex items-center space-x-4">
               <input
@@ -93,7 +92,7 @@ export default function ImageUpload(props) {
             <div className="relative">
               <img
                 src={merged.image}
-                className="w-full h-full aspect-square object-cover"
+                className="w-full h-full aspect-square object-cover rounded-lg"
               />
               <button
                 className="absolute top-2 right-2 rounded-full bg-gray-100  hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 w-8 h-8 text-xl text-black dark:text-white grid place-items-center"

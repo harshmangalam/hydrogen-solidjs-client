@@ -29,7 +29,7 @@ export default function useGeolocations() {
       setStore("coords", "lng", coords.longitude);
       addSnackbar({
         type: "success",
-        message: `Latitude is ${store.coords.lat} and Longitude is ${store.coords.lng}`,
+        message: `Geolocation coordinate loaded successfully`,
         autoHideDuration: 8000,
       });
 

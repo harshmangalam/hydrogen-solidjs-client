@@ -13,7 +13,7 @@ export default function Modal(props) {
   }
 
   function handleComplete() {
-    if (props.onDone) {
+    if (typeof props.onDone !== "undefined") {
       props.onDone();
     }
     props.onClose();
@@ -27,7 +27,7 @@ export default function Modal(props) {
           onClick={[handleClickOutside]}
         >
           <div
-            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-xl w-full bg-white shadow-xl rounded dark:bg-gray-800 dark:text-white"
+            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-xl w-full bg-white rounded shadow-xl sm:rounded-xl dark:bg-gray-800 dark:text-white"
             ref={cardRef}
           >
             {/* modal header  */}
@@ -51,16 +51,20 @@ export default function Modal(props) {
             </div>
             <hr className="dark:border-gray-600" />
 
-            <Show when={typeof props.onDone !== "undefined"}>
-              <div className="py-4 flex items-center justify-end px-4">
-                <button
-                  className="py-2 px-4 bg-blue-500 text-white rounded-full"
-                  onClick={[handleComplete]}
-                >
-                  Done
-                </button>
-              </div>
-            </Show>
+            <div className="py-4 flex items-center gap-2 justify-end px-4">
+              <button
+                className="py-2 px-4 bg-gray-200 dark:bg-gray-700 dark:text-white rounded-md"
+                onClick={[props.onClose]}
+              >
+                Close
+              </button>
+              <button
+                className="py-2 px-4 bg-blue-500 text-white rounded-md"
+                onClick={[handleComplete]}
+              >
+                Done
+              </button>
+            </div>
           </div>
         </div>
       </Portal>

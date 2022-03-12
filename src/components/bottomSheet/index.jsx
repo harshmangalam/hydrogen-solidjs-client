@@ -6,15 +6,15 @@ import { For } from "solid-js";
 
 export default function BottomSheet() {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-20 bg-gray-200 dark:bg-gray-800 py-2 px-4">
-      <ul className="grid grid-flow-col gap-2 text-2xl md:hidden">
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-20 bg-gray-200 dark:bg-gray-800 py-2 px-4 h-16 flex flex-col justify-center">
+      <ul className="grid grid-flow-col gap-2 text-2xl h-full">
         <For each={tabs}>
           {(tab) => (
             <li>
               <NavLink
                 href={tab.href}
                 activeClass="bg-blue-500 text-white"
-                className="rounded-xl text-2xl py-2 grid place-items-center hover:bg-blue-500 hover:text-white"
+                className="rounded-xl text-2xl h-full grid place-items-center hover:bg-blue-500 hover:text-white"
                 end={tab.end}
               >
                 {tab.icon()}

@@ -7,7 +7,7 @@ export default function Snackbars() {
   const { removeSnackbar } = useUIDispatch();
 
   return (
-    <div className="fixed z-50 bottom-0 left-0 p-4 w-full md:max-w-xs">
+    <div className="fixed z-20 bottom-16 left-0 p-4 w-ful md:max-w-xs">
       <ul className="flex flex-col space-y-2">
         {snackbars.map((snackbar) => (
           <Snackbar
