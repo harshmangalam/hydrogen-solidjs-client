@@ -1,16 +1,34 @@
 import MainBody from "../../components/settings/MainBody";
 import { ImMobile } from "solid-icons/im";
 import { BiLaptop } from "solid-icons/bi";
-
+import { useUIDispatch } from "../../context/ui";
 import { createResource, For, Match, Show, Switch } from "solid-js";
-import { fetchLoginHistory } from "../../services";
+import { clearLoginHistory, fetchLoginHistory } from "../../services";
 export default function AccountActivity() {
-  const [resource] = createResource(fetchLoginHistory);
+  const [resource, { refetch }] = createResource(fetchLoginHistory);
+  const { addSnackbar } = useUIDispatch();
+  const handleClearLoginHistory = async () => {
+    try {
+      const { data } = await clearLoginHistory();
+      refetch();
+      addSnackbar({ type: "success", message: data.message });
+    } catch (error) {
+      addSnackbar({ type: "error", message: error.response.data.message });
+    }
+  };
   return (
-    <MainBody title="Account Activity">
+    <MainBody title="Login History">
       <Switch>
         <Match when={resource()}>
-          <ul className="flex flex-col gap-4 max-w-lg mx-auto">
+          <div className="flex justify-center">
+            <button
+              className="px-4 py-2 bg-purple-500 text-white rounded-full"
+              onClick={[handleClearLoginHistory]}
+            >
+              Clear Login session
+            </button>
+          </div>
+          <ul className="flex flex-col gap-4 max-w-lg mx-auto mt-4">
             <For each={resource().data.data.loginHistory}>
               {(account) => (
                 <li

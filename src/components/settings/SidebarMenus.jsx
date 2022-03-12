@@ -48,9 +48,9 @@ const menus = [
     end: false,
   },
   {
-    name: "Account Activities",
+    name: "Login History",
     icon: () => <BsActivity />,
-    href: "account_activity",
+    href: "login_history",
     end: false,
   },
 ];
