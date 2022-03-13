@@ -94,21 +94,22 @@ const Chat = lazy(() => import("../screens/messenger/Chat"));
 //settings
 
 const SettingsLayout = lazy(() => import("../screens/settings/SettingsLayout"));
-const LoginHistory = lazy(() =>
-  import("../screens/settings/LoginHistory")
-);
+const LoginHistory = lazy(() => import("../screens/settings/LoginHistory"));
 const SettingsHome = lazy(() => import("../screens/settings/"));
 const ChangePasswordSettings = lazy(() =>
   import("../screens/settings/ChangePassword")
 );
-
 const GeneralSettings = lazy(() => import("../screens/settings/General"));
+
+//search
+const Search = lazy(() => import("../screens/Search"));
 
 export default function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route path="" element={<Home />} />
+        <Route path="search" element={<Search />} />
 
         {/* friends  */}
         <Route path="friends" element={<FriendsLayout />}>
