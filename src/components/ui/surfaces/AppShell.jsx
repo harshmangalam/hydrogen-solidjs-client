@@ -16,7 +16,7 @@ function AppShell(props) {
               <li>
                 <NavLink
                   href={tab.href}
-                  className="flex items-center justify-between  py-2 px-2 rounded-lg hover:bg-gray-100"
+                  className="flex items-center justify-between  py-2 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                   end={tab.end}
                   activeClass="bg-gray-100 dark:bg-gray-700"
                 >
