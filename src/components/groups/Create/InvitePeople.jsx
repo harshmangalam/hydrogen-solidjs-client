@@ -14,7 +14,7 @@ export default function InvitePeople(props) {
         Invite People
       </button>
 
-      <Modal onClose={() => setOpen(false)} open={open()} title="Tag Friends">
+      <Modal onClose={() => setOpen(false)} open={open()} title="Invite People">
         <div className="px-4">
           <FriendsInterface
             startFetch={open()}
