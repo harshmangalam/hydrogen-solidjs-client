@@ -51,4 +51,20 @@
   .chat-scrollbar::-webkit-scrollbar-thumb {
       @apply bg-gray-300 dark:bg-gray-700 rounded-full
   }
+
+
+  .body-scrollbar::-webkit-scrollbar {
+    @apply w-2
+}
+
+  .body-scrollbar::-webkit-scrollbar-track {
+    @apply hidden
+
+  }
+  .body-scrollbar::-webkit-scrollbar-thumb {
+      @apply bg-gray-300 dark:bg-gray-700 rounded-full
+  }
+
+
+
 }

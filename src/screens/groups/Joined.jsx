@@ -12,8 +12,6 @@ export default function GroupsSuggestions() {
   const { handleLeaveGroup, loading } = useGroups(refetch);
   return (
     <div>
-      <h4 className="text-2xl font-bold">Groups You`ve Joined</h4>
-
       <div className="py-4">
         <div className="my-8">
           <Switch>
@@ -32,11 +30,12 @@ export default function GroupsSuggestions() {
                 when={resource().data.data.groups.length}
                 fallback={
                   <Empty
-                  title="No Groups Joined"
-                  subTitle="You have not joined any group"
+                    title="No Groups Joined"
+                    subTitle="You have not joined any group"
                   />
                 }
               >
+                <h4 className="text-2xl font-bold">Groups You`ve Joined</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-3">
                   <For each={resource().data.data.groups}>
                     {(group) => (

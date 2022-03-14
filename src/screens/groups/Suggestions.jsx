@@ -12,8 +12,6 @@ export default function GroupsSuggestions() {
   const { handleJoinGroup, loading } = useGroups(refetch);
   return (
     <div>
-      <h4 className="text-2xl font-bold">Public Groups Suggestions</h4>
-
       <div className="py-4">
         <div className="my-8">
           <Switch>
@@ -37,6 +35,9 @@ export default function GroupsSuggestions() {
                   />
                 }
               >
+                <h4 className="text-2xl font-bold">
+                  Public Groups Suggestions
+                </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-3">
                   <For each={resource().data.data.groups}>
                     {(group) => (

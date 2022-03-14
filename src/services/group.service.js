@@ -12,6 +12,11 @@ async function fetchGroupsFeed() {
   return await axios.get("/groups/feed");
 }
 
+async function fetchGroupNotifications() {
+  return await axios.get("/groups/notifications");
+}
+
+
 async function fetchGroupDetails(groupId) {
   return await axios.get(`/groups/${groupId}`);
 }
@@ -77,4 +82,5 @@ export {
   createGroupPost,
   fetchGroups,
   fetchMyCreatedGroupPosts,
+  fetchGroupNotifications
 };
