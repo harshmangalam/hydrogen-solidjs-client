@@ -2,13 +2,13 @@ import { createStore } from "solid-js/store";
 import { useAuthState } from "../../context/auth";
 
 export default function useEditProfile() {
-  const { currentUser } = useAuthState();
+  const authState = useAuthState();
   const [store, setStore] = createStore({
     fields: {
-      firstName: currentUser.firstName,
-      lastName: currentUser.lastName,
-      email: currentUser.email,
-      gender: currentUser.gender,
+      firstName: authState.currentUser.firstName,
+      lastName: authState.currentUser.lastName,
+      email: authState.currentUser.email,
+      gender: authState.currentUser.gender,
     },
   });
 

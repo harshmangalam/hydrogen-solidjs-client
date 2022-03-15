@@ -19,7 +19,7 @@ export default function MainLayout() {
     <div>
       <Navbar />
       <main className="py-14">
-        <ErrorBoundary key={(error) => error}>
+        <ErrorBoundary fallback={(error) => error}>
           <Show when={!isRouting()} fallback={<HydrogenLoader />}>
             <Outlet />
           </Show>

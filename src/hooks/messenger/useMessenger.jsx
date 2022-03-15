@@ -3,7 +3,7 @@ import { useAuthState } from "../../context/auth";
 import { sendMessage } from "../../services/messenger.service";
 
 export default function useMessenger() {
-  const { currentUser } = useAuthState();
+  const authState = useAuthState();
   const [store, setStore] = createStore({
     content: "",
     loading: false,
@@ -13,7 +13,7 @@ export default function useMessenger() {
     try {
       const { data } = await sendMessage(friendId, {
         receiverId: friendId,
-        senderId: currentUser.id,
+        senderId: authState.currentUser.id,
         content: store.content,
       });
     } catch (error) {
