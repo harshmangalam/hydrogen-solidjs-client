@@ -8,7 +8,8 @@ export default function Radio(props) {
         type="radio"
         checked={props.isChecked}
         name={props.name}
-        className=""
+        className="dark:bg-gray-600"
+        required
       />
       <label htmlFor={props.value}>{props.label}</label>
     </div>

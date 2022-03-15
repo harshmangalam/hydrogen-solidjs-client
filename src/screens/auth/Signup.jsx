@@ -22,12 +22,10 @@ export default function Login() {
                 type="text"
                 name="firstName"
                 className="rounded-lg dark:bg-gray-700"
-                value={form.fields.firstName}
+                value={form.firstName}
                 onInput={[handleInput]}
+                required
               />
-              {form.errors.firstName && (
-                <p className="text-red-500 text-sm">{form.errors.firstName}</p>
-              )}
             </div>
             <div className="flex flex-col space-y-2">
               <label htmlFor="name">Last name</label>
@@ -35,26 +33,21 @@ export default function Login() {
                 type="text"
                 name="lastName"
                 className="rounded-lg dark:bg-gray-700"
-                value={form.fields.lastName}
+                value={form.lastName}
                 onInput={[handleInput]}
               />
-              {form.errors.lastName && (
-                <p className="text-red-500 text-sm">{form.errors.lastName}</p>
-              )}
             </div>
           </div>
           <div className="flex flex-col space-y-2">
             <label htmlFor="name">Email</label>
             <input
-              type="text"
+              type="email"
               name="email"
               className="rounded-lg dark:bg-gray-700"
-              value={form.fields.email}
+              value={form.email}
               onInput={[handleInput]}
+              required
             />
-            {form.errors.email && (
-              <p className="text-red-500 text-sm">{form.errors.email}</p>
-            )}
           </div>
           <div className="flex flex-col space-y-2">
             <label htmlFor="name">Password</label>
@@ -62,12 +55,10 @@ export default function Login() {
               type="password"
               name="password"
               className="rounded-lg dark:bg-gray-700"
-              value={form.fields.password}
+              value={form.password}
               onInput={[handleInput]}
+              required
             />
-            {form.errors.password && (
-              <p className="text-red-500 text-sm">{form.errors.password}</p>
-            )}
           </div>
 
           <div className="flex flex-col space-y-2">
@@ -77,7 +68,7 @@ export default function Login() {
                 onChange={(e) => handleRadioChange(e)}
                 value="MALE"
                 type="radio"
-                isChecked={form.fields.gender === "MALE"}
+                isChecked={form.gender === "MALE"}
                 name="gender"
                 label={"Male"}
               />
@@ -85,7 +76,7 @@ export default function Login() {
                 onChange={(e) => handleRadioChange(e)}
                 value="FEMALE"
                 type="radio"
-                isChecked={form.fields.gender === "FEMALE"}
+                isChecked={form.gender === "FEMALE"}
                 name="gender"
                 label={"Female"}
               />
@@ -93,14 +84,11 @@ export default function Login() {
                 onChange={(e) => handleRadioChange(e)}
                 value="OTHER"
                 type="radio"
-                isChecked={form.fields.gender === "OTHER"}
+                isChecked={form.gender === "OTHER"}
                 name="gender"
                 label={"Other"}
               />
             </div>
-            {form.errors.gender && (
-              <p className="text-red-500 text-sm">{form.errors.gender}</p>
-            )}
           </div>
 
           <div>
