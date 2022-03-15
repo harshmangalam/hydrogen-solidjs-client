@@ -13,15 +13,13 @@ export default function Login() {
           <div className="flex flex-col space-y-2">
             <label htmlFor="name">Email</label>
             <input
-              type="text"
+              type="email"
               name="email"
               className="rounded-lg dark:bg-gray-700"
-              value={form.fields.email}
+              value={form.email}
               onInput={[handleInput]}
+              required
             />
-            {form.errors.email && (
-              <p className="text-red-500 text-sm">{form.errors.email}</p>
-            )}
           </div>
           <div className="flex flex-col space-y-2">
             <label htmlFor="name">Password</label>
@@ -29,12 +27,10 @@ export default function Login() {
               type="password"
               name="password"
               className="rounded-lg dark:bg-gray-700"
-              value={form.fields.password}
+              value={form.password}
               onInput={[handleInput]}
+              required
             />
-            {form.errors.password && (
-              <p className="text-red-500 text-sm">{form.errors.password}</p>
-            )}
           </div>
 
           <div>

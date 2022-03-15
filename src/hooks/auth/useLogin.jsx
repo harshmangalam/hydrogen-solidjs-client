@@ -8,15 +8,8 @@ import useGeolocations from "../useGeolocations";
 export default function useLogin() {
   const geolocationStore = useGeolocations();
   const [form, setForm] = createStore({
-    fields: {
-      email: "",
-      password: "",
-    },
-    errors: {
-      email: "",
-      password: "",
-    },
-    hasError: false,
+    email: "",
+    password: "",
   });
 
   const { setCurrentUser, initSocketManager, setCurrentAccount } =
@@ -25,29 +18,15 @@ export default function useLogin() {
   const navigate = useNavigate();
 
   const handleInput = (ev) => {
-    setForm("hasError", false);
-    setForm("errors", [ev.currentTarget.name], "");
-    setForm("fields", [ev.currentTarget.name], ev.currentTarget.value);
+    setForm([ev.currentTarget.name], ev.currentTarget.value);
   };
 
   const handleLogin = async (ev) => {
     ev.preventDefault();
-    if (form.fields.email.trim().length === 0) {
-      setForm("errors", "email", "Email must not be empty");
-      setForm("hasError", true);
-    }
-    if (form.fields.password.trim().length === 0) {
-      setForm("errors", "password", "Password must not be empty");
-      setForm("hasError", true);
-    }
 
-    if (form.hasError) {
-      return;
-    }
     try {
-      const fields = form.fields;
       const { data } = await login({
-        ...fields,
+        ...form,
         platform,
         coords: geolocationStore.store.coords,
       });
