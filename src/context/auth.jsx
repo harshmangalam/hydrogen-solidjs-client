@@ -1,15 +1,17 @@
-import { createContext, onMount, useContext } from "solid-js";
+import { createContext, onMount, Show, useContext } from "solid-js";
 import { createStore } from "solid-js/store";
 import Cookies from "js-cookie";
 import { useLocation, useNavigate } from "solid-app-router";
 import { fetchCurrentUser } from "../services/auth.service";
 
 import { Manager } from "socket.io-client";
+import AuthLoader from "../components/root/AuthLoader";
 
 const AuthStateContext = createContext();
 const AuthDispatchContext = createContext();
 const initialState = {
   isAuthenticated: false,
+  isLoading: true,
   currentUser: null,
   currentAccount: null,
   socket: null,
@@ -47,6 +49,8 @@ export default function AuthProvider(props) {
       if (!location.pathname.includes("/auth")) {
         navigate("/auth/login");
       }
+    } finally {
+      setStore("isLoading", false);
     }
   });
   const setCurrentUser = (user) => {
@@ -72,7 +76,9 @@ export default function AuthProvider(props) {
           setCurrentAccount,
         }}
       >
-        {props.children}
+        <Show when={!store.isLoading} fallback={<AuthLoader />}>
+          {props.children}
+        </Show>
       </AuthDispatchContext.Provider>
     </AuthStateContext.Provider>
   );

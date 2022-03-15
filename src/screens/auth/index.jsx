@@ -4,10 +4,10 @@ import DarkLightMode from "../../components/shared/DarkLightMode";
 import Logo from "../../components/shared/Logo";
 import { useAuthState } from "../../context/auth";
 export default function AuthLayout() {
-  const { isAuthenticated } = useAuthState();
+  const authState = useAuthState();
   const navigate = useNavigate();
   onMount(() => {
-    if (isAuthenticated) {
+    if (authState.isAuthenticated) {
       navigate("/");
     }
   });
