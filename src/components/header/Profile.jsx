@@ -7,33 +7,40 @@ import { RiSystemSettings4Line } from "solid-icons/ri";
 import { RiSystemLogoutBoxRLine } from "solid-icons/ri";
 import useLogout from "../../hooks/auth/useLogout";
 export default function Profile() {
-  const { currentUser } = useAuthState();
+  const authState = useAuthState();
   const [open, setOpen] = createSignal(false);
   const { logoutUser } = useLogout();
   return (
     <>
       <button onClick={() => setOpen((o) => !o)}>
-        <UserAvatar
-          src={currentUser.profileImage}
-          className="w-8 h-8 md:w-10 md:h-10 rounded-full"
-          alt={currentUser.firstName}
-        />
+        <Show when={authState?.isAuthenticated}>
+          <UserAvatar
+            src={authState.currentUser.profileImage}
+            className="w-8 h-8 md:w-10 md:h-10 rounded-full"
+            alt={authState.currentUser.firstName}
+          />
+        </Show>
       </button>
       <Show when={open()}>
         <DropdownMenu onClose={() => setOpen(false)}>
           <div className="px-2 py-2">
-            <Link href={`/${currentUser.id}`} onClick={() => setOpen(false)}>
+            <Link
+              href={`/${authState.currentUser.id}`}
+              onClick={() => setOpen(false)}
+            >
               <button className="py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md flex space-x-4 items-center w-full">
                 <UserAvatar
-                  src={currentUser.profileImage}
+                  src={authState.currentUser.profileImage}
                   className="w-16 h-16 rounded-full"
-                  alt={currentUser.firstName}
+                  alt={authState.currentUser.firstName}
                 />
                 <div className="flex flex-col items-start">
                   <h6 className="font-medium text-lg">
-                    {currentUser.firstName + " " + currentUser.lastName}
+                    {authState.currentUser.firstName +
+                      " " +
+                      authState.currentUser.lastName}
                   </h6>
-                  <p className="text-sm">{currentUser.email}</p>
+                  <p className="text-sm">{authState.currentUser.email}</p>
                 </div>
               </button>
             </Link>

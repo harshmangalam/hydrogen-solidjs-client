@@ -1,5 +1,5 @@
 import { createContext, onMount, Show, useContext } from "solid-js";
-import { createStore } from "solid-js/store";
+import { createStore, produce } from "solid-js/store";
 import Cookies from "js-cookie";
 import { useLocation, useNavigate } from "solid-app-router";
 import { fetchCurrentUser } from "../services/auth.service";
@@ -22,6 +22,16 @@ export default function AuthProvider(props) {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const initCurrentUser = async () => {
+    try {
+      const { data } = await fetchCurrentUser();
+      setStore("isAuthenticated", true);
+      setStore("currentUser", data.data.user);
+      setStore("currentAccount", data.data.currentAccount);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const initSocketManager = () => {
     const manager = new Manager(import.meta.env.VITE_ENDPOINT);
     const socket = manager.socket("/", {
@@ -39,10 +49,7 @@ export default function AuthProvider(props) {
   };
   onMount(async () => {
     try {
-      const { data } = await fetchCurrentUser();
-      setStore("isAuthenticated", true);
-      setStore("currentUser", data.data.user);
-      setStore("currentAccount", data.data.currentAccount);
+      await initCurrentUser();
       initSocketManager();
     } catch (error) {
       Cookies.remove("token");
@@ -66,6 +73,15 @@ export default function AuthProvider(props) {
     setStore("currentAccount", account);
   };
 
+  const handleUserStatusChange = (isOnline) => {
+    setStore(
+      "currentUser",
+      produce((currentUser) => {
+        currentUser.status = isOnline ? "ACTIVE" : "IDLE";
+      })
+    );
+  };
+
   return (
     <AuthStateContext.Provider value={store}>
       <AuthDispatchContext.Provider
@@ -74,6 +90,8 @@ export default function AuthProvider(props) {
           removeCurrentUser,
           initSocketManager,
           setCurrentAccount,
+          initCurrentUser,
+          handleUserStatusChange,
         }}
       >
         <Show when={!store.isLoading} fallback={<AuthLoader />}>

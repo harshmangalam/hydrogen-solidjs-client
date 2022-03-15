@@ -1,3 +1,5 @@
+import { Show } from "solid-js";
+
 export default function UserAvatar(props) {
   return (
     <img

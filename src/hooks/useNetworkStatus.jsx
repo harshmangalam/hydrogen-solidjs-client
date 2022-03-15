@@ -1,7 +1,10 @@
 import { onCleanup, onMount } from "solid-js";
 import { createStore } from "solid-js/store";
+import { useAuthDispatch, useAuthState } from "../context/auth";
 import { useUIDispatch } from "../context/ui";
 export default function useNetworkStatus() {
+  const authDispatch = useAuthDispatch();
+
   const [network, setNetwork] = createStore({
     isOnline: true,
     connection: {
@@ -17,6 +20,7 @@ export default function useNetworkStatus() {
 
   const handleStatusChange = (e) => {
     const isOnline = e.type === "online";
+    authDispatch.handleUserStatusChange(isOnline);
     setNetwork("isOnline", isOnline);
     addSnackbar({
       type: isOnline ? "success" : "warning",

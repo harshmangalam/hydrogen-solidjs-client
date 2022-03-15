@@ -1,7 +1,7 @@
 import { mergeProps } from "solid-js";
 
 export default function UserStatusAvatar(props) {
-  const merged = mergeProps({imgClass:"w-10 h-10"},props)
+  const merged = mergeProps({ imgClass: "w-10 h-10" }, props);
   return (
     <div className={`relative ${merged.divClass}`}>
       <img
@@ -10,7 +10,10 @@ export default function UserStatusAvatar(props) {
         className={`rounded-full ${merged.imgClass}`}
         title={merged.firstName}
       />
-      <div className={`absolute -right-1 bottom-0 ${merged.statusClass}`}>
+      <div
+        className={`absolute -right-1 bottom-0 ${merged.statusClass}`}
+        title={merged.status}
+      >
         <Switch>
           <Match when={merged?.status === "ACTIVE"}>
             <div className="h-4 w-4 bg-green-500 rounded-full border-2 border-white dark:border-black"></div>
