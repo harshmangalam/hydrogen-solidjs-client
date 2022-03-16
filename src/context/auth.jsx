@@ -49,7 +49,7 @@ export default function AuthProvider(props) {
   };
   onMount(async () => {
     try {
-      await initCurrentUser();
+      await loadCurrentUser();
       initSocketManager();
     } catch (error) {
       Cookies.remove("token");
