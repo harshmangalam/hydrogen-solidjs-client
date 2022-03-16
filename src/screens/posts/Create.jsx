@@ -45,6 +45,7 @@ export default function Create() {
                 name="audience"
                 id="audience"
                 className="rounded-md dark:bg-gray-700"
+                required
               >
                 <option value="">Select</option>
                 <option value="PUBLIC">Public</option>

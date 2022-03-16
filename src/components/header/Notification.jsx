@@ -55,7 +55,7 @@ export default function Notification() {
                 </div>
               }
             >
-              <div className="flex space-x-2">
+              <div className="flex space-x-2 mt-2">
                 <button
                   className="rounded-full bg-gray-200 dark:bg-gray-700 dark:text-white py-1 px-4 shadow hover:bg-gray-300 dark:hover:bg-gray-600"
                   onClick={[removeAllNotifications]}

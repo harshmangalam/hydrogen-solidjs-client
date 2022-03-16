@@ -25,21 +25,23 @@ export default function Dialog(props) {
           >
             {/* modal header  */}
 
-            <div className="flex items-center justify-end py-2 px-4 ">
+            <div className="flex items-center justify-between py-2 px-4 ">
+              <h6 className="text-lg font-semibold">{props.title}</h6>
               <IconButton onClick={props.onClose}>
                 <IoClose />
               </IconButton>
             </div>
+            <hr className="dark:border-gray-600" />
 
             {/* modal body  */}
 
-            <div className="py-4  text-center text-lg">{props.content}</div>
+            <div className="py-2 px-4 text-lg">{props.content}</div>
 
             <div className="py-4 flex items-center gap-2 justify-end px-4">
               <For each={props.actions}>
                 {(action) => (
                   <button
-                    className={`py-2 px-4 bg-gray-200 dark:bg-gray-700 dark:text-white rounded-md`}
+                    className={`rounded-full py-2 px-8 bg-gray-200 dark:bg-gray-700 dark:text-white `}
                     onClick={[action.onClick]}
                     classList={{
                       "bg-red-400 text-white dark:bg-red-400 hover:bg-red-500 dark:hover:bg-red-500":
