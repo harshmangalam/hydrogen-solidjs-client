@@ -36,9 +36,9 @@ export default function Profile() {
                 />
                 <div className="flex flex-col items-start">
                   <h6 className="font-medium text-lg">
-                    {authState.currentUser.firstName +
-                      " " +
-                      authState.currentUser.lastName}
+                    {`${authState.currentUser.firstName} ${
+                      authState.currentUser.lastName || ""
+                    }`}
                   </h6>
                   <p className="text-sm">{authState.currentUser.email}</p>
                 </div>

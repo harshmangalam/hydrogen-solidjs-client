@@ -1,9 +1,9 @@
-import emptyImg from "../../../assets/empty-img.jpg";
+
 export default function UserImage(props) {
 
   return (
     <img
-      src={props.src || emptyImg}
+      src={props.src}
       className={`w-full ${props.className}`}
       alt={props.alt}
     />

@@ -56,7 +56,7 @@ export default function Profile() {
             >
               <div className="bg-gray-100 dark:bg-gray-900 h-3/6 md:h-4/6  rounded-b-lg w-full max-w-3xl mx-auto relative">
                 {/* cover image  */}
-                <UserImage
+                <img
                   src={resource().data.data.user.coverImage}
                   className="w-full h-full aspect-auto object-cover rounded-b-md"
                   alt={resource().data.data.user.firstName}
@@ -65,18 +65,19 @@ export default function Profile() {
                 <div className="absolute -bottom-20 md:-bottom-28 left-1/2 md:left-4 -translate-x-1/2 md:-translate-x-0">
                   <div className="relative">
                     {/* avatar profile image  */}
-                    <UserAvatar
+                    <img
                       src={resource().data.data.user.profileImage}
-                      className="w-40 h-40 rounded-full aspect-auto object-cover"
                       alt={resource().data.data.user.firstName}
+                      className="w-40 h-40 rounded-full aspect-auto object-cover p-1 bg-blue-200 dark:bg-blue-300"
                     />
+
                     <Show
                       when={currentUser.id === resource().data.data.user.id}
                     >
                       <div className="absolute bottom-4 right-0">
                         {/* change profile pic  */}
                         <ImageUpload
-                          btnClass="w-10 h-10 rounded-full grid place-items-center bg-blue-500 hover:bg-blue-600"
+                          btnClass="w-10 h-10 rounded-full grid place-items-center bg-blue-400 hover:bg-blue-500 "
                           image={form.profileImage}
                           addImage={addProfileImage}
                           removeImage={removeProfileImage}
@@ -92,7 +93,7 @@ export default function Profile() {
                   <div className="absolute right-0 bottom-0 p-3">
                     {/* change cover image  */}
                     <ImageUpload
-                      btnClass="py-2 px-4 rounded-lg flex items-center space-x-2 bg-blue-500 text-white font-medium hover:bg-blue-600"
+                      btnClass="py-2 px-4 rounded-lg flex items-center space-x-2 bg-blue-400 text-white font-medium hover:bg-blue-500"
                       image={form.coverImage}
                       addImage={addCoverImage}
                       removeImage={removeCoverImage}

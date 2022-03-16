@@ -9,7 +9,7 @@ export default function MainLayout() {
   const authState = useAuthState();
   const isRouting = useIsRouting();
   onMount(() => {
-    if (!authState.isAuthenticated) {
+    if (!authState?.isAuthenticated) {
       navigate("/auth/login", { replace: true });
     }
   });

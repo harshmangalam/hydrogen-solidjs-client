@@ -22,7 +22,7 @@ export default function AuthProvider(props) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const initCurrentUser = async () => {
+  const loadCurrentUser = async () => {
     try {
       const { data } = await fetchCurrentUser();
       setStore("isAuthenticated", true);
@@ -90,7 +90,7 @@ export default function AuthProvider(props) {
           removeCurrentUser,
           initSocketManager,
           setCurrentAccount,
-          initCurrentUser,
+          loadCurrentUser,
           handleUserStatusChange,
         }}
       >

@@ -16,7 +16,7 @@ export default function FriendCard(props) {
         <div className="flex flex-col space-y-1">
           <Link href={`/${props.id}`} className="hover:underline">
             <h6 className="font-medium text-md">
-              {props.firstName + " " + props.lastName}
+              {`${props.firstName} ${props.lastName || ""}`}
             </h6>
           </Link>
 
