@@ -1,12 +1,13 @@
 import { createResource, For, Match, Show, Switch } from "solid-js";
-import {Link } from "solid-app-router";
-import { FaSolidUsers } from "solid-icons/fa";
-import Empty from "../../components/shared/Empty";
-import UserAvatar from "../../components/ui/dataDisplay/UserAvatar";
-import { fetchGroupNotifications } from "../../services";
-import { getRelativeTime } from "../../utils/dateTime";
-export default function GroupNotifications() {
-  const [resource] = createResource(fetchGroupNotifications);
+import { Link } from "solid-app-router";
+import { FaSolidUserFriends, FaSolidUsers } from "solid-icons/fa";
+import Empty from "../components/shared/Empty";
+import UserAvatar from "../components/ui/dataDisplay/UserAvatar";
+import { fetchNotifications } from "../services";
+import { getRelativeTime } from "../utils/dateTime";
+import { BsFilePost } from "solid-icons/bs";
+export default function Notifications() {
+  const [resource] = createResource(fetchNotifications);
   return (
     <div className="my-4">
       <Switch>
@@ -23,7 +24,7 @@ export default function GroupNotifications() {
             fallback={
               <Empty
                 title="No Notifications"
-                subTitle="You will be notify when somthing will happen in group"
+                subTitle="You have no notification"
               />
             }
           >
@@ -32,15 +33,23 @@ export default function GroupNotifications() {
               <ul className="flex flex-col space-y-4 mt-4">
                 <For each={resource().data.data.notifications}>
                   {(notif) => (
-                    <li className="rounded-lg flex space-x-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer px-2 py-2">
+                    <li className="rounded-lg flex space-x-2 items-center hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer px-2 py-2">
                       <div className="relative">
                         <UserAvatar
                           src={notif.fromUser.profileImage}
-                          className="w-14 h-14 rounded-full flex-none"
+                          className="w-16 h-16 rounded-full flex-none"
                           alt={notif.fromUser.firstName}
                         />
-                        <div className="absolute bottom-0 right-0 w-6 h-6 grid place-items-center rounded-full bg-purple-500 text-white">
-                          <FaSolidUsers />
+                        <div className="absolute bottom-0 right-0 w-8 h-8 grid place-items-center rounded-full bg-blue-400 text-white">
+                          <Show when={notif.type === "FRIEND"}>
+                            <FaSolidUserFriends />
+                          </Show>
+                          <Show when={notif.type === "POST"}>
+                            <BsFilePost />
+                          </Show>
+                          <Show when={notif.type === "GROUP"}>
+                            <FaSolidUsers />
+                          </Show>
                         </div>
                       </div>
                       <div className="flex flex-col items-start space-y-1">

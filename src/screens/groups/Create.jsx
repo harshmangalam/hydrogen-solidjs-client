@@ -1,5 +1,6 @@
 import { BiImage } from "solid-icons/bi";
 import { FaSolidUsers } from "solid-icons/fa";
+import { Show } from "solid-js";
 import InvitePeople from "../../components/groups/Create/InvitePeople";
 import ImageUpload from "../../components/shared/ImageUpload";
 import useCreateGroup from "../../hooks/useCreateGroup";
@@ -28,6 +29,7 @@ export default function CreateGroup() {
               className="rounded-lg dark:bg-gray-700"
               value={form.fields.name}
               onInput={[handleInput]}
+              required
             />
           </div>
           <div className="flex flex-col space-y-2">
@@ -38,10 +40,10 @@ export default function CreateGroup() {
               className="rounded-lg dark:bg-gray-700"
               value={form.fields.privacy}
               onChange={[handleChange]}
+              required
             >
-              <option value="PUBLIC" selected>
-                Public
-              </option>
+              <option value="">Select</option>
+              <option value="PUBLIC">Public</option>
               <option value="PRIVATE">Private</option>
             </select>
           </div>
@@ -67,11 +69,13 @@ export default function CreateGroup() {
             </ImageUpload>
           </div>
 
-          <InvitePeople
-            friends={form.fields.invitedPeople}
-            addFriend={addInvitedPeople}
-            removeFriend={removeInvitedPeople}
-          />
+          <Show when={form.fields.privacy === "PRIVATE"}>
+            <InvitePeople
+              friends={form.fields.invitedPeople}
+              addFriend={addInvitedPeople}
+              removeFriend={removeInvitedPeople}
+            />
+          </Show>
 
           <div>
             <button

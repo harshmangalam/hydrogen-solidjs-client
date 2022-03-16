@@ -2,7 +2,6 @@ import { IoNotifications } from "solid-icons/io";
 import { createSignal, For, Show } from "solid-js";
 import UserAvatar from "../ui/dataDisplay/UserAvatar";
 import DropdownMenu from "../ui/feedback/DropdownMenu";
-import Empty from "../shared/Empty";
 
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -41,9 +40,6 @@ export default function Notification() {
           <div className="px-2 py-2">
             <div className="flex justify-between px-2">
               <h5 className="text-2xl font-semibold">Notifications</h5>
-              <Link href="/notifications" className="text-blue-500 font-semibold">
-                See all
-              </Link>
             </div>
             <Show
               when={notificationState?.count}
@@ -62,14 +58,16 @@ export default function Notification() {
                 >
                   Clear
                 </button>
-                <Link href="/notifications">
-                  <button className="rounded-full bg-gray-200 dark:bg-gray-700 dark:text-white py-1 px-4 shadow hover:bg-blue-200 dark:hover:bg-blue-500">
-                    See all
-                  </button>
+                <Link
+                  className="rounded-full bg-gray-200 dark:bg-gray-700 dark:text-white py-1 px-4 shadow hover:bg-blue-200 dark:hover:bg-blue-500"
+                  onClick={() => setOpen(false)}
+                  href="/notifications"
+                >
+                  See all
                 </Link>
               </div>
 
-              <ul className="flex flex-col space-y-2 my-4">
+              <ul className="flex flex-col space-y-2 my-4 overflow-y-scroll max-h-[70vh] modal-scrollbar">
                 <For each={notificationState?.notifications}>
                   {(notif) => (
                     <li
