@@ -2,14 +2,14 @@ import { FaSolidGlobeAsia, FaSolidUser } from "solid-icons/fa";
 import { FaSolidLock } from "solid-icons/fa";
 import { FaSolidUsers } from "solid-icons/fa";
 import { FaSolidPeopleArrows } from "solid-icons/fa";
-import { BiDotsHorizontalRounded } from "solid-icons/bi";
 import UserAvatar from "../../ui/dataDisplay/UserAvatar";
-import dayjs from "dayjs"
-import relativeTime from "dayjs/plugin/relativeTime"
+import { getRelativeTime } from "../../../utils/dateTime";
+import DeletePost from "./DeletePost";
+import { useAuthState } from "../../../context/auth";
+import { Show } from "solid-js";
 
-
-dayjs.extend(relativeTime)
 export default function PostHeader(props) {
+  const authState = useAuthState();
   const showPostAudience = (audience) => {
     switch (audience) {
       case "PUBLIC":
@@ -41,7 +41,7 @@ export default function PostHeader(props) {
           </h6>
           <div class="flex items-center space-x-2 ">
             <span class="text-sm text-gray-500 dark:text-gray-200">
-              {dayjs(props.createdAt).fromNow()}
+              {getRelativeTime(props.createdAt)}
             </span>
             <span class="flex items-start dark:text-gray-200">&#8228;</span>
             <span className="dark:text-gray-200 text-lg">
@@ -51,9 +51,9 @@ export default function PostHeader(props) {
         </div>
       </div>
 
-      <button class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white text-xl rounded-full">
-        <BiDotsHorizontalRounded />
-      </button>
+      <Show when={authState.currentUser.id === props.author.id}>
+        <DeletePost handleDeletePost={props.handleDeletePost} />
+      </Show>
     </section>
   );
 }

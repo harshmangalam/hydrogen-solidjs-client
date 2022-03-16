@@ -7,13 +7,14 @@ import PostReaction from "./PostReaction";
 import PostTitle from "./PostTitle";
 
 export default function PostCard(props) {
-  const { handleAddRemoveLike } = usePost(props.refetch);
+  const { handleAddRemoveLike, handleDeletePost } = usePost(props.refetch);
   return (
     <article class="rounded-lg shadow bg-white dark:bg-gray-800 border-2 dark:border-gray-700 dark:text-white">
       <PostHeader
         author={props.author}
         createdAt={props.createdAt}
         audience={props.audience}
+        handleDeletePost={() => handleDeletePost(props.id)}
       />
       <PostTitle
         feeling={props.feeling}
