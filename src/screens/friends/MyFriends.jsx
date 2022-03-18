@@ -4,6 +4,7 @@ import FriendCard from "../../components/friends/FriendCard";
 import FriendBtn from "../../components/friends/FriendBtn";
 import { fetchFriends } from "../../services/friends.service";
 import Error from "../../components/shared/Error";
+import Empty from "../../components/shared/Empty";
 import useFriendRequest from "../../hooks/useFriendRequest";
 import FriendInterface from "../../components/friends/FriendInterface";
 export default function MyFriends() {
@@ -16,19 +17,11 @@ export default function MyFriends() {
         <p>Loading..</p>
       </Match>
       <Match when={response.error}>
-        <Error
-          error="server"
-          name={response.error.name}
-          message={response.error.message}
-        />
+        <Error name="Error" />
       </Match>
 
       <Match when={response().data.data.users.length === 0}>
-        <Error
-          error="empty"
-          name="No Friends"
-          message="No any one are your friends"
-        />
+        <Empty title="No Friends" />
       </Match>
       <Match when={response().data.data.users.length !== 0}>
         <h4 className="text-xl font-medium">My Friends</h4>

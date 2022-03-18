@@ -7,6 +7,7 @@ import Error from "../../components/shared/Error";
 import { fetchFriendsRequestsReceived } from "../../services/friends.service";
 import useFriendRequest from "../../hooks/useFriendRequest";
 import FriendInterface from "../../components/friends/FriendInterface";
+import Empty from "../../components/shared/Empty";
 export default function RequestsReceived() {
   const [response, { refetch }] = createResource(fetchFriendsRequestsReceived);
   const { handleAcceptFriendRequest, handleIgnoreReceivedRequest, loading } =
@@ -22,7 +23,7 @@ export default function RequestsReceived() {
       </Match>
 
       <Match when={response().data.data.users.length === 0}>
-        <Error name="No Requests Received" />
+        <Empty title="No Requests Received" />
       </Match>
       <Match when={response().data.data.users.length !== 0}>
         <h4 className="text-xl font-medium">Requests received</h4>

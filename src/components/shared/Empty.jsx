@@ -1,15 +1,10 @@
-
-
 export default function Empty(props) {
   return (
-    <div className="grid place-items-center">
+    <div className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 absolute">
       <div className="flex flex-col items-center text-center">
-        <h6 className="text-3xl font-bold text-gray-600 dark:text-gray-400">
+        <h6 className="text-2xl  text-gray-600 dark:text-gray-400">
           {props.title}
         </h6>
-        <p className="text-xl font-bold text-gray-600 dark:text-gray-400 max-w-md">
-          {props.subTitle}
-        </p>
       </div>
     </div>
   );
