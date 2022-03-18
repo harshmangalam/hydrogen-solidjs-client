@@ -46,7 +46,7 @@ export default function PostCard(props) {
               handleAddRemoveLike={() => handleAddRemoveLike(props.id)}
               hasLike={props.hasLike}
             />
-            <PostComment />
+            <PostComment postId={props.id} />
           </div>
         </section>
       </div>

@@ -32,7 +32,7 @@ function AppShell(props) {
           </For>
         </ul>
       </Drawer>
-      <div className="w-full md:w-3/4 xl:w-4/5 ml-auto dark:text-white pt-4 md:px-8">
+      <div className="w-full md:w-3/4 xl:w-4/5 ml-auto dark:text-white py-8 md:px-4 relative">
         {props.children}
       </div>
     </div>

@@ -10,7 +10,7 @@ export default function RequestsReceived() {
   const [response, { refetch }] = createResource(fetchFriendsRequestsSent);
   const { handleCancelSentRequest, loading } = useFriendRequest(refetch);
   return (
-    <div className="pt-4 md:px-8">
+ 
       <Switch>
         <Match when={response.loading}>
           {/* <FriendCardSkeleton /> */}
@@ -55,6 +55,6 @@ export default function RequestsReceived() {
           </FriendInterface>
         </Match>
       </Switch>
-    </div>
+    
   );
 }

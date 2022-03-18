@@ -105,6 +105,9 @@ const GeneralSettings = lazy(() => import("../screens/settings/General"));
 const Search = lazy(() => import("../screens/Search"));
 // Notifications
 const Notifications = lazy(() => import("../screens/Notifications"));
+// post details 
+const PostDetails = lazy(() => import("../screens/PostDetails"));
+
 
 export default function AppRouter() {
   return (
@@ -112,8 +115,8 @@ export default function AppRouter() {
       <Route path="/" element={<MainLayout />}>
         <Route path="" element={<Home />} />
         <Route path="notifications" element={<Notifications />} />
-
         <Route path="search" element={<Search />} />
+        <Route path="/posts/:postId" element={<PostDetails />} />
 
         {/* friends  */}
         <Route path="friends" element={<FriendsLayout />}>
