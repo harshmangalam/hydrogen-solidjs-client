@@ -30,7 +30,10 @@ export default function PostCard(props) {
           className="aspect-auto w-full"
         />
       </Show>
-      <PostReaction countLikes={props._count.likes} />
+      <PostReaction
+        countLikes={props._count.likes}
+        commentsLikes={props._count.comments}
+      />
       <Show when={props.content}>
         <section class="px-4 py-4 flex flex-col space-y-2">
           <p class="text-[.9375rem] text-gray-700 dark:text-gray-200">

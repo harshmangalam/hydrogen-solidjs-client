@@ -1,3 +1,4 @@
+import { Link } from "solid-app-router";
 import { For, Show } from "solid-js";
 import { useAuthState } from "../../context/auth";
 import UserAvatar from "../ui/dataDisplay/UserAvatar";
@@ -25,11 +26,13 @@ export default function ProfileInfo(props) {
       <div class="-space-x-3 flex items-center">
         <For each={props.friends}>
           {(friend) => (
-            <UserAvatar
-              src={friend.profileImage}
-              alt={friend.firstName}
-              className="w-10 h-10 rounded-full border-white border-2"
-            />
+            <Link href={`/${friend.id}`}>
+              <UserAvatar
+                src={friend.profileImage}
+                alt={friend.firstName}
+                className="w-10 h-10 rounded-full border-white border-2"
+              />
+            </Link>
           )}
         </For>
         <Show when={props.friendsCount - props.friends.length > 0}>

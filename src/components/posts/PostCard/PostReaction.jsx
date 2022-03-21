@@ -14,7 +14,7 @@ export default function PostReaction(props) {
         <span className="text-green-400 dark:text-green-200">
           <FaSolidCommentAlt />
         </span>
-        <span className="text-sm">{0}</span>
+        <span className="text-sm">{props.commentsLikes}</span>
       </button>
     </section>
   );

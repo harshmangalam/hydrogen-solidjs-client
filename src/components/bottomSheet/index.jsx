@@ -3,7 +3,7 @@ import { BsFilePost } from "solid-icons/bs";
 import { FaSolidUserFriends, FaSolidUsers } from "solid-icons/fa";
 import { TiHome } from "solid-icons/ti";
 import { For } from "solid-js";
-
+    
 export default function BottomSheet() {
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 z-20 bg-gray-200 dark:bg-gray-800 py-2 px-4 h-16 flex flex-col justify-center">

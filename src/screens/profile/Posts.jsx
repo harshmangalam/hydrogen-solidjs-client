@@ -7,8 +7,8 @@ import { fetchUserPosts } from "../../services/user.service";
 import { useParams } from "solid-app-router";
 
 export default function ProfilePosts() {
-  const { userId } = useParams();
-  const [response,{refetch}] = createResource(userId, fetchUserPosts);
+  const params = useParams();
+  const [response,{refetch}] = createResource(()=>params.userId, fetchUserPosts);
 
   return (
     <div>

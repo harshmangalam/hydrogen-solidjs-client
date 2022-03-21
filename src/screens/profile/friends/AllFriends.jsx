@@ -3,8 +3,8 @@ import { createResource, For, Match, Switch } from "solid-js";
 import { useParams } from "solid-app-router";
 import { fetchUserAllFriends } from "../../../services/user.service";
 export default function AllFriends() {
-  const { userId } = useParams();
-  const [resource] = createResource(userId, fetchUserAllFriends);
+  const params = useParams();
+  const [resource] = createResource(() => params.userId, fetchUserAllFriends);
   return (
     <div>
       <Switch>

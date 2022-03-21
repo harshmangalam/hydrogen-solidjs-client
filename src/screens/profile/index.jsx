@@ -5,8 +5,6 @@ import ImageUpload from "../../components/shared/ImageUpload";
 import { FaSolidCamera } from "solid-icons/fa";
 import ProfileInfo from "../../components/profile/ProfileInfo";
 import { fetchUserDetails } from "../../services/user.service";
-import UserImage from "../../components/ui/dataDisplay/UserImage";
-import UserAvatar from "../../components/ui/dataDisplay/UserAvatar";
 import { useAuthState } from "../../context/auth";
 import HydrogenLoader from "../../components/shared/HydrogenLoader";
 import Error from "../../components/shared/Error";
