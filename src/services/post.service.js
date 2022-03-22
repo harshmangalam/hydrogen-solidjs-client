@@ -30,6 +30,10 @@ async function addRemoveLike(postId) {
 async function deletePost(postId) {
   return await axios.delete(`/posts/${postId}`);
 }
+
+async function fetchPostLikesUsers(postId) {
+  return await axios.get(`/posts/${postId}/likes`);
+}
 export {
   createPost,
   fetchPosts,
@@ -39,4 +43,5 @@ export {
   addRemoveLike,
   fetchPost,
   deletePost,
+  fetchPostLikesUsers
 };

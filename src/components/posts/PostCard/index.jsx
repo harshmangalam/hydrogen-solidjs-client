@@ -31,6 +31,7 @@ export default function PostCard(props) {
         />
       </Show>
       <PostReaction
+        postId={props.id}
         countLikes={props._count.likes}
         commentsLikes={props._count.comments}
       />

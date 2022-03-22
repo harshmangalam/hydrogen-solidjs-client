@@ -1,26 +1,27 @@
 import { Portal } from "solid-js/web";
-import { Show } from "solid-js";
+import { mergeProps, Show } from "solid-js";
 import { IoClose } from "solid-icons/io";
 import IconButton from "../inputs/IconButton";
 
 export default function Modal(props) {
+  const merged = mergeProps({ showFooter: true }, props);
   let cardRef;
 
   function handleClickOutside(event) {
     if (cardRef && !cardRef.contains(event.target)) {
-      props.onClose();
+      merged.onClose();
     }
   }
 
   function handleComplete() {
-    if (typeof props.onDone !== "undefined") {
-      props.onDone();
+    if (typeof merged.onDone !== "undefined") {
+      merged.onDone();
     }
-    props.onClose();
+    merged.onClose();
   }
 
   return (
-    <Show when={props.open}>
+    <Show when={merged.open}>
       <Portal>
         <div
           className="fixed inset-0 bg-gray-900/70 z-50"
@@ -34,10 +35,10 @@ export default function Modal(props) {
 
             <div className="flex items-center justify-between py-4 px-4 ">
               <h6 className="font-bold text-xl flex-1 text-center">
-                {props.title}
+                {merged.title}
               </h6>
 
-              <IconButton onClick={props.onClose}>
+              <IconButton onClick={merged.onClose}>
                 <IoClose />
               </IconButton>
             </div>
@@ -47,24 +48,29 @@ export default function Modal(props) {
             {/* modal body  */}
 
             <div className="py-4 overflow-y-scroll max-h-96 modal-scrollbar">
-              {props.children}
+              {merged.children}
             </div>
-            <hr className="dark:border-gray-600" />
 
-            <div className="py-4 flex items-center gap-2 justify-end px-4">
-              <button
-                className="py-2 px-4 bg-gray-200 dark:bg-gray-700 dark:text-white rounded-md"
-                onClick={[props.onClose]}
-              >
-                Close
-              </button>
-              <button
-                className="py-2 px-4 bg-blue-500 text-white rounded-md"
-                onClick={[handleComplete]}
-              >
-                Done
-              </button>
-            </div>
+            {/* modal footer */}
+
+            <Show when={merged.showFooter}>
+              <hr className="dark:border-gray-600" />
+
+              <div className="py-4 flex items-center gap-2 justify-end px-4">
+                <button
+                  className="py-2 px-4 bg-gray-200 dark:bg-gray-700 dark:text-white rounded-md"
+                  onClick={[merged.onClose]}
+                >
+                  Close
+                </button>
+                <button
+                  className="py-2 px-4 bg-blue-500 text-white rounded-md"
+                  onClick={[handleComplete]}
+                >
+                  Done
+                </button>
+              </div>
+            </Show>
           </div>
         </div>
       </Portal>
