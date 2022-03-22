@@ -61,7 +61,7 @@ export default function AuthProvider(props) {
     }
   });
 
-  on
+ 
   const setCurrentUser = (user) => {
     setStore("isAuthenticated", true);
     setStore("currentUser", user);

@@ -4,7 +4,7 @@ import Feelings from "../../components/posts/create/Feelings";
 import ImageUpload from "../../components/shared/ImageUpload";
 import SpecificFriends from "../../components/posts/create/SpecificFriends";
 import TagPeople from "../../components/posts/create/TagPeople";
-import useCreatePost from "../../hooks/useCreatePost";
+import useCreatePost from "../../hooks/post/useCreatePost";
 
 export default function Create() {
   const {
@@ -27,7 +27,7 @@ export default function Create() {
         <div className="flex flex-col space-y-2">
           <label htmlFor="name">Post content</label>
           <textarea
-            value={form.fields.content}
+            value={form.content}
             onInput={[handleInput]}
             name="content"
             className="rounded-md dark:bg-gray-700"
@@ -39,7 +39,7 @@ export default function Create() {
           <div className="flex flex-col space-y-2">
             <label htmlFor="audience">Post privacy</label>
             <select
-              value={form.fields.audience}
+              value={form.audience}
               onInput={[handleChange]}
               name="audience"
               id="audience"
@@ -54,10 +54,10 @@ export default function Create() {
             </select>
           </div>
 
-          <Show when={form.fields.audience === "SPECIFIC"}>
+          <Show when={form.audience === "SPECIFIC"}>
             <div>
               <SpecificFriends
-                friends={form.fields.specificAudienceFriends}
+                friends={form.specificAudienceFriends}
                 addFriend={addSpecificFriend}
                 removeFriend={removeSpecificFriend}
               />
@@ -67,23 +67,23 @@ export default function Create() {
 
         <div className="flex space-x-4 rounded-md border border-gray-400 dark:border-gray-600 px-2 py-2">
           <TagPeople
-            friends={form.fields.taggedFriends}
+            friends={form.taggedFriends}
             addFriend={addTaggedFriend}
             removeFriend={removeTaggedFriend}
           />
           <ImageUpload
-            image={form.fields.image}
+            image={form.image}
             addImage={addImage}
             removeImage={removeImage}
           >
             <BsImages className="text-green-500" />
           </ImageUpload>
           <Feelings
-            feeling={form.fields.feeling}
+            feeling={form.feeling}
             addFeeling={addFeeling}
             removeFeeling={removeFeeling}
           />
-          <CheckIn checkIn={form.fields.checkIn} handleInput={handleInput} />
+          <CheckIn checkIn={form.checkIn} handleInput={handleInput} />
         </div>
 
         <div>

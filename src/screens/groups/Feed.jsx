@@ -13,7 +13,7 @@ export default function GroupsFeed() {
         <GroupPostCardSkeleton />
       </Match>
       <Match when={response.error}>
-        <Error name={Error} />
+        <Error name={"Error"} />
       </Match>
 
       <Match when={response()}>
@@ -28,7 +28,7 @@ export default function GroupsFeed() {
               <For each={response().data.data.posts}>
                 {(post) => (
                   <li>
-                    <GroupPostCard {...post}  refetch={refetch} />
+                    <GroupPostCard {...post} refetch={refetch} />
                   </li>
                 )}
               </For>

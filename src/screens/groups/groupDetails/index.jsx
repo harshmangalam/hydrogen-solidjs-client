@@ -75,11 +75,6 @@ export default function GroupDetails() {
 
 const tabs = [
   {
-    name: "About",
-    href: "",
-    end: true,
-  },
-  {
     name: "Posts",
     href: "posts",
     end: false,

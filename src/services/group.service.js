@@ -69,6 +69,13 @@ async function removeGroupPost(groupId, postId) {
   return await axios.delete(`/groups/${groupId}/${postId}`);
 }
 
+async function fetchGroupPosts(groupId) {
+  return await axios.get(`/groups/${groupId}/posts`);
+}
+
+async function fetchGroupMembers(groupId) {
+  return await axios.get(`/groups/${groupId}/members`);
+}
 export {
   fetchMyCreatedGroups,
   createGroup,
@@ -88,4 +95,6 @@ export {
   fetchGroupNotifications,
   addRemoveGroupPostLikes,
   removeGroupPost,
+  fetchGroupPosts,
+  fetchGroupMembers,
 };

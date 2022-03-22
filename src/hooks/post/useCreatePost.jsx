@@ -1,36 +1,33 @@
 import { createStore, produce } from "solid-js/store";
-import { useUIDispatch } from "../context/ui";
+import { useUIDispatch } from "../../context/ui";
 import { useNavigate } from "solid-app-router";
 
-import { createPost } from "../services/post.service";
+import { createPost } from "../../services/post.service";
 export default function useCreatePost() {
   const { addSnackbar } = useUIDispatch();
   const navigate = useNavigate();
   const [form, setForm] = createStore({
-    fields: {
-      content: "",
-      audience: "",
-      specificAudienceFriends: [],
-      image: "",
-      feeling: "",
-      checkIn: "",
-      taggedFriends: [],
-    },
+    content: "",
+    audience: "",
+    specificAudienceFriends: [],
+    image: "",
+    feeling: "",
+    checkIn: "",
+    taggedFriends: [],
   });
 
   const handleInput = (event) => {
     const currentTarget = event.currentTarget;
-    setForm("fields", [currentTarget.name], currentTarget.value);
+    setForm([currentTarget.name], currentTarget.value);
   };
 
   const handleChange = (event) => {
     const currentTarget = event.currentTarget;
-    setForm("fields", [currentTarget.name], currentTarget.value);
+    setForm([currentTarget.name], currentTarget.value);
   };
 
   const addSpecificFriend = (user) => {
     setForm(
-      "fields",
       "specificAudienceFriends",
       produce((friends) => {
         friends.push(user);
@@ -40,7 +37,6 @@ export default function useCreatePost() {
 
   const removeSpecificFriend = (userId) => {
     setForm(
-      "fields",
       "specificAudienceFriends",
       produce((friends) => {
         const index = friends.findIndex((u) => u.id === userId);
@@ -53,7 +49,6 @@ export default function useCreatePost() {
 
   const addTaggedFriend = (user) => {
     setForm(
-      "fields",
       "taggedFriends",
       produce((friends) => {
         friends.push(user);
@@ -62,7 +57,6 @@ export default function useCreatePost() {
   };
   const removeTaggedFriend = (userId) => {
     setForm(
-      "fields",
       "taggedFriends",
       produce((friends) => {
         const index = friends.findIndex((u) => u.id === userId);
@@ -72,35 +66,39 @@ export default function useCreatePost() {
   };
 
   const addImage = (image) => {
-    setForm("fields", "image", image);
+    setForm("image", image);
   };
   const removeImage = () => {
-    setForm("fields", "image", "");
+    setForm("image", "");
   };
 
   const addFeeling = (feeling) => {
-    setForm("fields", "feeling", feeling);
+    setForm("feeling", feeling);
     console.log(feeling);
   };
 
   const removeFeeling = () => {
-    setForm("fields", "feeling", "");
-    console.log(form.fields.feeling);
+    setForm("feeling", "");
+    console.log(form.feeling);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const specificAudienceFriends = form.fields.specificAudienceFriends.map(
+      if(!form.content.trim().length && !form.image.trim().length){
+        addSnackbar({ type: "error", message:"Post body is empty"});
+        return
+      }
+      const specificAudienceFriends = form.specificAudienceFriends.map(
         (f) => f.id
       );
-      const taggedFriends = form.fields.taggedFriends.map((f) => f.id);
+      const taggedFriends = form.taggedFriends.map((f) => f.id);
       const { data } = await createPost({
-        ...form.fields,
+        ...form,
         specificAudienceFriends,
         taggedFriends,
       });
-      setForm("fields", {
+      setForm({
         content: "",
         audience: "",
         specificAudienceFriends: [],
