@@ -7,40 +7,49 @@ export default function useCreatePost() {
   const { addSnackbar } = useUIDispatch();
   const navigate = useNavigate();
   const [form, setForm] = createStore({
-    fields: {
-      content: "",
-      image: "",
-      groupId: "",
-    },
+    content: "",
+    image: "",
+    groupId: "",
   });
 
   const handleInput = (event) => {
     const currentTarget = event.currentTarget;
-    setForm("fields", [currentTarget.name], currentTarget.value);
+    setForm([currentTarget.name], currentTarget.value);
   };
 
   const addImage = (image) => {
-    setForm("fields", "image", image);
+    setForm("image", image);
   };
   const removeImage = () => {
-    setForm("fields", "image", "");
+    setForm("image", "");
   };
 
   const addGroupId = (id) => {
-    setForm("fields", "groupId", id);
+    setForm("groupId", id);
   };
   const removeGroupId = () => {
-    setForm("fields", "groupId", "");
+    setForm("groupId", "");
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await createGroupPost(form.fields);
-      setForm("fields", {
+      if (!form.content.trim().length && !form.image.trim().length) {
+        addSnackbar({ type: "error", message: "Post body is empty" });
+        return;
+      }
+      if (!form.groupId) {
+        addSnackbar({
+          type: "error",
+          message: "Choose group in which you want to publish post",
+        });
+        return;
+      }
+      const { data } = await createGroupPost(form);
+      setForm({
         content: "",
-        image: "",
         groupId: "",
+        image: "",
       });
       addSnackbar({ type: "success", message: data.message });
       navigate("/groups/created_group_posts");

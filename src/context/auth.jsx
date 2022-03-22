@@ -60,6 +60,8 @@ export default function AuthProvider(props) {
       setStore("isLoading", false);
     }
   });
+
+  on
   const setCurrentUser = (user) => {
     setStore("isAuthenticated", true);
     setStore("currentUser", user);

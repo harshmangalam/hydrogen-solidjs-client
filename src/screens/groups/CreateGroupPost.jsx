@@ -19,21 +19,21 @@ export default function CreateGroupPost() {
         <div className="flex flex-col space-y-2">
           <label htmlFor="name">Group post content</label>
           <textarea
-            value={form.fields.content}
+            value={form.content}
             onInput={[handleInput]}
             name="content"
             className="rounded-md dark:bg-gray-700"
             rows={5}
-            placeholder="What`s on your mind Harsh ?"
+            placeholder="What`s on your mind ?"
           />
         </div>
         <GroupsModal
-          groupId={form.fields.groupId}
+          groupId={form.groupId}
           addGroupId={addGroupId}
           removeGroupId={removeGroupId}
         />
         <ImageUpload
-          image={form.fields.image}
+          image={form.image}
           addImage={addImage}
           removeImage={removeImage}
           btnClass="flex items-center space-x-2 bg-gray-200 dark:bg-gray-700 py-2 rounded-md justify-center"
