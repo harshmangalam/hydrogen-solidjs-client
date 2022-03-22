@@ -16,7 +16,6 @@ async function fetchGroupNotifications() {
   return await axios.get("/groups/notifications");
 }
 
-
 async function fetchGroupDetails(groupId) {
   return await axios.get(`/groups/${groupId}`);
 }
@@ -54,17 +53,21 @@ async function createGroupPost(data) {
   return await axios.post(`/groups/create_post`, data);
 }
 
-
-async function fetchGroups(){
-  return await axios.get("/groups")
+async function fetchGroups() {
+  return await axios.get("/groups");
 }
 
-async function fetchMyCreatedGroupPosts(){
-  return await axios.get("/groups/my_created_posts")
-
+async function fetchMyCreatedGroupPosts() {
+  return await axios.get("/groups/my_created_posts");
 }
 
+async function addRemoveGroupPostLikes(groupId, postId) {
+  return await axios.patch(`/groups/${groupId}/${postId}/addRemoveLike`);
+}
 
+async function removeGroupPost(groupId, postId) {
+  return await axios.delete(`/groups/${groupId}/${postId}`);
+}
 
 export {
   fetchMyCreatedGroups,
@@ -82,5 +85,7 @@ export {
   createGroupPost,
   fetchGroups,
   fetchMyCreatedGroupPosts,
-  fetchGroupNotifications
+  fetchGroupNotifications,
+  addRemoveGroupPostLikes,
+  removeGroupPost,
 };

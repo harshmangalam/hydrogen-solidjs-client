@@ -1,9 +1,12 @@
 import { FaSolidGlobeAsia, FaSolidUsers } from "solid-icons/fa";
 import { FaSolidLock } from "solid-icons/fa";
-import { BiDotsHorizontalRounded } from "solid-icons/bi";
-
+import { useAuthState } from "../../../context/auth";
+import { getRelativeTime } from "../../../utils/dateTime";
 import { Show } from "solid-js";
+import { Link } from "solid-app-router";
+import DeletePost from "./DeletePost";
 export default function PostHeader(props) {
+  const authState = useAuthState();
   const groupPrivacy = (audience) => {
     switch (audience) {
       case "PUBLIC":
@@ -29,16 +32,20 @@ export default function PostHeader(props) {
         </div>
 
         <div>
-          <h6 class="text-md font-medium dark:text-white">
-            {props.group.name}
-          </h6>
+          <Link href={`/groups/${props.group.id}`} className="hover:underline">
+            <h6 class="text-md font-medium dark:text-white">
+              {props.group.name}
+            </h6>
+          </Link>
           <div class="flex items-center space-x-2 ">
-            <span class="text-sm text-gray-500 dark:text-gray-200 font-bold">
-              {props.author.firstName}
-            </span>
+            <Link href={`/${props.author.id}`} className="hover:underline">
+              <span class="text-sm text-gray-500 dark:text-gray-200 font-bold">
+                {props.author.firstName}
+              </span>
+            </Link>
             <span class="flex items-start dark:text-gray-200">&#8228;</span>
             <span class="text-sm text-gray-500 dark:text-gray-200">
-              {props.createdAt}
+              {getRelativeTime(props.createdAt)}
             </span>
             <span class="flex items-start dark:text-gray-200">&#8228;</span>
             <span className="dark:text-gray-200 text-lg">
@@ -48,9 +55,9 @@ export default function PostHeader(props) {
         </div>
       </div>
 
-      <button class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white text-xl rounded-full">
-        <BiDotsHorizontalRounded />
-      </button>
+      <Show when={authState.currentUser.id === props.author.id}>
+        <DeletePost handleDeletePost={props.handleDeletePost} />
+      </Show>
     </section>
   );
 }

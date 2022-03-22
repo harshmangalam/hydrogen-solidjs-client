@@ -1,11 +1,13 @@
 import { createSignal } from "solid-js";
 import {
   acceptGroupInvitation,
+  addRemoveGroupPostLikes,
   deleteGroup,
   joinGroup,
   leaveGroup,
   rejectGroupInvitation,
-} from "../services/group.service";
+  removeGroupPost,
+} from "../services";
 
 import { useUIDispatch } from "../context/ui";
 export default function useGroups(refetch) {
@@ -81,6 +83,34 @@ export default function useGroups(refetch) {
       refetch();
     }
   }
+
+  async function handleAddRemoveGroupPostLikes(groupId, postId) {
+    try {
+      setLoading(true);
+      const { data } = await addRemoveGroupPostLikes(groupId,postId);
+      addSnackbar({ type: "success", message: data.message });
+    } catch (error) {
+      console.log(error.response.data);
+      addSnackbar({ type: "error", message: error.response.data.message });
+    } finally {
+      setLoading(false);
+      refetch();
+    }
+  }
+
+  async function handleDeletePost(groupId, postId) {
+    try {
+      setLoading(true);
+      const { data } = await removeGroupPost(groupId,postId);
+      addSnackbar({ type: "success", message: data.message });
+    } catch (error) {
+      console.log(error.response.data);
+      addSnackbar({ type: "error", message: error.response.data.message });
+    } finally {
+      setLoading(false);
+      refetch();
+    }
+  }
   return {
     loading,
     handleJoinGroup,
@@ -88,5 +118,7 @@ export default function useGroups(refetch) {
     handleDeleteGroup,
     handleAcceptGroupInvitation,
     handleRejectGroupInvitation,
+    handleAddRemoveGroupPostLikes,
+    handleDeletePost,
   };
 }

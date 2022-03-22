@@ -5,7 +5,7 @@ import Error from "../../components/shared/Error";
 import Empty from "../../components/shared/Empty";
 import { fetchGroupsFeed } from "../../services/group.service";
 export default function GroupsFeed() {
-  const [response] = createResource(fetchGroupsFeed);
+  const [response, { refetch }] = createResource(fetchGroupsFeed);
 
   return (
     <Switch>
@@ -28,7 +28,7 @@ export default function GroupsFeed() {
               <For each={response().data.data.posts}>
                 {(post) => (
                   <li>
-                    <GroupPostCard {...post} />
+                    <GroupPostCard {...post}  refetch={refetch} />
                   </li>
                 )}
               </For>

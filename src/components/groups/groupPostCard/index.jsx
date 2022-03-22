@@ -1,16 +1,19 @@
 import { Show } from "solid-js";
-import Footer from "./Footer";
 import Header from "./Header";
+import PostHeart from "./PostHeart";
 import Reactions from "./Reactions";
-
+import useGroups from "../../../hooks/useGroups";
 export default function GroupPostCard(props) {
+  const { handleAddRemoveGroupPostLikes, handleDeletePost } = useGroups(
+    props.refetch
+  );
   return (
     <article class="rounded-lg shadow bg-white dark:bg-gray-800 border-2 dark:border-gray-800">
       <Header
         author={props.author}
         createdAt={props.createdAt}
         group={props.group}
-        createdAt={props.createdAt}
+        handleDeletePost={() => handleDeletePost(props.group.id, props.id)}
       />
       <Show when={props.image}>
         <div className="dark:bg-gray-700 bg-gray-200">
@@ -21,7 +24,7 @@ export default function GroupPostCard(props) {
           />
         </div>
       </Show>
-      <Reactions />
+      <Reactions countLikes={props._count.likes} />
       <Show when={props.content}>
         <section class="px-4 py-4 flex flex-col space-y-2">
           <p class="text-[.9375rem] text-gray-700 dark:text-gray-200">
@@ -31,7 +34,14 @@ export default function GroupPostCard(props) {
       </Show>
       <div className="divide-y dark:divide-gray-700 space-y-4">
         <div></div>
-        <Footer />
+        <div className="py-2 grid grid-cols-1 px-4">
+          <PostHeart
+            handleAddRemoveGroupPostLikes={() =>
+              handleAddRemoveGroupPostLikes(props.group.id, props.id)
+            }
+            hasLike={props.hasLike}
+          />
+        </div>
       </div>
     </article>
   );
