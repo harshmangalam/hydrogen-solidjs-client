@@ -17,7 +17,7 @@ export default function EditProfile() {
         <FaEdit />
       </IconButton>
 
-      <Modal onClose={() => setOpen(false)} open={open()} title="Edit Profile">
+      <Modal showFooter={false} onClose={() => setOpen(false)} open={open()} title="Edit Profile">
         <div className="px-4">
           <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
             <div className="grid grid-cols-2 gap-4">

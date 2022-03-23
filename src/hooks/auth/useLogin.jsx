@@ -31,7 +31,7 @@ export default function useLogin() {
         coords: geolocationStore.store.coords,
       });
       setCurrentUser(data.data.user);
-      setCurrentAccount(data.data.activeAccountLoggedin);
+      setCurrentAccount(data.data.currentAccount);
       addSnackbar({ type: "success", message: data.message });
       initSocketManager();
       navigate("/", { replace: true });

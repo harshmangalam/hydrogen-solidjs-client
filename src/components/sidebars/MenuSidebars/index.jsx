@@ -51,9 +51,9 @@ const links = [
     icon: () => <FaSolidUsers className="text-green-500" />,
   },
 
-  {
-    name: "Weather",
-    href: "/weather",
-    icon: () => <RiWeatherMoonCloudyFill className="text-blue-500" />,
-  },
+  // {
+  //   name: "Weather",
+  //   href: "/weather",
+  //   icon: () => <RiWeatherMoonCloudyFill className="text-blue-500" />,
+  // },
 ];
