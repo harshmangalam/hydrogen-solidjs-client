@@ -153,8 +153,7 @@ export default function AppRouter() {
 
         {/* group details */}
         <Route path="groups/:groupId" element={<GroupDetailsLayout />}>
-          <Route path="" element={<GroupAbout />} />
-          <Route path="posts" element={<GroupPosts />} />
+          <Route path="" element={<GroupPosts />} />
           <Route path="members" element={<GroupMembers />} />
         </Route>
         {/* profile  */}
