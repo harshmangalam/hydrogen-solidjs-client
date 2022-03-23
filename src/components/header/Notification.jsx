@@ -30,9 +30,11 @@ export default function Notification() {
       >
         <IoNotifications className="text-xl" />
 
-        <div className="absolute -top-1 bg-rose-500 place-items-center grid w-5 h-5 rounded-full right-0 text-white text-xs">
-          {notificationState?.count}
-        </div>
+        <Show when={notificationState?.count}>
+          <div className="absolute -top-1 bg-rose-500 place-items-center grid w-5 h-5 rounded-full right-0 text-white text-xs">
+            {notificationState.count}
+          </div>
+        </Show>
       </button>
 
       <Show when={open()}>

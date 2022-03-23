@@ -21,10 +21,15 @@ async function changePassword(data) {
   return await axios.patch(`/users/change_password`,data);
 }
 
+async function updateUserDetails(data) {
+  return await axios.patch(`/users/details`,data);
+}
+
 export {
   uploadProfilePic,
   fetchUserDetails,
   fetchUserAllFriends,
   fetchUserPosts,
-  changePassword
+  changePassword,
+  updateUserDetails
 };

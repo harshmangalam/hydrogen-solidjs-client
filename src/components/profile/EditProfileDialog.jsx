@@ -4,8 +4,10 @@ import useEditProfile from "../../hooks/profile/useEditProfile";
 import Modal from "../ui/feedback/Modal";
 import Radio from "../ui/form/Radio";
 import IconButton from "../ui/inputs/IconButton";
-export default function EditProfile() {
-  const { handleSubmit, onChange, onInput, store } = useEditProfile();
+export default function EditProfile(props) {
+  const { handleSubmit, onChange, onInput, form } = useEditProfile(
+    props.refetch
+  );
   const [open, setOpen] = createSignal(false);
   return (
     <div>
@@ -17,7 +19,12 @@ export default function EditProfile() {
         <FaEdit />
       </IconButton>
 
-      <Modal showFooter={false} onClose={() => setOpen(false)} open={open()} title="Edit Profile">
+      <Modal
+        showFooter={false}
+        onClose={() => setOpen(false)}
+        open={open()}
+        title="Edit Profile"
+      >
         <div className="px-4">
           <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
             <div className="grid grid-cols-2 gap-4">
@@ -27,7 +34,7 @@ export default function EditProfile() {
                   type="text"
                   name="firstName"
                   className="rounded-lg dark:bg-gray-700"
-                  value={store.fields.firstName}
+                  value={form.firstName}
                   onInput={[onInput]}
                 />
               </div>
@@ -37,7 +44,7 @@ export default function EditProfile() {
                   type="text"
                   name="lastName"
                   className="rounded-lg dark:bg-gray-700"
-                  value={store.fields.lastName}
+                  value={form.lastName}
                   onInput={[onInput]}
                 />
               </div>
@@ -49,7 +56,7 @@ export default function EditProfile() {
                 type="email"
                 name="email"
                 className="rounded-lg dark:bg-gray-700"
-                value={store.fields.email}
+                value={form.email}
                 onInput={[onInput]}
               />
             </div>
@@ -60,7 +67,7 @@ export default function EditProfile() {
                   onChange={(e) => onChange(e)}
                   value="MALE"
                   type="radio"
-                  isChecked={store.fields.gender === "MALE"}
+                  isChecked={form.gender === "MALE"}
                   name="gender"
                   label={"Male"}
                 />
@@ -68,7 +75,7 @@ export default function EditProfile() {
                   onChange={(e) => onChange(e)}
                   value="FEMALE"
                   type="radio"
-                  isChecked={store.fields.gender === "FEMALE"}
+                  isChecked={form.gender === "FEMALE"}
                   name="gender"
                   label={"Female"}
                 />
@@ -76,14 +83,17 @@ export default function EditProfile() {
                   onChange={(e) => onChange(e)}
                   value="OTHER"
                   type="radio"
-                  isChecked={store.fields.gender === "OTHER"}
+                  isChecked={form.gender === "OTHER"}
                   name="gender"
                   label={"Other"}
                 />
               </div>
             </div>
             <div className="flex justify-end mt-4">
-              <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-lg">
+              <button
+                type="submit"
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+              >
                 Edit Profile
               </button>
             </div>

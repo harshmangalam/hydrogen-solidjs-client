@@ -13,7 +13,7 @@ export default function ProfileInfo(props) {
         </h3>
 
         <Show when={currentUser.id === props.userId}>
-          <EditProfile />
+          <EditProfile refetch={props.refetch} />
         </Show>
       </div>
 

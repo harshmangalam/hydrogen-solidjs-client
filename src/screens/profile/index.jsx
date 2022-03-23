@@ -109,6 +109,7 @@ export default function Profile() {
                   firstName={resource().data.data.user.firstName}
                   lastName={resource().data.data.user.lastName}
                   userId={resource().data.data.user.id}
+                  refetch={refetch}
                 />
               </div>
             </Show>
