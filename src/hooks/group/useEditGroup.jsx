@@ -1,25 +1,20 @@
 import { createStore } from "solid-js/store";
-import { useAuthState } from "../../context/auth";
-import { updateUserDetails } from "../../services";
+import { updateGroupDetails } from "../../services";
 import { useUIDispatch } from "../../context/ui";
-import { useAuthDispatch } from "../../context/auth";
+import { useParams } from "solid-app-router";
 
-export default function useEditProfile(refetch) {
+
+export default function useEditGroup(data, refetch) {
+  const params = useParams()
   const { addSnackbar } = useUIDispatch();
-  const authState = useAuthState();
-  const authDispatch = useAuthDispatch();
   const [form, setForm] = createStore({
-    firstName: authState.currentUser.firstName,
-    lastName: authState.currentUser.lastName,
-    email: authState.currentUser.email,
-    gender: authState.currentUser.gender,
+    name: data.name,
   });
 
   function onInput(e) {
     setForm([e.currentTarget.name], e.currentTarget.value);
   }
   function onChange(e) {
-    console.log(e);
     setForm([e.currentTarget.name], e.currentTarget.value);
   }
 
@@ -27,9 +22,8 @@ export default function useEditProfile(refetch) {
     e.preventDefault();
 
     try {
-      const { data } = await updateUserDetails(form);
-      await authDispatch.loadCurrentUser();
-      refetch?.();
+      const { data } = await updateGroupDetails(params.groupId,form);
+      refetch();
       addSnackbar({ type: "success", message: data.message });
     } catch (error) {
       console.log(error);

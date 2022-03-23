@@ -110,6 +110,8 @@ export default function GroupDetails() {
                   members={resource().data.data.group._count.members}
                   name={resource().data.data.group.name}
                   privacy={resource().data.data.group.privacy}
+                  admin={resource().data.data.group.admin}
+                  refetch={refetch}
                 />
               </div>
             </Show>

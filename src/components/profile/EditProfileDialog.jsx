@@ -26,7 +26,13 @@ export default function EditProfile(props) {
         title="Edit Profile"
       >
         <div className="px-4">
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
+          <form
+            onSubmit={(e) => {
+              handleSubmit(e);
+              setOpen(false);
+            }}
+            className="grid grid-cols-1 gap-4"
+          >
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col space-y-2">
                 <label htmlFor="firstName">First Name</label>

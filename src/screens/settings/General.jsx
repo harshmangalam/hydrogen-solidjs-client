@@ -1,4 +1,4 @@
-import { Match, Show, Switch } from "solid-js";
+import { Match, Switch } from "solid-js";
 import MainBody from "../../components/settings/MainBody";
 import { useAuthState } from "../../context/auth";
 import EditProfileDialog from "../../components/profile/EditProfileDialog";
