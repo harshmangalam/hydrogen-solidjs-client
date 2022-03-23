@@ -10,7 +10,7 @@ import HydrogenLoader from "../../components/shared/HydrogenLoader";
 import Error from "../../components/shared/Error";
 export default function Profile() {
   const params = useParams();
-  const { currentUser } = useAuthState();
+  const userState = useAuthState();
   const [resource, { refetch }] = createResource(
     () => params.userId,
     fetchUserDetails
@@ -70,7 +70,10 @@ export default function Profile() {
                     />
 
                     <Show
-                      when={currentUser.id === resource().data.data.user.id}
+                      when={
+                        userState?.currentUser.id ===
+                        resource().data.data.user.id
+                      }
                     >
                       <div className="absolute bottom-4 right-0">
                         {/* change profile pic  */}
@@ -87,7 +90,7 @@ export default function Profile() {
                     </Show>
                   </div>
                 </div>
-                <Show when={currentUser.id === resource().data.data.user.id}>
+                <Show when={userState?.currentUser.id === resource().data.data.user.id}>
                   <div className="absolute right-0 bottom-0 p-3">
                     {/* change cover image  */}
                     <ImageUpload

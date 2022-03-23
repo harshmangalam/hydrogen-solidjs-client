@@ -27,7 +27,7 @@ export default function GroupPosts() {
             when={response().data.data.posts.length}
             fallback={
               <Empty
-                title="No Feed"
+                title="No Feeds"
                 subTitle="Join groups to see groups feed"
               />
             }

@@ -76,6 +76,10 @@ async function fetchGroupPosts(groupId) {
 async function fetchGroupMembers(groupId) {
   return await axios.get(`/groups/${groupId}/members`);
 }
+
+async function uploadGroupPic(groupId, data) {
+  return await axios.patch(`/groups/${groupId}/upload`, data);
+}
 export {
   fetchMyCreatedGroups,
   createGroup,
@@ -97,4 +101,5 @@ export {
   removeGroupPost,
   fetchGroupPosts,
   fetchGroupMembers,
+  uploadGroupPic,
 };
