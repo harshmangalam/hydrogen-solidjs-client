@@ -7,7 +7,6 @@ export default function useLogout() {
   const authState = useAuthState();
   const { addSnackbar } = useUIDispatch();
 
-  createEffect(()=>console.log(authState))
   async function logoutUser() {
     try {
       setLoading(true);

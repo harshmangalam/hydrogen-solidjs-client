@@ -6,7 +6,6 @@ import { FaSolidHeart } from "solid-icons/fa";
 import { Link } from "solid-app-router";
 
 export default function PostLikesUsersModal(props) {
-  console.log(props.postId);
   const [open, setOpen] = createSignal(false);
   const [resource] = createResource(
     () => open(),

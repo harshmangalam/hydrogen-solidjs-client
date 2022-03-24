@@ -11,7 +11,7 @@ export default function ProfilePosts() {
   const [response,{refetch}] = createResource(()=>params.userId, fetchUserPosts);
 
   return (
-    <div>
+    <div className="relative">
       <div className="w-full xl:w-3/5 py-6 mx-auto">
         {/* posts */}
         <Switch>

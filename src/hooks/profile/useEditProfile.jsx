@@ -19,7 +19,6 @@ export default function useEditProfile(refetch) {
     setForm([e.currentTarget.name], e.currentTarget.value);
   }
   function onChange(e) {
-    console.log(e);
     setForm([e.currentTarget.name], e.currentTarget.value);
   }
 

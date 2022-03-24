@@ -4,7 +4,7 @@ export default function HydrogenLoader() {
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
       <img
         src={LogoImg}
-        alt="Auth Loading..."
+        alt="Loading..."
         className="w-24 h-24 animate-spin"
       />
     </div>

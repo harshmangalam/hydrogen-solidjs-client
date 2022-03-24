@@ -16,7 +16,6 @@ export default function useFriendRequest(refetch) {
     try {
       const { data } = await sendFriendRequest(userId);
       addSnackbar({ type: "success", message: data.message });
-      console.log(data);
     } catch (error) {
       console.log(error);
       addSnackbar({ type: "error", message: error.response.data.message });
@@ -31,7 +30,6 @@ export default function useFriendRequest(refetch) {
     try {
       const { data } = await acceptFriendRequest(userId);
       addSnackbar({ type: "success", message: data.message });
-      console.log(data);
     } catch (error) {
       console.log(error);
       addSnackbar({ type: "error", message: error.response.data.message });
@@ -46,7 +44,6 @@ export default function useFriendRequest(refetch) {
     try {
       const { data } = await removeFromFriendsList(userId);
       addSnackbar({ type: "success", message: data.message });
-      console.log(data);
     } catch (error) {
       console.log(error);
       addSnackbar({ type: "error", message: error.response.data.message });
@@ -61,7 +58,6 @@ export default function useFriendRequest(refetch) {
     try {
       const { data } = await cancelSentRequest(userId);
       addSnackbar({ type: "success", message: data.message });
-      console.log(data);
     } catch (error) {
       console.log(error);
       addSnackbar({ type: "error", message: error.response.data.message });
@@ -76,7 +72,6 @@ export default function useFriendRequest(refetch) {
     try {
       const { data } = await ignoreReceivedRequest(userId);
       addSnackbar({ type: "success", message: data.message });
-      console.log(data);
     } catch (error) {
       console.log(error);
       addSnackbar({ type: "error", message: error.response.data.message });
@@ -91,6 +86,6 @@ export default function useFriendRequest(refetch) {
     handleAcceptFriendRequest,
     handleRemoveFromFriendsList,
     handleCancelSentRequest,
-    handleIgnoreReceivedRequest
+    handleIgnoreReceivedRequest,
   };
 }
