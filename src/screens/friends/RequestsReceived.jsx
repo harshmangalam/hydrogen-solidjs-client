@@ -37,7 +37,7 @@ export default function RequestsReceived() {
                       color="success"
                       text="Accept"
                       onClick={() => handleAcceptFriendRequest(user.id)}
-                      isLoading={loading()}
+                      isLoading={loading}
                     >
                       <FaSolidUserPlus size={18} />
                     </FriendBtn>
@@ -45,6 +45,7 @@ export default function RequestsReceived() {
                       color="danger"
                       text="Ignore"
                       onClick={() => handleIgnoreReceivedRequest(user.id)}
+                      isLoading={loading}
                     >
                       <FaSolidUserTimes size={18} />
                     </FriendBtn>

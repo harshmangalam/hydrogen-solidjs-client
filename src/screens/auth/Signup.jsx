@@ -1,9 +1,11 @@
 import { Link } from "solid-app-router";
+import { createEffect, Show } from "solid-js";
 import Radio from "../../components/ui/form/Radio";
 import useSignup from "../../hooks/auth/useSignup";
 
 export default function Login() {
-  const { form, handleInput, handleSignup, handleRadioChange } = useSignup();
+  const { form, handleInput, handleSignup, handleRadioChange, loading } =
+    useSignup();
 
   return (
     <div className="">
@@ -94,9 +96,12 @@ export default function Login() {
           <div>
             <button
               type="submit"
-              className="w-full py-2 px-3 bg-blue-500 text-white rounded-lg text-lg"
+              disabled={loading()}
+              className="w-full  py-2 px-3 bg-blue-500 text-white rounded-lg text-lg"
             >
-              Sign Up
+              <Show when={!loading()} fallback={"Signing up..."}>
+                Signup Up
+              </Show>
             </button>
           </div>
         </form>

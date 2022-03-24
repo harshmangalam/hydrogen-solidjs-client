@@ -1,8 +1,10 @@
 import { Link } from "solid-app-router";
+import { createEffect, Show } from "solid-js";
 import useLogin from "../../hooks/auth/useLogin";
 
 export default function Login() {
-  const { form, handleInput, handleLogin } = useLogin();
+  const { form, handleInput, handleLogin, loading } = useLogin();
+
   return (
     <div className="">
       <div className="my-4 flex flex-col items-center  max-w-md mx-auto">
@@ -35,10 +37,13 @@ export default function Login() {
 
           <div>
             <button
+              disabled={loading()}
               type="submit"
-              className="w-full py-2 px-3 bg-blue-500 text-white rounded-lg text-lg"
+              className="w-full s py-2 px-3 bg-blue-500 text-white rounded-lg text-lg"
             >
-              Log In
+              <Show when={!loading()} fallback="Logging in...">
+                Log In
+              </Show>
             </button>
           </div>
         </form>

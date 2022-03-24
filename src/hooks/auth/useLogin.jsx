@@ -5,7 +5,9 @@ import { useUIDispatch } from "../../context/ui";
 import { login } from "../../services/auth.service";
 import platform from "platform";
 import useGeolocations from "../useGeolocations";
+import { createSignal } from "solid-js";
 export default function useLogin() {
+  const [loading, setLoading] = createSignal(false);
   const geolocationStore = useGeolocations();
   const [form, setForm] = createStore({
     email: "",
@@ -23,7 +25,7 @@ export default function useLogin() {
 
   const handleLogin = async (ev) => {
     ev.preventDefault();
-
+    setLoading(true);
     try {
       const { data } = await login({
         ...form,
@@ -37,9 +39,12 @@ export default function useLogin() {
       navigate("/", { replace: true });
     } catch (error) {
       addSnackbar({ type: "error", message: error.response.data.message });
+    } finally {
+      setLoading(false);
     }
   };
   return {
+    loading,
     form,
     handleLogin,
     handleInput,
