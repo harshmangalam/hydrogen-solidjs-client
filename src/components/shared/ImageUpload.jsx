@@ -3,8 +3,10 @@ import Modal from "../ui/feedback/Modal";
 import { BsImages } from "solid-icons/bs";
 import { IoClose } from "solid-icons/io";
 import TextDivider from "../ui/dataDisplay/TextDivider";
+import useCloudinary from "../../hooks/useCloudinary";
 
 export default function ImageUpload(props) {
+  const cloudinary = useCloudinary();
   const merged = mergeProps(
     {
       title: "Upload Image",
@@ -17,9 +19,14 @@ export default function ImageUpload(props) {
   const [urlField, setUrlField] = createSignal("");
   let imageRef;
 
-  const handleImageChange = (event) => {
-    const image = URL.createObjectURL(event.target.files[0]);
+  const handleImageChange = async (event) => {
+    const file = event.target.files[0]
+    const image = URL.createObjectURL(file);
     merged.addImage(image);
+    try {
+      const data = await cloudinary.upload(file);
+      merged.addImage(data.url)
+    } catch (error) {}
   };
 
   const removeImage = (url) => {
@@ -31,6 +38,7 @@ export default function ImageUpload(props) {
     merged.addImage(urlField());
     setUrlField("");
   };
+
   return (
     <>
       <button
