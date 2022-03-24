@@ -1,14 +1,30 @@
 {
-  "name": "vite-template-solid",
-  "version": "0.0.0",
-  "description": "",
+  "name": "hydrogen",
+  "version": "1.0",
+  "description": "A social media web app powered by solidjs",
+  "info": "I named this project Hydrogen because Hydrogen is the most lightweight element in our perodic table and Solidjs is the most lightweight and fastest framework in the JavaScript community",
+  "homepage": "https://hydrogen-solid.vercel.app/",
+  "contributors": [
+    {
+      "email": "harshdev8218@gmail.com",
+      "name": "Harsh Mangalam",
+      "url": "https://github.com/harshmangalam"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "solidhack",
+    "best_student_project",
+    "solidjs",
+    "tailwindcss",
+    "socketio"
+  ],
   "scripts": {
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },
-  "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.5",
