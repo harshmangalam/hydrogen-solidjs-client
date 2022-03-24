@@ -1,5 +1,5 @@
 import { Link } from "solid-app-router";
-import { createEffect, Show } from "solid-js";
+import { Show } from "solid-js";
 import Radio from "../../components/ui/form/Radio";
 import useSignup from "../../hooks/auth/useSignup";
 
@@ -106,10 +106,11 @@ export default function Login() {
           </div>
         </form>
         <div className="mt-4">
-          <Link href="/auth/login">
-            <button className="w-full rounded-md py-1 px-4 flex justify-center hover:bg-gray-200 dark:hover:bg-gray-700">
-              Not have an account? Login
-            </button>
+          <Link
+            href="/auth/login"
+            className="w-full rounded-md  px-4 flex justify-center hover:bg-green-600 bg-green-500 py-2 text-white font-bold"
+          >
+            Not have an account? Login
           </Link>
         </div>
       </section>

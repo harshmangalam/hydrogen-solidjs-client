@@ -1,5 +1,5 @@
 import { Link } from "solid-app-router";
-import { createEffect, Show } from "solid-js";
+import { Show } from "solid-js";
 import useLogin from "../../hooks/auth/useLogin";
 
 export default function Login() {
@@ -49,10 +49,11 @@ export default function Login() {
         </form>
 
         <div className="mt-4">
-          <Link href="/auth/signup">
-            <button className="w-full rounded-md py-1 px-4 flex justify-center hover:bg-gray-200 dark:hover:bg-gray-700">
-              Already have an account? Signup
-            </button>
+          <Link
+            href="/auth/signup"
+            className="w-full rounded-md  px-4 flex justify-center hover:bg-green-600 bg-green-500 py-2 text-white font-bold"
+          >
+            Already have an account? Signup
           </Link>
         </div>
       </section>
