@@ -34,7 +34,7 @@ export default function MyFriends() {
                     text="Unfriend"
                     color="danger"
                     onClick={() => handleRemoveFromFriendsList(user.id)}
-                    isLoading={loading}
+                    loading={loading}
                   >
                     <FaSolidUserMinus size={18} />
                   </FriendBtn>

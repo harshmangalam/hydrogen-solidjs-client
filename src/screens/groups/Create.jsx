@@ -1,11 +1,11 @@
 import { BiImage } from "solid-icons/bi";
-import { FaSolidUsers } from "solid-icons/fa";
 import { Show } from "solid-js";
 import InvitePeople from "../../components/groups/Create/InvitePeople";
 import ImageUpload from "../../components/shared/ImageUpload";
 import useCreateGroup from "../../hooks/useCreateGroup";
 export default function CreateGroup() {
   const {
+    loading,
     addInvitedPeople,
     addCoverImage,
     addProfileImage,
@@ -80,10 +80,13 @@ export default function CreateGroup() {
 
         <div>
           <button
+            disabled={loading()}
             type="submit"
             className="w-full py-2 px-3 bg-blue-500 text-white rounded-lg text-lg"
           >
-            Create
+            <Show when={!loading()} fallback={"Creating Group..."}>
+              Create
+            </Show>
           </button>
         </div>
       </form>

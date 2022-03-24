@@ -35,7 +35,7 @@ export default function Suggestions() {
                     text="Add friend"
                     color="primary"
                     onClick={() => handleSendFriendRequest(user.id)}
-                    isLoading={loading}
+                    loading={loading}
                   >
                     <FaSolidUserPlus size={18} />
                   </FriendBtn>

@@ -3,7 +3,9 @@ import { useUIDispatch } from "../context/ui";
 import { useNavigate } from "solid-app-router";
 
 import { createGroupPost } from "../services/group.service";
+import { createSignal } from "solid-js";
 export default function useCreatePost() {
+  const [loading, setLoading] = createSignal(false);
   const { addSnackbar } = useUIDispatch();
   const navigate = useNavigate();
   const [form, setForm] = createStore({
@@ -33,6 +35,7 @@ export default function useCreatePost() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
     try {
       if (!form.content.trim().length && !form.image.trim().length) {
         addSnackbar({ type: "error", message: "Post body is empty" });
@@ -56,10 +59,13 @@ export default function useCreatePost() {
     } catch (error) {
       console.log(error);
       addSnackbar({ type: "error", message: error.response.data.message });
+    } finally {
+      setLoading(false);
     }
   };
 
   return {
+    loading,
     form,
     handleInput,
     handleSubmit,

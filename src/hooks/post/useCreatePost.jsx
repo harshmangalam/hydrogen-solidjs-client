@@ -3,7 +3,10 @@ import { useUIDispatch } from "../../context/ui";
 import { useNavigate } from "solid-app-router";
 
 import { createPost } from "../../services/post.service";
+import { createSignal } from "solid-js";
 export default function useCreatePost() {
+  const [loading, setLoading] = createSignal(false);
+
   const { addSnackbar } = useUIDispatch();
   const navigate = useNavigate();
   const [form, setForm] = createStore({
@@ -84,10 +87,11 @@ export default function useCreatePost() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
     try {
-      if(!form.content.trim().length && !form.image.trim().length){
-        addSnackbar({ type: "error", message:"Post body is empty"});
-        return
+      if (!form.content.trim().length && !form.image.trim().length) {
+        addSnackbar({ type: "error", message: "Post body is empty" });
+        return;
       }
       const specificAudienceFriends = form.specificAudienceFriends.map(
         (f) => f.id
@@ -113,10 +117,13 @@ export default function useCreatePost() {
     } catch (error) {
       console.log(error);
       addSnackbar({ type: "error", message: error.response.data.message });
+    } finally {
+      setLoading(false);
     }
   };
 
   return {
+    loading,
     form,
     handleChange,
     handleInput,

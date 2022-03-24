@@ -1,8 +1,10 @@
 import { useNavigate } from "solid-app-router";
+import { createSignal } from "solid-js";
 import { createStore, produce } from "solid-js/store";
 import { useUIDispatch } from "../context/ui";
 import { createGroup } from "../services/group.service";
 export default function useCreateGroup() {
+  const [loading, setLoading] = createSignal(false);
   const navigate = useNavigate();
   const { addSnackbar } = useUIDispatch();
   const [form, setForm] = createStore({
@@ -63,6 +65,7 @@ export default function useCreateGroup() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
     try {
       const { data } = await createGroup({
         ...form.fields,
@@ -81,9 +84,12 @@ export default function useCreateGroup() {
     } catch (error) {
       console.log(error);
       addSnackbar({ type: "error", message: error.response.data.message });
+    } finally {
+      setLoading(false);
     }
   };
   return {
+    loading,
     addCoverImage,
     addProfileImage,
     removeCoverImage,

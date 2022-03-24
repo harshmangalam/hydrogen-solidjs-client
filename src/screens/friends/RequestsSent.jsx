@@ -34,7 +34,7 @@ export default function RequestsReceived() {
                     text="Cancel"
                     color="danger"
                     onClick={() => handleCancelSentRequest(user.id)}
-                    isLoading={loading}
+                    loading={loading}
                   >
                     <FaSolidUserTimes size={18} />
                   </FriendBtn>

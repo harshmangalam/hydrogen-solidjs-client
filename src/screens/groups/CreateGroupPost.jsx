@@ -1,4 +1,5 @@
 import { BsImages } from "solid-icons/bs";
+import { Show } from "solid-js";
 import GroupsModal from "../../components/groups/createGroupPost/GroupsModal";
 import ImageUpload from "../../components/shared/ImageUpload";
 import useCreateGroupPost from "../../hooks/useCreateGroupPost";
@@ -6,6 +7,7 @@ import useCreateGroupPost from "../../hooks/useCreateGroupPost";
 export default function CreateGroupPost() {
   const {
     form,
+    loading,
     handleInput,
     handleSubmit,
     addImage,
@@ -45,10 +47,13 @@ export default function CreateGroupPost() {
 
         <div>
           <button
+          disabled={loading()}
             type="submit"
             className="w-full py-2 px-3 bg-blue-500 text-white rounded-md text-lg"
           >
+            <Show when={!loading()} fallback={"Creating Group Post..."}>
             Create
+            </Show>
           </button>
         </div>
       </form>
