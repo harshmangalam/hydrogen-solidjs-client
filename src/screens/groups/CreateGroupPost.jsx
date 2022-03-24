@@ -36,6 +36,7 @@ export default function CreateGroupPost() {
           image={form.image}
           addImage={addImage}
           removeImage={removeImage}
+          title="Group Post Image"
           btnClass="flex items-center space-x-2 bg-gray-200 dark:bg-gray-700 py-2 rounded-md justify-center"
         >
           <BsImages className="text-green-500 text-2xl" />

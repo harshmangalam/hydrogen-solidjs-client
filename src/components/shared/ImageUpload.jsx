@@ -7,6 +7,7 @@ import TextDivider from "../ui/dataDisplay/TextDivider";
 export default function ImageUpload(props) {
   const merged = mergeProps(
     {
+      title: "Upload Image",
       btnClass:
         "rounded-full bg-gray-100  hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 w-12 h-12 text-3xl text-black dark:text-white grid place-items-center",
     },
@@ -51,8 +52,8 @@ export default function ImageUpload(props) {
       <Modal
         onClose={() => setOpenModal(false)}
         open={openModal()}
-        title="Upload Image"
-        onDone={props.onDone}
+        title={merged.title}
+        onDone={merged.onDone}
       >
         <div className="px-4">
           <div className="py-4 flex flex-col space-y-4">
@@ -64,12 +65,11 @@ export default function ImageUpload(props) {
                 <BsImages className="text-3xl" />
                 <div>
                   <p className="text-xl">Add Image</p>
-                  <p className="text-xs">or drag and drop</p>
                 </div>
               </div>
             </button>
 
-           <TextDivider text="OR" />
+            <TextDivider text="OR" />
 
             <div className="flex items-center space-x-4">
               <input

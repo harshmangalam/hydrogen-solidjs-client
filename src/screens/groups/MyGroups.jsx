@@ -20,12 +20,7 @@ export default function MyGroups() {
       <Match when={resource()}>
         <Show
           when={resource().data.data.groups.length}
-          fallback={
-            <Empty
-              title="No Groups Created"
-              subTitle="You`ve not created any groups Yet. Create your first group"
-            />
-          }
+          fallback={<Empty title="No Groups Created" />}
         >
           <h4 className="text-2xl font-bold">Groups You`ve Created</h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-3 mt-4">

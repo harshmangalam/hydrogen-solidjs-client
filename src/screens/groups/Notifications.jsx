@@ -3,6 +3,7 @@ import { Link } from "solid-app-router";
 import { FaSolidUsers } from "solid-icons/fa";
 import Empty from "../../components/shared/Empty";
 import Error from "../../components/shared/Error";
+import HydrogenLoader from "../../components/shared/HydrogenLoader";
 import UserAvatar from "../../components/ui/dataDisplay/UserAvatar";
 import { fetchGroupNotifications } from "../../services";
 import { getRelativeTime } from "../../utils/dateTime";
@@ -11,7 +12,9 @@ export default function GroupNotifications() {
   return (
     <Switch>
       <Match when={resource.loading}>
-        <p>Loading...</p>
+        <div className="my-8 relative">
+          <HydrogenLoader/>
+        </div>
       </Match>
       <Match when={resource.error}>
         <Error name="Error" />
@@ -19,7 +22,7 @@ export default function GroupNotifications() {
 
       <Match when={resource()}>
         <Show
-          when={resource().data.data.notifications.length > 0}
+          when={resource().data.data.notifications.length}
           fallback={<Empty title="No Notifications" />}
         >
           <div className="max-w-md mx-auto bg-white shadow-md dark:bg-gray-800 p-4 rounded-lg">

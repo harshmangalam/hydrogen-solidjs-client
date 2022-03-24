@@ -76,7 +76,7 @@ export default function Notification() {
                       className="flex space-x-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer px-2 py-2"
                       onClick={() => setOpen(false)}
                     >
-                      <div className="relative">
+                      <div className="relative  flex-none">
                         <UserAvatar
                           src={notif.fromUser.profileImage}
                           className="w-14 h-14 rounded-full flex-none"
