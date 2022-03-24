@@ -33,6 +33,8 @@ export default function PostDetails() {
             <PostCard
               {...postResource().data.data.post}
               refetch={refetchPost}
+              showDelete={false}
+              showFooter={false}
             />
           </div>
         </Match>

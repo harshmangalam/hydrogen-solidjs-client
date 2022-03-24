@@ -7,6 +7,7 @@ import { getRelativeTime } from "../../../utils/dateTime";
 import DeletePost from "./DeletePost";
 import { useAuthState } from "../../../context/auth";
 import { Show } from "solid-js";
+import { Link } from "solid-app-router";
 
 export default function PostHeader(props) {
   const authState = useAuthState();
@@ -27,18 +28,20 @@ export default function PostHeader(props) {
   return (
     <section class="flex items-center justify-between px-4 py-2 border-b dark:border-gray-700">
       <div class="flex items-center space-x-2">
-        <div class="flex-none">
+        <Link className="flex-none" href={`/${props.author.id}`}>
           <UserAvatar
             src={props.author.profileImage}
             alt={props.author.firstName}
             className="w-12 h-12 rounded-full"
           />
-        </div>
+        </Link>
 
         <div>
-          <h6 class="text-md font-medium dark:text-white">
-            {props.author.firstName}
-          </h6>
+          <Link href={`/${props.author.id}`} class="text-md font-medium dark:text-white">
+            <h6>
+              {props.author.firstName}
+            </h6>
+          </Link>
           <div class="flex items-center space-x-2 ">
             <span class="text-sm text-gray-500 dark:text-gray-200">
               {getRelativeTime(props.createdAt)}
@@ -51,7 +54,9 @@ export default function PostHeader(props) {
         </div>
       </div>
 
-      <Show when={authState.currentUser.id === props.author.id}>
+      <Show
+        when={authState.currentUser.id === props.author.id && props.showDelete}
+      >
         <DeletePost handleDeletePost={props.handleDeletePost} />
       </Show>
     </section>

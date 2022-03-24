@@ -1,4 +1,4 @@
-import { Show } from "solid-js";
+import { mergeProps, Show } from "solid-js";
 import usePost from "../../../hooks/post/usePost";
 import PostComment from "./PostComment";
 import PostHeader from "./PostHeader";
@@ -7,53 +7,63 @@ import PostReaction from "./PostReaction";
 import PostTitle from "./PostTitle";
 
 export default function PostCard(props) {
+  const merged = mergeProps({ showDelete: true, showFooter: true }, props);
   const { handleAddRemoveLike, handleDeletePost } = usePost(props.refetch);
   return (
-    <article class="rounded-lg shadow bg-white dark:bg-gray-800 border-2 dark:border-gray-700 dark:text-white">
+    <article className="rounded-lg shadow bg-white dark:bg-gray-800 border-2 dark:border-gray-700 dark:text-white">
       <PostHeader
-        author={props.author}
-        createdAt={props.createdAt}
-        audience={props.audience}
-        handleDeletePost={() => handleDeletePost(props.id)}
+        author={merged.author}
+        createdAt={merged.createdAt}
+        audience={merged.audience}
+        handleDeletePost={() => handleDeletePost(merged.id)}
+        showDelete={merged.showDelete}
       />
       <PostTitle
-        feeling={props.feeling}
-        checkIn={props.checkIn}
-        author={props.author}
-        taggedFriends={props.taggedFriends}
-        countTaggedFriends={props._count.taggedFriends}
+        feeling={merged.feeling}
+        checkIn={merged.checkIn}
+        author={merged.author}
+        taggedFriends={merged.taggedFriends}
+        countTaggedFriends={merged._count.taggedFriends}
       />
-      <Show when={props.image}>
+      <Show when={merged.image}>
         <img
-          src={props.image}
-          alt={props.firstName}
+          src={merged.image}
+          alt={merged.firstName}
           className="aspect-auto w-full"
         />
       </Show>
-      <PostReaction
-        postId={props.id}
-        countLikes={props._count.likes}
-        commentsLikes={props._count.comments}
-      />
-      <Show when={props.content}>
-        <section class="px-4 py-4 flex flex-col space-y-2">
-          <p class="text-[.9375rem] text-gray-700 dark:text-gray-200">
-            {props.content}
+      <div className="py-2">
+        <PostReaction
+          postId={merged.id}
+          countLikes={merged._count.likes}
+          commentsLikes={merged._count.comments}
+        />
+      </div>
+      <Show when={merged.content}>
+        <section className="px-4 py-4 flex flex-col space-y-2">
+          <p className="text-[.9375rem] text-gray-700 dark:text-gray-200">
+            {merged.content}
           </p>
         </section>
       </Show>
-      <div className="divide-y dark:divide-gray-700 space-y-4">
-        <div></div>
-        <section class="py-2 px-4">
-          <div class="grid grid-cols-2 gap-0  relative">
-            <PostHeart
-              handleAddRemoveLike={() => handleAddRemoveLike(props.id)}
-              hasLike={props.hasLike}
-            />
-            <PostComment postId={props.id} />
-          </div>
-        </section>
-      </div>
+      <Show when={merged.showFooter}>
+        <div className="divide-y dark:divide-gray-700 space-y-4">
+          <div></div>
+          <section className="py-2 px-4">
+            <div
+              classList={{ "grid-cols-1": !props.showComment }}
+              className="grid grid-cols-2 gap-0  relative"
+            >
+              <PostHeart
+                handleAddRemoveLike={() => handleAddRemoveLike(merged.id)}
+                hasLike={merged.hasLike}
+              />
+
+              <PostComment postId={merged.id} />
+            </div>
+          </section>
+        </div>
+      </Show>
     </article>
   );
 }
