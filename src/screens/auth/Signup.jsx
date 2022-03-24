@@ -100,7 +100,7 @@ export default function Login() {
               className="w-full  py-2 px-3 bg-blue-500 text-white rounded-lg text-lg"
             >
               <Show when={!loading()} fallback={"Signing up..."}>
-                Signup Up
+                Sign Up
               </Show>
             </button>
           </div>

@@ -4,22 +4,28 @@ import Create from "./Create";
 import Notification from "./Notification";
 import Messenger from "./Messenger";
 import Profile from "./Profile";
-
-import { NavLink } from "solid-app-router";
+import { ImSpinner9 } from "solid-icons/im";
+import { NavLink, useIsRouting } from "solid-app-router";
 
 import { TiHome } from "solid-icons/ti";
 import { FaSolidUserFriends, FaSolidUsers } from "solid-icons/fa";
 import { BsFilePost } from "solid-icons/bs";
 
-import { For } from "solid-js";
+import { For, Show } from "solid-js";
 import DarkLightMode from "../shared/DarkLightMode";
 export default function Navbar() {
+  const isRouting = useIsRouting();
   return (
     <header className="bg-white shadow fixed w-full top-0 z-20 dark:bg-gray-800  text-white">
       <nav className="px-2 md:px-4 h-14 flex items-center justify-between relative">
         {/* left section  */}
         <div className="flex items-center space-x-1 md:space-x-2">
-          <Logo />
+          <Show
+            when={!isRouting()}
+            fallback={<ImSpinner9 className="animate-spin w-10 h-10 text-blue-500" />}
+          >
+            <Logo />
+          </Show>
           <Search />
         </div>
 
