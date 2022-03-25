@@ -53,7 +53,7 @@ export default function Login() {
             href="/auth/signup"
             className="w-full rounded-md  px-4 flex justify-center hover:bg-green-600 bg-green-500 py-2 text-white font-bold"
           >
-            Already have an account? Signup
+            Not have an account? Signup
           </Link>
         </div>
       </section>

@@ -110,7 +110,7 @@ export default function Login() {
             href="/auth/login"
             className="w-full rounded-md  px-4 flex justify-center hover:bg-green-600 bg-green-500 py-2 text-white font-bold"
           >
-            Not have an account? Login
+            Already have an account? Login
           </Link>
         </div>
       </section>
