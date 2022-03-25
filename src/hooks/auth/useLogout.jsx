@@ -1,10 +1,11 @@
-import { createEffect, createSignal } from "solid-js";
-import { useAuthState } from "../../context/auth";
+import { createSignal } from "solid-js";
+import { useAuthDispatch, useAuthState } from "../../context/auth";
 import { useUIDispatch } from "../../context/ui";
 import { logout } from "../../services/auth.service";
 export default function useLogout() {
   const [loading, setLoading] = createSignal(false);
   const authState = useAuthState();
+  const { cleanupUserData } = useAuthDispatch();
   const { addSnackbar } = useUIDispatch();
 
   async function logoutUser() {
@@ -16,7 +17,7 @@ export default function useLogout() {
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);
-      window.location.reload();
+      cleanupUserData();
     }
   }
   return {

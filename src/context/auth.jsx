@@ -61,7 +61,6 @@ export default function AuthProvider(props) {
     }
   });
 
- 
   const setCurrentUser = (user) => {
     setStore("isAuthenticated", true);
     setStore("currentUser", user);
@@ -84,6 +83,11 @@ export default function AuthProvider(props) {
     );
   };
 
+  const cleanupUserData = () => {
+    navigate("/", { replace: true });
+    window.location.reload();
+  };
+
   return (
     <AuthStateContext.Provider value={store}>
       <AuthDispatchContext.Provider
@@ -94,6 +98,7 @@ export default function AuthProvider(props) {
           setCurrentAccount,
           loadCurrentUser,
           handleUserStatusChange,
+          cleanupUserData,
         }}
       >
         <Show when={!store.isLoading} fallback={<AuthLoader />}>
