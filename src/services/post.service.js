@@ -11,6 +11,10 @@ async function fetchPost(postId) {
   return await axios.get(`/posts/${postId}`);
 }
 
+async function fetchMyPosts() {
+  return await axios.get(`/posts/my_posts`);
+}
+
 async function fetchFriendsPosts() {
   return await axios.get("/posts/friends");
 }
@@ -43,5 +47,6 @@ export {
   addRemoveLike,
   fetchPost,
   deletePost,
-  fetchPostLikesUsers
+  fetchPostLikesUsers,
+  fetchMyPosts
 };

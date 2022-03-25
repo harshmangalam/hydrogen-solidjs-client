@@ -26,6 +26,7 @@ const PostsHome = lazy(() => import("../screens/posts/Home"));
 const TrendingPosts = lazy(() => import("../screens/posts/Trending"));
 const FriendsPosts = lazy(() => import("../screens/posts/FriendsPosts"));
 const CreatePost = lazy(() => import("../screens/posts/Create"));
+const MyPosts = lazy(() => import("../screens/posts/MyPosts"));
 
 // groups
 const GroupsLayout = lazy(() => import("../screens/groups"));
@@ -136,6 +137,7 @@ export default function AppRouter() {
           <Route path="trending" element={<TrendingPosts />} />
           <Route path="friends_posts" element={<FriendsPosts />} />
           <Route path="create" element={<CreatePost />} />
+          <Route path="my_posts" element={<MyPosts />} />
         </Route>
 
         {/* group  */}

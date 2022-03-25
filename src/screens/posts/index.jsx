@@ -3,7 +3,7 @@ import { BsFilePost } from "solid-icons/bs";
 import { RiMapCompass3Fill } from "solid-icons/ri";
 import { FaSolidUserFriends } from "solid-icons/fa";
 import { Outlet } from "solid-app-router";
-
+import { FaSolidUserCircle } from 'solid-icons/fa'
 import AppShell from "../../components/ui/surfaces/AppShell";
 export default function GroupsLayout() {
   return (
@@ -35,10 +35,19 @@ const tabs = [
     icon: () => <FaSolidUserFriends />,
     end: false,
   },
+
+  {
+    name: "My Posts",
+    href: "my_posts",
+    icon: () => <FaSolidUserCircle />,
+    end: false,
+  },
+
   {
     name: "Create Post",
     href: "create",
     icon: () => <FaSolidPlus />,
     end: false,
   },
+
 ];
