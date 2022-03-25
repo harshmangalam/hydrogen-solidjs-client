@@ -1,5 +1,4 @@
 import MainBody from "../../components/settings/MainBody";
-import { Show } from "solid-js";
 import useChangePassword from "../../hooks/settings/useChangePassword";
 export default function ChangePassword() {
   const { form, handleInput, handleSubmit } = useChangePassword();
