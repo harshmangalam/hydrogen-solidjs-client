@@ -9,7 +9,7 @@ export default function PostTitle(props) {
       }}
     >
       <Show when={props.feeling || props.checkIn || props.countTaggedFriends}>
-        <span className="font-medium">Harsh Mangalam</span>
+        <span className="font-medium">{props.author.firstName}</span>
       </Show>
       <Show when={props.feeling}>
         <span className="mx-1">is feeling</span>
