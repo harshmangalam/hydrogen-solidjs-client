@@ -2,7 +2,7 @@
   "name": "hydrogen",
   "version": "1.0",
   "description": "A social media web app powered by solidjs",
-  "info": "I named this project Hydrogen because Hydrogen is the most lightweight element in our perodic table and Solidjs is the most lightweight and fastest framework in the JavaScript community",
+  "info": "A social media web app powered by solidjs for learning purpose.",
   "homepage": "https://hydrogen-solid.vercel.app/",
   "contributors": [
     {
