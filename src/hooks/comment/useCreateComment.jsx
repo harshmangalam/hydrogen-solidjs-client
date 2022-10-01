@@ -18,6 +18,13 @@ export default function useCreateComment(refetchComment) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!form.content.trim().length) {
+      addSnackbar({ type: "error", message: "Post body is empty" });
+      return;
+    }
+    form.content.replace(/\n/g, "");
+
     try {
       const { data } = await createComment(form);
       setForm("content", "");
