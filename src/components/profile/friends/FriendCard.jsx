@@ -10,7 +10,7 @@ export default function FriendCard(props) {
           className="rounded-full w-16 h-16 flex-none"
         />
 
-        <div className="flex flex-col space-y-0">
+        <div className="flex flex-col">
           <Link
             href={`/${props.id}`}
             className="text-gray-600 dark:text-gray-300 text-sm hover:underline"
@@ -18,6 +18,9 @@ export default function FriendCard(props) {
             <h6 className="text-lg font-medium">{props.firstName}</h6>
           </Link>
           <span className="text-sm">{props._count.myFriends} friends</span>
+          <div className="mt-3 w-24">
+            {props.children}
+          </div>
         </div>
       </section>
     </div>

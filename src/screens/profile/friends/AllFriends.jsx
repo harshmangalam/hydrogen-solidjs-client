@@ -5,9 +5,13 @@ import { fetchUserAllFriends } from "../../../services/user.service";
 import HydrogenLoader from "../../../components/shared/HydrogenLoader";
 import Error from "../../../components/shared/Error";
 import Empty from "../../../components/shared/Empty";
+import useFriendRequest from "../../../hooks/useFriendRequest";
+import FriendBtn from "../../../components/friends/FriendBtn";
+
 export default function AllFriends() {
   const params = useParams();
-  const [resource] = createResource(() => params.userId, fetchUserAllFriends);
+  const [resource, { refetch }] = createResource(() => params.userId, fetchUserAllFriends);
+  const { handleRemoveFromFriendsList, loading } = useFriendRequest(refetch);
   return (
     <div className="relative py-4">
       <Switch>
@@ -26,7 +30,16 @@ export default function AllFriends() {
               <For each={resource().data.data.users}>
                 {(user) => (
                   <li>
-                    <FriendCard {...user} />
+                    <FriendCard {...user}>
+                      <FriendBtn
+                        text="Unfriend"
+                        color="danger"
+                        onClick={() => handleRemoveFromFriendsList(user.id)}
+                        loading={loading}
+                      >
+                        <FaSolidUserMinus size={18} />
+                      </FriendBtn>
+                    </FriendCard>
                   </li>
                 )}
               </For>
