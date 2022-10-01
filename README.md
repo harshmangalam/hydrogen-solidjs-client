@@ -1,5 +1,11 @@
 # Hydrogen - Social media web app (Powered by SolidJs)
 
+Add inside `.env`
+```
+VITE_ENDPOINT=https://hydrogen-harsh.herokuapp.com/api
+```
+
+
 **[Live Demo](https://hydrogen-solid.vercel.app/)**
 
 ## Dependencies
