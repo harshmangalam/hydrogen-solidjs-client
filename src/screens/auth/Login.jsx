@@ -1,6 +1,7 @@
 import { Link } from "solid-app-router";
 import { Show } from "solid-js";
 import useLogin from "../../hooks/auth/useLogin";
+import { ImSpinner2 } from 'solid-icons/im';
 
 export default function Login() {
   const { form, handleInput, handleLogin, loading } = useLogin();
@@ -39,9 +40,9 @@ export default function Login() {
             <button
               disabled={loading()}
               type="submit"
-              className="w-full s py-2 px-3 bg-blue-500 text-white rounded-lg text-lg"
+              className={"flex justify-center w-full s py-2 px-3 bg-blue-500 text-white rounded-lg text-lg " + (loading() ? "opacity-60" : "opacity-100")}
             >
-              <Show when={!loading()} fallback="Logging in...">
+              <Show when={!loading()} fallback={<ImSpinner2 className="animate-spin w-8 h-8" />}>
                 Log In
               </Show>
             </button>
