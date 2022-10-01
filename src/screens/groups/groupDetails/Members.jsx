@@ -4,6 +4,7 @@ import Empty from "../../../components/shared/Empty";
 import HydrogenLoader from "../../../components/shared/HydrogenLoader";
 import { useParams } from "solid-app-router";
 import { fetchGroupMembers } from "../../../services";
+import { Link } from "solid-app-router";
 export default function MyFriends() {
   const params = useParams();
   const [response] = createResource(() => params.groupId, fetchGroupMembers);
@@ -31,7 +32,9 @@ export default function MyFriends() {
                     alt={user.firstName}
                     className="w-full  h-44 object-cover aspect-square rounded-md"
                   />
-                  <h6 className="text-center text-lg font-semibold">{user.firstName}</h6>
+                  <Link href={`/${user.id}`} className="hover:underline">
+                    <h6 className="text-center text-lg font-semibold">{user.firstName}</h6>
+                  </Link>
                 </li>
               )}
             </For>
