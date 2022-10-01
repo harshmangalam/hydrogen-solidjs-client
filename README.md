@@ -1,6 +1,16 @@
 # Hydrogen - Social media web app (Powered by SolidJs)
 
-Add inside `.env`
+
+## Installation
+- install pnpm globally `pnpm i -g pnpm`
+- install dependencies `pnpm i`
+- run dev server `pnpm run dev`
+
+### Setup env file
+- copy `.env.example` inside `.env`
+
+Update  `.env`
+
 ```
 VITE_ENDPOINT=https://hydrogen-harsh.herokuapp.com/api
 ```
