@@ -68,3 +68,127 @@
 
 
 }
+
+/* TOOLTIP CSS */
+
+/* 01. for like button */
+.tooltip .tooltiptext-heart {
+  visibility: hidden;
+  width: 25%;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 26%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext-heart::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext-heart {
+  visibility: visible;
+}
+
+/* 02. for comment section */
+.tooltip .tooltiptext-comment {
+  visibility: hidden;
+  width: 35%;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  right: 8%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext-comment::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext-comment {
+  visibility: visible;
+}
+
+
+/* for delete icon */
+.tooltip .tooltiptext-delete {
+  visibility: hidden;
+  width: 350%;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 3px 0;
+  position: absolute;
+  z-index: 1;
+  top: -105%;
+  left: 35.9%;
+  margin-left: -60px;
+  font-size: 15px;
+}
+
+.tooltip .tooltiptext-delete::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext-delete {
+  visibility: visible;
+}
+
+/* Privacy Section */
+.tooltip .tooltiptext-privacy {
+  visibility: hidden;
+  width: 5%;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+.tooltip .tooltiptext-privacy::after {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext-privacy {
+  visibility: visible;
+}
