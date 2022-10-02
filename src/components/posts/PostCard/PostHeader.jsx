@@ -31,8 +31,10 @@ export default function PostHeader(props) {
         <Link className="flex-none" href={`/${props.author.id}`}>
           <UserAvatar
             src={props.author.profileImage}
-            alt={props.author.firstName}
-            className="w-12 h-12 rounded-full"
+            alt={"Author first name"}
+            width="300"
+            height="300"
+            className="aspect-auto w-12 h-12 rounded-full"
           />
         </Link>
 

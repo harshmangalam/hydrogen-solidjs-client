@@ -44,9 +44,11 @@ export default function PostLikesUsersModal(props) {
                       <UserStatusAvatar
                         firstName={user.firstName}
                         profileImage={user.profileImage}
-                        className="w-10 h-10 rounded-full flex-none"
+                        alt={'User profile image'}
+                        width="300"
+                        height="300"
+                        className="aspect-auto w-10 h-10 rounded-full flex-none"
                       />
-
                       <p className="font-medium">{user.firstName}</p>
                     </Link>
                   </li>

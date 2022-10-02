@@ -28,7 +28,9 @@ export default function PostCard(props) {
       <Show when={merged.image}>
         <img
           src={merged.image}
-          alt={merged.firstName}
+          alt={'First name'}
+          width="300"
+          height="300"
           className="aspect-auto w-full"
         />
       </Show>
