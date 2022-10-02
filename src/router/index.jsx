@@ -101,6 +101,7 @@ const ChangePasswordSettings = lazy(() =>
   import("../screens/settings/ChangePassword")
 );
 const GeneralSettings = lazy(() => import("../screens/settings/General"));
+const DeleteAccount = lazy(() => import("../screens/settings/DeleteAccount"));
 
 //search
 const Search = lazy(() => import("../screens/Search"));
@@ -197,6 +198,7 @@ export default function AppRouter() {
         <Route path="general_settings" element={<GeneralSettings />} />
         <Route path="login_history" element={<LoginHistory />} />
         <Route path="change_password" element={<ChangePasswordSettings />} />
+        <Route path="delete_account" element={<DeleteAccount />} />
       </Route>
     </Routes>
   );
