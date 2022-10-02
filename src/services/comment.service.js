@@ -7,3 +7,7 @@ export const fetchComments = async (postId) => {
 export const createComment = async ({ postId, content }) => {
   return await axios.post(`/comments/${postId}`, { content });
 };
+
+export const deleteComment = async ({ commentId }) => {
+  return await axios.delete(`/comments/${commentId}`);
+};
