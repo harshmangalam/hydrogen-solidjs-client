@@ -13,7 +13,9 @@ specifiers:
   solid-app-router: ^0.2.1
   solid-icons: ^0.3.3
   solid-js: ^1.3.3
+  solid-tippy: ^0.1.3
   tailwindcss: ^3.0.18
+  tippy.js: ^6.3.7
   vite: ^2.7.13
   vite-plugin-solid: ^2.2.5
 
@@ -28,6 +30,8 @@ dependencies:
   solid-app-router: 0.2.1_solid-js@1.3.3
   solid-icons: 0.3.3_solid-js@1.3.3
   solid-js: 1.3.3
+  solid-tippy: 0.1.3_c76fki2ycf5xhsezlm4qs2xf3a
+  tippy.js: 6.3.7
 
 devDependencies:
   autoprefixer: 10.4.2_postcss@8.4.5
@@ -361,6 +365,10 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
+
+  /@popperjs/core/2.11.6:
+    resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
+    dev: false
 
   /@socket.io/base64-arraybuffer/1.0.2:
     resolution: {integrity: sha512-dOlCBKnDw4iShaIsH/bxujKTM18+2TOAsYz+KSc11Am38H4q5Xw8Bbz97ZYdrVNM+um3p7w86Bvvmcn9q+5+eQ==}
@@ -1216,6 +1224,17 @@ packages:
       solid-js: 1.3.3
     dev: true
 
+  /solid-tippy/0.1.3_c76fki2ycf5xhsezlm4qs2xf3a:
+    resolution: {integrity: sha512-41lqCpVIvpEztQQEe12/FphCXvg+IvMRxsrxRwNdWAb3Eli8glpHPEIFfd20n8zHIIe2m2LXpx1BTVfAacJsog==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      solid-js: ^1.2
+      tippy.js: ^6.3
+    dependencies:
+      solid-js: 1.3.3
+      tippy.js: 6.3.7
+    dev: false
+
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -1273,6 +1292,12 @@ packages:
       resolve: 1.22.0
     transitivePeerDependencies:
       - ts-node
+
+  /tippy.js/6.3.7:
+    resolution: {integrity: sha512-E1d3oP2emgJ9dRQZdf3Kkn0qJgI6ZLpyS5z6ZkY1DF3kaQaBsGZsndEpHwx+eC+tYM41HaSNvNtLx8tU57FzTQ==}
+    dependencies:
+      '@popperjs/core': 2.11.6
+    dev: false
 
   /to-fast-properties/2.0.0:
     resolution: {integrity: sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=}

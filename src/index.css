@@ -71,7 +71,7 @@
 
 /* TOOLTIP CSS */
 
-/* 01. for like button */
+/* 01. for like button */ 
 .tooltip .tooltiptext-heart {
   visibility: hidden;
   width: 25%;
@@ -85,7 +85,7 @@
   bottom: 150%;
   left: 26%;
   margin-left: -60px;
-}
+} 
 
 .tooltip .tooltiptext-heart::after {
   content: "";
@@ -191,4 +191,92 @@
 
 .tooltip:hover .tooltiptext-privacy {
   visibility: visible;
+}
+
+
+/* media query for privacy tooltip */
+@media (max-width: 1122px) {
+  .tooltip .tooltiptext-privacy {
+    width: 7%;
+  }
+}
+
+@media (max-width: 823px) {
+  .tooltip .tooltiptext-privacy {
+    width: 10%;
+  }
+}
+
+@media (max-width: 568px) {
+  .tooltip .tooltiptext-privacy {
+    width: 14%;
+  }
+}
+
+@media (max-width: 409px) {
+  .tooltip .tooltiptext-privacy {
+    width: 17%;
+  }
+}
+
+@media (max-width: 345px) {
+  .tooltip .tooltiptext-privacy {
+    width: 20%;
+  }
+}
+
+@media (max-width: 287px) {
+  .tooltip .tooltiptext-privacy {
+    width: 30%;
+  }
+}
+
+@media (max-width: 267px) {
+  .tooltip .tooltiptext-privacy {
+    width: 20%;
+  }
+}
+
+@media (max-width: 265px) {
+  .tooltip .tooltiptext-privacy {
+    width: 32%;
+  }
+}
+
+/* media query for like button */
+@media (max-width: 3600px) {
+  .tooltip .tooltiptext-heart {
+    width: 40%;
+  }
+}
+
+@media (max-width: 290px) {
+  .tooltip .tooltiptext-heart {
+    width: 40%;
+  }
+}
+
+@media (max-width: 265px) {
+  .tooltip .tooltiptext-heart {
+    width: 45%;
+  }
+}
+
+/* comment section */
+@media (max-width: 3600px) {
+  .tooltip .tooltiptext-heart {
+    width: 50%;
+  }
+}
+
+@media (max-width: 290px) {
+  .tooltip .tooltiptext-heart {
+    width: 50%;
+  }
+}
+
+@media (max-width: 265px) {
+  .tooltip .tooltiptext-heart {
+    width: 55%;
+  }
 }
