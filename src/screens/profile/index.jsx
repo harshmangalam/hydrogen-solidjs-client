@@ -99,6 +99,7 @@ export default function Profile() {
                       addImage={addCoverImage}
                       removeImage={removeCoverImage}
                       onDone={handleUploadProfilePic}
+                      sizeLimit="extended"
                     >
                       <FaSolidCamera />
                       <span className="hidden md:block">Add Cover Photo</span>

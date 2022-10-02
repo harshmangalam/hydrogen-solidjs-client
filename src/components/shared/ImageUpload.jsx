@@ -7,6 +7,11 @@ import useCloudinary from "../../hooks/useCloudinary";
 
 export default function ImageUpload(props) {
   const cloudinary = useCloudinary();
+  /* 
+    - `props.sizeLimit` could be 'standard' or 'extended'
+    - standard limit will evaluate to 1 and extended will exaluate to 2 
+  */
+  const fileSizeLimit = props.sizeLimit === "extended" ? 2 : 1; // set fileSizeLimit
   const merged = mergeProps(
     {
       title: "Upload Image",
@@ -17,6 +22,7 @@ export default function ImageUpload(props) {
   );
   const [openModal, setOpenModal] = createSignal(false);
   const [urlField, setUrlField] = createSignal("");
+  const [error, setError] = createSignal("");
   let imageRef;
 
   const handleImageChange = async (event) => {
@@ -24,9 +30,19 @@ export default function ImageUpload(props) {
     const image = URL.createObjectURL(file);
     merged.addImage(image);
     try {
-      const data = await cloudinary.upload(file);
-      merged.addImage(data.url)
-    } catch (error) {}
+      const currentFileSizeInMB = file.size / 1024 / 1024;
+
+      if (currentFileSizeInMB >= fileSizeLimit) {
+        setError(`File size exceed! Please choose a file smaller than or equal to ${fileSizeLimit} mb.`)
+        removeImage(image);
+        return;
+      } else {
+        setError("");
+        const data = await cloudinary.upload(file);
+        merged.addImage(data.url);
+      }
+
+    } catch (error) { }
   };
 
   const removeImage = (url) => {
@@ -37,6 +53,7 @@ export default function ImageUpload(props) {
   const handleAddImage = () => {
     merged.addImage(urlField());
     setUrlField("");
+    setError("");
   };
 
   return (
@@ -58,7 +75,7 @@ export default function ImageUpload(props) {
       />
 
       <Modal
-        onClose={() => setOpenModal(false)}
+        onClose={() => { setOpenModal(false); setError(""); }}
         open={openModal()}
         title={merged.title}
         onDone={merged.onDone}
@@ -94,6 +111,8 @@ export default function ImageUpload(props) {
                 Add
               </button>
             </div>
+            {/* div to display error messages */}
+            <div className="text-red-500 block">{error && error}</div>
           </div>
 
           <Show when={merged.image}>

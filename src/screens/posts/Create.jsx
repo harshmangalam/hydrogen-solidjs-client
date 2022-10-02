@@ -77,6 +77,7 @@ export default function Create() {
             image={form.image}
             addImage={addImage}
             removeImage={removeImage}
+            sizeLimit="extended"
           >
             <BsImages className="text-green-500" />
           </ImageUpload>

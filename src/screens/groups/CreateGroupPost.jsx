@@ -40,6 +40,7 @@ export default function CreateGroupPost() {
           removeImage={removeImage}
           title="Group Post Image"
           btnClass="flex items-center space-x-2 bg-gray-200 dark:bg-gray-700 py-2 rounded-md justify-center"
+          sizeLimit="extended"
         >
           <BsImages className="text-green-500 text-2xl" />
           <span>Add image</span>
@@ -47,12 +48,12 @@ export default function CreateGroupPost() {
 
         <div>
           <button
-          disabled={loading()}
+            disabled={loading()}
             type="submit"
             className="w-full py-2 px-3 bg-blue-500 text-white rounded-md text-lg"
           >
             <Show when={!loading()} fallback={"Creating Group Post..."}>
-            Create
+              Create
             </Show>
           </button>
         </div>
