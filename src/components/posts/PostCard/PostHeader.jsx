@@ -42,14 +42,14 @@ export default function PostHeader(props) {
               {props.author.firstName}
             </h6>
           </Link>
-          <div class="flex items-center space-x-2">
+          <div class="flex items-center space-x-2 ">
             <span class="text-sm text-gray-500 dark:text-gray-200">
               {getRelativeTime(props.createdAt)}
             </span>
             <span class="flex items-start dark:text-gray-200">&#8228;</span>
-              <span className="dark:text-gray-200 text-lg tooltip">{showPostAudience(props.audience)}
-                <span class='tooltiptext-privacy font-medium'>{(props.audience)}</span>
-              </span>
+            <span className="dark:text-gray-200 text-lg">
+              {showPostAudience(props.audience)}
+            </span>
           </div>
         </div>
       </div>
