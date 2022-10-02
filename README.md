@@ -2,7 +2,7 @@
 
 
 ## Installation
-- install pnpm globally `pnpm i -g pnpm`
+- install pnpm globally `npm i -g pnpm`
 - install dependencies `pnpm i`
 - run dev server `pnpm run dev`
 

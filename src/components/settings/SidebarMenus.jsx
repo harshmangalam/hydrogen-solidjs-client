@@ -6,6 +6,7 @@ import { FaSolidUsers } from "solid-icons/fa";
 import { BsFilePost } from "solid-icons/bs";
 import { BiCurrentLocation } from "solid-icons/bi";
 import { BsActivity } from "solid-icons/bs";
+import { AiFillDelete } from 'solid-icons/ai'
 
 import { For } from "solid-js";
 export default function SidebarMenus() {
@@ -51,6 +52,12 @@ const menus = [
     name: "Login History",
     icon: () => <BsActivity />,
     href: "login_history",
+    end: false,
+  },
+  {
+    name: "Delete Account",
+    icon: () => <AiFillDelete />,
+    href: "delete_account",
     end: false,
   },
 ];
