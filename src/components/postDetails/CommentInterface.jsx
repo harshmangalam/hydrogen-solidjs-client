@@ -19,7 +19,8 @@ export default function CommentInterface(props) {
       ></textarea>
       <button
         type="submit"
-        className="px-4 py-2  bg-blue-500 hover:bg-blue-600 text-white rounded-full float-right"
+        className={"px-4 py-2  bg-blue-500 hover:bg-blue-600 text-white rounded-full float-right " + (!form.content && "opacity-60")}
+        disabled={!form.content}
       >
         Comment
       </button>
