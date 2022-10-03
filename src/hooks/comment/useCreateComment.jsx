@@ -1,4 +1,5 @@
 import { useParams } from "solid-app-router";
+import { createSignal } from "solid-js";
 
 import { createStore } from "solid-js/store";
 import { useUIDispatch } from "../../context/ui";
@@ -13,7 +14,7 @@ export default function useCreateComment(refetchComment) {
 
   const handleInput = (event) => {
     const currentTarget = event.currentTarget;
-    setForm([currentTarget.name], currentTarget.value);
+    setForm([currentTarget.name], currentTarget.value.trim());
   };
 
   const handleSubmit = async (event) => {
