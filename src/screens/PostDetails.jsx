@@ -13,7 +13,6 @@ import { useUIDispatch } from "../context/ui";
 import { AiOutlineDelete } from "solid-icons/ai";
 import ConfirmDialog from "../components/ui/feedback/ConfirmDialog";
 
-
 export default function PostDetails() {
   const params = useParams();
   const authState = useAuthState();
@@ -32,16 +31,14 @@ export default function PostDetails() {
 
   const handleDeleteComment = async (commentId) => {
     try {
-      const { data } = await deleteComment({ commentId })
-  
-      addSnackbar({ type: "success", message: data.message })
-      refetchComment()
+      const { data } = await deleteComment({ commentId });
+      addSnackbar({ type: "success", message: data.message });
+      refetchComment();
     } catch (error) {
-      console.log(error)
-      addSnackbar({ type: "error", message: error.message })
+      addSnackbar({ type: "error", message: error?.response?.data?.message });
     }
-  }
-  
+  };
+
   return (
     <div className=" max-w-xl mx-auto ">
       <Switch>
@@ -102,9 +99,15 @@ export default function PostDetails() {
                         </div>
 
                         {/* Delete Button*/}
-                        <Show when={authState.currentUser?.id == comment.user.id}>
-                          <button onClick={() => setOpen(true)} class=" p-2 hover:bg-red-100 dark:hover:bg-red-400 dark:text-white text-xl rounded-full text-red-500"
-                          ><AiOutlineDelete /></button>
+                        <Show
+                          when={authState.currentUser?.id == comment.user.id}
+                        >
+                          <button
+                            onClick={() => setOpen(true)}
+                            class=" p-2 hover:bg-red-100 dark:hover:bg-red-400 dark:text-white text-xl rounded-full text-red-500"
+                          >
+                            <AiOutlineDelete />
+                          </button>
                         </Show>
 
                         <ConfirmDialog
@@ -133,4 +136,3 @@ export default function PostDetails() {
     </div>
   );
 }
-
