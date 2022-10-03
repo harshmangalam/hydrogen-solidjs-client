@@ -7,7 +7,7 @@ export default function CheckIn(props) {
   return (
     <div>
       <button
-        title="Add Feelings"
+        title="Add Location"
         type="button"
         className="rounded-full bg-gray-100  hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 w-12 h-12 text-3xl text-black dark:text-white grid place-items-center"
         onClick={() => setOpen(true)}
