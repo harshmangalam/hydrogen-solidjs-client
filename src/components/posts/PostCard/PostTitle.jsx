@@ -4,7 +4,7 @@ export default function PostTitle(props) {
   return (
     <div
       classList={{
-        "px-4 bg-gray-200 dark:bg-gray-700 py-2":
+        "px-4 bg-gray-200 dark:bg-gray-700 py-2 flex items-center":
           props.feeling || props.checkIn || props.countTaggedFriends,
       }}
     >
@@ -17,12 +17,24 @@ export default function PostTitle(props) {
       </Show>
 
       <Show when={props.countTaggedFriends}>
-        <span className="mx-1"> with</span>
-        <For each={props.taggedFriends}>
-          {(friend) => (
-            <span className="font-medium mx-1">{friend.firstName},</span>
-          )}
-        </For>
+        <span className="mx-1"> with </span>
+
+        <span className="inline-flex items-center gap-2">
+          <For each={props.taggedFriends}>
+            {(friend) => (
+              <span className="flex gap-1 pr-2 items-center  rounded-full bg-white border dark:bg-gray-900  dark:border-gray-600">
+                <span className="h-5 w-5">
+                  <img
+                    src={friend.profileImage}
+                    className="w-full h-full rounded-full"
+                  />
+                </span>
+                <span className=" text-sm"> {friend.firstName}</span>
+              </span>
+            )}
+          </For>
+        </span>
+
         <Show when={props.countTaggedFriends - props.taggedFriends.length > 0}>
           and
           <span className="font-medium mx-1">
