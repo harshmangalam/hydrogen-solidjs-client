@@ -34,6 +34,7 @@ export default function PostDetails() {
       const { data } = await deleteComment({ commentId });
       addSnackbar({ type: "success", message: data.message });
       refetchComment();
+      refetchPost();
     } catch (error) {
       addSnackbar({ type: "error", message: error?.response?.data?.message });
     }
@@ -69,7 +70,7 @@ export default function PostDetails() {
         </Match>
         <Match when={commentResource()}>
           {/* textarea comments  */}
-          <CommentInterface refetchComment={refetchComment} />
+          <CommentInterface refetchComment={refetchComment} refetchPost={refetchPost} />
           <div className="relative mt-14">
             <Show
               when={commentResource().data.data.comments?.length}

@@ -3,7 +3,8 @@ import useCreateComment from "../../hooks/comment/useCreateComment";
 
 export default function CommentInterface(props) {
   const { handleInput, handleSubmit, form } = useCreateComment(
-    props.refetchComment
+    props.refetchComment,
+    props.refetchPost
   );
   // const [isEmpty, setIsEmpty] = createSignal(true);
   return (
