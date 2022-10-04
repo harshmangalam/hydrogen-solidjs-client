@@ -21,8 +21,11 @@ export default function CommentInterface(props) {
       ></textarea>
       <button
         type="submit"
-        className={"px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-full float-right "}
-        classList={{['opacity-60']: !form.content}}
+        className={
+          "px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-full float-right "
+        }
+        classList={{ ["opacity-60"]: !form.content }}
+        disabled={!form.content}
       >
         Comment
       </button>
