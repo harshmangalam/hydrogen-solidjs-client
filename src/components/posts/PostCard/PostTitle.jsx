@@ -19,8 +19,8 @@ export default function PostTitle(props) {
       <Show when={props.countTaggedFriends}>
         <span className="mx-1"> with</span>
         <For each={props.taggedFriends}>
-          {(friend) => (
-            <span className="font-medium mx-1">{friend.firstName},</span>
+          {(friend, idx) => (
+            <span className="font-medium mx-1">{friend.firstName} <Show when={idx !== (props.taggedFriends.length - 1)}>&nbsp;,</Show></span>
           )}
         </For>
         <Show when={props.countTaggedFriends - props.taggedFriends.length > 0}>
