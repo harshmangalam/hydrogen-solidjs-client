@@ -3,6 +3,7 @@ import { For, Show } from "solid-js";
 import { useAuthState } from "../../context/auth";
 import UserAvatar from "../ui/dataDisplay/UserAvatar";
 import EditProfile from "./EditProfileDialog";
+import { getRelativeTime } from "../../utils/dateTime";
 export default function ProfileInfo(props) {
   const { currentUser } = useAuthState();
   return (
@@ -18,12 +19,13 @@ export default function ProfileInfo(props) {
       </div>
 
       <div>
-        <p className="text-lg font-medium text-gray-600 dark:text-gray-400">
-          {props.friendsCount} Friends
-        </p>
+        <p className='text-lg font-medium text-gray-600 dark:text-gray-400'>{props.friendsCount} Friends</p>
+        <Show when={ props.lastSeen}>
+          <p className='text-lg font-medium text-gray-600 dark:text-gray-400'> Last Seen : { getRelativeTime(props.lastSeen) }</p>
+        </Show>
       </div>
 
-      <div class="-space-x-3 flex items-center">
+      <div class='-space-x-3 flex items-center'>
         <For each={props.friends}>
           {(friend) => (
             <Link href={`/${friend.id}`}>
