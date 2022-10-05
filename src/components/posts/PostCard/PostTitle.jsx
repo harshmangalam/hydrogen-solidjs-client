@@ -1,4 +1,5 @@
 import { For, Show } from "solid-js";
+import { Link } from "solid-app-router";
 
 export default function PostTitle(props) {
   return (
@@ -22,15 +23,17 @@ export default function PostTitle(props) {
         <span className="inline-flex items-center gap-2">
           <For each={props.taggedFriends}>
             {(friend) => (
-              <span className="flex gap-1 pr-2 items-center  rounded-full bg-white border dark:bg-gray-900  dark:border-gray-600">
-                <span className="h-5 w-5">
-                  <img
-                    src={friend.profileImage}
-                    className="w-full h-full rounded-full"
-                  />
+              <Link className="flex-none" href={`/${friend.id}`}>
+                <span className="flex gap-1 pr-2 items-center  rounded-full bg-white border dark:bg-gray-900  dark:border-gray-600">
+                  <span className="h-5 w-5">
+                    <img
+                      src={friend.profileImage}
+                      className="w-full h-full rounded-full"
+                    />
+                  </span>
+                  <span className=" text-sm"> {friend.firstName}</span>
                 </span>
-                <span className=" text-sm"> {friend.firstName}</span>
-              </span>
+              </Link>
             )}
           </For>
         </span>
