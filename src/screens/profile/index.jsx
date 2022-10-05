@@ -66,7 +66,13 @@ export default function Profile() {
                     {/* avatar profile image  */}
                     {/* Closes Enhancement #49 In user profile page show user last seen info and user active status*/}
 
-                    <UserStatusAvatar alt={resource().data.data.user.firstName} imgClass="w-40 h-40 rounded-full aspect-auto object-cover p-1 bg-blue-200 dark:bg-blue-300" profileImage={resource().data.data.user.profileImage } status={resource().data.data.user.status}/>
+                    <UserStatusAvatar
+                      alt={resource().data.data.user.firstName}
+                      imgClass="w-40 h-40 rounded-full aspect-auto object-cover p-1 bg-blue-200 dark:bg-blue-300"
+                      profileImage={resource().data.data.user.profileImage}
+                      status={resource().data.data.user.status}
+                      statusClass="top-2 right-5"
+                    />
 
                     <Show
                       when={
@@ -89,7 +95,11 @@ export default function Profile() {
                     </Show>
                   </div>
                 </div>
-                <Show when={userState?.currentUser.id === resource().data.data.user.id}>
+                <Show
+                  when={
+                    userState?.currentUser.id === resource().data.data.user.id
+                  }
+                >
                   <div className="absolute right-0 bottom-0 p-3">
                     {/* change cover image  */}
                     <ImageUpload
@@ -105,15 +115,16 @@ export default function Profile() {
                     </ImageUpload>
                   </div>
                 </Show>
-                    {/* Closes Enhancement #49 In user profile page show user last seen info and user active status*/}
+                {/* Closes Enhancement #49 In user profile page show user last seen info and user active status*/}
                 <ProfileInfo
-                firstName={resource().data.data.user.firstName}
+                  firstName={resource().data.data.user.firstName}
                   friendsCount={resource().data.data.user._count.myFriends}
                   friends={resource().data.data.user.myFriends}
                   lastName={resource().data.data.user.lastName}
                   userId={resource().data.data.user.id}
                   refetch={refetch}
-                  lastSeen={resource().data.data.user.lastSeen }
+                  lastSeen={resource().data.data.user.lastSeen}
+                  status={resource().data.data.user.status}
                 />
               </div>
             </Show>
