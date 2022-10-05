@@ -1,6 +1,6 @@
 import { createSignal, Show } from "solid-js";
 import { AiOutlineDelete } from "solid-icons/ai";
-import ConfirmDialog from "../../ui/feedback/ConfirmDialog";
+import ConfirmDialog from "../ui/feedback/ConfirmDialog";
 
 export default function DeleteDialog(props) {
   const [open, setOpen] = createSignal(false);

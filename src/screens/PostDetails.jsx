@@ -10,8 +10,7 @@ import { getRelativeTime } from "../utils/dateTime";
 import { deleteComment, fetchComments } from "../services";
 import { useAuthState } from "../context/auth";
 import { useUIDispatch } from "../context/ui";
-import { AiOutlineDelete } from "solid-icons/ai";
-import ConfirmDialog from "../components/ui/feedback/ConfirmDialog";
+import DeleteDialog from "../components/shared/DeleteDialog";
 
 export default function PostDetails() {
   const params = useParams();
@@ -70,7 +69,10 @@ export default function PostDetails() {
         </Match>
         <Match when={commentResource()}>
           {/* textarea comments  */}
-          <CommentInterface refetchComment={refetchComment} refetchPost={refetchPost} />
+          <CommentInterface
+            refetchComment={refetchComment}
+            refetchPost={refetchPost}
+          />
           <div className="relative mt-14">
             <Show
               when={commentResource().data.data.comments?.length}
@@ -103,28 +105,12 @@ export default function PostDetails() {
                         <Show
                           when={authState.currentUser?.id == comment.user.id}
                         >
-                          <button
-                            onClick={() => setOpen(true)}
-                            class=" p-2 hover:bg-red-100 dark:hover:bg-red-400 dark:text-white text-xl rounded-full text-red-500"
-                          >
-                            <AiOutlineDelete />
-                          </button>
+                          <DeleteDialog
+                            handleDelete={() => handleDeleteComment(comment.id)}
+                            title="Delete comment"
+                            content="Do you want to delete comment"
+                          />
                         </Show>
-
-                        <ConfirmDialog
-                          open={open()}
-                          onClose={() => setOpen(false)}
-                          title="Delete Comment"
-                          content="Do you want to delete this comment"
-                          actions={[
-                            { name: "No", onClick: () => setOpen(false) },
-                            {
-                              name: "Yes",
-                              onClick: () => handleDeleteComment(comment.id),
-                              variant: "danger",
-                            },
-                          ]}
-                        />
                       </div>
                     </li>
                   )}
