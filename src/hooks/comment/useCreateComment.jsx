@@ -4,7 +4,7 @@ import { createSignal } from "solid-js";
 import { createStore } from "solid-js/store";
 import { useUIDispatch } from "../../context/ui";
 import { createComment } from "../../services";
-export default function useCreateComment(refetchComment) {
+export default function useCreateComment(refetchComment, refetchPost) {
   const params = useParams();
   const { addSnackbar } = useUIDispatch();
   const [form, setForm] = createStore({
@@ -32,6 +32,7 @@ export default function useCreateComment(refetchComment) {
       setForm("type", "");
       addSnackbar({ type: "success", message: data.message });
       refetchComment();
+      refetchPost();
     } catch (error) {
       console.log(error);
       addSnackbar({ type: "error", message: error.response.data.message });
