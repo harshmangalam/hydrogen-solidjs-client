@@ -7,8 +7,8 @@ export default function ProfileInfo(props) {
   const authState = useAuthState();
   return (
     <div className="flex flex-row justify-end">
-      <div className="absolute w-full flex flex-col md:w-auto md:left-1/4 -bottom-44 text-center md:-bottom-24 md:text-left md:items-start">
-        <div className="flex items-center space-x-4">
+      <div className="absolute w-full flex flex-col md:w-auto md:left-1/4 -bottom-48 text-center md:-bottom-32 md:text-left md:items-start">
+        <div className="flex items-center justify-center space-x-4">
           <h3 className="text-3xl dark:text-white font-medium text-center">
             {props.name}
           </h3>
@@ -23,19 +23,21 @@ export default function ProfileInfo(props) {
         <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
           {props.privacy}
         </p>
-      </div>
-      <span className="inline-flex   px-3 my-3 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">
-        <div className="-ml-3 mr-1.5">
-          <img
-            src={props.admin.profileImage}
-            alt="admin profile image"
-            className="h-8 w-8  rounded-full "
-          />
+        <div className="inline-flex justify-center mt-2">
+          <Link href={`/${props.admin.id}`}>
+            <div className="rounded-full flex items-center space-x-2 pr-2 font-medium bg-gray-100 text-gray-700 dark:bg-gray-900 dark:text-gray-300">
+              <div className="w-6 h-6 rounded-full">
+                <img
+                  src={props.admin.profileImage}
+                  alt={props.admin.firstName}
+                  className="w-full h-full  rounded-full "
+                />
+              </div>
+              <p className="h-6">{props.admin.firstName}</p>
+            </div>
+          </Link>
         </div>
-        <p className="text-lg font-medium text-gray-600 dark:text-gray-400">
-          <Link href={`/${props.admin.id}`}>{props.admin.firstName} </Link>
-        </p>
-      </span>
+      </div>
     </div>
   );
 }
