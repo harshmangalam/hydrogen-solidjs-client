@@ -8,6 +8,7 @@ import { fetchUserDetails } from "../../services/user.service";
 import { useAuthState } from "../../context/auth";
 import HydrogenLoader from "../../components/shared/HydrogenLoader";
 import Error from "../../components/shared/Error";
+import UserStatusAvatar from "../../components/ui/dataDisplay/UserStatusAvatar";
 export default function Profile() {
   const params = useParams();
   const userState = useAuthState();
@@ -63,11 +64,9 @@ export default function Profile() {
                 <div className="absolute -bottom-20 md:-bottom-28 left-1/2 md:left-4 -translate-x-1/2 md:-translate-x-0">
                   <div className="relative">
                     {/* avatar profile image  */}
-                    <img
-                      src={resource().data.data.user.profileImage}
-                      alt={resource().data.data.user.firstName}
-                      className="w-40 h-40 rounded-full aspect-auto object-cover p-1 bg-blue-200 dark:bg-blue-300"
-                    />
+                    {/* Closes Enhancement #49 In user profile page show user last seen info and user active status*/}
+
+                    <UserStatusAvatar alt={resource().data.data.user.firstName} imgClass="w-40 h-40 rounded-full aspect-auto object-cover p-1 bg-blue-200 dark:bg-blue-300" profileImage={resource().data.data.user.profileImage } status={resource().data.data.user.status}/>
 
                     <Show
                       when={
@@ -106,14 +105,15 @@ export default function Profile() {
                     </ImageUpload>
                   </div>
                 </Show>
-
+                    {/* Closes Enhancement #49 In user profile page show user last seen info and user active status*/}
                 <ProfileInfo
+                firstName={resource().data.data.user.firstName}
                   friendsCount={resource().data.data.user._count.myFriends}
                   friends={resource().data.data.user.myFriends}
-                  firstName={resource().data.data.user.firstName}
                   lastName={resource().data.data.user.lastName}
                   userId={resource().data.data.user.id}
                   refetch={refetch}
+                  lastSeen={resource().data.data.user.lastSeen }
                 />
               </div>
             </Show>
