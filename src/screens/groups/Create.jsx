@@ -85,10 +85,8 @@ export default function CreateGroup() {
           <button
             disabled={loading()}
             type="submit"
-            className={
-              "flex justify-center w-full s py-2 px-3 bg-blue-500 text-white rounded-lg text-lg " +
-              (loading() ? "opacity-60" : "opacity-100")
-            }
+            className="flex justify-center w-full s py-2 px-3 bg-blue-500 text-white rounded-lg text-lg"
+            classList={{"opacity-60":loading()}}>
           >
             <Show
               when={!loading()}
