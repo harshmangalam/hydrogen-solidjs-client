@@ -2,11 +2,17 @@ import { Link } from "solid-app-router";
 import { Show } from "solid-js";
 import Radio from "../../components/ui/form/Radio";
 import useSignup from "../../hooks/auth/useSignup";
-import { ImSpinner2 } from 'solid-icons/im';
+import { ImSpinner2 } from "solid-icons/im";
 
 export default function Login() {
-  const { form, handleInput, handleSignup, handleRadioChange, loading } =
-    useSignup();
+  const {
+    form,
+    handleInput,
+    handlePassword,
+    handleSignup,
+    handleRadioChange,
+    loading,
+  } = useSignup();
 
   return (
     <div className="">
@@ -59,7 +65,8 @@ export default function Login() {
               name="password"
               className="rounded-lg dark:bg-gray-700"
               value={form.password}
-              onInput={[handleInput]}
+              onInput={[handlePassword]}
+              minLength={12}
               required
             />
           </div>
@@ -98,9 +105,18 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading()}
-              className={"w-full  flex justify-center py-2 px-3 bg-blue-500 text-white rounded-lg text-lg " + (loading() ? "opacity-60" : "opacity-100")}
+              className={
+                "w-full  flex justify-center py-2 px-3 bg-blue-500 text-white rounded-lg text-lg " +
+                (loading() ? "opacity-60" : "opacity-100")
+              }
             >
-              <Show className="items-center" when={!loading()} fallback={<ImSpinner2 className="items-center animate-spin w-8 h-8" />}>
+              <Show
+                className="items-center"
+                when={!loading()}
+                fallback={
+                  <ImSpinner2 className="items-center animate-spin w-8 h-8" />
+                }
+              >
                 Sign Up
               </Show>
             </button>

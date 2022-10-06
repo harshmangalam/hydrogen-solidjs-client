@@ -16,6 +16,36 @@ export default function useSignup() {
   const { addSnackbar } = useUIDispatch();
   const navigate = useNavigate();
 
+  const handlePassword = (ev) => {
+    let str = ev.currentTarget.value;
+    let upValidation = /[A-Z]/g;
+    let digValidation = /\d/g;
+    let validPassword = false;
+
+    if (upValidation.test(str)) {
+      validPassword = true;
+      ev.currentTarget.setCustomValidity("");
+    } else
+      ev.currentTarget.setCustomValidity(
+        "Password must contain at least 1 uppercase, min length 12"
+      );
+
+    if (validPassword) {
+      validPassword = false;
+      if (digValidation.test(str)) {
+        validPassword = true;
+        ev.currentTarget.setCustomValidity("");
+      } else
+        ev.currentTarget.setCustomValidity(
+          "Password must contain at least 1 numerical value, min length 12"
+        );
+    }
+
+    if (validPassword) {
+      setForm([ev.currentTarget.name], ev.currentTarget.value);
+    }
+  };
+
   const handleInput = (ev) => {
     setForm([ev.currentTarget.name], ev.currentTarget.value);
   };
@@ -42,6 +72,7 @@ export default function useSignup() {
     form,
     handleSignup,
     handleInput,
+    handlePassword,
     handleRadioChange,
   };
 }
