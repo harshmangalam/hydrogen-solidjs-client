@@ -3,6 +3,8 @@ import { Show } from "solid-js";
 import InvitePeople from "../../components/groups/Create/InvitePeople";
 import ImageUpload from "../../components/shared/ImageUpload";
 import useCreateGroup from "../../hooks/useCreateGroup";
+import { ImSpinner2 } from "solid-icons/im";
+
 export default function CreateGroup() {
   const {
     loading,
@@ -83,9 +85,15 @@ export default function CreateGroup() {
           <button
             disabled={loading()}
             type="submit"
-            className="w-full py-2 px-3 bg-blue-500 text-white rounded-lg text-lg"
+            className={
+              "flex justify-center w-full s py-2 px-3 bg-blue-500 text-white rounded-lg text-lg " +
+              (loading() ? "opacity-60" : "opacity-100")
+            }
           >
-            <Show when={!loading()} fallback={"Creating Group..."}>
+            <Show
+              when={!loading()}
+              fallback={<ImSpinner2 className="animate-spin w-8 h-8" />}
+            >
               Create
             </Show>
           </button>
