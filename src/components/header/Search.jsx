@@ -1,5 +1,6 @@
 import { Link } from "solid-app-router";
 import { BiSearch } from "solid-icons/bi";
+
 import {
   createResource,
   createSignal,
@@ -7,15 +8,28 @@ import {
   Match,
   Show,
   Switch,
+  createEffect,
+  createMemo,
 } from "solid-js";
 import { fetchSearchResults } from "../../services";
 import UserAvatar from "../ui/dataDisplay/UserAvatar";
 import DropdownMenu from "../ui/feedback/DropdownMenu";
+import debounce from 'lodash.debounce';
+createEffect(() => {
+  return () => {
+    debouncedResults.cancel();
+  };
+});
 export default function Search() {
   const [open, setOpen] = createSignal(false);
   const [search, setSearch] = createSignal("");
   const [resource] = createResource(search, fetchSearchResults);
-
+   const handleChange = (e) =>{
+    setSearch(e.target.value);
+   }
+   const debouncedResults = createMemo(() => {
+    return debounce(handleChange, 300);
+  }, []);
   return (
     <>
       <div className="relative">
@@ -29,6 +43,8 @@ export default function Search() {
           onFocus={[setOpen, true]}
           value={search()}
           onInput={(e) => setSearch(e.currentTarget.value)}
+          onChange ={debouncedResults}
+
         />
       </div>
 
@@ -52,7 +68,8 @@ export default function Search() {
                 placeholder="Search Hydrogen"
                 onFocus={[setOpen, true]}
                 value={search()}
-                onInput={(e) => setSearch(e.currentTarget.value)}
+              onInput={(e) => setSearch(e.currentTarget.value)}
+               onChange={debouncedResults}
               />
             </div>
           </div>
