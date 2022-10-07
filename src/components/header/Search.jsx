@@ -8,28 +8,21 @@ import {
   Match,
   Show,
   Switch,
-  createEffect,
-  createMemo,
+ 
 } from "solid-js";
 import { fetchSearchResults } from "../../services";
 import UserAvatar from "../ui/dataDisplay/UserAvatar";
 import DropdownMenu from "../ui/feedback/DropdownMenu";
 import debounce from 'lodash.debounce';
-createEffect(() => {
-  return () => {
-    debouncedResults.cancel();
-  };
-});
+
 export default function Search() {
   const [open, setOpen] = createSignal(false);
   const [search, setSearch] = createSignal("");
   const [resource] = createResource(search, fetchSearchResults);
-   const handleChange = (e) =>{
-    setSearch(e.target.value);
-   }
-   const debouncedResults = createMemo(() => {
-    return debounce(handleChange, 300);
-  }, []);
+
+  const handleText =debounce((text) =>{
+    setSearch(text);
+  },2000);
   return (
     <>
       <div className="relative">
@@ -41,9 +34,10 @@ export default function Search() {
           aria-label="Filter projects"
           placeholder="Search Hydrogen"
           onFocus={[setOpen, true]}
-          value={search()}
-          onInput={(e) => setSearch(e.currentTarget.value)}
-          onChange ={debouncedResults}
+
+          onInput={(e) =>handleText(e.target.value)}
+         
+         
 
         />
       </div>
@@ -67,9 +61,9 @@ export default function Search() {
                 aria-label="Filter projects"
                 placeholder="Search Hydrogen"
                 onFocus={[setOpen, true]}
-                value={search()}
-              onInput={(e) => setSearch(e.currentTarget.value)}
-               onChange={debouncedResults}
+               
+              onInput={(e) =>handleText(e.target.value)}
+              
               />
             </div>
           </div>
