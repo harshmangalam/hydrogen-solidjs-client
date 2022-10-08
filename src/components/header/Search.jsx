@@ -14,16 +14,16 @@ import {
 import { fetchSearchResults } from "../../services";
 import UserAvatar from "../ui/dataDisplay/UserAvatar";
 import DropdownMenu from "../ui/feedback/DropdownMenu";
-import debounce from 'lodash.debounce';
+import debounce from "lodash.debounce";
 
 export default function Search() {
   const [open, setOpen] = createSignal(false);
   const [search, setSearch] = createSignal("");
   const [resource] = createResource(search, fetchSearchResults);
 
-  const handleText =debounce((text) =>{
+  const handleText = debounce((text) => {
     setSearch(text);
-  },2000);
+  }, 400);
   return (
     <>
       <div className="relative">
@@ -35,11 +35,7 @@ export default function Search() {
           aria-label="Filter projects"
           placeholder="Search Hydrogen"
           onFocus={[setOpen, true]}
-
-          onInput={(e) =>handleText(e.target.value)}
-         
-         
-
+          onInput={(e) => handleText(e.target.value)}
         />
       </div>
 
@@ -62,9 +58,7 @@ export default function Search() {
                 aria-label="Filter projects"
                 placeholder="Search Hydrogen"
                 onFocus={[setOpen, true]}
-               
-              onInput={(e) =>handleText(e.target.value)}
-              
+                onInput={(e) => handleText(e.target.value)}
               />
             </div>
           </div>
