@@ -12,7 +12,7 @@ export default function GroupCard(props) {
       <div className="py-4 px-4">
         <div className="flex items-center justify-between gap-4">
           <Link href={`/groups/${props.id}`} className="hover:underline">
-            <h6 className="font-medium text-lg">{props.name}</h6>
+            <h6 className="font-medium text-lg line-clamp-1">{props.name}</h6>
           </Link>
           <UserAvatarTag {...props.admin} />
         </div>

@@ -9,7 +9,7 @@ export default function ProfileInfo(props) {
     <div className="flex flex-row justify-end">
       <div className="absolute w-full flex flex-col md:w-auto md:left-1/4 -bottom-48 text-center md:-bottom-32 md:text-left md:items-start">
         <div className="flex items-center justify-center space-x-4">
-          <h3 className="text-3xl dark:text-white font-medium text-center">
+          <h3 className="text-3xl dark:text-white font-medium text-center line-clamp-1">
             {props.name}
           </h3>
           <Show when={authState.currentUser?.id === props.admin.id}>
