@@ -11,8 +11,8 @@ export default function DarkLightMode() {
       title='Theme toggle'
       onClick={[toggleDarkMode]}
     >
-      <Show when={darkMode()} fallback={<BiSolidMoon className='text-xl' />}>
-        <BiSolidSun className='text-xl' />
+      <Show when={darkMode()} fallback={<BiSolidMoon className="text-xl" aria-label="DarkMode"  />}>
+      <BiSolidSun className="text-xl" aria-label="LightMode" />
       </Show>
     </button>
   );
