@@ -28,7 +28,7 @@ export default function Notification() {
         onClick={[toggle]}
         className="p-2 md:p-3 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600  text-black dark:text-white relative"
       >
-        <IoNotifications className="text-xl" />
+        <IoNotifications className="text-xl" aria-label="notifications" />
 
         <Show when={notificationState?.count}>
           <div className="absolute -top-1 bg-rose-500 place-items-center grid w-5 h-5 rounded-full right-0 text-white text-xs">

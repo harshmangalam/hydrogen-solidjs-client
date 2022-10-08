@@ -14,7 +14,7 @@ export default function Profile() {
         className="p-2 md:p-3 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600  text-black dark:text-white "
         onClick={() => setOpen((o) => !o)}
       >
-        <HiOutlinePlus />
+        <HiOutlinePlus aria-label="Create" />
       </button>
       <Show when={open()}>
         <DropdownMenu onClose={() => setOpen(false)}>
@@ -52,18 +52,18 @@ const menus = [
   {
     name: "Posts",
     href: "posts/create",
-    icon: () => <BsFilePost className="text-2xl" />,
+    icon: () => <BsFilePost className="text-2xl" aria-label="create post" />,
   },
 
   {
     name: "Groups",
     href: "groups/group_create",
-    icon: () => <FaSolidUsers className="text-2xl" />,
+    icon: () => <FaSolidUsers className="text-2xl" aria-label="create group" />,
   },
 
   {
     name: "Group Posts",
     href: "groups/create_group_post",
-    icon: () => <BsFilePost className="text-2xl" />,
+    icon: () => <BsFilePost className="text-2xl" aria-label="create group post" />,
   },
 ];
