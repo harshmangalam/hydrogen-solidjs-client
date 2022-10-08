@@ -16,22 +16,23 @@ export default function Messenger() {
     <>
       <button
         onClick={[toggle]}
-        className="block p-2 md:p-3 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600  text-black dark:text-white "
+        title='Messenger'
+        className='block p-2 md:p-3 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600  text-black dark:text-white '
       >
-        <SiMessenger className="text-xl" />
+        <SiMessenger className='text-xl' />
       </button>
       <Show when={open()}>
         <DropdownMenu onClose={() => setOpen(false)} scrollY={true}>
-          <div className="py-2 px-2">
-            <div className="flex justify-between px-2">
-              <h5 className="text-2xl font-semibold">Messenger</h5>
-              <Link href="/messenger" className="text-blue-500 font-semibold">
+          <div className='py-2 px-2'>
+            <div className='flex justify-between px-2'>
+              <h5 className='text-2xl font-semibold'>Messenger</h5>
+              <Link href='/messenger' className='text-blue-500 font-semibold'>
                 See all
               </Link>
             </div>
             <Switch>
               <Match when={resource()}>
-                <ul className="flex flex-col space-y-2 my-4">
+                <ul className='flex flex-col space-y-2 my-4'>
                   <For each={resource()?.data.data.messengers}>
                     {(messenger) => <FriendItem {...messenger} />}
                   </For>
