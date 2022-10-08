@@ -25,7 +25,7 @@ export default function MyFriends() {
           fallback={<Empty title="No Friends" />}
           when={response().data.data.users.length}
         >
-          <h4 className="text-xl font-medium">My Friends</h4>
+          <h1 className="text-xl font-medium">My Friends</h1>
           <FriendInterface>
             <For each={response().data.data.users}>
               {(user) => (

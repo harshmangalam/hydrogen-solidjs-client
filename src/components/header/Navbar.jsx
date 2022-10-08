@@ -65,26 +65,26 @@ const mainTabs = [
   {
     name: "Home",
     href: "",
-    icon: () => <TiHome />,
+    icon: () => <TiHome aria-label="Home" />,
     end: true,
   },
   {
     name: "Friends",
     href: "friends",
-    icon: () => <FaSolidUserFriends />,
+    icon: () => <FaSolidUserFriends aria-label="Friends" />,
     end: false,
   },
   {
     name: "Posts",
     href: "posts",
-    icon: () => <BsFilePost />,
+    icon: () => <BsFilePost aria-label="Posts" />,
     end: false,
   },
 
   {
     name: "Groups",
     href: "groups",
-    icon: () => <FaSolidUsers />,
+    icon: () => <FaSolidUsers aria-label="Groups" />,
     end: false,
   },
 ];

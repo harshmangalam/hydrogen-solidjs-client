@@ -15,9 +15,9 @@ export default function FriendCard(props) {
       <div className="px-2 py-4 flex flex-col space-y-4">
         <div className="flex flex-col space-y-1">
           <Link href={`/${props.id}`} className="hover:underline">
-            <h6 className="font-medium text-md">
+            <h2 className="font-medium text-md">
               {`${props.firstName} ${props.lastName || ""}`}
-            </h6>
+            </h2>
           </Link>
 
           <div className="flex items-center space-x-2">
@@ -38,9 +38,9 @@ export default function FriendCard(props) {
                 </For>
               </ul>
             </Show>
-            <h6>
+            <h3>
               {props._count.myFriends} <span className="text-sm">friends</span>
-            </h6>
+            </h3>
           </div>
         </div>
         <div>{props.children}</div>
