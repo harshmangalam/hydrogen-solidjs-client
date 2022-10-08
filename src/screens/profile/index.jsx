@@ -68,10 +68,11 @@ export default function Profile() {
 
                     <UserStatusAvatar
                       alt={resource().data.data.user.firstName}
-                      imgClass="w-40 h-40 rounded-full aspect-auto object-cover p-1 bg-blue-200 dark:bg-blue-300"
+                      imgClass="w-40 h-40 rounded-full aspect-auto object-cover p-1"
                       profileImage={resource().data.data.user.profileImage}
                       status={resource().data.data.user.status}
                       statusClass="top-2 right-5"
+                      showStatus={false}
                     />
 
                     <Show
