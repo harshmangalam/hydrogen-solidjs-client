@@ -1,5 +1,6 @@
 import { FaSolidUserFriends, FaSolidUsers } from "solid-icons/fa";
 import { BsFilePost } from "solid-icons/bs";
+import { AiOutlineUser } from 'solid-icons/ai'
 import { RiWeatherMoonCloudyFill } from "solid-icons/ri";
 import MenuLink from "./MenuLink";
 import UserStatusAvatar from "../../ui/dataDisplay/UserStatusAvatar";
@@ -49,6 +50,11 @@ const links = [
     name: "Groups",
     href: "/groups",
     icon: () => <FaSolidUsers className="text-green-500" />,
+  },
+  {
+    name:"About",
+    href:"/about",
+    icon: () => <AiOutlineUser className="text-orange-500" />,
   },
 
   // {
