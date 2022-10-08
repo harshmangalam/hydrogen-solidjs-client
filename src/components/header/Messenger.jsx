@@ -18,7 +18,7 @@ export default function Messenger() {
         onClick={[toggle]}
         className="block p-2 md:p-3 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600  text-black dark:text-white "
       >
-        <SiMessenger className="text-xl" />
+        <SiMessenger className="text-xl" aria-label="messenger" />
       </button>
       <Show when={open()}>
         <DropdownMenu onClose={() => setOpen(false)} scrollY={true}>

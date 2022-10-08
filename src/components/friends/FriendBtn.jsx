@@ -7,7 +7,7 @@ export default function FriendBtn(props) {
           props.color === "primary",
         "text-green-500 bg-green-100 hover:bg-green-200":
           props.color === "success",
-        "text-red-500 bg-red-100 hover:bg-red-200": props.color === "danger",
+        "text-red-800 bg-red-100 hover:bg-red-200": props.color === "danger",
       }}
       onClick={[props.onClick]}
     >
