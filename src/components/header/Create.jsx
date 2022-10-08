@@ -11,27 +11,28 @@ export default function Profile() {
   return (
     <>
       <button
-        className="p-2 md:p-3 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600  text-black dark:text-white "
+        className='p-2 md:p-3 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600  text-black dark:text-white '
+        title='Create'
         onClick={() => setOpen((o) => !o)}
       >
         <HiOutlinePlus aria-label="Create" />
       </button>
       <Show when={open()}>
         <DropdownMenu onClose={() => setOpen(false)}>
-          <div className="px-2 py-2">
-            <div className="flex justify-between px-2">
-              <h5 className="text-2xl font-semibold">Create</h5>
+          <div className='px-2 py-2'>
+            <div className='flex justify-between px-2'>
+              <h5 className='text-2xl font-semibold'>Create</h5>
             </div>
-            <ul className="my-4">
+            <ul className='my-4'>
               <For each={menus}>
                 {(menu) => (
                   <li>
                     <Link
                       href={menu.href}
-                      className="py-2 px-4 hover:bg-gray-100 hover:dark:bg-gray-700 flex items-center space-x-4 rounded-md"
+                      className='py-2 px-4 hover:bg-gray-100 hover:dark:bg-gray-700 flex items-center space-x-4 rounded-md'
                       onClick={() => setOpen(false)}
                     >
-                      <div className="grid place-items-center w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-600">
+                      <div className='grid place-items-center w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-600'>
                         {menu.icon()}
                       </div>
 
