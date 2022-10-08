@@ -35,6 +35,7 @@
   "dependencies": {
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/line-clamp": "^0.4.2",
+    "@tanstack/solid-query": "^4.10.3",
     "axios": "^0.26.0",
     "dayjs": "^1.10.8",
     "js-cookie": "^3.0.1",
