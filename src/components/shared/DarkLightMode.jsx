@@ -7,7 +7,8 @@ export default function DarkLightMode() {
 
   return (
     <button
-      className="p-2 md:p-3 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600  text-black dark:text-white "
+      className='p-2 md:p-3 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600  text-black dark:text-white '
+      title='Theme toggle'
       onClick={[toggleDarkMode]}
     >
       <Show when={darkMode()} fallback={<BiSolidMoon className="text-xl" aria-label="DarkMode"  />}>
@@ -16,4 +17,3 @@ export default function DarkLightMode() {
     </button>
   );
 }
- 
