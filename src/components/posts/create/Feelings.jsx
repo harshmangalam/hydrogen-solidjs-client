@@ -1,9 +1,19 @@
 import { createSignal, For, Show } from "solid-js";
 import {
-  BsEmojiSunglasses, BsEmojiAngry, BsEmojiSmile, BsEmojiWink, BsEmojiFrown, BsEmojiHeartEyes,
-  BsEmojiDizzy,BsEmojiExpressionless , BsEmojiNeutral ,BsEmojiKiss , BsEmojiSmileUpsideDown ,
-  HiOutlineEmojiHappy , HiOutlineEmojiSad , BsEmojiLaughing , 
+  BsEmojiSunglasses,
+  BsEmojiAngry,
+  BsEmojiSmile,
+  BsEmojiWink,
+  BsEmojiFrown,
+  BsEmojiHeartEyes,
+  BsEmojiDizzy,
+  BsEmojiExpressionless,
+  BsEmojiNeutral,
+  BsEmojiSmileUpsideDown,
+  BsEmojiLaughing,
 } from "solid-icons/bs";
+
+import { HiOutlineEmojiHappy, HiOutlineEmojiSad } from "solid-icons/hi";
 
 import Modal from "../../ui/feedback/Modal";
 import { IoClose } from "solid-icons/io";
@@ -94,35 +104,32 @@ const feelings = [
     icon: () => <BsEmojiHeartEyes />,
   },
   {
-    name:"Dizzy",
-    icon : () => <BsEmojiDizzy />,
+    name: "Dizzy",
+    icon: () => <BsEmojiDizzy />,
   },
   {
-    name:"Expressionless",
-    icon : () => <BsEmojiExpressionless />,
+    name: "Expressionless",
+    icon: () => <BsEmojiExpressionless />,
   },
   {
-    name:"Neutral",
-    icon : () => <BsEmojiNeutral />,
+    name: "Neutral",
+    icon: () => <BsEmojiNeutral />,
+  },
+
+  {
+    name: "smileUpSideDown",
+    icon: () => <BsEmojiSmileUpsideDown />,
   },
   {
-    name:"kiss",
-    icon : () => <BsEmojiKiss />,
+    name: "Happy Hi",
+    icon: () => <HiOutlineEmojiHappy />,
   },
   {
-    name:"smileUpSideDown",
-    icon : () => <BsEmojiSmileUpsideDown />,
+    name: "Sad Hi",
+    icon: () => <HiOutlineEmojiSad />,
   },
   {
-    name:"Happy Hi",
-    icon : () => <HiOutlineEmojiHappy />,
-  },
-  {
-    name:"Sad Hi",
-    icon : () => <HiOutlineEmojiSad />,
-  },
-  {
-    name:"Laughing",
-    icon : () => <BsEmojiLaughing />,
+    name: "Laughing",
+    icon: () => <BsEmojiLaughing />,
   },
 ];
