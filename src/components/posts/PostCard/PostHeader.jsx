@@ -15,6 +15,7 @@ export default function PostHeader(props) {
     switch (audience) {
       case "PUBLIC":
         return <FaSolidGlobeAsia />;
+
       case "ONLY_ME":
         return <FaSolidLock />;
 
@@ -37,10 +38,11 @@ export default function PostHeader(props) {
         </Link>
 
         <div>
-          <Link href={`/${props.author.id}`} class="text-md font-medium dark:text-white">
-            <h6>
-              {props.author.firstName}
-            </h6>
+          <Link
+            href={`/${props.author.id}`}
+            class="text-md font-medium dark:text-white"
+          >
+            <h6>{props.author.firstName}</h6>
           </Link>
           <div class="flex items-center space-x-2 ">
             <span class="text-sm text-gray-500 dark:text-gray-200">
@@ -48,7 +50,13 @@ export default function PostHeader(props) {
             </span>
             <span class="flex items-start dark:text-gray-200">&#8228;</span>
             <span className="dark:text-gray-200 text-lg">
-              {showPostAudience(props.audience)}
+              <div className="group display:inline-block relative">
+                {showPostAudience(props.audience)}
+                <span className="text-center invisible rounded-[10px] text-[11px] leading-normal py-px px-2.5 border border-current bg-inherit text-current group-hover:visible z-[1] absolute bottom-[140%] left-[50%] -ml-[25px] after:content-[''] after:absolute after:top-[102%] after:left-[40%] after:border-[5px] after:border-current after:border-x-transparent after:border-b-transparent">
+                  {props.audience.slice(0, 1) +
+                    props.audience.slice(1).toLowerCase()}
+                </span>
+              </div>
             </span>
           </div>
         </div>
