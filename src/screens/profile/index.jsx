@@ -172,6 +172,11 @@ const tabs = [
   },
 
   {
+    name: "About",
+    href: "about",
+    end: false,
+  },
+  {
     name: "Friends",
     href: "friends",
     end: false,
