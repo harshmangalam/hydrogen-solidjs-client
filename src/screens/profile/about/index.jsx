@@ -39,11 +39,6 @@ const tabs = [
     end: true,
   },
   {
-    name: "Education",
-    href: "education",
-    end: false,
-  },
-  {
     name: "Place",
     href: "place",
     end: false,
@@ -53,9 +48,5 @@ const tabs = [
     href: "contact",
     end: false,
   },
-  {
-    name: "Life events",
-    href: "life_events",
-    end: false,
-  },
+
 ];
