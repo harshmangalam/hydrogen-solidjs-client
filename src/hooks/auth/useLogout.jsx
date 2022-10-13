@@ -6,12 +6,14 @@ export default function useLogout() {
   const [loading, setLoading] = createSignal(false);
   const authState = useAuthState();
   const { addSnackbar } = useUIDispatch();
+  const channel = new BroadcastChannel("logout");
 
   async function logoutUser() {
     try {
       setLoading(true);
       const { data } = await logout(authState?.currentAccount?.id);
       addSnackbar({ type: "success", message: data.message });
+      channel.postMessage("logout_success");
     } catch (error) {
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
