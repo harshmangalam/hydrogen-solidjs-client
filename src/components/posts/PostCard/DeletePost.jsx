@@ -10,7 +10,7 @@ export default function DeletePost(props) {
         class="p-2 hover:bg-red-100 dark:hover:bg-red-400 dark:text-white text-xl rounded-full text-red-500"
         onClick={() => setOpen(true)}
       >
-        <AiOutlineDelete />
+        <AiOutlineDelete aria-label="delete post" />
       </button>
 
       {/* <!-- Dropdown menu --> */}
