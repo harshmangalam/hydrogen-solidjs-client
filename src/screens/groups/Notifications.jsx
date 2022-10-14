@@ -31,13 +31,13 @@ export default function GroupNotifications() {
               <For each={resource().data.data.notifications}>
                 {(notif) => (
                   <li className="rounded-lg flex space-x-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer px-2 py-2">
-                    <div className="relative">
+                    <div className="relative flex-none">
                       <UserAvatar
                         src={notif.fromUser.profileImage}
                         className="w-14 h-14 rounded-full flex-none"
                         alt={notif.fromUser.firstName}
                       />
-                      <div className="absolute bottom-0 right-0 w-6 h-6 grid place-items-center rounded-full bg-purple-500 text-white">
+                      <div className="absolute right-0 top-10 w-6 h-6 grid place-items-center rounded-full bg-purple-500 text-white">
                         <FaSolidUsers />
                       </div>
                     </div>
