@@ -30,6 +30,7 @@ export default function useSignup() {
     };
 
     validation("Password must contain at least 1 uppercase", upValidation);
+
     if (validPassword) {
       validPassword = false;
       validation(

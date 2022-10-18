@@ -65,8 +65,9 @@ export default function Login() {
               name="password"
               className="rounded-lg dark:bg-gray-700"
               value={form.password}
+              onInput={[handlePassword]}
               minLength={12}
-              required={true}
+              required
             />
           </div>
 
