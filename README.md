@@ -15,8 +15,15 @@ Update  `.env`
 VITE_ENDPOINT=https://hydrogen-harsh.herokuapp.com/api
 ```
 
+### Site deployed url
+https://hydrogen-solid.vercel.app/
 
-**[Live Demo](https://hydrogen-solid.vercel.app/)**
+### CONTRIBUTE TO DASHBOARD
+**[DASHBOARD REPO](https://github.com/harshmangalam/hydrogen-dashboard-remix)**
+
+
+### Dashboard deployed url
+https://hydrogen-dashboard.netlify.app/
 
 ## Dependencies
 

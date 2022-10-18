@@ -2,10 +2,13 @@ lockfileVersion: 5.4
 
 specifiers:
   '@tailwindcss/forms': ^0.4.0
+  '@tailwindcss/line-clamp': ^0.4.2
+  '@tanstack/solid-query': ^4.10.3
   autoprefixer: ^10.4.2
   axios: ^0.26.0
   dayjs: ^1.10.8
   js-cookie: ^3.0.1
+  lodash.debounce: ^4.0.8
   platform: ^1.3.6
   postcss: ^8.4.5
   shortid: ^2.2.16
@@ -19,9 +22,12 @@ specifiers:
 
 dependencies:
   '@tailwindcss/forms': 0.4.0_tailwindcss@3.0.18
+  '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.0.18
+  '@tanstack/solid-query': 4.10.3_solid-js@1.3.3
   axios: 0.26.0
   dayjs: 1.10.8
   js-cookie: 3.0.1
+  lodash.debounce: 4.0.8
   platform: 1.3.6
   shortid: 2.2.16
   socket.io-client: 4.4.1
@@ -380,6 +386,27 @@ packages:
       tailwindcss: 3.0.18_55elhoedp6fcgz3377upttmgnu
     dev: false
 
+  /@tailwindcss/line-clamp/0.4.2_tailwindcss@3.0.18:
+    resolution: {integrity: sha512-HFzAQuqYCjyy/SX9sLGB1lroPzmcnWv1FHkIpmypte10hptf4oPUfucryMKovZh2u0uiS9U5Ty3GghWfEJGwVw==}
+    peerDependencies:
+      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
+    dependencies:
+      tailwindcss: 3.0.18_55elhoedp6fcgz3377upttmgnu
+    dev: false
+
+  /@tanstack/query-core/4.10.3:
+    resolution: {integrity: sha512-+ME02sUmBfx3Pjd+0XtEthK8/4rVMD2jcxvnW9DSgFONpKtpjzfRzjY4ykzpDw1QEo2eoPvl7NS8J5mNI199aA==}
+    dev: false
+
+  /@tanstack/solid-query/4.10.3_solid-js@1.3.3:
+    resolution: {integrity: sha512-DiiMMymyQ2UaOCcEUHuf850ppfVEAlVYYF+R722ohzhSVaaq/XJEBcdgTB6XNgIvrTI3su4MdN/bkkGjtXPl/A==}
+    peerDependencies:
+      solid-js: ^1.5.4
+    dependencies:
+      '@tanstack/query-core': 4.10.3
+      solid-js: 1.3.3
+    dev: false
+
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
 
@@ -429,7 +456,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.19.1
-      caniuse-lite: 1.0.30001302
+      caniuse-lite: 1.0.30001418
       fraction.js: 4.1.2
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -482,7 +509,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001302
+      caniuse-lite: 1.0.30001418
       electron-to-chromium: 1.4.53
       escalade: 3.1.1
       node-releases: 2.0.1
@@ -496,8 +523,8 @@ packages:
     resolution: {integrity: sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==}
     engines: {node: '>= 6'}
 
-  /caniuse-lite/1.0.30001302:
-    resolution: {integrity: sha512-YYTMO+tfwvgUN+1ZnRViE53Ma1S/oETg+J2lISsqi/ZTNThj3ZYBOKP2rHwJc37oCsPqAzJ3w2puZHn0xlLPPw==}
+  /caniuse-lite/1.0.30001418:
+    resolution: {integrity: sha512-oIs7+JL3K9JRQ3jPZjlH6qyYDp+nBTCais7hjh0s+fuBwufc7uZ7hPYMXrDOJhV360KGMTcczMRObk0/iMqZRg==}
 
   /chalk/2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
@@ -959,6 +986,10 @@ packages:
 
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
+
+  /lodash.debounce/4.0.8:
+    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+    dev: false
 
   /merge-anything/5.0.2:
     resolution: {integrity: sha512-POPQBWkBC0vxdgzRJ2Mkj4+2NTKbvkHo93ih+jGDhNMLzIw+rYKjO7949hOQM2X7DxMHH1uoUkwWFLIzImw7gA==}

@@ -1,5 +1,6 @@
 import { Link } from "solid-app-router";
 import { BiSearch } from "solid-icons/bi";
+
 import {
   createResource,
   createSignal,
@@ -7,15 +8,22 @@ import {
   Match,
   Show,
   Switch,
+  createEffect,
+  createMemo,
 } from "solid-js";
 import { fetchSearchResults } from "../../services";
 import UserAvatar from "../ui/dataDisplay/UserAvatar";
 import DropdownMenu from "../ui/feedback/DropdownMenu";
+import debounce from "lodash.debounce";
+
 export default function Search() {
   const [open, setOpen] = createSignal(false);
   const [search, setSearch] = createSignal("");
   const [resource] = createResource(search, fetchSearchResults);
 
+  const handleText = debounce((text) => {
+    setSearch(text);
+  }, 400);
   return (
     <>
       <div className="relative">
@@ -27,8 +35,7 @@ export default function Search() {
           aria-label="Filter projects"
           placeholder="Search Hydrogen"
           onFocus={[setOpen, true]}
-          value={search()}
-          onInput={(e) => setSearch(e.currentTarget.value)}
+          onInput={(e) => handleText(e.target.value)}
         />
       </div>
 
@@ -36,7 +43,7 @@ export default function Search() {
         onClick={[setOpen, !open()]}
         className="block xl:hidden p-2 md:p-3 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600  text-black dark:text-white "
       >
-        <BiSearch className="text-xl" />
+        <BiSearch className="text-xl" aria-label="search" />
       </button>
 
       <Show when={open()}>
@@ -51,8 +58,7 @@ export default function Search() {
                 aria-label="Filter projects"
                 placeholder="Search Hydrogen"
                 onFocus={[setOpen, true]}
-                value={search()}
-                onInput={(e) => setSearch(e.currentTarget.value)}
+                onInput={(e) => handleText(e.target.value)}
               />
             </div>
           </div>

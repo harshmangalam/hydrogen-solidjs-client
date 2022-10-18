@@ -26,7 +26,7 @@ export default function Suggestions() {
           fallback={<Empty title="No Suggestions" />}
           when={response().data.data.users.length}
         >
-          <h4 className="text-xl font-medium">Suggestions</h4>
+          <h1 className="text-xl font-medium">Suggestions</h1>
           <FriendInterface>
             <For each={response().data.data.users}>
               {(user) => (

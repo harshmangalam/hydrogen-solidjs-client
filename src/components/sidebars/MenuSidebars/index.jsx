@@ -1,6 +1,5 @@
 import { FaSolidUserFriends, FaSolidUsers } from "solid-icons/fa";
 import { BsFilePost } from "solid-icons/bs";
-import { RiWeatherMoonCloudyFill } from "solid-icons/ri";
 import MenuLink from "./MenuLink";
 import UserStatusAvatar from "../../ui/dataDisplay/UserStatusAvatar";
 import { useAuthState } from "../../../context/auth";
@@ -50,10 +49,4 @@ const links = [
     href: "/groups",
     icon: () => <FaSolidUsers className="text-green-500" />,
   },
-
-  // {
-  //   name: "Weather",
-  //   href: "/weather",
-  //   icon: () => <RiWeatherMoonCloudyFill className="text-blue-500" />,
-  // },
 ];

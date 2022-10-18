@@ -192,6 +192,14 @@ export default function AppRouter() {
         <Route path="" element={<MessengerHome />} />
         <Route path="/:userId" element={<Chat />} />
       </Route>
+      {/* about  */}
+      <Route path="/about" element={<ProfileAboutLayout />}>
+        <Route path="" element={<ProfileAboutOverview />} />
+        <Route path="education" element={<ProfileAboutEducation />} />
+        <Route path="place" element={<ProfileAboutPlace />} />
+        <Route path="contact" element={<ProfileAboutContact />} />
+        <Route path="life_events" element={<ProfileAboutLifeEvent />} />
+      </Route>
 
       <Route path="/settings" element={<SettingsLayout />}>
         <Route path="" element={<SettingsHome />} />
