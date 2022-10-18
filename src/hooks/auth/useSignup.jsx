@@ -22,23 +22,26 @@ export default function useSignup() {
     let digValidation = /\d/g;
     let validPassword = false;
 
-    if (upValidation.test(str)) {
-      validPassword = true;
-      ev.currentTarget.setCustomValidity("");
-    } else
-      ev.currentTarget.setCustomValidity(
-        "Password must contain at least 1 uppercase, min length 12"
-      );
-
-    if (validPassword) {
-      validPassword = false;
-      if (digValidation.test(str)) {
+    const validation = (msg, testVal) => {
+      if (testVal.test(str)) {
         validPassword = true;
         ev.currentTarget.setCustomValidity("");
-      } else
-        ev.currentTarget.setCustomValidity(
-          "Password must contain at least 1 numerical value, min length 12"
-        );
+      } else ev.currentTarget.setCustomValidity(msg);
+    };
+
+    validation("Password must contain at least 1 uppercase", upValidation);
+    if (validPassword) {
+      validPassword = false;
+      validation(
+        "Password must contain at least 1 numerical value",
+        digValidation
+      );
+    }
+    if (validPassword) {
+      if (str.length >= 12) {
+        validPassword = true;
+        ev.currentTarget.setCustomValidity("");
+      } else ev.currentTarget.setCustomValidity();
     }
 
     if (validPassword) {
