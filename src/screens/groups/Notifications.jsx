@@ -26,7 +26,7 @@ export default function GroupNotifications() {
           fallback={<Empty title="No Notifications" />}
         >
           <div className="max-w-md mx-auto bg-white shadow-md dark:bg-gray-800 p-4 rounded-lg">
-            <h4 className="text-2xl font-bold">Notifications</h4>
+            <h3 className="text-2xl font-bold">Notifications</h3>
             <ul className="flex flex-col space-y-4 mt-4">
               <For each={resource().data.data.notifications}>
                 {(notif) => (
@@ -54,7 +54,7 @@ export default function GroupNotifications() {
                         <span>{notif.content}</span>
                       </p>
 
-                      <span className="text-xs font-bold text-blue-500">
+                      <span className="text-xs font-bold text-blue-600">
                         {getRelativeTime(notif.createdAt)}
                       </span>
                     </div>

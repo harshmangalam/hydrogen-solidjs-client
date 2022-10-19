@@ -16,6 +16,7 @@ export default function BottomSheet() {
                 activeClass="bg-blue-500 text-white"
                 className="rounded-xl text-2xl h-full grid place-items-center hover:bg-blue-500 hover:text-white"
                 end={tab.end}
+                aria-label={tab.name}
               >
                 {tab.icon()}
               </NavLink>
