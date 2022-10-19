@@ -8,8 +8,8 @@ export default function ProfileInfo(props) {
   const { currentUser } = useAuthState();
   return (
     <div
-      className="absolute w-full flex flex-col items-center md:w-auto md:left-1/4 -bottom-48 text-center md:-bottom-28 md:text-left md:items-start"
-      classList={{ "-bottom-60 md:-bottom-40": props.friendsCount }}
+      className="absolute w-full flex flex-col items-center md:w-auto md:left-1/4 text-center md:text-left md:items-start"
+      classList={{ "-bottom-72 md:-bottom-48": props.friendsCount, "-bottom-60 md:-bottom-40": props.friendsCount === 0 }}
     >
       <div className="flex space-x-2">
         <h3 className="text-3xl dark:text-white font-medium text-center w-full">
@@ -39,6 +39,12 @@ export default function ProfileInfo(props) {
         <p className="text-lg font-medium text-gray-600 dark:text-gray-400">
           {props.friendsCount} Friends
         </p>
+      </div>
+
+      <div className="mt-1">
+        <span class="text-sm text-gray-500 dark:text-gray-200">
+          Joined {getRelativeTime(props.createdAt)}
+        </span>
       </div>
 
       <div class="-space-x-3 flex items-center mt-2">
