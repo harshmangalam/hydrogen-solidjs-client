@@ -126,6 +126,7 @@ export default function Profile() {
                   refetch={refetch}
                   lastSeen={resource().data.data.user.lastSeen}
                   status={resource().data.data.user.status}
+                  createdAt={resource().data.data.user.createdAt}
                 />
               </div>
             </Show>
