@@ -13,8 +13,8 @@ export default function About() {
                   <NavLink
                     href={tab.href}
                     end={tab.end}
-                    className="font-medium  text-gray-600 py-2 px-2 hover:bg-gray-100 block w-full rounded-lg dark:text-gray-200 dark:hover:bg-gray-700"
-                    activeClass="text-blue-500 dark:text-blue-500 bg-gray-100 dark:bg-gray-700"
+                    className="font-medium text-gray-600 py-2 px-2 hover:bg-gray-100 block w-full rounded-lg dark:text-gray-200 dark:hover:bg-gray-900"
+                    activeClass="text-blue-500 dark:text-blue-400 bg-gray-100 dark:bg-gray-900"
                   >
                     {tab.name}
                   </NavLink>

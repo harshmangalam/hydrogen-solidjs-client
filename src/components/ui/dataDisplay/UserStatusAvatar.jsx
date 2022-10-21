@@ -2,11 +2,12 @@ import { mergeProps, Show } from "solid-js";
 
 export default function UserStatusAvatar(props) {
   const merged = mergeProps({ imgClass: "w-10 h-10", showStatus: true }, props);
+  console.log(props)
   return (
-    <div className={`relative ${merged.divClass}`}>
+    <div className={`relative ${merged.divClass || ''}`}>
       <img
         src={merged.profileImage}
-        alt={merged.firstName}
+        alt={merged.alt}
         className={`rounded-full ${merged.imgClass}`}
         classList={{
           "bg-green-200 dark:bg-green-400": props.status === "ACTIVE",

@@ -104,7 +104,7 @@ export default function Profile() {
                   <div className="absolute right-0 bottom-0 p-3">
                     {/* change cover image  */}
                     <ImageUpload
-                      btnClass="py-2 px-4 rounded-lg flex items-center space-x-2 bg-blue-400 text-white font-medium hover:bg-blue-500"
+                      btnClass="py-2 px-4 rounded-lg flex items-center space-x-2 bg-blue-600 text-white font-medium hover:bg-blue-500"
                       image={form.coverImage}
                       addImage={addCoverImage}
                       removeImage={removeCoverImage}
