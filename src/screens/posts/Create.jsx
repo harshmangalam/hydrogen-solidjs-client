@@ -94,7 +94,7 @@ export default function Create() {
           <button
             disabled={loading()}
             type="submit"
-            className="w-full  py-2 px-3 text-white rounded-md text-lg"
+            className="w-full  py-2 px-3 bg-blue-600 text-white rounded-md text-lg"
             classList={{
               "bg-blue-300 cursor-not-allowed": loading(),
               "bg-blue-500": !loading()
