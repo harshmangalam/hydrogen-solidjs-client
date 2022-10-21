@@ -93,7 +93,7 @@ export default function Create() {
           <button
             disabled={loading()}
             type="submit"
-            className="w-full  py-2 px-3 bg-blue-500 text-white rounded-md text-lg"
+            className="w-full  py-2 px-3 bg-blue-600 text-white rounded-md text-lg"
           >
             <Show when={!loading()} fallback={"Creating Post..."}>
               Create
