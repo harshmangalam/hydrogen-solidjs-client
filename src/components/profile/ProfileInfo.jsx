@@ -24,9 +24,9 @@ export default function ProfileInfo(props) {
       <div
         className="px-4 py-1 rounded-full text-sm  font-bold   border mt-2"
         classList={{
-          "bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-300":
+          "bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300":
             props.status === "LOGOUT",
-          "dark:bg-green-900 text-green-600 bg-green-100 dark:text-green-300":
+          "dark:bg-green-900 text-green-700 bg-green-100 dark:text-green-300":
             props.status === "ACTIVE",
         }}
       >
