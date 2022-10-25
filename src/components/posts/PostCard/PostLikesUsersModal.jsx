@@ -15,13 +15,19 @@ export default function PostLikesUsersModal(props) {
   return (
     <div>
       <button
+        type="button"
         onClick={() => setOpen(true)}
         className="flex items-center space-x-1 hover:bg-red-100 dark:hover:bg-gray-600 rounded-full px-3 py-1"
+        aria-label="Likes"
+        aria-haspopup="true"
+        aria-expanded={open()}
       >
         <span className="text-red-400 dark:text-red-200">
           <FaSolidHeart />
         </span>
-        <span className="text-sm">{props.countLikes}</span>
+        <span className="text-sm" aria-label="Likes count">
+          {props.countLikes}
+        </span>
       </button>
 
       <Modal

@@ -8,11 +8,19 @@ export default function PostReaction(props) {
         postId={props.postId}
         countLikes={props.countLikes}
       />
-      <button className="flex items-center space-x-1 hover:bg-green-100 dark:hover:bg-gray-600  rounded-full px-3 py-1">
+      <button
+        type="button"
+        className="flex items-center space-x-1 hover:bg-green-100 dark:hover:bg-gray-600  rounded-full px-3 py-1"
+        aria-label="Comments"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
         <span className="text-green-400 dark:text-green-200">
           <FaSolidCommentAlt />
         </span>
-        <span className="text-sm">{props.commentsLikes}</span>
+        <span className="text-sm" aria-label="Comments count">
+          {props.commentsLikes}
+        </span>
       </button>
     </section>
   );
