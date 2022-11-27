@@ -41,35 +41,19 @@ https://hydrogen-dashboard.netlify.app/
 
 
 ## 80+ Components
-
-- Modal
-- Snackbar
-- Radio
-- Logo with Navlink
-- Theme switcher 
-- etc..
-
-
-			
-## Authentication
-
-- Login
-    - Email
-    - password
-- Signup
-    - firstName
-    - lastName
-    - Email
-    - Password
-    - Gender 
-
-
+## 25+ hooks
+## 50+ Screens
 ## Dark and light mode
 
+## Authentication
+- Login
+- Signup
+
+
 ## Home
-- Navigation (on left)
-- Posts feeds (middle)
-- My friends (right)
+- Navigation
+- Posts feeds
+- My friends
 
 ## Friends
 - My friends
@@ -223,23 +207,16 @@ Current  status
 
 
 ## Networking
-- Automatically inform if network is unavialable
-- Automatically inform if network recovered
+- Automatically notify if network is unavialable
+- Automatically notify if network recovered
 
 
-## 25+ hooks
-- Network status change listener hook
-- Cloudinary hook
-- Geolocation hook
-- Theme switcher hook
-- Different different hooks for managing mutation and updating server state in client
-- Etc….
 
 Utility
 Dayjs utility for getting relative time
 
 
-## 10+ Services
+## Services
 - Auth services
 - Comment services
 - Friends services
@@ -287,7 +264,7 @@ Dayjs utility for getting relative time
 
 
 
-## 50+ Screens
+
 
 
 
