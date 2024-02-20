@@ -33,7 +33,7 @@ export default function Search() {
           className="hidden xl:block focus:outline-none w-full text-sm text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-100 rounded-full py-2 pl-10 bg-gray-100 dark:bg-gray-700"
           type="text"
           aria-label="Filter projects"
-          placeholder="Search Hydrogen"
+          placeholder="Search Peepsule"
           onFocus={[setOpen, true]}
           onInput={(e) => handleText(e.target.value)}
         />
@@ -56,7 +56,7 @@ export default function Search() {
                 className="focus:outline-none w-full text-sm text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-100 rounded-full py-2 pl-10 bg-gray-100 dark:bg-gray-700"
                 type="text"
                 aria-label="Filter projects"
-                placeholder="Search Hydrogen"
+                placeholder="Search Peepsule"
                 onFocus={[setOpen, true]}
                 onInput={(e) => handleText(e.target.value)}
               />

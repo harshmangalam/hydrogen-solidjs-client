@@ -99,8 +99,10 @@ export default function MessengerHome() {
           </svg>
 
           <div className="flex flex-col items-center space-y-2">
-            <h6 className="text-3xl font-semibold">Hydrogen Messenger</h6>
-            <p className="text-xl">Open chat by selecting friend from friends interface</p>
+            <h6 className="text-3xl font-semibold">Peepsule Messenger</h6>
+            <p className="text-xl">
+              Open chat by selecting friend from friends interface
+            </p>
           </div>
         </div>
       </div>

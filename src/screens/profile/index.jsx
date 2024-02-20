@@ -6,7 +6,7 @@ import { FaSolidCamera } from "solid-icons/fa";
 import ProfileInfo from "../../components/profile/ProfileInfo";
 import { fetchUserDetails } from "../../services/user.service";
 import { useAuthState } from "../../context/auth";
-import HydrogenLoader from "../../components/shared/HydrogenLoader";
+import AppLoader from "../../components/shared/AppLoader";
 import Error from "../../components/shared/Error";
 import UserStatusAvatar from "../../components/ui/dataDisplay/UserStatusAvatar";
 export default function Profile() {
@@ -32,7 +32,7 @@ export default function Profile() {
         <Switch>
           <Match when={resource.loading}>
             <div className="bg-gray-200 dark:bg-gray-700 h-3/6 md:h-4/6  rounded-b-lg w-full max-w-3xl mx-auto animate-pulse relative">
-              <HydrogenLoader />
+              <AppLoader />
             </div>
           </Match>
           <Match when={resource.error}>

@@ -1,7 +1,7 @@
 import { createResource, For } from "solid-js";
 import Error from "../../../components/shared/Error";
 import Empty from "../../../components/shared/Empty";
-import HydrogenLoader from "../../../components/shared/HydrogenLoader";
+import AppLoader from "../../../components/shared/AppLoader";
 import { useParams } from "solid-app-router";
 import { fetchGroupMembers } from "../../../services";
 import { Link } from "solid-app-router";
@@ -13,7 +13,7 @@ export default function MyFriends() {
     <div className="relative py-4">
       <Switch>
         <Match when={response.loading}>
-          <HydrogenLoader />
+          <AppLoader />
         </Match>
         <Match when={response.error}>
           <Error name="Error" />
@@ -33,7 +33,9 @@ export default function MyFriends() {
                     className="w-full  h-44 object-cover aspect-square rounded-md"
                   />
                   <Link href={`/${user.id}`} className="hover:underline">
-                    <h6 className="text-center text-lg font-semibold">{user.firstName}</h6>
+                    <h6 className="text-center text-lg font-semibold">
+                      {user.firstName}
+                    </h6>
                   </Link>
                 </li>
               )}

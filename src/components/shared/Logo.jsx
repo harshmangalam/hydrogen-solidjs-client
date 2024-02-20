@@ -1,12 +1,9 @@
 import { NavLink } from "solid-app-router";
-
+import logoImage from "../../assets/peepsule-avatar.jpeg";
 export default function Logo(props) {
   return (
-    <NavLink
-      href="/"
-      className={`bg-blue-500 text-white font-semibold text-xl  w-10 h-10 grid place-items-center rounded-full ${props.className}`}
-    >
-      H
+    <NavLink href="/">
+      <img src={logoImage} className="rounded-full w-10 h-10" />
     </NavLink>
   );
 }

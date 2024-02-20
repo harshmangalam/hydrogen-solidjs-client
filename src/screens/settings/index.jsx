@@ -103,9 +103,9 @@ export default function SettingsHome() {
           </svg>
 
           <div className="flex flex-col items-center space-y-2">
-            <h6 className="text-3xl font-semibold">Hydrogen Settings</h6>
+            <h6 className="text-3xl font-semibold">Peepsule Settings</h6>
             <p className="text-xl">
-              Customize hydrogen as you want and change settings and privacy
+              Customize Peepsule as you want and change settings and privacy
             </p>
           </div>
         </div>

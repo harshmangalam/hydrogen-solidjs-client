@@ -1,7 +1,7 @@
 import { createResource, Match, Show, Switch, createSignal } from "solid-js";
 import { useParams } from "solid-app-router";
 import { fetchPost } from "../services/post.service";
-import HydrogenLoader from "../components/shared/HydrogenLoader";
+import AppLoader from "../components/shared/AppLoader";
 import Error from "../components/shared/Error";
 import Empty from "../components/shared/Empty";
 import PostCard from "../components/posts/PostCard";
@@ -43,7 +43,7 @@ export default function PostDetails() {
     <div className=" max-w-xl mx-auto ">
       <Switch>
         <Match when={postResource.loading}>
-          <HydrogenLoader />
+          <AppLoader />
         </Match>
         <Match when={postResource.error}>
           <Error name="Post not found" />
@@ -62,7 +62,7 @@ export default function PostDetails() {
 
       <Switch>
         <Match when={commentResource.loading}>
-          <HydrogenLoader />
+          <AppLoader />
         </Match>
         <Match when={commentResource.error}>
           <Error name="Comments error" />

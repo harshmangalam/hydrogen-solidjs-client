@@ -3,7 +3,7 @@ import { Link } from "solid-app-router";
 import { FaSolidUsers } from "solid-icons/fa";
 import Empty from "../../components/shared/Empty";
 import Error from "../../components/shared/Error";
-import HydrogenLoader from "../../components/shared/HydrogenLoader";
+import AppLoader from "../../components/shared/AppLoader";
 import UserAvatar from "../../components/ui/dataDisplay/UserAvatar";
 import { fetchGroupNotifications } from "../../services";
 import { getRelativeTime } from "../../utils/dateTime";
@@ -13,7 +13,7 @@ export default function GroupNotifications() {
     <Switch>
       <Match when={resource.loading}>
         <div className="my-8 relative">
-          <HydrogenLoader/>
+          <AppLoader />
         </div>
       </Match>
       <Match when={resource.error}>

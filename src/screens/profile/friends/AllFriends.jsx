@@ -2,7 +2,7 @@ import FriendCard from "../../../components/profile/friends/FriendCard";
 import { createResource, For, Match, Show, Switch } from "solid-js";
 import { useParams } from "solid-app-router";
 import { fetchUserAllFriends } from "../../../services/user.service";
-import HydrogenLoader from "../../../components/shared/HydrogenLoader";
+import AppLoader from "../../../components/shared/AppLoader";
 import Error from "../../../components/shared/Error";
 import Empty from "../../../components/shared/Empty";
 import useFriendRequest from "../../../hooks/useFriendRequest";
@@ -10,13 +10,16 @@ import FriendBtn from "../../../components/friends/FriendBtn";
 
 export default function AllFriends() {
   const params = useParams();
-  const [resource, { refetch }] = createResource(() => params.userId, fetchUserAllFriends);
+  const [resource, { refetch }] = createResource(
+    () => params.userId,
+    fetchUserAllFriends
+  );
   const { handleRemoveFromFriendsList, loading } = useFriendRequest(refetch);
   return (
     <div className="relative py-4">
       <Switch>
         <Match when={resource.loading}>
-          <HydrogenLoader />
+          <AppLoader />
         </Match>
         <Match when={resource.error}>
           <Error name="Error" />

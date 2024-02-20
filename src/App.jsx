@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Suspense } from "solid-js";
 import Snackbars from "./components/root/Snackbars";
-import HydrogenLoader from "./components/shared/HydrogenLoader";
+import AppLoader from "./components/shared/AppLoader";
 import useNetworkStatus from "./hooks/useNetworkStatus";
 import useLogoutBroadcast from "./hooks/auth/useLogoutBroadcast";
 import AppRouter from "./router";
@@ -13,7 +13,7 @@ function App() {
   useNetworkStatus();
   useLogoutBroadcast();
   return (
-    <Suspense fallback={<HydrogenLoader />}>
+    <Suspense fallback={<AppLoader />}>
       <AppRouter />
       <Snackbars />
     </Suspense>
