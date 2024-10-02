@@ -38,16 +38,18 @@ Welcome to Hydrogen, a feature-rich social media web app built with SolidJs. Exp
 
 Follow these steps to install the project:
 
+#### Install pnpm globally
 ```bash
-# Install pnpm globally
 npm i -g pnpm
 ```
+
+#### Install dependencies
 ```bash
-# Install dependencies
 pnpm i
 ```
+
+#### Run the development server
 ```bash
-# Run the development server
 pnpm run dev
 ```
 
