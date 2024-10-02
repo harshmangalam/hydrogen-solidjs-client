@@ -27,7 +27,7 @@ Welcome to Hydrogen, a feature-rich social media web app built with SolidJs. Exp
 7. [Services](#services)
 8. [Context for State Management](#context-for-state-management)
 9. [Date and Time Formatting](#date-and-time-formatting)
-10. [Real-time Friend Status](#real-time-friend-status)
+10. [Real-time Friend Status](#realtime-friend-status)
 
 ---
 
