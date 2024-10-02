@@ -4,6 +4,9 @@
 
 Welcome to Hydrogen, a feature-rich social media web app built with SolidJs. Explore a vast array of functionalities including real-time notifications, dynamic posts, group management, and more.
 
+![image](https://github.com/user-attachments/assets/8d098473-ec30-4c2a-8f74-3dfb9415b00b)
+
+
 ## Table of Contents
 
 1. [Installation](#installation)
