@@ -1,16 +1,73 @@
-# Hydrogen - Social media web app (Powered by SolidJs)
+---
+
+# Hydrogen - Social Media Web App (Powered by SolidJs)
+
+Welcome to Hydrogen, a feature-rich social media web app built with SolidJs. Explore a vast array of functionalities including real-time notifications, dynamic posts, group management, and more.
+
+![image](https://github.com/user-attachments/assets/eae5477d-6f27-4ede-b5b3-146640091487)
+
+
+
+## Table of Contents
+
+1. [Installation](#installation)
+2. [Setup `.env` File](#setup-env-file)
+3. [Server Repo](#server-repo)
+4. [Dependencies](#dependencies)
+5. [Key Features](#key-features)
+    - [Authentication](#authentication)
+    - [Home](#home)
+    - [Friends](#friends)
+    - [Posts](#posts)
+    - [Post Details](#post-details)
+    - [Groups](#groups)
+    - [Group Details](#group-details)
+    - [Notifications](#notifications)
+    - [Messenger](#messenger)
+    - [Profile](#profile)
+    - [Settings](#settings)
+    - [Networking](#networking)
+6. [Utilities](#utilities)
+7. [Services](#services)
+8. [Context for State Management](#context-for-state-management)
+9. [Date and Time Formatting](#date-and-time-formatting)
+10. [Real-time Friend Status](#realtime-friend-status)
+
+---
 
 ## Installation
 
-- install pnpm globally `npm i -g pnpm`
-- install dependencies `pnpm i`
-- run dev server `pnpm run dev`
+Follow these steps to install the project:
 
-### Setup env file
+#### Install pnpm globally
+```bash
+npm i -g pnpm
+```
 
-- copy `.env.example` inside `.env`
+#### Install dependencies
+```bash
+pnpm i
+```
 
-Update `.env`
+#### Run the development server
+```bash
+pnpm run dev
+```
+
+
+## Setup `.env` File
+
+1. Create a new file named `.env` in the root directory of your project.
+2. Copy the contents of the `.env.example` file into the `.env` file.
+3. Replace the placeholder values with your actual credentials.
+
+Here's an example of what your `.env` file might look like:
+
+```
+VITE_ENDPOINT=
+VITE_CLOUDINARY_UPLOAD_PRESET=
+VITE_CLOUDINARY_API_KEY=
+```
 
 ### SERVER REPO
 
