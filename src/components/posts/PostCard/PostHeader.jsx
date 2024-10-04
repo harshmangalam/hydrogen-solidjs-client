@@ -33,8 +33,13 @@ export default function PostHeader(props) {
   return (
     <section class="flex items-center justify-between px-4 py-2 border-b dark:border-gray-700">
       <div class="flex items-center space-x-2">
-        <Link className="flex-none" href={`/${props.author.id}`}>
+        <Link
+          aria-label="Author"
+          className="flex-none"
+          href={`/${props.author.id}`}
+        >
           <UserAvatar
+            aria-label="Author Avatar"
             src={props.author.profileImage}
             alt={props.author.firstName}
             className="w-12 h-12 rounded-full"
@@ -46,6 +51,7 @@ export default function PostHeader(props) {
             <Link
               href={`/${props.author.id}`}
               class="text-md font-medium dark:text-white"
+              aria-label="Author Profile"
             >
               <h4>{props.author.firstName}</h4>
             </Link>

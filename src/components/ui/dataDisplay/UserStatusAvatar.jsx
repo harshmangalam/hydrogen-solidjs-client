@@ -2,9 +2,9 @@ import { mergeProps, Show } from "solid-js";
 
 export default function UserStatusAvatar(props) {
   const merged = mergeProps({ imgClass: "w-10 h-10", showStatus: true }, props);
-  console.log(props)
+  console.log(props);
   return (
-    <div className={`relative ${merged.divClass || ''}`}>
+    <div className={`relative ${merged.divClass || ""}`}>
       <img
         src={merged.profileImage}
         alt={merged.alt}

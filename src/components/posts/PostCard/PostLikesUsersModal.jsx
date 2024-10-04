@@ -46,6 +46,7 @@ export default function PostLikesUsersModal(props) {
                     <Link
                       href={`/${user.id}`}
                       className="flex items-center space-x-2"
+                      aria-label={`User ${user.firtName}`}
                     >
                       <UserStatusAvatar
                         firstName={user.firstName}

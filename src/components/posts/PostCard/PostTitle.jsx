@@ -23,10 +23,15 @@ export default function PostTitle(props) {
         <span className="inline-flex items-center gap-2">
           <For each={props.taggedFriends}>
             {(friend) => (
-              <Link className="flex-none" href={`/${friend.id}`}>
+              <Link
+                className="flex-none"
+                href={`/${friend.id}`}
+                aria-label="Friend Profile"
+              >
                 <span className="flex gap-1 pr-2 items-center  rounded-full bg-white border dark:bg-gray-900  dark:border-gray-600">
                   <span className="h-5 w-5">
                     <img
+                      alt="Friend Profile Image"
                       src={friend.profileImage}
                       className="w-full h-full rounded-full"
                     />

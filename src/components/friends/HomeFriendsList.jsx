@@ -8,6 +8,7 @@ export default function FriendLists(props) {
         {(user) => (
           <li>
             <Link
+              aria-label="Messenger"
               href={`/messenger/${user.id}`}
               className="flex items-center space-x-2 hover:bg-gray-300 dark:hover:bg-gray-800 py-2 px-4 rounded-lg dark:text-gray-200"
             >
