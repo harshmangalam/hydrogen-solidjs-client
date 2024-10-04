@@ -1,10 +1,12 @@
 import { Show } from "solid-js";
 import { ImSpinner2 } from "solid-icons/im";
+import { cn } from "../../../utils";
 
 import Spinner from "../../spinner/Spinner";
 
 export default function Button({
   children,
+  className,
   color = "primary",
   disabled,
   isLoading,
@@ -14,19 +16,21 @@ export default function Button({
   ...props
 }) {
   const disableBtn = disabled === true || isLoading === true;
+  const _className = cn([
+    "flex items-center justify-center ",
+    color === "primary" ? "bg-blue-500" : null,
+    color === "success" ? "bg-green-500" : null,
+    color === "danger" ? "bg-red-500" : null,
+    size === "small" ? "text-sm px-2 py-1 rounded-md" : null,
+    size === "medium" ? "text-md px-3 py-2 rounded-md" : null,
+    size === "large" ? "text-lg px-4 py-3 rounded-lg" : null,
+    disableBtn ? "opacity-70" : null,
+    className,
+  ]);
 
   return (
     <button
-      className="py-2 px-3 flex items-center justify-center rounded-lg"
-      classList={{
-        "bg-blue-500": color === "primary",
-        "bg-green-500": color === "success",
-        "bg-red-500": color === "danger",
-        "text-sm": size === "small",
-        "text-md": size === "medium",
-        "text-lg": size === "large",
-        "opacity-70": disableBtn,
-      }}
+      className={_className}
       disabled={[disableBtn]}
       onClick={[onClick]}
       {...props}
