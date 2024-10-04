@@ -24,6 +24,7 @@ export default function MenuSidebar() {
               />
             )}
             href={authState.currentUser.id}
+            ariaLabel="User Profile"
           />
         </Show>
         <For each={links}>{(link) => <MenuLink {...link} />}</For>
@@ -34,17 +35,20 @@ export default function MenuSidebar() {
 
 const links = [
   {
+    ariaLabel: "Friends",
     name: "Friends",
     href: "/friends",
     icon: () => <FaSolidUserFriends className="text-rose-500" />,
   },
   {
+    ariaLabel: "Posts",
     name: "Posts",
     href: "/posts",
     icon: () => <BsFilePost className="text-purple-500" />,
   },
 
   {
+    ariaLabel: "Groups",
     name: "Groups",
     href: "/groups",
     icon: () => <FaSolidUsers className="text-green-500" />,
