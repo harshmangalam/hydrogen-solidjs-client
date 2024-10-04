@@ -10,6 +10,7 @@ export default function FriendBtn(props) {
         "text-red-800 bg-red-100 hover:bg-red-200": props.color === "danger",
       }}
       onClick={[props.onClick]}
+      {...props}
     >
       <span>{props.text}</span>
     </button>
