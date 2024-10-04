@@ -1,18 +1,43 @@
-export default function Button(props) {
+import { Show } from "solid-js";
+import { ImSpinner2 } from "solid-icons/im";
+
+import Spinner from "../../spinner/Spinner";
+
+export default function Button({
+  children,
+  color = "primary",
+  disabled,
+  isLoading,
+  onClick,
+  size = "medium",
+  text,
+  ...props
+}) {
+  const disableBtn = disabled === true || isLoading === true;
+
   return (
     <button
-      className="font-semibold py-2 w-full flex items-center justify-center space-x-2 rounded-lg text-sm"
+      className="py-2 px-3 flex items-center justify-center rounded-lg"
       classList={{
-        "bg-blue-100 hover:bg-blue-200":
-          props.color === "primary",
-        "text-green-500 bg-green-100 hover:bg-green-200":
-          props.color === "success",
-        "text-red-500 bg-red-100 hover:bg-red-200": props.color === "danger",
+        "bg-blue-500": color === "primary",
+        "bg-green-500": color === "success",
+        "bg-red-500": color === "danger",
+        "text-sm": size === "small",
+        "text-md": size === "medium",
+        "text-lg": size === "large",
+        "opacity-70": disableBtn,
       }}
-      onClick={[props.onClick]}
+      disabled={[disableBtn]}
+      onClick={[onClick]}
+      {...props}
     >
-      {props.children}
-      <span>{props.text}</span>
+      <Show
+        when={!isLoading}
+        fallback={<ImSpinner2 className="animate-spin w-8 h-8" />}
+      >
+        {children}
+        <span>{text}</span>
+      </Show>
     </button>
   );
 }
