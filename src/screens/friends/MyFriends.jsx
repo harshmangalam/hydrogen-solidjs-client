@@ -31,6 +31,7 @@ export default function MyFriends() {
               {(user) => (
                 <FriendCard {...user}>
                   <FriendBtn
+                    aria-label="Unfriend"
                     text="Unfriend"
                     color="danger"
                     onClick={() => handleRemoveFromFriendsList(user.id)}

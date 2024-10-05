@@ -7,11 +7,14 @@ import Error from "../../../components/shared/Error";
 import Empty from "../../../components/shared/Empty";
 import useFriendRequest from "../../../hooks/useFriendRequest";
 import FriendBtn from "../../../components/friends/FriendBtn";
+import { useAuthState } from "../../../context/auth";
 
 export default function AllFriends() {
   const params = useParams();
   const [resource, { refetch }] = createResource(() => params.userId, fetchUserAllFriends);
   const { handleRemoveFromFriendsList, loading } = useFriendRequest(refetch);
+  const { currentUser } = useAuthState();
+
   return (
     <div className="relative py-4">
       <Switch>
@@ -31,14 +34,17 @@ export default function AllFriends() {
                 {(user) => (
                   <li>
                     <FriendCard {...user}>
-                      <FriendBtn
-                        text="Unfriend"
-                        color="danger"
-                        onClick={() => handleRemoveFromFriendsList(user.id)}
-                        loading={loading}
-                      >
-                        <FaSolidUserMinus size={18} />
-                      </FriendBtn>
+                      <Show when={currentUser.id === params.userId}>
+                        <FriendBtn
+                          aria-label="Unfriend"
+                          text="Unfriend"
+                          color="danger"
+                          onClick={() => handleRemoveFromFriendsList(user.id)}
+                          loading={loading}
+                        >
+                          <FaSolidUserMinus size={18} />
+                        </FriendBtn>
+                      </Show>
                     </FriendCard>
                   </li>
                 )}
