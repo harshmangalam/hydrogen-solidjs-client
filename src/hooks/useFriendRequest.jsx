@@ -17,7 +17,7 @@ export default function useFriendRequest(refetch) {
       const { data } = await sendFriendRequest(userId);
       addSnackbar({ type: "success", message: data.message });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);
@@ -31,7 +31,7 @@ export default function useFriendRequest(refetch) {
       const { data } = await acceptFriendRequest(userId);
       addSnackbar({ type: "success", message: data.message });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);
@@ -45,7 +45,7 @@ export default function useFriendRequest(refetch) {
       const { data } = await removeFromFriendsList(userId);
       addSnackbar({ type: "success", message: data.message });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);
@@ -59,7 +59,7 @@ export default function useFriendRequest(refetch) {
       const { data } = await cancelSentRequest(userId);
       addSnackbar({ type: "success", message: data.message });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);
@@ -73,7 +73,7 @@ export default function useFriendRequest(refetch) {
       const { data } = await ignoreReceivedRequest(userId);
       addSnackbar({ type: "success", message: data.message });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);

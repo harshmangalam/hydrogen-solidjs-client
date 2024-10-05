@@ -17,7 +17,7 @@ export default function useMessenger() {
         content: store.content,
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   return {

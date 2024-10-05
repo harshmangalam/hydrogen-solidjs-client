@@ -82,7 +82,7 @@ export default function useCreateGroup() {
       addSnackbar({ type: "success", message: data.message });
       navigate(`/groups/${data.data.group.id}`);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);

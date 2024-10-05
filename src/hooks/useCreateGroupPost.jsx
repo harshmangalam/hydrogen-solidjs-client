@@ -57,7 +57,7 @@ export default function useCreatePost() {
       addSnackbar({ type: "success", message: data.message });
       navigate("/groups/created_group_posts");
     } catch (error) {
-      console.log(error);
+      console.error(error);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);

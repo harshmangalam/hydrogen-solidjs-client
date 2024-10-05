@@ -36,6 +36,7 @@ export default function useUploadPic(refetch) {
       refetch();
       addSnackbar({ type: "success", message: data.message });
     } catch (error) {
+      console.error(error);
       addSnackbar({ type: "error", message: error?.response?.data?.message });
     } finally {
       refetch();

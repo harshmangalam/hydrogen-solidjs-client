@@ -20,7 +20,7 @@ export default function useGroups(refetch) {
       const { data } = await joinGroup(groupId);
       addSnackbar({ type: "success", message: data.message });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);
@@ -34,7 +34,7 @@ export default function useGroups(refetch) {
       const { data } = await leaveGroup(groupId);
       addSnackbar({ type: "success", message: data.message });
     } catch (error) {
-      console.log(error.response.data);
+      console.error(error.response.data);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);
@@ -48,7 +48,7 @@ export default function useGroups(refetch) {
       const { data } = await acceptGroupInvitation(groupId);
       addSnackbar({ type: "success", message: data.message });
     } catch (error) {
-      console.log(error.response.data);
+      console.error(error.response.data);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);
@@ -62,7 +62,7 @@ export default function useGroups(refetch) {
       const { data } = await rejectGroupInvitation(groupId);
       addSnackbar({ type: "success", message: data.message });
     } catch (error) {
-      console.log(error.response.data);
+      console.error(error.response.data);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);
@@ -76,7 +76,7 @@ export default function useGroups(refetch) {
       const { data } = await deleteGroup(groupId);
       addSnackbar({ type: "success", message: data.message });
     } catch (error) {
-      console.log(error.response.data);
+      console.error(error.response.data);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);
@@ -90,7 +90,7 @@ export default function useGroups(refetch) {
       const { data } = await addRemoveGroupPostLikes(groupId,postId);
       addSnackbar({ type: "success", message: data.message });
     } catch (error) {
-      console.log(error.response.data);
+      console.error(error.response.data);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);
@@ -104,7 +104,7 @@ export default function useGroups(refetch) {
       const { data } = await removeGroupPost(groupId,postId);
       addSnackbar({ type: "success", message: data.message });
     } catch (error) {
-      console.log(error.response.data);
+      console.error(error.response.data);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);

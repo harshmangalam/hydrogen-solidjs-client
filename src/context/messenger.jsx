@@ -27,7 +27,7 @@ export default function MessengerProvider(props) {
       const { data } = await fetchMessenger();
       setStore("friends", data.data.messengers);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   });
 
@@ -73,7 +73,7 @@ export default function MessengerProvider(props) {
       );
       msgDivRef.scrollTop = msgDivRef.scrollHeight;
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -88,7 +88,7 @@ export default function MessengerProvider(props) {
         data: { messageId: data.data.message.id, status: "RECEIVED" },
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -102,7 +102,7 @@ export default function MessengerProvider(props) {
         })
       );
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

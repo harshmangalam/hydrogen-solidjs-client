@@ -35,6 +35,7 @@ export default function useGeolocations() {
 
       setStore("location", location);
     } catch (error) {
+      console.error(error);
       if (error instanceof GeolocationPositionError) {
         addSnackbar({ type: "error", message: error.message });
       }

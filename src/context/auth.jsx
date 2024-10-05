@@ -29,7 +29,7 @@ export default function AuthProvider(props) {
       setStore("currentUser", data.data.user);
       setStore("currentAccount", data.data.currentAccount);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   const initSocketManager = () => {
@@ -41,7 +41,7 @@ export default function AuthProvider(props) {
     });
 
     socket.on("connect_error", (err) => {
-      console.log(err.message);
+      console.error(err.message);
     });
 
     setStore("socket", socket);
@@ -52,6 +52,7 @@ export default function AuthProvider(props) {
       await loadCurrentUser();
       initSocketManager();
     } catch (error) {
+      console.error(error);
       Cookies.remove("token");
       if (!location.pathname.includes("/auth")) {
         navigate("/auth/login");

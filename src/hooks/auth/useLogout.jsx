@@ -15,6 +15,7 @@ export default function useLogout() {
       addSnackbar({ type: "success", message: data.message });
       channel.postMessage("logout_success");
     } catch (error) {
+      console.error(error);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);

@@ -22,7 +22,7 @@ export default function NotificationProvider(props) {
       const { data } = await fetchNotifications();
       setInitialState(data.data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   });
 
@@ -35,7 +35,7 @@ export default function NotificationProvider(props) {
       });
 
       socket.on("hi",data=>{
-        console.log(data)
+        // console.log(data)
       })
     }
   });
@@ -60,7 +60,7 @@ export default function NotificationProvider(props) {
       setStore("notifications", []);
       setStore("count", 0);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

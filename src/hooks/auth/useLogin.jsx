@@ -38,6 +38,7 @@ export default function useLogin() {
       initSocketManager();
       navigate("/", { replace: true });
     } catch (error) {
+      console.error(error);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);
