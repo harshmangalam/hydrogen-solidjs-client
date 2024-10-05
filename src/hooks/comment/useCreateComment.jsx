@@ -34,7 +34,7 @@ export default function useCreateComment(refetchComment, refetchPost) {
       refetchComment();
       refetchPost();
     } catch (error) {
-      console.log(error);
+      console.error(error);
       addSnackbar({ type: "error", message: error.response.data.message });
     }
   };

@@ -66,6 +66,7 @@ export default function useSignup() {
       addSnackbar({ type: "success", message: data.message });
       navigate("/auth/login");
     } catch (error) {
+      console.error(error);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);

@@ -12,7 +12,7 @@ export default function usePost(refetch) {
       addSnackbar({ type: "success", message: data.message });
       refetch();
     } catch (error) {
-      console.log(error);
+      console.error(error);
       addSnackbar({ type: "error", message: error.response.data.error });
     } finally {
       setLoading(false);
@@ -26,7 +26,7 @@ export default function usePost(refetch) {
       addSnackbar({ type: "success", message: data.message });
       refetch();
     } catch (error) {
-      console.log(error);
+      console.error(error);
       addSnackbar({ type: "error", message: error.response.data.error });
     } finally {
       setLoading(false);

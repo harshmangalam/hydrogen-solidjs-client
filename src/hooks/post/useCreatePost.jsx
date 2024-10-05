@@ -77,12 +77,12 @@ export default function useCreatePost() {
 
   const addFeeling = (feeling) => {
     setForm("feeling", feeling);
-    console.log(feeling);
+    
   };
 
   const removeFeeling = () => {
     setForm("feeling", "");
-    console.log(form.feeling);
+  
   };
 
   const handleSubmit = async (event) => {
@@ -115,7 +115,7 @@ export default function useCreatePost() {
       addSnackbar({ type: "success", message: data.message });
       navigate("/");
     } catch (error) {
-      console.log(error);
+      console.error(error);
       addSnackbar({ type: "error", message: error.response.data.message });
     } finally {
       setLoading(false);
