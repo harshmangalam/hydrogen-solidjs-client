@@ -11,7 +11,21 @@ import {
   BsEmojiNeutral,
   BsEmojiSmileUpsideDown,
   BsEmojiLaughing,
+  BsEmojiGrinningSquinting,
+  BsEmojiKissingFace,
+  BsEmojiZombie,
+  BsEmojiTearsOfJoy,
+  BsEmojiRelieved,
+  BsEmojiConfused,
+  BsEmojiDisappointedRevised,
+  BsEmojiFlushed,
+  BsEmojiRollingOnTheFloorLaughing,
+  BsEmojiSweatSmiling,
+  BsEmojiSleepy,
+  BsEmojiCrying,
+  BsEmojiPersevere,
 } from "solid-icons/bs";
+
 
 import { HiOutlineEmojiHappy, HiOutlineEmojiSad } from "solid-icons/hi";
 
@@ -77,7 +91,6 @@ export default function Feelings(props) {
     </div>
   );
 }
-
 const feelings = [
   {
     name: "Happy",
@@ -115,9 +128,8 @@ const feelings = [
     name: "Neutral",
     icon: () => <BsEmojiNeutral />,
   },
-
   {
-    name: "smileUpSideDown",
+    name: "Smile UpSideDown",
     icon: () => <BsEmojiSmileUpsideDown />,
   },
   {
@@ -131,5 +143,57 @@ const feelings = [
   {
     name: "Laughing",
     icon: () => <BsEmojiLaughing />,
+  },
+  {
+    name: "Grinning Squinting",
+    icon: () => <BsEmojiGrinningSquinting />,
+  },
+  {
+    name: "Kissing Face",
+    icon: () => <BsEmojiKissingFace />,
+  },
+  {
+    name: "Zombie",
+    icon: () => <BsEmojiZombie />,
+  },
+  {
+    name: "Tears of Joy",
+    icon: () => <BsEmojiTearsOfJoy />,
+  },
+  {
+    name: "Relieved",
+    icon: () => <BsEmojiRelieved />,
+  },
+  {
+    name: "Confused",
+    icon: () => <BsEmojiConfused />,
+  },
+  {
+    name: "Disappointed Revised",
+    icon: () => <BsEmojiDisappointedRevised />,
+  },
+  {
+    name: "Flushed",
+    icon: () => <BsEmojiFlushed />,
+  },
+  {
+    name: "Rolling on the Floor Laughing",
+    icon: () => <BsEmojiRollingOnTheFloorLaughing />,
+  },
+  {
+    name: "Sweat Smiling",
+    icon: () => <BsEmojiSweatSmiling />,
+  },
+  {
+    name: "Sleepy",
+    icon: () => <BsEmojiSleepy />,
+  },
+  {
+    name: "Crying",
+    icon: () => <BsEmojiCrying />,
+  },
+  {
+    name: "Persevere",
+    icon: () => <BsEmojiPersevere />,
   },
 ];
