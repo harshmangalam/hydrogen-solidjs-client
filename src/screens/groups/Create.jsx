@@ -4,7 +4,6 @@ import InvitePeople from "../../components/groups/Create/InvitePeople";
 import ImageUpload from "../../components/shared/ImageUpload";
 import useCreateGroup from "../../hooks/useCreateGroup";
 import { ImSpinner2 } from "solid-icons/im";
-import Button from "../../components/ui/inputs/Button";
 
 export default function CreateGroup() {
   const {
@@ -83,9 +82,19 @@ export default function CreateGroup() {
         </Show>
 
         <div>
-          <Button className="w-full" type="submit" color="primary" size="large">
-            Create
-          </Button>
+          <button
+            disabled={loading()}
+            type="submit"
+            className="flex justify-center w-full s py-2 px-3 bg-blue-500 text-white rounded-lg text-lg"
+            classList={{"opacity-60":loading()}}>
+          >
+            <Show
+              when={!loading()}
+              fallback={<ImSpinner2 className="animate-spin w-8 h-8" />}
+            >
+              Create
+            </Show>
+          </button>
         </div>
       </form>
     </section>
